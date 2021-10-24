@@ -1,0 +1,408 @@
+permasalahan:
+
+agar fitur search jadi, modal edit jangan di dalam td
+
+
+EDIT FOTO DAN TTD suka gagal kalo extensionnya sama
+
+MAHASISWA
+pengajuan
+1. Jika include modal edit lampiran dan ttd ada di dalam form, editP tidak jalan.
+2. Edit Lampiran dan ttd  berhasil tapi alert gagal
+3. Edit profil: foto dan ttd ga jelas (gagal). Saat baru simpan perubahan kadang: tidak langsung muncul tapi beberapa waktu kemudian muncul
+4. Edit Bukti berhasil
+
+ADMIN
+profil
+1. Edit profil: foto berhasil dan ttd ga jelas (kadang gagal)
+    berhasil edit tapi alert-nya gagal diedit (kalo edit berturut-turut)
+2. pengajuan: detail pengajuan
+
+
+footer
+1. permasalahannya di tabel. Misalkan di halaman profil, ada banyak isi di dalam halaman profil, footer fleksibel
+    penyelesaian: php tidak diletakkan di atas
+
+
+
+23/9/2021
+1. hapus doswal, kajur
+2. Menampilkan pengajuan di user doswal dan download sk
+3. Menampilkan profil di user doswal
+4. Membuat edit profil doswal
+
+24/9/2021
+1. Menampilkan pengajuan di user kajur dan download sk
+2. Menampilkan profil di user kajur
+3. Membuat edit profil kajur
+
+4. Menampilkan pengajuan di user wadir1
+5. Menampilkan profil di user wadir1
+6. Membuat edit profil wadir1
+7. Membuat laporan pengajuan
+
+8. Menampilkan pengajuan di user perpus dan download sk
+9. Menampilkan profil di user perpus
+10. Membuat edit profil perpus
+
+
+
+27/9/2021
+1. keuangan : profil, sk,
+
+28/9/2021
+1. Edit validasi UKT di keuangan
+2. Mencoba membenarkan profil
+
+29/9/2021
+1. Mempelajari GITHUB
+
+06/10/2021
+session: 
+1. wadir1 udah semua
+2. mahasiswa: profil, bayar ukt, pengajuan
+
+07/10/2021
+session: 
+1. kajur
+2. ketua akademik
+3. admin
+4. doswal
+
+08/10/2021
+session: perpus dan keuangan
+memperbaiki sidebar 
+
+11/10/2021
+belajar lupa password
+
+12/10/2021
+coba buat lupa password
+
+13/10/2021
+membuat tampilan formulir cuti dan sk
+
+14/10/2021
+memperbaiki tampilan button
+Mengubah row menjadi row_user di bagian menampilkan foto mahasiswa
+
+
+15/10/2021
+menambah kolom status dan verifikasi di datatable pengajuan
+memperbaiki button aksi
+menambah inputan alasan di edit pengajuan
+memperbaiki laporan berdasarkan yang sudah selesai di setujui
+
+
+<!-- <?php
+                                                                ?>
+                                                        <form action="" method="POST">
+                                                            <?php
+                                                            if ($result['status'] == "0") { ?>
+                                                                <button class="btn btn-outline-none disabled" type="submit" name="terima"><i class="fas fa-check" style="color: green;"></i>
+                                                                    ACC &nbsp;&nbsp;</button>
+                                                                <button class="btn btn-outline-none" type="submit" name="tolak"><i class="fas fa-times" style="color: red;"></i>
+                                                                    Tolak</button>
+                                                            <?php }
+                                                            ?>
+                                                        </form> -->
+
+
+16/10/2021
+- Menambah pengecekan login pegawai berdasarkan status yang masih aktif 
+- Memindah kolom status, no_sk, tgl_sk, upload_sk ke tb_pengajuan dan memperbaiki ERD
+- Membuat logout pada halaman ketua akademik
+
+17/10/2021
+- Memperbaiki select untuk sk pengajuan di bag.keuangan dan bag.perpus berdasarkan pengajuan yg sudah selesai
+- Membuat sk cuti
+
+18/10/2021
+- Membuat sk aktif
+
+
+21/10/2021
+- menambah nama prodi di tabel pengajuan
+- memperbaiki tambah, dan edit pengajuan di user mahasiswa (pengajuan)
+- memperbaiki function tambah dan edit pengajuan
+- memperbaiki sk_cuti dan sk_aktif
+- membuat view
+
+
+LOADINGNYA LAMA. Misalkan, 
+
+
+
+
+note:
+tambah pengajuan: 
+- cuti hanya satu kali, izin aktif hanya satu kali dan hanya jika ada pengajuan cuti.
+- PIKIRKAN LAGI KALO udah ajuin terus ditolak: insert hanya satu kali kecuali udah sampai proses ditolak maka bisa mengajukan lagi
+- sidebar: kalo foto pengguna tidak ada akan default; pake perulangan agar saat edit/tambah foto tidak perlu logout terlebih dahulu untuk menampilkan foto di sidebar
+
+
+PS C:\xampp\htdocs\SistemCuti> git status
+HEAD detached from 3768142
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   app/KetuaAkademik/profil/index.php
+        modified:   app/admin/doswal/index.php
+        modified:   app/admin/kajur/index.php
+        modified:   app/admin/mahasiswa/index.php
+        modified:   app/admin/pegawai/index.php
+        modified:   app/admin/pengajuan/index.php
+        modified:   app/admin/profil/index.php
+        modified:   app/doswal/pengajuan/index.php
+        modified:   app/doswal/profil/index.php
+        modified:   app/kajur/pengajuan/index.php
+        modified:   app/kajur/profil/index.php
+        modified:   app/keuangan/pengajuan/index.php
+        modified:   app/keuangan/profil/index.php
+        modified:   app/mahasiswa/bayar_ukt/index.php
+        modified:   app/mahasiswa/pengajuan/detail.php
+        modified:   app/mahasiswa/pengajuan/index.php
+        modified:   app/mahasiswa/profil/index.php
+        modified:   app/perpus/pengajuan/index.php
+        modified:   app/perpus/profil/index.php
+        modified:   app/wadir1/pengajuan/index.php
+        modified:   app/wadir1/profil/index.php
+        modified:   public/catatan.txt
+        modified:   public/sidebar.php
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        app/admin/mahasiswa/img/ttd_Ulfatun Nasikhah.jpeg
+        app/admin/pegawai/img/foto_Erry.png
+        app/admin/pegawai/img/foto_aaaa.jpg
+        app/admin/pegawai/img/ttd_Ardana.png
+        app/admin/pegawai/img/ttd_Coba.jpg
+        app/admin/pegawai/img/ttd_Erry.png
+        composer.lock
+PS C:\xampp\htdocs\SistemCuti> git add app/ketuaakdemik
+fatal: pathspec 'app/ketuaakdemik' did not match any files
+PS C:\xampp\htdocs\SistemCuti> git add app/KetuaAkademik
+PS C:\xampp\htdocs\SistemCuti> git add app/keuangan     
+PS C:\xampp\htdocs\SistemCuti> git add app/mahasiswa
+PS C:\xampp\htdocs\SistemCuti> git add app/perpus   
+PS C:\xampp\htdocs\SistemCuti> git add app/wadir1 
+PS C:\xampp\htdocs\SistemCuti> git status
+HEAD detached from 3768142
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   app/KetuaAkademik/profil/index.php
+        modified:   app/admin/doswal/index.php
+        modified:   app/admin/kajur/index.php
+        new file:   app/admin/mahasiswa/img/ttd_Ulfatun Nasikhah.jpeg
+        modified:   app/admin/mahasiswa/index.php
+        new file:   app/admin/pegawai/img/foto_Erry.png
+        new file:   app/admin/pegawai/img/foto_aaaa.jpg
+        new file:   app/admin/pegawai/img/ttd_Ardana.png
+        new file:   app/admin/pegawai/img/ttd_Coba.jpg
+        new file:   app/admin/pegawai/img/ttd_Erry.png
+        new file:   app/admin/pegawai/img/ttd_aaaa.jpg
+        modified:   app/admin/pegawai/index.php
+        modified:   app/admin/pengajuan/index.php
+        modified:   app/admin/profil/index.php
+        modified:   app/doswal/pengajuan/index.php
+        modified:   app/doswal/profil/index.php
+        modified:   app/kajur/pengajuan/index.php
+        modified:   app/kajur/profil/index.php
+        modified:   app/keuangan/pengajuan/index.php
+        modified:   app/keuangan/profil/index.php
+        modified:   app/mahasiswa/bayar_ukt/index.php
+        modified:   app/mahasiswa/pengajuan/detail.php
+        new file:   app/mahasiswa/pengajuan/img/lampiran_aktif190102031.pdf
+        new file:   app/mahasiswa/pengajuan/img/ortu_aktif190102031.jpeg
+        modified:   app/mahasiswa/pengajuan/index.php
+        modified:   app/mahasiswa/profil/index.php
+        modified:   app/perpus/pengajuan/index.php
+        modified:   app/perpus/profil/index.php
+        modified:   app/wadir1/pengajuan/index.php
+        modified:   app/wadir1/profil/index.php
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   public/catatan.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        composer.json
+        composer.lock
+        vendor/
+
+PS C:\xampp\htdocs\SistemCuti> git commit -m "Memperbaiki tampilan button"
+[detached HEAD 5be3e64] Memperbaiki tampilan button
+ 30 files changed, 65 insertions(+), 61 deletions(-)
+ create mode 100644 app/admin/mahasiswa/img/ttd_Ulfatun Nasikhah.jpeg
+ create mode 100644 app/admin/pegawai/img/foto_aaaa.jpg
+ create mode 100644 app/admin/pegawai/img/ttd_Ardana.png
+ create mode 100644 app/admin/pegawai/img/ttd_Coba.jpg
+ create mode 100644 app/admin/pegawai/img/ttd_Erry.png
+ create mode 100644 app/admin/pegawai/img/ttd_aaaa.jpg
+ create mode 100644 app/mahasiswa/pengajuan/img/lampiran_aktif190102031.pdf
+ create mode 100644 app/mahasiswa/pengajuan/img/ortu_aktif190102031.jpeg
+PS C:\xampp\htdocs\SistemCuti> git status
+HEAD detached from 3768142
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   public/catatan.txt
+        modified:   public/sidebar.php
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        composer.lock
+        vendor/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\xampp\htdocs\SistemCuti> git push -u origin main
+Everything up-to-date
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+PS C:\xampp\htdocs\SistemCuti> git status
+HEAD detached from 3768142
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   public/catatan.txt
+        modified:   public/sidebar.php
+  (use "git add <file>..." to include in what will be committed)
+        composer.json
+        vendor/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\xampp\htdocs\SistemCuti> git add public/sidebar.php
+PS C:\xampp\htdocs\SistemCuti> git commit -m "Mengubah row menjadi row_user di bagian menampilkan foto mahasiswa"
+[detached HEAD a2fb9f4] Mengubah row menjadi row_user di bagian menampilkan foto mahasiswa
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+PS C:\xampp\htdocs\SistemCuti> git status
+HEAD detached from 3768142
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   public/catatan.txt
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        composer.json
+        composer.lock
+        vendor/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\xampp\htdocs\SistemCuti> git log -p
+Author: ulfacode <ulfatunnasikhah49@gmail.com>
+Date:   Thu Oct 14 20:16:23 2021 +0700
+
+    Mengubah row menjadi row_user di bagian menampilkan foto mahasiswa
+
+diff --git a/public/sidebar.php b/public/sidebar.php
+index faeede7..afd44c9 100644
+PS C:\xampp\htdocs\SistemCuti> grapgh
+that the path is correct and try again.
+At line:1 char:1
++ grapgh
++ ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (grapgh:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+PS C:\xampp\htdocs\SistemCuti> graph
+that the path is correct and try again.
+At line:1 char:1
++ graph
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (graph:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ iiiiiiiiiiiiiiiiiiiiiiiiihb
+alias : This command cannot find a matching alias because an alias with the name 'graph=git log --all --decorate --oneline --graph' does not exist.
+At line:1 char:1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (graph=git log -...oneline --graph:String) [Get-Alias], ItemNotFoundException
+    + FullyQualifiedErrorId : ItemNotFoundException,Microsoft.PowerShell.Commands.GetAliasCommand
+ 
+PS C:\xampp\htdocs\SistemCuti> git push -u origin main
+Everything up-to-date
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+PS C:\xampp\htdocs\SistemCuti> git log -p
+Author: ulfacode <ulfatunnasikhah49@gmail.com>
+
+    Mengubah row menjadi row_user di bagian menampilkan foto mahasiswa
+
+diff --git a/public/sidebar.php b/public/sidebar.php
+index faeede7..afd44c9 100644
+PS C:\xampp\htdocs\SistemCuti> git checkout a2fb9f4fcbafbc5d98f7970e2a47bc945106d413 public/sidebar.php
+Updated 0 paths from 5bb49c1
+PS C:\xampp\htdocs\SistemCuti> git status
+HEAD detached from 3768142
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   public/catatan.txt
+Untracked files:
+        composer.json
+        composer.lock
+        vendor/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\xampp\htdocs\SistemCuti> git checkout a2fb9f4fcbafbc5d98f7970e2a47bc945106d413 public/sidebar.php
+Updated 0 paths from 5bb49c1
+PS C:\xampp\htdocs\SistemCuti> git status
+HEAD detached from 3768142
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   public/catatan.txt
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        composer.lock
+        vendor/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\xampp\htdocs\SistemCuti> git checkout a2fb9f4fcbafbc5d98f7970e2a47bc945106d413
+HEAD is now at a2fb9f4 Mengubah row menjadi row_user di bagian menampilkan foto mahasiswa
+M       public/catatan.txt
+PS C:\xampp\htdocs\SistemCuti> git status
+HEAD detached from 3768142
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   public/catatan.txt
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        composer.json
+        composer.lock
+        vendor/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\xampp\htdocs\SistemCuti> git log -p
+commit a2fb9f4fcbafbc5d98f7970e2a47bc945106d413 (HEAD)
+Author: ulfacode <ulfatunnasikhah49@gmail.com>
+Date:   Thu Oct 14 20:16:23 2021 +0700
+
+    Mengubah row menjadi row_user di bagian menampilkan foto mahasiswa
+
+diff --git a/public/sidebar.php b/public/sidebar.php
+index faeede7..afd44c9 100644
+--- a/public/sidebar.php
++++ b/public/sidebar.php
+@@ -15,12 +15,12 @@
+                 if ($level == "Mahasiswa") {
+-                    $user = mysqli_query($conn, "SELECT * FROM tb_mahasiswa WHERE nim = '$_SESSION[nim]'");
++                    $user = mysqli_query($conn, "SELECT * FROM tb_mahasiswa WHERE nim = '$id'");
+                     $row_user = $user->fetch_assoc();
+                     foreach ($user as $row_user) {
+                         if (!empty($row_user["foto"])) { ?>
+PS C:\xampp\htdocs\SistemCuti> git reset --soft a2fb9f4fcbafbc5d98f7970e2a47bc945106d413
+PS C:\xampp\htdocs\SistemCuti> git status
+HEAD detached from 3768142
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   public/catatan.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        composer.json
+        composer.lock
+        vendor/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\xampp\htdocs\SistemCuti>
