@@ -463,3 +463,93 @@ function editTTD($data)
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }
+
+
+// untuk ACC pengajuan 
+function terima($id, $nip_npak, $jabatan)
+{
+    global $conn;
+
+    // verifikasi dosen wali
+    if ($jabatan == "Dosen Wali") {
+        mysqli_query($conn, "UPDATE tb_pengajuan SET status = '1' WHERE id_pengajuan = '$id'");
+
+        if (mysqli_affected_rows($conn) > 0) {
+            mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak) VALUES ('$id','$nip_npak')");
+            if (mysqli_affected_rows($conn) > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    // verifikasi ketua jurusan
+    elseif ($jabatan == "Ketua Jurusan") {
+        mysqli_query($conn, "UPDATE tb_pengajuan SET status = '2' WHERE id_pengajuan = '$id'");
+
+        if (mysqli_affected_rows($conn) > 0) {
+            mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak) VALUES ('$id','$nip_npak')");
+            if (mysqli_affected_rows($conn) > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    // verifikasi wadir1
+    elseif ($jabatan == "Wakil Direktur 1") {
+        mysqli_query($conn, "UPDATE tb_pengajuan SET status = '3' WHERE id_pengajuan = '$id'");
+
+        if (mysqli_affected_rows($conn) > 0) {
+            mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak) VALUES ('$id','$nip_npak')");
+            if (mysqli_affected_rows($conn) > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    // verifikasi BAAK
+    elseif ($jabatan == "Administrator") {
+        mysqli_query($conn, "UPDATE tb_pengajuan SET status = '4' WHERE id_pengajuan = '$id'");
+
+        if (mysqli_affected_rows($conn) > 0) {
+            mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak) VALUES ('$id','$nip_npak')");
+            if (mysqli_affected_rows($conn) > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
+
+// untuk tolak pengajuan 
+function tolak($id, $nip_npak)
+{
+    global $conn;
+
+    mysqli_query($conn, "UPDATE tb_pengajuan SET status = '5' WHERE id_pengajuan = '$id'");
+
+    if (mysqli_affected_rows($conn) > 0) {
+        mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak) VALUES ('$id','$nip_npak')");
+        if (mysqli_affected_rows($conn) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
