@@ -98,12 +98,19 @@ session_start();
                                                     <td><?php echo $row_user['semester_cuti'] ?></td>
                                                     <td><?php echo $row_user['thn_akademik'] ?></td>
                                                     <td>
-
-                                                        <a href="../../mahasiswa/pengajuan/img/<?= $row_user['lampiran'] ?>" class="btn btn-success">
-                                                            <i class="fa fa-download"></i> SK
-                                                        </a>
-
-
+                                                        <?php
+                                                        if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
+                                                            <a href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>" class="btn btn-success">
+                                                                <i class="fa fa-download"></i> SK Cuti
+                                                            </a>
+                                                        <?php
+                                                        } else { ?>
+                                                            <a href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>" class="btn btn-success">
+                                                                <i class="fa fa-download"></i> SK Aktif
+                                                            </a>
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     </td>
                                                 </tr>
                                             <?php
