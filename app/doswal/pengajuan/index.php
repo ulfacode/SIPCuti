@@ -1,6 +1,28 @@
 <?php
 include '../../config/f_pengajuan.php';
 session_start();
+
+$nip_npak = $_SESSION['nip_npak'];
+// $level = "Dosen Wali";
+
+// if (isset("terima_doswal")) {
+//     if (terima_doswal() > 0) {
+//         echo "
+//             <script>
+//                 alert('Verifikasi Berhasil!');
+//                 document.location.href = 'index.php';
+//             </script>
+//         ";
+//     } else {
+//         echo "
+//             <script>
+//                 alert('Verifikasi Gagal!');
+//                 document.location.href = 'index.php';
+//             </script>
+//         ";
+//     }
+// }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +84,7 @@ session_start();
 
                                 <?php
 
-                                $user = mysqli_query($conn, "SELECT * FROM v_pengajuan");
+                                $user = mysqli_query($conn, "SELECT m.nim, m.nama, p.id_pengajuan, p.jns_pengajuan, p.tgl_pengajuan, p.semester_cuti, p.thn_akademik, p.alasan, p.status FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_doswal AS d WHERE m.nim = p.nim AND m.id_doswal=d.id_doswal AND d.nip_npak='$nip_npak' ORDER BY tgl_pengajuan ASC");
                                 $row_user = $user->fetch_assoc();
 
 
@@ -132,12 +154,14 @@ session_start();
                                                         ?>
                                                     </td>
                                                     <td>
+                                                        <!-- tombol verifikasi -->
                                                         <?php
                                                         if (empty($row_user['status'])) { ?>
-                                                            <button class="btn btn-outline-none" type="submit" name="terima"><i class="fas fa-check" style="color: green;"></i>
-                                                                ACC &nbsp;&nbsp;</button>
-                                                            <button class="btn btn-outline-none" type="submit" name="tolak"><i class="fas fa-times" style="color: red;"></i>
-                                                                Tolak</button>
+                                                            <!-- $level dari sidebar -->
+                                                            <a href="terima_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>&jabatan=<?= $level; ?>" onclick="return confirm('Anda yakin menerima pengajuan ini?')" class="btn btn-outline-none"><i class="fas fa-check" style="color: green;"></i>
+                                                                ACC &nbsp;&nbsp;</a>
+                                                            <a href="tolak_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>" class="btn btn-outline-none" onclick="return confirm('Anda yakin menolak pengajuan ini?')"><i class="fas fa-times" style="color: red;"></i>
+                                                                Tolak</a>
                                                         <?php } else {
                                                             echo "Terverfikasi";
                                                         }
@@ -166,17 +190,11 @@ session_start();
                                                                     </a> -->
                                                                 <?php
                                                                 if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
-                                                                    <a class="dropdown-item" href="form_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>">
-                                                                        <i class="fa fa-download"></i> Form Cuti
-                                                                    </a>
                                                                     <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">
                                                                         <i class="fa fa-download"></i> SK Cuti
                                                                     </a>
                                                                 <?php
                                                                 } else { ?>
-                                                                    <a class="dropdown-item" href="form_aktif.php?id=<?php echo $row_user['id_pengajuan']; ?>">
-                                                                        <i class="fa fa-download"></i> Form Aktif
-                                                                    </a>
                                                                     <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">
                                                                         <i class="fa fa-download"></i> SK Aktif
                                                                     </a>

@@ -1,6 +1,8 @@
 <?php
 include '../../config/f_pengajuan.php';
 session_start();
+$nip_npak = $_SESSION['nip_npak'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +68,6 @@ session_start();
 
                                 $user = mysqli_query($conn, "SELECT * FROM v_wdpengajuan");
                                 $row_user = $user->fetch_assoc();
-
 
                                 ?>
 
@@ -138,10 +139,11 @@ session_start();
                                                         if (empty($result['status'])) {
                                                             echo "";
                                                         } elseif ($result['status'] == "2") { ?>
-                                                            <button class="btn btn-outline-none" type="submit" name="terima"><i class="fas fa-check" style="color: green;"></i>
-                                                                ACC &nbsp;&nbsp;</button>
-                                                            <button class="btn btn-outline-none" type="submit" name="tolak"><i class="fas fa-times" style="color: red;"></i>
-                                                                Tolak</button>
+                                                            <!-- $level dari sidebar -->
+                                                            <a href="terima_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>&jabatan=<?= $level; ?>" onclick="return confirm('Anda yakin menerima pengajuan ini?')" class="btn btn-outline-none"><i class="fas fa-check" style="color: green;"></i>
+                                                                ACC &nbsp;&nbsp;</a>
+                                                            <a href="tolak_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>" class="btn btn-outline-none" onclick="return confirm('Anda yakin menolak pengajuan ini?')"><i class="fas fa-times" style="color: red;"></i>
+                                                                Tolak</a>
                                                         <?php } else {
                                                             echo "Terverifikasi";
                                                         }
