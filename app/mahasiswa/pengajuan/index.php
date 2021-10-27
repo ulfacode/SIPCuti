@@ -247,12 +247,6 @@ $id = $_SESSION['nim'];
                                                             <i class="fa fa-edit"></i> Edit
                                                         </a>
 
-                                                        <!-- <a class="btn btn-secondary" href="detail.php?id=<?php echo $row_user['id_pengajuan']; ?>">
-                                                            <i class="fa fa-info-circle"></i> Detail
-                                                        </a> -->
-
-
-
                                                         <!-- references: https://www.rajaputramedia.com/artikel/membuat-script-download-file-dengan-php-mysql.php -->
                                                         <!-- <a class="btn" href="download_berkas.php?filename=<?= $row_user['lampiran'] ?>">
                                                             <i class="fa fa-download"></i> SK
@@ -260,10 +254,6 @@ $id = $_SESSION['nim'];
 
 
                                                         <?php include "modal_edit.php" ?>
-
-                                                        <!-- <a href="../../mahasiswa/pengajuan/img/<?= $row_user['lampiran'] ?>" class="btn btn-success">
-                                                            <i class="fa fa-download"></i> SK
-                                                        </a> -->
 
                                                         <div class="btn-group">
                                                             <button type="button" class="btn btn-success">
@@ -284,19 +274,14 @@ $id = $_SESSION['nim'];
                                                                 </a>
                                                                 <?php
                                                                 if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
-                                                                    <a class="dropdown-item" href="form_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>">
-                                                                        Form Cuti
-                                                                    </a>
-                                                                    <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">
+
+                                                                    <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>">
                                                                         SK Cuti
                                                                     </a>
                                                                 <?php
                                                                 } else { ?>
-                                                                    <a class="dropdown-item" href="form_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>">
-                                                                        Form Cuti
-                                                                    </a>
-                                                                    <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">
-                                                                        SK Cuti
+                                                                    <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>">
+                                                                        SK Aktif
                                                                     </a>
                                                                 <?php
                                                                 }

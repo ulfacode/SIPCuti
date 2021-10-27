@@ -101,12 +101,12 @@ session_start();
 
                                                         <?php
                                                         if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
-                                                            <a href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>" class="btn btn-success">
+                                                            <a href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>" class="btn btn-success">
                                                                 <i class="fa fa-download"></i> SK Cuti
                                                             </a>
                                                         <?php
                                                         } else { ?>
-                                                            <a href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>" class="btn btn-success">
+                                                            <a href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>" class="btn btn-success">
                                                                 <i class="fa fa-download"></i> SK Aktif
                                                             </a>
                                                         <?php
