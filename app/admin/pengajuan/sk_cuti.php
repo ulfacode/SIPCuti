@@ -41,7 +41,7 @@ error_reporting(0);
     </style>
 </head>
 
-<body onload="window.print()">
+<body>
     <center>
         <table width="600">
             <tr>
@@ -85,8 +85,8 @@ error_reporting(0);
             <tr>
                 <td>
                     <center>
-                        <font size="3" style="text-transform:uppercase;">PEMBERIAN CUTI KULIAH MAHASISWA a.n
-                            <?php echo $nama; ?>
+                        <font size="3">PEMBERIAN CUTI KULIAH MAHASISWA a.n
+                            <div style="text-transform:uppercase;"><?php echo $nama; ?></div>
                             <br>
                         </font>
                         <font size="3" style="text-transform:uppercase;">JURUSAN <?php echo "<a>" . $nm_jurusan . "</a>"; ?> <br>POLITEKNIK NEGERI CILACAP TAHUN AKADEMIK <?php echo $result['thn_akademik']; ?><br></font>
@@ -127,28 +127,38 @@ error_reporting(0);
                 <td width="20"><span>:</span>
                 <td>
                 <td width="30">1.</td>
-                <td width="">Undang-Undang Nomor ... tentang ...;</td>
+                <td width="">Undang-Undang Nomor ................................................................ <br>
+                    tentang ..........................................................................................;
+                </td>
             </tr>
             <tr class="text2">
                 <td width="100"></td>
                 <td width="20"><span></span>
                 <td>
                 <td width="30">2.</td>
-                <td width="">Peraturan Pemerintah Nomor ... tentang ...;</td>
+                <td width="">Peraturan Pemerintah Nomor ....................................................... <br>
+                    tentang ..........................................................................................;
+                </td>
             </tr>
             <tr class="text2">
                 <td width="100"></td>
                 <td width="20"><span></span>
                 <td>
                 <td width="30">3.</td>
-                <td width="">Peraturan Menteri Pendidikan dan Kebudayaan Nomor ... tentang ...;</td>
+                <td width="">Peraturan Menteri ...........................................................................
+                    <br>
+                    tentang ..........................................................................................;
+                </td>
             </tr>
             <tr class="text2">
                 <td width=""></td>
                 <td width="20"><span></span>
                 <td>
                 <td width="30">4.</td>
-                <td width="">Peraturan ... tentang ...;</td>
+                <td width="">Peraturan .......................................................................................
+                    <br>
+                    tentang ..........................................................................................
+                </td>
             </tr>
 
         </table>
@@ -167,9 +177,10 @@ error_reporting(0);
                 <td width="20"><span>:</span>
                 <td>
                 <td width="">
-                    <font size="3" style="text-transform:uppercase;">KEPUTUSAN DIREKTUR POLITEKNIK NEGERI CILACAP TENTANG
-                        PEMBERIAN CUTI KULIAH MAHASISWA a.n <?= $nama; ?>
-                        JURUSAN <?= $nm_jurusan; ?> TAHUN AKADEMIK <?= $result['thn_akademik']; ?>
+                    <font size="3">KEPUTUSAN DIREKTUR POLITEKNIK NEGERI CILACAP TENTANG
+                        PEMBERIAN CUTI KULIAH MAHASISWA a.n
+                        <span style="text-transform:uppercase;"><?php echo $nama; ?> JURUSAN <?= $nm_jurusan; ?></span>
+                        TAHUN AKADEMIK <?= $result['thn_akademik']; ?>
                     </font>
                 </td>
             </tr>
@@ -215,7 +226,7 @@ error_reporting(0);
                 <td width="20"></td>
                 <td width="100">Tingkat/Semester</td>
                 <td width="20">:</td>
-                <td><?= $result['tingkat']; ?>/<?= $result['semester_cuti']; ?></td>
+                <td><?= $result['tingkat']; ?> (.........) /<?= $result['semester_cuti']; ?> (.........) </td>
             </tr>
             <tr>
                 <td width="100"></td>
@@ -227,73 +238,73 @@ error_reporting(0);
             <tr class="text2">
                 <td width="100"></td>
                 <td width="20"></td>
-                <td colspan="3">diberikan ijin untuk cuti kuliah mulai ...</td>
+                <td colspan="3">diberikan ijin untuk cuti kuliah mulai ......................................................</td>
             </tr>
             <br>
             <tr class="text2">
                 <td width="100">KEDUA</td>
                 <td width="20"><span>:</span>
                 </td>
-                <td colspan="3">Mahasiswa tersebut pada diktum kesatu, wajib melaksanakan daftar ulang tiap semester ...</td>
+                <td colspan="3">Mahasiswa tersebut pada diktum kesatu, wajib melaksanakan daftar ulang tiap semester ...............................................</td>
             </tr>
             <tr class="text2">
                 <td width="100">KETIGA</td>
                 <td width="20"><span>:</span>
                 </td>
-                <td colspan="3">Mahasiswa tersebut pada diktum kesatu wajib mengikuti kegiatan akademik mulai ...</td>
+                <td colspan="3">Mahasiswa tersebut pada diktum kesatu wajib mengikuti kegiatan akademik mulai ....................................................</td>
             </tr>
             <tr class="text2">
                 <td width="100">KEEMPAT</td>
                 <td width="20"><span>:</span>
                 </td>
-                <td colspan="3">Keputusan Direktur ini mulai berlaku pada ....</td>
+                <td colspan="3">Keputusan Direktur ini mulai berlaku pada .............................................</td>
             </tr>
         </table>
         <br><br><br>
     </center>
 
-    <div style="page-break-before:always;">
-        <center>
-            <table width="600">
-                <tr>
-                    <td width="350"></td>
-                    <td>Ditetapkan di Cilacap</td>
-                </tr>
-                <tr>
-                    <td width="350"></td>
-                    <td>
-                        Pada tanggal
-                        <?php echo
-                        tgl($result['tgl_sk']);
-                        ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td width="350"></td>
-                    <td>
-                        <font size="3">Direktur Politeknik Negeri Cilacap</font>
-                        <br><br><br><br><br><br><br>
-                    </td>
-                </tr>
+    <!-- <div style="page-break-before:always;"> -->
+    <center>
+        <table width="600">
+            <tr>
+                <td width="350"></td>
+                <td>Ditetapkan di Cilacap</td>
+            </tr>
+            <tr>
+                <td width="350"></td>
+                <td>
+                    Pada tanggal
+                    <?php echo
+                    tgl($result['tgl_sk']);
+                    ?>
+                </td>
+            </tr>
+            <tr>
+                <td width="350"></td>
+                <td>
+                    <font size="3">Direktur Politeknik Negeri Cilacap</font>
+                    <br><br><br><br><br><br><br>
+                </td>
+            </tr>
 
-                <tr>
-                    <td></td>
-                    <!-- manual supaya kalau ganti direktur tidak perlu mengubah codingan -->
-                    <td>...........................................................</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>NIP. ...................................................</td>
-                </tr>
-            </table>
-        </center>
-    </div>
+            <tr>
+                <td></td>
+                <!-- manual supaya kalau ganti direktur tidak perlu mengubah codingan -->
+                <td>...........................................................</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>NIP. ...................................................</td>
+            </tr>
+        </table>
+    </center>
+    <!-- </div> -->
 
 
 
 </body>
 
 </html>
-<!-- <script>
+<script>
     window.print();
-</script> -->
+</script>

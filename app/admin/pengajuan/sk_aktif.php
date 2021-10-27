@@ -41,7 +41,8 @@ error_reporting(0);
     </style>
 </head>
 
-<body onload="window.print()">
+<body>
+
     <center>
         <table width="600">
             <tr>
@@ -85,11 +86,11 @@ error_reporting(0);
             <tr>
                 <td>
                     <center>
-                        <font size="3" style="text-transform:uppercase;">PENGAKTIFAN KEMBALI DARI CUTI KULIAH MAHASISWA a.n
-                            <?php echo $nama; ?>
+                        <font size="3">PENGAKTIFAN KEMBALI DARI CUTI KULIAH MAHASISWA a.n
+                            <div style="text-transform:uppercase;"><?php echo $nama; ?></div>
                             <br>
                         </font>
-                        <font size="3" style="text-transform:uppercase;">JURUSAN <?php echo "<a>" . $nm_jurusan . "</a>"; ?> <br>TAHUN AKADEMIK <?php echo $result['thn_akademik']; ?><br></font>
+                        <font size="3" style="text-transform:uppercase;">JURUSAN <?php echo "<a>" . $nm_jurusan . "</a>"; ?> <br>POLITEKNIK NEGERI CILACAP TAHUN AKADEMIK <?php echo $result['thn_akademik']; ?><br></font>
                     </center>
                 </td>
             </tr>
@@ -111,7 +112,7 @@ error_reporting(0);
                 <td width="30">a.</td>
                 <td width="">
                     bahwa dengan berakhirnya masa cuti kuliah mahasiswa a.n <?= $nama; ?> Jurusan <?= $nm_jurusan; ?>,
-                    sesuai dengan ..............;
+                    sesuai dengan ................................................................................................................;
                 </td>
             </tr>
             <tr class="text2">
@@ -133,28 +134,41 @@ error_reporting(0);
                 <td width="20"><span>:</span>
                 <td>
                 <td width="30">1.</td>
-                <td width="">Undang-Undang Nomor ... tentang ...;</td>
+                <td width="">
+                    Undang-Undang Nomor ................................................................
+                    <br>
+                    tentang ..........................................................................................;
+                </td>
             </tr>
             <tr class="text2">
                 <td width="100"></td>
                 <td width="20"><span></span>
                 <td>
                 <td width="30">2.</td>
-                <td width="">Peraturan Pemerintah Nomor ... tentang ...;</td>
+                <td width="">Peraturan Pemerintah Nomor ........................................................
+                    <br>
+                    tentang ..........................................................................................;
+                </td>
             </tr>
             <tr class="text2">
                 <td width="100"></td>
                 <td width="20"><span></span>
                 <td>
                 <td width="30">3.</td>
-                <td width="">Peraturan Menteri Pendidikan dan Kebudayaan Nomor ... tentang ...;</td>
+                <td width="">Peraturan Menteri ..........................................................................
+                    <br>
+                    tentang ..........................................................................................;
+                </td>
             </tr>
             <tr class="text2">
                 <td width=""></td>
                 <td width="20"><span></span>
                 <td>
                 <td width="30">4.</td>
-                <td width="">Peraturan ... tentang ...;</td>
+                <td width="">Peraturan .......................................................................................
+                    <br>
+                    tentang ..........................................................................................;
+                </td>
             </tr>
 
         </table>
@@ -173,9 +187,9 @@ error_reporting(0);
                 <td width="20"><span>:</span>
                 <td>
                 <td width="">
-                    <font size="3" style="text-transform:uppercase;">KEPUTUSAN DIREKTUR POLITEKNIK NEGERI CILACAP TENTANG
-                        PENGAKTIFAN KEMBALI DARI CUTI KULIAH MAHASISWA a.n <?= $nama; ?>
-                        <!-- JURUSAN <?= $nm_jurusan; ?> TAHUN AKADEMIK <?= $result['thn_akademik']; ?> -->
+                    <font size="3">KEPUTUSAN DIREKTUR POLITEKNIK NEGERI CILACAP TENTANG
+                        PENGAKTIFAN KEMBALI DARI CUTI KULIAH MAHASISWA a.n
+                        <span style="text-transform:uppercase;"><?php echo $nama; ?></span>
                     </font>
                 </td>
             </tr>
@@ -221,7 +235,7 @@ error_reporting(0);
                 <td width="20"></td>
                 <td width="100">Tingkat/Semester</td>
                 <td width="20">:</td>
-                <td><?= $result['tingkat']; ?>/<?= $result['semester_cuti']; ?></td>
+                <td><?= $result['tingkat']; ?> (.........) /<?= $result['semester_cuti']; ?> (.........) </td>
             </tr>
             <tr>
                 <td width="100"></td>
@@ -233,16 +247,18 @@ error_reporting(0);
             <tr class="text2">
                 <td width="100"></td>
                 <td width="20"></td>
-                <td colspan="3">diperkenankan untuk mengikuti kegiatan akademik mulai semester ...<br><br></td>
+                <td colspan="3">diperkenankan untuk mengikuti kegiatan akademik mulai semester
+                    ...................................................................................................................<br><br>
+                </td>
             </tr>
             <tr class="text2">
                 <td width="100">KEDUA</td>
                 <td width="20"><span>:</span>
                 </td>
-                <td colspan="3">Keputusan Direktur ini mulai berlaku sejak ....</td>
+                <td colspan="3">Keputusan Direktur ini mulai berlaku sejak ............................................</td>
             </tr>
         </table>
-        <br><br><br>
+        <!-- <br><br><br> -->
     </center>
 
     <div style="page-break-before:always;">

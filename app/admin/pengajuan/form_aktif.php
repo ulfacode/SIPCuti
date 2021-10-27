@@ -73,64 +73,72 @@ error_reporting(0);
             <tr>
                 <td>
                     <center>
-                        <font size="4">SURAT PERMOHONAN IZIN AKTIF AKADEMIK</font>
+                        <font size="4"><strong>SURAT PERMOHONAN IZIN AKTIF AKADEMIK</strong> </font>
                     </center>
                 </td>
             </tr>
             <tr></tr>
             <tr></tr>
         </table>
+
         <table width="600">
             <tr>
-                <td>
-                    <font size="3">Kepada <br></font>
-                    <font size="3">Direktur Politeknik Negeri Cilacap <br></font>
+                <td width="250">Kepada</td>
+                <td width=""></td>
+                <td width="200"></td>
+            </tr>
+            <tr>
+                <td width="250">
+                    Direktur Politeknik Negeri Cilacap
                 </td>
+                <td width="20"></td>
+                <td width="200"></td>
             </tr>
         </table>
         <table width="600">
             <tr>
                 <td>
-                    <font size="3">&nbsp;&nbsp;&nbsp; Yang bertanda tangan di bawah ini, saya:</font>
+                    <font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Yang bertanda tangan di bawah ini, saya:</font>
                 </td>
             </tr>
         </table>
-        <table>
-            <tr class="text2">
+
+        <table width="600">
+            <tr>
                 <td width="150">nama</td>
                 <td width="20"><span>:</span>
                 <td>
-                <td width="450"><?= $nama; ?></td>
+                <td width=""><?= $nama; ?></td>
             </tr>
-            <tr class="text2">
+            <tr>
                 <td width="150">NPM</td>
                 <td width="20"><span>:</span>
                 <td>
-                <td width="450"><?= $nim; ?></td>
+                <td width=""><?= $nim; ?></td>
             </tr>
-            <tr class="text2">
+            <tr>
                 <td width="150">kelas/semester</td>
                 <td width="20"><span>:</span>
                 <td>
-                <td width="450"><?= $kelas; ?> / <?= $result['semester_cuti']; ?></td>
+                <td width=""><?= $kelas; ?> / <?= $result['semester_cuti']; ?></td>
             </tr>
-            <tr class="text2">
+            <tr>
                 <td width="150">jurusan</td>
                 <td width="20"><span>:</span>
                 <td>
-                <td width="450"><?= $nm_jurusan; ?></td>
+                <td width=""><?= $nm_jurusan; ?></td>
             </tr>
-            <tr class="text2">
+            <tr>
                 <td width="150">no. telp/handphone</td>
                 <td width="20"><span>:</span>
                 <td>
-                <td width="450"><?= $no_telp; ?></td>
+                <td width=""><?= $no_telp; ?></td>
             </tr>
-            <tr class="text2">
+            <tr>
                 <td width="150">alamat lengkap</td>
                 <td width="20"><span>:</span>
                 <td>
-                <td width="450"><?= $alamat; ?></td>
+                <td width=""><?= $alamat; ?></td>
             </tr>
 
         </table>
@@ -138,19 +146,19 @@ error_reporting(0);
         <table width="600">
             <tr>
                 <td>
-                    <font size="3">&nbsp;&nbsp;&nbsp; dengan ini mengajukan izin aktif kembali untuk mengikuti kegiatan akademik mulai</font>
+                    <font size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dengan ini mengajukan izin aktif kembali untuk mengikuti kegiatan akademik mulai</font>
                 </td>
             </tr>
         </table>
 
-        <table>
-            <tr class="text2">
+        <table width="600">
+            <tr>
                 <td width="150">semester</td>
                 <td width="20">:
                 <td>
                 <td width="450"> <?= $result['semester_cuti']; ?> </td>
             </tr>
-            <tr class="text2">
+            <tr>
                 <td width="150">tahun akademik</td>
                 <td width="20">:
                 <td>
@@ -158,7 +166,7 @@ error_reporting(0);
             </tr>
         </table>
 
-        <table width="600S">
+        <table width="600">
             <tr>
                 <td>
                     <font size="3">Sebagai bahan pertimbangan, bersama ini kami lampirkan:<br></font>
@@ -172,7 +180,7 @@ error_reporting(0);
         <table width="600">
             <tr>
                 <td>
-                    <font size="3">&nbsp;&nbsp;&nbsp; Demikian surat permohonan aktif kembali ini kami buat. Atas perhatian dan kebijaksanaan Bapak/Ibu kami ucapkan terima kasih.</font>
+                    <font size="3">&nbsp;&nbsp;&nbsp; Demikian surat permohonan aktif kembali ini kami buat. Atas perhatian dan kebijaksanaannya kami ucapkan terima kasih.</font>
                 </td>
             </tr>
         </table>
