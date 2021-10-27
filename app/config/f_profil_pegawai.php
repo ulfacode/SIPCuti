@@ -139,7 +139,7 @@ function upload_foto()
 
     $nama = $_POST['nama'];
 
-    $namaFileBaru = ("foto_" . $nama);
+    $namaFileBaru = ("foto_" . uniqid() . $nama);
     $namaFileBaru .= '.';
     $namaFileBaru .= $ekstensi;
 
@@ -190,7 +190,7 @@ function upload_ttd()
 
     $nama = $_POST['nama'];
 
-    $namaFileBaru = ("ttd_" . $nama);
+    $namaFileBaru = ("ttd_" . uniqid() . $nama);
     $namaFileBaru .= '.';
     $namaFileBaru .= $ekstensi;
 

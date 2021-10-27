@@ -64,7 +64,7 @@ function upload_bukti()
 
     $nim = $_POST['nim'];
 
-    $namaFileBaru = ("bukti_" . $nim);
+    $namaFileBaru = ("bukti_" . uniqid() . $nim);
     $namaFileBaru .= '.';
     $namaFileBaru .= $ekstensi;
 
