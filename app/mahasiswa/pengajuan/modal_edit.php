@@ -65,7 +65,7 @@
                         <div class="form-group">
                             <label for="">Lampiran</label>
                             <div class="custom-file">
-                                <a class="btn btn-light" href="download_berkas.php?filename=<?= $pj['lampiran'] ?>">
+                                <a class="btn btn-light" href="img/<?= $pj['lampiran'] ?>">
                                     <i class="fa fa-download" style="color: blue;"></i> Cek Berkas
                                 </a>
 
@@ -80,7 +80,7 @@
                         <div class="form-group">
                             <label for="ttd">Tanda Tangan Orang Tua</label>
                             <div class="custom-file">
-                                <a class="btn btn-light" href="download_berkas.php?filename=<?= $row_user['ttd_ortu'] ?>">
+                                <a class="btn btn-light" href="img/<?= $row_user['ttd_ortu'] ?>">
                                     <i class="fa fa-download" style="color: blue;"></i> Cek Berkas
                                 </a>
 
