@@ -201,6 +201,9 @@ $nip_npak = $_SESSION['nip_npak'];
                                                                     <a class="dropdown-item" href="sk_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>">
                                                                         SK Cuti
                                                                     </a>
+                                                                    <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>">
+                                                                        <i class="fa fa-download"></i> SK Fix
+                                                                    </a>
                                                                 <?php
                                                                 } else { ?>
                                                                     <a class="dropdown-item" href="form_aktif.php?id=<?php echo $row_user['id_pengajuan']; ?>">
