@@ -20,11 +20,11 @@
                     foreach ($user as $row_user) {
                         if (!empty($row_user["foto"])) { ?>
 
-                            <img src="../../admin/mahasiswa/img/<?= $row_user['foto']; ?>" class="img-circle elevation-2" alt="User Image">
+                            <img src="../../admin/mahasiswa/img/<?= $row_user['foto']; ?>" class="avatar" style="width: 100px; height: 32px; max-width: 32px; max-height: 32px; -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5);" alt="User Image">
 
                         <?php } else { ?>
 
-                            <img src="../../../public/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                            <img src="../../../public/dist/img/user2-160x160.jpg" class="avatar" style="width: 100px; height: 32px; max-width: 32px; max-height: 32px; -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5);" alt="User Image">
 
                         <?php } ?>
 
@@ -43,11 +43,11 @@
                     foreach ($user as $row) {
                         if (!empty($row["foto"])) { ?>
 
-                <img src="../../admin/pegawai/img/<?= $row['foto']; ?>" class="img-circle elevation-2" alt="User Image">
+                <img src="../../admin/pegawai/img/<?= $row['foto']; ?>" class="avatar" style="width: 100px; height: 32px; max-width: 32px; max-height: 32px; -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5);" alt="User Image">
 
             <?php } else { ?>
 
-                <img src="../../../public/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="../../../public/dist/img/user2-160x160.jpg" class="avatar" style="width: 100px; height: 32px; max-width: 32px; max-height: 32px; -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5);" alt="User Image">
 
             <?php } ?>
 

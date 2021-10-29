@@ -129,7 +129,7 @@ if (isset($_POST["edit"])) {
                                     <div class="card-body box-profile">
                                         <div class="text-center">
                                             <a class="btn" data-toggle="modal" data-target="#modalFoto">
-                                                <img class="profile-user-img img-fluid img-circle" src="../../admin/pegawai/img/<?= $pgw['foto']; ?>" alt="User profile picture">
+                                                <img class="" style="width: 100px; height: 100px; max-width: 100px; max-height: 100px; -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5);" src="../../admin/pegawai/img/<?= $pgw['foto']; ?>" alt="User profile picture">
                                             </a>
                                             <!-- Modal Gambar-->
                                             <div class="modal fade" id="modalFoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
