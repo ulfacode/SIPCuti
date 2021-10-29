@@ -123,14 +123,66 @@ memperbaiki laporan berdasarkan yang sudah selesai di setujui
 - memperbaiki rule download sk di perpus dan keuangan
 
 
+26/10/2021
+- memperbaiki sk dan form
+- memperbaiki function terima dan tolak pengajuan (menambah insert tgl)
+- memperbaiki link download sk di tb_doswal, tb_kajur, perpustakaan, keuangan, mahasiswa
+- modal edit: cek berkas lampiran dan ttd (mahasiswa)
+- memperbaiki edit foto dan ttd, lampiran dan ttd ortu : ditambahkan uniqid() 
+
+27/10/2021
+- menambah rule harus login saat sudah login namun masuk ke halaman lain. NB: di halaman multilevel dibikin session lagi
+
 LOADINGNYA LAMA. Misalkan, 
-
-
-
+git restore --staged .
 
 note:
 tambah pengajuan: 
 - cuti hanya satu kali, izin aktif hanya satu kali dan hanya jika ada pengajuan cuti.
 - PIKIRKAN LAGI KALO udah ajuin terus ditolak: insert hanya satu kali kecuali udah sampai proses ditolak maka bisa mengajukan lagi
 - sidebar: kalo foto pengguna tidak ada akan default; pake perulangan agar saat edit/tambah foto tidak perlu logout terlebih dahulu untuk menampilkan foto di sidebar
-- 
+
+
+YANG HARUS DILAKUKAN:
+1. pikirkan lagi rule multilevel agar masuk ke halaman sistem
+
+
+
+
+if ($_SESSION['level'] == 'Dosen Wali dan Ketua Jurusan' or $_SESSION['level'] == 'Jurusan' or $_SESSION['level'] == 'Dosen Wali') {
+
+    if ($level_halaman != 'Jurusan' or $level_halaman != 'Dosen Wali') {
+        session_destroy();
+        header("Location: ../../../index.php");
+    }
+} else {
+    if ($level_halaman != $_SESSION['level']) {
+        session_destroy();
+        header("Location: ../../../index.php");
+    }
+} 
+
+
+elseif ($level == "Dosen Wali dan Ketua Jurusan") { ?>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Dashboard
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../profil" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>Profil</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../profil" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>Profil</p>
+                    </a>
+                </li>
+            <?php } ?>
