@@ -133,7 +133,7 @@ if (isset($_POST["edit"])) {
                                         <div class="text-center">
                                             <!-- <img class="profile-user-img img-fluid img-circle" src="../../../public/dist/img/user4-128x128.jpg" alt="User profile picture"> -->
                                             <a class="btn" data-toggle="modal" data-target="#modalFoto">
-                                                <img class="profile-user-img img-fluid img-circle" src="../../admin/mahasiswa/img/<?= $mhs['foto']; ?>" alt="User profile picture">
+                                                <img class="" style="width: 100px; height: 100px; max-width: 100px; max-height: 100px; -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5);" src="../../admin/mahasiswa/img/<?= $mhs['foto']; ?>" alt="User profile picture">
                                             </a>
                                             <!-- Modal Gambar-->
                                             <div class="modal fade" id="modalFoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
