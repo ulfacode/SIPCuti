@@ -3,26 +3,6 @@ include '../../config/f_pengajuan.php';
 session_start();
 
 $nip_npak = $_SESSION['nip_npak'];
-// $level = "Dosen Wali";
-
-// if (isset("terima_doswal")) {
-//     if (terima_doswal() > 0) {
-//         echo "
-//             <script>
-//                 alert('Verifikasi Berhasil!');
-//                 document.location.href = 'index.php';
-//             </script>
-//         ";
-//     } else {
-//         echo "
-//             <script>
-//                 alert('Verifikasi Gagal!');
-//                 document.location.href = 'index.php';
-//             </script>
-//         ";
-//     }
-// }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
