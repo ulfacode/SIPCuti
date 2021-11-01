@@ -102,6 +102,7 @@ if (isset($_POST["up_SK"])) {
                                                 <th>Alasan</th>
                                                 <th>Status</th>
                                                 <th>Verifikasi</th>
+                                                <th>Detail Status</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -121,6 +122,8 @@ if (isset($_POST["up_SK"])) {
                                                     <td><?php echo $row_user['semester_cuti'] ?></td>
                                                     <td><?php echo $row_user['thn_akademik'] ?></td>
                                                     <td><?php echo $row_user['alasan'] ?></td>
+
+                                                    <!-- untuk menampilkan status sesuai user yang sudah verifikasi -->
                                                     <?php
                                                     if (empty($row_user['status'])) {
                                                         $stt = "Menunggu verifikasi dosen wali";
@@ -156,11 +159,14 @@ if (isset($_POST["up_SK"])) {
                                                             $warna = '';
                                                         }
                                                     } ?>
+
                                                     <td style="color: <?php echo $warna; ?>;">
+                                                        <!-- menampilkan isi dari status verifikasi berdasarkan yang sudah dibuat di atas -->
                                                         <?php
                                                         echo "$stt";
                                                         ?>
                                                     </td>
+
                                                     <td>
                                                         <?php
                                                         if (empty($row_user['status'])) {
@@ -187,13 +193,92 @@ if (isset($_POST["up_SK"])) {
                                                         }
                                                         ?>
                                                     </td>
+
                                                     <td>
+                                                        <a class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#cekStatus">
+                                                            Cek Status
+                                                        </a>
 
+                                                        <!-- modal cek status -->
+                                                        <div class="modal fade" id="cekStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title">Detail Pengajuan</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick='window.location.reload();'>
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
 
-                                                        <!-- <a class="btn btn-secondary" href="detail.php?id=<?php echo $row_user['id_pengajuan']; ?>">
-                                                            <i class="fa fa-info-circle"></i> Detail
-                                                        </a> -->
-                                                        <!-- <br><br> -->
+                                                                        <form action="" enctype="multipart/form-data" method="POST">
+                                                                            <?php
+                                                                            $query     = mysqli_query($conn, "SELECT * FROM tb_pengajuan WHERE id_pengajuan='$row_user[id_pengajuan]'");
+                                                                            $result    = mysqli_fetch_array($query);
+                                                                            ?>
+                                                                            <input type="hidden" name="id_pengajuan" value="<?= $row_user['id_pengajuan']; ?>">
+
+                                                                            <div class="card-body">
+                                                                                <table class="table table-bordered">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th style="width: 10px">#</th>
+                                                                                            <th>Nama</th>
+                                                                                            <th>Jabatan</th>
+                                                                                            <th>Tanggal</th>
+                                                                                            <th style="width: 40px">Status</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td>1.</td>
+                                                                                            <td>Update software</td>
+                                                                                            <td></td>
+                                                                                            <td></td>
+                                                                                            <td><span class="badge bg-danger">55%</span></td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>2.</td>
+                                                                                            <td>Clean database</td>
+                                                                                            <td> </td>
+                                                                                            <td></td>
+                                                                                            <td><span class="badge bg-warning">70%</span></td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>3.</td>
+                                                                                            <td>Cron job running</td>
+                                                                                            <td> </td>
+                                                                                            <td></td>
+                                                                                            <td><span class="badge bg-primary">30%</span></td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>4.</td>
+                                                                                            <td>Fix and squish bugs</td>
+                                                                                            <td> </td>
+                                                                                            <td></td>
+                                                                                            <td><span class="badge bg-success">90%</span></td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                            <!-- /.card-body -->
+
+                                                                    </div>
+                                                                    <div class="modal-footer">
+
+                                                                        <!-- untuk submit name nya harus sama dengan isset -->
+                                                                        <button name="up_SK" class="btn btn-primary">Simpan</button>
+
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- ./modal cek status -->
+
+                                                    </td>
+
+                                                    <td>
                                                         <div class="btn-group">
                                                             <button type="button" class="btn btn-success">
                                                                 <!-- <i class="fa fa-file-alt"></i>  -->
@@ -296,7 +381,6 @@ if (isset($_POST["up_SK"])) {
         <!-- Select2 -->
         <script src="../../../public/plugins/select2/js/select2.full.min.js"></script>
 
-
         <!-- datatable -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
@@ -306,6 +390,7 @@ if (isset($_POST["up_SK"])) {
                 $('#example').DataTable();
             });
         </script>
+
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
 
