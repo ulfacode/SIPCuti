@@ -557,3 +557,76 @@ function tolak($id, $nip_npak)
         return false;
     }
 }
+
+
+// function upload_sk
+function up_sk()
+{
+
+    $namaFile   = $_FILES['upload_sk']['name'];
+    $ukuranFile = $_FILES['upload_sk']['size'];
+    $error      = $_FILES['upload_sk']['error'];
+    $tmpName    = $_FILES['upload_sk']['tmp_name'];
+
+    //cek apakah tidak ada gambar yang di upload
+    if ($error === 4) {
+        echo "<script>
+        alert('Pilih File Terlebih Dahulu!');
+        </script>";
+        return false;
+    }
+
+    //cek apakah yang boleh diupload
+    $ekstensiValid = ['pdf'];
+    $ekstensi = explode('.', $namaFile);
+    $ekstensi = strtolower(end($ekstensi));
+    if (!in_array($ekstensi, $ekstensiValid)) {
+        echo "<script>
+        alert('Tolong Upload File Dalam Bentuk PDF!');
+        </script>";
+        return false;
+    }
+
+    //cek jika  ukuran  file   terlalu besar
+    if ($ukuranFile > 10000000) {
+        echo "<script>
+        alert('Ukuran File Terlalu Besar (MAX 10MB) ');
+        </script>";
+        return false;
+    }
+
+    //lolos pengecekan
+    //nama baru
+
+    $nim = $_POST['nim'];
+
+    $namaFileBaru = ("sk_" . uniqid() . "_" . $nim);
+    $namaFileBaru .= '.';
+    $namaFileBaru .= $ekstensi;
+
+
+    move_uploaded_file($tmpName, '../pengajuan/surat_keputusan/' . $namaFileBaru);
+    return $namaFileBaru;
+}
+
+
+// untuk upload SK yang sudah di ttd direktur dan cap pnc
+function upload_sk($data)
+{
+    global $conn;
+    $id_pengajuan = $data['id_pengajuan'];
+
+    $sk = up_sk();
+    if (!$sk) {
+        return false;
+    }
+
+    mysqli_query($conn, "SELECT upload_sk FROM tb_pengajuan WHERE id_pengajuan = '$id_pengajuan'");
+    if (mysqli_affected_rows($conn) > 0) {
+        mysqli_query($conn, "UPDATE tb_pengajuan SET upload_sk = '$sk' WHERE id_pengajuan = '$id_pengajuan'");
+        return mysqli_affected_rows($conn);
+    } else {
+        mysqli_query($conn, "INSERT INTO tb_pengajuan (upload_sk) VALUES ($sk)");
+        return mysqli_affected_rows($conn);
+    }
+}
