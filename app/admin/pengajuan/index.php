@@ -3,6 +3,24 @@ include '../../config/f_pengajuan.php';
 
 session_start();
 $nip_npak = $_SESSION['nip_npak'];
+
+if (isset($_POST["up_SK"])) {
+    if (upload_sk($_POST) > 0) {
+        echo "
+            <script>
+                alert('Data Berhasil Diupload!');
+                document.location.href = 'index.php';
+            </script>
+        ";
+    } else {
+        echo "
+            <script>
+                alert('Data Gagal Diupload!');
+                document.location.href = 'index.php';
+            </script>
+        ";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -193,27 +211,30 @@ $nip_npak = $_SESSION['nip_npak'];
                                                                 <?php
                                                                 if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
                                                                     <a class="dropdown-item" href="form_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>">
-                                                                        Form Cuti
+                                                                        <i class="fa fa-download"></i> Form Cuti
                                                                     </a>
                                                                     <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">
-                                                                        Lampiran
+                                                                        <i class="fa fa-download"></i> Lampiran
                                                                     </a>
                                                                     <a class="dropdown-item" href="sk_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>">
-                                                                        SK Cuti
+                                                                        <i class="fa fa-download"></i> Generate SK
                                                                     </a>
-                                                                    <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>">
-                                                                        <i class="fa fa-download"></i> SK Fix
+                                                                    <a class="dropdown-item" data-toggle="modal" data-target="#uploadSKcuti">
+                                                                        <i class="fa fa-upload"></i> Upload SK
                                                                     </a>
                                                                 <?php
                                                                 } else { ?>
                                                                     <a class="dropdown-item" href="form_aktif.php?id=<?php echo $row_user['id_pengajuan']; ?>">
-                                                                        Form Aktif
+                                                                        <i class="fa fa-download"></i> Form Aktif
                                                                     </a>
                                                                     <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">
-                                                                        Lampiran
+                                                                        <i class="fa fa-download"></i> Lampiran
                                                                     </a>
                                                                     <a class="dropdown-item" href="sk_aktif.php?id=<?php echo $row_user['id_pengajuan']; ?>">
-                                                                        SK Aktif
+                                                                        <i class="fa fa-download"></i> Generate SK
+                                                                    </a>
+                                                                    <a class="dropdown-item" data-toggle="modal" data-target="#uploadSKaktif">
+                                                                        <i class="fa fa-upload"></i> Upload SK
                                                                     </a>
                                                                 <?php
                                                                 }
@@ -225,6 +246,7 @@ $nip_npak = $_SESSION['nip_npak'];
                                                     </td>
                                                 </tr>
                                             <?php
+                                                include "modal_up_sk.php";
                                                 $i++;
                                             }
                                             ?>
