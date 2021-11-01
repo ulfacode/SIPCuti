@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <label for="">Nama Prodi</label>
                             <select class="form-control" name="nm_prodi" required="required">
-                                <option></option>
+                                <option hidden selected value="<?= $pj["nm_prodi"]; ?>"><?= $pj["nm_prodi"]; ?></option>
                                 <option value="Teknik Informatika">Teknik Informatika</option>
                                 <option value="Teknik Mesin">Teknik Mesin</option>
                                 <option value="Teknik Elektronika">Teknik Elektronika</option>
