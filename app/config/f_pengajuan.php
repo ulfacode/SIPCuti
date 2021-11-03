@@ -343,56 +343,6 @@ function tgl($tanggal)
 }
 
 
-
-
-
-// ATURAN EDIT PENGAJUAN
-// 1. Jika data lampiran dan ttd kosong maka TIDAK ADA UPLOAD FILE :> 1 kondisi
-// 2. Jika salah satu kosong maka hanya ada satu upload file :> 2 kondisi
-// 3. Jika semua terisi, maka ada dua upload file :> 1 kondisi
-// BERARTI ADA 4 KONDISI
-// if (empty($data["lampiran"]) && empty($data["ttd_ortu"])) {
-
-//     $query = "UPDATE tb_pengajuan SET semester_cuti='$semester_cuti', tingkat='$tingkat', thn_akademik='$thn_akademik', nama_ortu='$nama_ortu' WHERE id_pengajuan='$id_pengajuan'";
-//     mysqli_query($conn, $query);
-//     return mysqli_affected_rows($conn);
-// } elseif (!empty($data["lampiran"]) && empty($data["ttd_ortu"])) {
-
-//     $lampiran = upload_lampiran();
-//     if (!$lampiran) {
-//         return false;
-//     }
-
-//     $query = "UPDATE tb_pengajuan SET semester_cuti='$semester_cuti', tingkat='$tingkat', thn_akademik='$thn_akademik', lampiran='$lampiran', nama_ortu='$nama_ortu' WHERE id_pengajuan='$id_pengajuan'";
-//     mysqli_query($conn, $query);
-//     return mysqli_affected_rows($conn);
-// } elseif (empty($data["lampiran"]) && !empty($data["ttd_ortu"])) {
-
-//     $ttd_ortu = upload_ttd();
-//     if (!$ttd_ortu) {
-//         return false;
-//     }
-
-//     $query = "UPDATE tb_pengajuan SET semester_cuti='$semester_cuti', tingkat='$tingkat', thn_akademik='$thn_akademik', ttd_ortu='$ttd_ortu', nama_ortu='$nama_ortu' WHERE id_pengajuan='$id_pengajuan'";
-//     mysqli_query($conn, $query);
-//     return mysqli_affected_rows($conn);
-// } else {
-//     $ttd_ortu = upload_ttd();
-//     if (!$ttd_ortu) {
-//         return false;
-//     }
-
-//     $lampiran = upload_lampiran();
-//     if (!$lampiran) {
-//         return false;
-//     }
-
-//     $query = "UPDATE tb_pengajuan SET semester_cuti='$semester_cuti', tingkat='$tingkat', thn_akademik='$thn_akademik', lampiran='$lampiran', ttd_ortu='$ttd_ortu', nama_ortu='$nama_ortu' WHERE id_pengajuan='$id_pengajuan'";
-//     mysqli_query($conn, $query);
-//     return mysqli_affected_rows($conn);
-// }
-
-
 // untuk edit pengajuan
 function editP($data)
 {
