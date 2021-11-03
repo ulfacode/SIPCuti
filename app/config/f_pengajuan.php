@@ -29,10 +29,10 @@ function tambahCuti($data)
 
     // cek pengajuan, jika ada akan gagal
     $Cuti = mysqli_query($conn, "SELECT * FROM tb_pengajuan WHERE nim = '$nim' AND jns_pengajuan = 'Cuti'");
-    // $status = mysqli_fetch_array($Cuti);
+    $status = mysqli_fetch_array($Cuti);
 
     // if ((mysqli_num_rows($Cuti) == NULL) OR $status['status']=="5") {
-    if (mysqli_num_rows($Cuti) == NULL) {
+    if (mysqli_num_rows($Cuti) == NULL or ($status['status'] == "5")) {
 
         $query = "INSERT INTO tb_pengajuan 
                 (nim, jns_pengajuan, tgl_pengajuan, semester_cuti, tingkat, thn_akademik, nm_prodi, alasan, lampiran, ttd_ortu, nama_ortu) 
@@ -75,10 +75,12 @@ function tambahAktif($data)
 
     // cek pengajuan, jika ada akan gagal
     $Cuti = mysqli_query($conn, "SELECT * FROM tb_pengajuan WHERE nim = '$nim' AND jns_pengajuan = 'Cuti'");
+    $status_cuti = mysqli_fetch_array($Cuti);
 
     $Aktif = mysqli_query($conn, "SELECT * FROM tb_pengajuan WHERE nim = '$nim' AND jns_pengajuan = 'Izin Aktif'");
+    $status = mysqli_fetch_array($Aktif);
 
-    if (empty(mysqli_num_rows($Aktif)) and (!empty(mysqli_num_rows($Cuti)))) {
+    if ((empty(mysqli_num_rows($Aktif)) or $status['status'] == '5') and ((!empty(mysqli_num_rows($Cuti))) and $status_cuti['status'] == '4')) {
         $query = "INSERT INTO tb_pengajuan 
                 (nim, jns_pengajuan, tgl_pengajuan, semester_cuti, tingkat, thn_akademik, nm_prodi, lampiran, ttd_ortu, nama_ortu) 
                 VALUES 
