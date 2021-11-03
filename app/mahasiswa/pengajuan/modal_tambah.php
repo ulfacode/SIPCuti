@@ -147,7 +147,18 @@
                         <label for="">Tahun Akademik</label>
                         <input type="text" class="form-control" name="thn_akademik" placeholder="Isikan Tahun Akademik saat aktif! Misalkan: 2020/2021" maxlength="9" required>
                     </div>
-
+                    <div class="form-group">
+                        <label for="">Nama Prodi</label>
+                        <select class="form-control" name="nm_prodi" required="required">
+                            <option></option>
+                            <option value="Teknik Informatika">Teknik Informatika</option>
+                            <option value="Teknik Mesin">Teknik Mesin</option>
+                            <option value="Teknik Elektronika">Teknik Elektronika</option>
+                            <option value="Teknik Listrik">Teknik Listrik</option>
+                            <option value="Teknik Pengendalian Pencemaran Lingkungan">Teknik Pengendalian Pencemaran Lingkungan</option>
+                            <option value="Teknik Pengembangan Produk Agroindustri">Teknik Pengembangan Produk Agroindustri</option>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="">Lampiran</label>
                         <div class="custom-file">
