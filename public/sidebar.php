@@ -83,6 +83,9 @@
             <!-- pemilihan sidebar berdasarkan level -->
             <?php
             $level = $_SESSION['level'];
+            if ($level == "Dosen Wali dan Ketua Jurusan") {
+                $level = $_GET["lvl"];
+            }
             if ($level == "Mahasiswa") {
             ?>
                 <li class="nav-item">
@@ -222,7 +225,6 @@
                 </li>
 
             <?php } elseif ($level == "Dosen Wali") { ?>
-
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -258,6 +260,17 @@
                         <p>Bot Telegram</p>
                     </a>
                 </li>
+                <?php
+                if ($_SESSION["level"] == "Dosen Wali dan Ketua Jurusan") { ?>
+                    <li class="nav-item">
+                        <a href="../../../multi_level.php" class="nav-link">
+                            <i class="nav-icon fas fa-people-arrows"></i>
+                            <p>Beralih Akun</p>
+                        </a>
+                    </li>
+                <?php
+                }
+                ?>
                 <li class="nav-item">
                     <a href="../../../logout.php" class="nav-link">
                         <i class="nav-icon fas fa-power-off"></i>
@@ -301,6 +314,17 @@
                         <p>Bot Telegram</p>
                     </a>
                 </li>
+                <?php
+                if ($_SESSION["level"] == "Dosen Wali dan Ketua Jurusan") { ?>
+                    <li class="nav-item">
+                        <a href="../../../multi_level.php" class="nav-link">
+                            <i class="nav-icon fas fa-people-arrows"></i>
+                            <p>Beralih Akun</p>
+                        </a>
+                    </li>
+                <?php
+                }
+                ?>
                 <li class="nav-item">
                     <a href="../../../logout.php" class="nav-link">
                         <i class="nav-icon fas fa-power-off"></i>
