@@ -129,12 +129,12 @@ if (isset($_POST['login'])) {
             }
         } else {
             echo "<script>
-                alert('Akun Anda tidak aktif. Silahkan menghubungi BAAK!')
+                alert('Akun Anda tidak aktif atau Password salah. Silahkan menghubungi BAAK jika akun tidak aktif!')
                 </script>";
         }
     } else {
         echo "<script>
-            alert('Masukkan username dan password dengan benar!')
+            alert('Masukkan username dengan benar!')
             </script>";
     }
 }
