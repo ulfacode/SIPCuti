@@ -57,37 +57,10 @@ $id = $_SESSION['nim'];
                             <!-- /.card -->
                             <div class="card">
                                 <div class="card-header">
-                                    <?php
-                                    // tombol dipisah karena jika disabled berdasarkan cuti nanti tidak bisa mengajukan izin aktif 
 
-                                    // jika sudah pernah mengajukan tombol tambah pengajuan akan disabled
-                                    // $nim = '190102024'; //ambil dari login
-
-                                    // $cuti = mysqli_query($conn, "SELECT * FROM tb_pengajuan WHERE nim = '$nim' AND jns_pengajuan = 'Cuti'");
-
-                                    // if (mysqli_num_rows($cuti) > 0) {
-                                    //     $tombol = "disabled";
-                                    // } else {
-                                    //     $tombol = "";
-                                    // }
-                                    // 
-                                    ?>
-                                    <!-- <button href="" class="btn btn-info <?php echo $tombol ?>" data-toggle="modal" data-target="#tambahCuti">Ajukan Cuti</button> -->
                                     <button href="" class="btn btn-info" data-toggle="modal" data-target="#tambahCuti">Ajukan Cuti</button>
-
-
-                                    <?php
-                                    // $aktif = mysqli_query($conn, "SELECT * FROM tb_pengajuan WHERE nim = '$nim' AND jns_pengajuan = 'Izin Aktif'");
-
-                                    // if ((mysqli_num_rows($aktif) > 0) and (mysqli_num_rows($cuti) == NULL)) {
-                                    // if (mysqli_num_rows($aktif) > 0) {
-                                    //     $tbl = "disabled";
-                                    // } else {
-                                    //     $tbl = "";
-                                    // }
-                                    // 
-                                    ?>
                                     <button href="" class="btn btn-success" data-toggle="modal" data-target="#tambahAktif">Ajukan Izin Aktif</button>
+
                                     <?php
                                     include "modal_tambah.php";
 
