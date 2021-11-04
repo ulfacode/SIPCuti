@@ -205,10 +205,8 @@ if (!isset($_SESSION["nama"])) {
                                 <div class="icon">
                                     <i class="ion ion-person"></i>
                                 </div>
-                                <?php
-                                $_SESSION['level'] = "Dosen Wali";
-                                ?>
-                                <a href="app/doswal/profil/index.php" class="small-box-footer">Pilih <i class="fas fa-arrow-circle-right"></i></a>
+                                <!-- masukin ke dashboard dulu -->
+                                <a href="app/doswal/profil/index.php?lvl=Dosen Wali" class="small-box-footer">Pilih <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -221,10 +219,8 @@ if (!isset($_SESSION["nama"])) {
                                 <div class="icon">
                                     <i class="ion ion-person"></i>
                                 </div>
-                                <?php
-                                $_SESSION['level'] = "Ketua Jurusan";
-                                ?>
-                                <a href="app/kajur/profil/index.php" class="small-box-footer">Pilih <i class="fas fa-arrow-circle-right"></i></a>
+                                <!-- masukin ke dashboard dulu -->
+                                <a href="app/kajur/profil/index.php?lvl=Ketua Jurusan" class="small-box-footer">Pilih <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
