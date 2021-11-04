@@ -84,8 +84,6 @@ if (isset($_POST["up_SK"])) {
 
                                 $user = mysqli_query($conn, "SELECT * FROM v_pengajuan");
                                 $row_user = $user->fetch_assoc();
-
-
                                 ?>
 
                                 <div class="card-body">
@@ -198,7 +196,11 @@ if (isset($_POST["up_SK"])) {
                                                         <a class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#cekStatus">
                                                             Cek Status
                                                         </a>
-
+                                                        <?php
+                                                        $id = $row_user['id_pengajuan'];
+                                                        $query     = mysqli_query($conn, "SELECT * FROM tb_verifikasi WHERE id_pengajuan='$id' ORDER BY tgl_verif");
+                                                        $result = $query->fetch_assoc();
+                                                        ?>
                                                         <!-- modal cek status -->
                                                         <div class="modal fade" id="cekStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                                             <div class="modal-dialog" role="document">
@@ -212,13 +214,8 @@ if (isset($_POST["up_SK"])) {
                                                                     <div class="modal-body">
 
                                                                         <form action="" enctype="multipart/form-data" method="POST">
-                                                                            <?php
-                                                                            $query     = mysqli_query($conn, "SELECT * FROM tb_pengajuan WHERE id_pengajuan='$row_user[id_pengajuan]'");
-                                                                            $result    = mysqli_fetch_array($query);
-                                                                            ?>
-                                                                            <input type="hidden" name="id_pengajuan" value="<?= $row_user['id_pengajuan']; ?>">
-
                                                                             <div class="card-body">
+
                                                                                 <table class="table table-bordered">
                                                                                     <thead>
                                                                                         <tr>
@@ -230,34 +227,27 @@ if (isset($_POST["up_SK"])) {
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody>
-                                                                                        <tr>
-                                                                                            <td>1.</td>
-                                                                                            <td>Update software</td>
-                                                                                            <td></td>
-                                                                                            <td></td>
-                                                                                            <td><span class="badge bg-danger">55%</span></td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <td>2.</td>
-                                                                                            <td>Clean database</td>
-                                                                                            <td> </td>
-                                                                                            <td></td>
-                                                                                            <td><span class="badge bg-warning">70%</span></td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <td>3.</td>
-                                                                                            <td>Cron job running</td>
-                                                                                            <td> </td>
-                                                                                            <td></td>
-                                                                                            <td><span class="badge bg-primary">30%</span></td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <td>4.</td>
-                                                                                            <td>Fix and squish bugs</td>
-                                                                                            <td> </td>
-                                                                                            <td></td>
-                                                                                            <td><span class="badge bg-success">90%</span></td>
-                                                                                        </tr>
+                                                                                        <?php
+                                                                                        $a = 1;
+                                                                                        foreach ($query as $result) {
+                                                                                            // if ($result['nip_npak']) {
+                                                                                            $pegawai = mysqli_query($conn, "SELECT tb_pegawai.nama,tb_pegawai.jabatan FROM tb_pegawai, tb_verifikasi WHERE tb_verifikasi.nip_npak = '$result[nip_npak]' AND tb_pegawai.nip_npak=tb_verifikasi.nip_npak");
+                                                                                            $hasil_pegawai    = $pegawai->fetch_assoc();
+                                                                                            // }
+                                                                                        ?>
+                                                                                            <tr>
+                                                                                                <td><?= $a; ?></td>
+                                                                                                <td><?= $result['nip_npak']; ?></td>
+                                                                                                <td><?= $hasil_pegawai['jabatan']; ?></td>
+                                                                                                <td><?= tgl($result['tgl_verif']); ?></td>
+                                                                                                <td><span class="badge bg-danger">55%</span></td>
+                                                                                            </tr>
+                                                                                        <?php
+
+                                                                                            $a++;
+                                                                                        }
+                                                                                        ?>
+
                                                                                     </tbody>
                                                                                 </table>
                                                                             </div>
@@ -275,7 +265,6 @@ if (isset($_POST["up_SK"])) {
                                                             </div>
                                                         </div>
                                                         <!-- ./modal cek status -->
-
                                                     </td>
 
                                                     <td>
@@ -332,6 +321,7 @@ if (isset($_POST["up_SK"])) {
                                                 </tr>
                                             <?php
                                                 include "modal_up_sk.php";
+                                                include "modal_cek_status.php";
                                                 $i++;
                                             }
                                             ?>
