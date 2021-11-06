@@ -430,7 +430,7 @@ function terima($id, $nip_npak, $jabatan)
         mysqli_query($conn, "UPDATE tb_pengajuan SET status = '1' WHERE id_pengajuan = '$id'");
 
         if (mysqli_affected_rows($conn) > 0) {
-            mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak, tgl_verif) VALUES ('$id','$nip_npak','$tgl')");
+            mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak, tgl_verif, status) VALUES ('$id','$nip_npak','$tgl', 'Diterima')");
             if (mysqli_affected_rows($conn) > 0) {
                 return true;
             } else {
@@ -445,7 +445,7 @@ function terima($id, $nip_npak, $jabatan)
         mysqli_query($conn, "UPDATE tb_pengajuan SET status = '2' WHERE id_pengajuan = '$id'");
 
         if (mysqli_affected_rows($conn) > 0) {
-            mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak, tgl_verif) VALUES ('$id','$nip_npak','$tgl')");
+            mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak, tgl_verif, status) VALUES ('$id','$nip_npak','$tgl', 'Diterima')");
             if (mysqli_affected_rows($conn) > 0) {
                 return true;
             } else {
@@ -460,7 +460,7 @@ function terima($id, $nip_npak, $jabatan)
         mysqli_query($conn, "UPDATE tb_pengajuan SET status = '3' WHERE id_pengajuan = '$id'");
 
         if (mysqli_affected_rows($conn) > 0) {
-            mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak, tgl_verif) VALUES ('$id','$nip_npak','$tgl')");
+            mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak, tgl_verif, status) VALUES ('$id','$nip_npak','$tgl', 'Diterima')");
             if (mysqli_affected_rows($conn) > 0) {
                 return true;
             } else {
@@ -475,7 +475,7 @@ function terima($id, $nip_npak, $jabatan)
         mysqli_query($conn, "UPDATE tb_pengajuan SET status = '4' WHERE id_pengajuan = '$id'");
 
         if (mysqli_affected_rows($conn) > 0) {
-            mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak, tgl_verif) VALUES ('$id','$nip_npak','$tgl')");
+            mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak, tgl_verif, status) VALUES ('$id','$nip_npak','$tgl', 'Diterima')");
             if (mysqli_affected_rows($conn) > 0) {
                 return true;
             } else {
@@ -499,7 +499,7 @@ function tolak($id, $nip_npak)
     mysqli_query($conn, "UPDATE tb_pengajuan SET status = '5' WHERE id_pengajuan = '$id'");
 
     if (mysqli_affected_rows($conn) > 0) {
-        mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak, tgl_verif) VALUES ('$id','$nip_npak','$tgl')");
+        mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak, tgl_verif, status) VALUES ('$id','$nip_npak','$tgl', 'Ditolak')");
         if (mysqli_affected_rows($conn) > 0) {
             return true;
         } else {
