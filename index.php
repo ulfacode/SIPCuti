@@ -50,7 +50,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['nama'] = $data['nama'];
 
                 // login sukses, alihkan ke halaman utama (dashboard)
-                header("location: app/admin/profil/index.php");
+                header("location: app/admin/dashboard");
             } elseif ($data['jabatan'] == "Wakil Direktur 1") {
                 // buat session
                 session_start();
