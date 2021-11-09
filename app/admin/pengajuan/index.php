@@ -126,29 +126,36 @@ if (isset($_POST["up_SK"])) {
                                                     if (empty($row_user['status'])) {
                                                         $stt = "Menunggu verifikasi dosen wali";
                                                         $warna = 'red';
+                                                        $tombol = 'disabled';
                                                     } else {
                                                         if ($row_user['status'] == "1") {
                                                             $stt = "Telah diverifikasi dosen wali";
                                                             $warna = 'cornflowerblue';
+                                                            $tombol = 'disabled';
                                                         } elseif ($row_user['status'] == "2") {
                                                             if ($row_user['jns_pengajuan'] == "Cuti") {
                                                                 $stt = "Silahkan verifikasi";
                                                                 $warna = 'red';
+                                                                $tombol = 'disabled';
                                                             } else {
                                                                 $stt = "Telah diverifikasi ketua jurusan";
                                                                 $warna = 'brown';
+                                                                $tombol = 'disabled';
                                                             }
                                                         } elseif ($row_user['status'] == "3") {
                                                             if ($row_user['jns_pengajuan'] == "Izin Aktif") {
                                                                 $stt = "Silahkan verifikasi";
                                                                 $warna = 'red';
+                                                                $tombol = 'disabled';
                                                             } else {
                                                                 $stt = "";
                                                                 $warna = 'brown';
+                                                                $tombol = 'disabled';
                                                             }
                                                         } elseif ($row_user['status'] == "4") {
                                                             $stt = "Selesai diverifikasi";
                                                             $warna = 'green';
+                                                            $tombol = 'enable';
                                                         } elseif ($row_user['status'] == "5") {
                                                             $stt = "Ditolak";
                                                             $warna = 'orange';
@@ -193,16 +200,11 @@ if (isset($_POST["up_SK"])) {
                                                     </td>
 
                                                     <td>
-                                                        <a class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#cekStatus">
+                                                        <a class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#cekStatus<?php echo $row_user['id_pengajuan'] ?>">
                                                             Cek Status
                                                         </a>
-                                                        <?php
-                                                        $id = $row_user['id_pengajuan'];
-                                                        $query     = mysqli_query($conn, "SELECT * FROM tb_verifikasi WHERE id_pengajuan='$id' ORDER BY tgl_verif");
-                                                        $result = $query->fetch_assoc();
-                                                        ?>
                                                         <!-- modal cek status -->
-                                                        <div class="modal fade" id="cekStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                        <div class="modal fade" id="cekStatus<?php echo $row_user['id_pengajuan'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
@@ -215,6 +217,10 @@ if (isset($_POST["up_SK"])) {
 
                                                                         <form action="" enctype="multipart/form-data" method="POST">
                                                                             <div class="card-body">
+                                                                                <?php
+                                                                                $query     = mysqli_query($conn, "SELECT p.nama, p.jabatan, v.tgl_verif, v.status FROM tb_verifikasi AS v, tb_pegawai AS p WHERE v.nip_npak=p.nip_npak AND v.id_pengajuan='$row_user[id_pengajuan]'");
+                                                                                $result = $query->fetch_assoc();
+                                                                                ?>
 
                                                                                 <table class="table table-bordered">
                                                                                     <thead>
@@ -230,17 +236,24 @@ if (isset($_POST["up_SK"])) {
                                                                                         <?php
                                                                                         $a = 1;
                                                                                         foreach ($query as $result) {
-                                                                                            // if ($result['nip_npak']) {
-                                                                                            $pegawai = mysqli_query($conn, "SELECT tb_pegawai.nama,tb_pegawai.jabatan FROM tb_pegawai, tb_verifikasi WHERE tb_verifikasi.nip_npak = '$result[nip_npak]' AND tb_pegawai.nip_npak=tb_verifikasi.nip_npak");
-                                                                                            $hasil_pegawai    = $pegawai->fetch_assoc();
-                                                                                            // }
+                                                                                            if ($result['status'] == "Diterima") {
+                                                                                                $color = "success";
+                                                                                            } else {
+                                                                                                $color = "danger";
+                                                                                            }
                                                                                         ?>
                                                                                             <tr>
                                                                                                 <td><?= $a; ?></td>
-                                                                                                <td><?= $result['nip_npak']; ?></td>
+                                                                                                <td><?= $result['nama']; ?></td>
+                                                                                                <td><?= $result['jabatan']; ?></td>
+                                                                                                <td><?= tgl($result['tgl_verif']); ?></td>
+                                                                                                <td><span class="badge bg-<?php echo $color; ?>"><?= $result['status']; ?></span></td>
+
+                                                                                                <!-- <td><?= $result['id_pengajuan']; ?></td>
                                                                                                 <td><?= $hasil_pegawai['jabatan']; ?></td>
                                                                                                 <td><?= tgl($result['tgl_verif']); ?></td>
-                                                                                                <td><span class="badge bg-danger">55%</span></td>
+                                                                                                <td><span class="badge bg-danger">55%</span></td> -->
+
                                                                                             </tr>
                                                                                         <?php
 
@@ -257,7 +270,7 @@ if (isset($_POST["up_SK"])) {
                                                                     <div class="modal-footer">
 
                                                                         <!-- untuk submit name nya harus sama dengan isset -->
-                                                                        <button name="up_SK" class="btn btn-primary">Simpan</button>
+                                                                        <button onclick="window.location.reload();" class="btn btn-primary">Tutup</button>
 
                                                                         </form>
                                                                     </div>
@@ -283,31 +296,36 @@ if (isset($_POST["up_SK"])) {
                                                                         Edit
                                                                     </a> -->
                                                                 <?php
-                                                                if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
-                                                                    <a class="dropdown-item" href="form_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>">
+                                                                if ($row_user['jns_pengajuan'] == 'Cuti') {
+                                                                    // if ($row_user['status'] != "4") {
+                                                                    //     $tombol = "disabled";
+                                                                    // }
+                                                                ?>
+                                                                    <a class="dropdown-item <?php echo $tombol; ?>" href="form_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>">
                                                                         <i class="fa fa-download"></i> Form Cuti
+
                                                                     </a>
                                                                     <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">
                                                                         <i class="fa fa-download"></i> Lampiran
                                                                     </a>
-                                                                    <a class="dropdown-item" href="sk_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>">
+                                                                    <a class="dropdown-item <?php echo $tombol; ?>" href="sk_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>">
                                                                         <i class="fa fa-download"></i> Generate SK
                                                                     </a>
-                                                                    <a class="dropdown-item" data-toggle="modal" data-target="#uploadSKcuti">
+                                                                    <a class="dropdown-item <?php echo $tombol; ?>" data-toggle="modal" data-target="#uploadSKcuti">
                                                                         <i class="fa fa-upload"></i> Upload SK
                                                                     </a>
                                                                 <?php
                                                                 } else { ?>
-                                                                    <a class="dropdown-item" href="form_aktif.php?id=<?php echo $row_user['id_pengajuan']; ?>">
+                                                                    <a class="dropdown-item <?php echo $tombol; ?>" href="form_aktif.php?id=<?php echo $row_user['id_pengajuan']; ?>">
                                                                         <i class="fa fa-download"></i> Form Aktif
                                                                     </a>
                                                                     <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">
                                                                         <i class="fa fa-download"></i> Lampiran
                                                                     </a>
-                                                                    <a class="dropdown-item" href="sk_aktif.php?id=<?php echo $row_user['id_pengajuan']; ?>">
+                                                                    <a class="dropdown-item <?php echo $tombol; ?>" href="sk_aktif.php?id=<?php echo $row_user['id_pengajuan']; ?>">
                                                                         <i class="fa fa-download"></i> Generate SK
                                                                     </a>
-                                                                    <a class="dropdown-item" data-toggle="modal" data-target="#uploadSKaktif">
+                                                                    <a class="dropdown-item <?php echo $tombol; ?>" data-toggle="modal" data-target="#uploadSKaktif">
                                                                         <i class="fa fa-upload"></i> Upload SK
                                                                     </a>
                                                                 <?php
@@ -321,7 +339,6 @@ if (isset($_POST["up_SK"])) {
                                                 </tr>
                                             <?php
                                                 include "modal_up_sk.php";
-                                                include "modal_cek_status.php";
                                                 $i++;
                                             }
                                             ?>
