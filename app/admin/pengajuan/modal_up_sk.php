@@ -25,8 +25,18 @@
                                 <input type="file" class="custom-file-input" name="upload_sk">
                                 <label class="custom-file-label" for=""></label>
                             </div>
+
+
                             <div class="input-group-append">
-                                <a class="input-group-text" href="surat_keputusan/<?php echo $result['upload_sk']; ?>"><i class="fa fa-download"></i> Cek Berkas SK</a>
+                                <?php if (empty($result['upload_sk'])) {
+                                ?>
+                                    <a class="input-group-text" onclick="alert('No Data')"><i class="fa fa-download"></i> Cek Berkas SK</a>
+                                <?php
+                                } else {
+                                ?>
+                                    <a class="input-group-text" href="surat_keputusan/<?php echo $result['upload_sk']; ?>"><i class="fa fa-download"></i> Cek Berkas SK</a>
+                                <?php
+                                } ?>
                             </div>
                         </div>
                     </div>
