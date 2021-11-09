@@ -216,9 +216,23 @@ $id = $_SESSION['nim'];
                                                         ?>
                                                     </td>
                                                     <td>
-                                                        <a class="btn btn-primary" data-toggle="modal" data-target="#modalEdit<?php echo $row_user['id_pengajuan']; ?>">
-                                                            <i class="fa fa-edit"></i> Edit
-                                                        </a>
+                                                        <?php
+                                                        if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
+
+                                                            <a class="btn btn-primary" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>">
+                                                                <i class="fa fa-download"></i>
+                                                                SK Cuti
+                                                            </a>
+                                                        <?php
+                                                        } else { ?>
+                                                            <a class="btn btn-primary" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>">
+                                                                <i class="fa fa-download"></i>
+                                                                SK Aktif
+                                                            </a>
+                                                        <?php
+                                                        }
+                                                        ?>
+
 
                                                         <!-- references: https://www.rajaputramedia.com/artikel/membuat-script-download-file-dengan-php-mysql.php -->
                                                         <!-- <a class="btn" href="download_berkas.php?filename=<?= $row_user['lampiran'] ?>">
@@ -242,23 +256,14 @@ $id = $_SESSION['nim'];
                                                                         <i class="fa fa-edit"></i>
                                                                         Edit
                                                                     </a> -->
-                                                                <a class="dropdown-item" href="hapus.php?id=<?php echo $row_user['id_pengajuan']; ?>" onclick="return confirm('Anda yakin mau menghapus data ini ?')">
+                                                                <a style="color: red;" class="dropdown-item" href="hapus.php?id=<?php echo $row_user['id_pengajuan']; ?>" onclick="return confirm('Anda yakin mau menghapus data ini ?')">
+                                                                    <i class="fa fa-trash"></i>
                                                                     Hapus
                                                                 </a>
-                                                                <?php
-                                                                if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
-
-                                                                    <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>">
-                                                                        SK Cuti
-                                                                    </a>
-                                                                <?php
-                                                                } else { ?>
-                                                                    <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>">
-                                                                        SK Aktif
-                                                                    </a>
-                                                                <?php
-                                                                }
-                                                                ?>
+                                                                <a style="color: cornflowerblue;" class="dropdown-item" data-toggle="modal" data-target="#modalEdit<?php echo $row_user['id_pengajuan']; ?>">
+                                                                    <i class="fa fa-edit"></i>
+                                                                    Edit
+                                                                </a>
                                                             </div>
                                                         </div>
                                                     </td>
