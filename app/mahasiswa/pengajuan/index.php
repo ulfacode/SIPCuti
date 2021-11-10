@@ -216,23 +216,38 @@ $id = $_SESSION['nim'];
                                                         ?>
                                                     </td>
                                                     <td>
-                                                        <?php
-                                                        if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
 
-                                                            <a class="btn btn-primary" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>">
-                                                                <i class="fa fa-download"></i>
-                                                                SK Cuti
-                                                            </a>
+                                                        <?php if (empty($result['upload_sk'])) {
+                                                            if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
+                                                                <a class="btn btn-primary" onclick="alert('Oopss... SK belum terbit. Harap bersabar ya!')">
+                                                                    <i class="fa fa-download"></i>
+                                                                    SK Cuti
+                                                                </a>
+                                                            <?php
+                                                            } else { ?>
+                                                                <a class="btn btn-primary" onclick="alert('Oopss... SK belum terbit. Harap bersabar ya!')">
+                                                                    <i class="fa fa-download"></i>
+                                                                    SK Aktif
+                                                                </a>
+                                                            <?php
+                                                            }
+                                                        } else {
+
+                                                            if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
+                                                                <a class="btn btn-primary" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>">
+                                                                    <i class="fa fa-download"></i>
+                                                                    SK Cuti
+                                                                </a>
+                                                            <?php
+                                                            } else { ?>
+                                                                <a class="btn btn-primary" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>">
+                                                                    <i class="fa fa-download"></i>
+                                                                    SK Aktif
+                                                                </a>
                                                         <?php
-                                                        } else { ?>
-                                                            <a class="btn btn-primary" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>">
-                                                                <i class="fa fa-download"></i>
-                                                                SK Aktif
-                                                            </a>
-                                                        <?php
+                                                            }
                                                         }
                                                         ?>
-
 
                                                         <!-- references: https://www.rajaputramedia.com/artikel/membuat-script-download-file-dengan-php-mysql.php -->
                                                         <!-- <a class="btn" href="download_berkas.php?filename=<?= $row_user['lampiran'] ?>">
