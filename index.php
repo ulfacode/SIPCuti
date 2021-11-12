@@ -80,7 +80,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['nama'] = $data['nama'];
 
                 // login sukses, alihkan ke halaman utama (dashboard)
-                header("location: app/doswal/profil/index.php");
+                header("location: app/doswal/dashboard/");
             } elseif ($data['jabatan'] == "Ketua Akademik") {
                 // buat session
                 session_start();
