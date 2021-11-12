@@ -1,7 +1,28 @@
 <?php
+// include "../halaman.php";
+
 if (!isset($_SESSION["nama"])) {
     header("Location: ../../../index.php");
 }
+
+// if ($level_halaman != $_SESSION['level']) {
+//     session_destroy();
+//     header("Location: ../../../index.php");
+// }
+
+// if ($_SESSION['level'] == 'Dosen Wali dan Ketua Jurusan' or $_SESSION['level'] == 'Ketua Jurusan' or $_SESSION['level'] == 'Dosen Wali') {
+
+//     if ($level_halaman != 'Ketua Jurusan' or $level_halaman != 'Dosen Wali') {
+//         session_destroy();
+//         header("Location: ../../../index.php");
+//     }
+// } else {
+//     if ($level_halaman != $_SESSION['level']) {
+//         session_destroy();
+//         header("Location: ../../../index.php");
+//     }
+// }
+
 ?>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -11,7 +32,7 @@ if (!isset($_SESSION["nama"])) {
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Home</a>
+            <a href="../dashboard/" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Contact</a>
@@ -47,11 +68,11 @@ if (!isset($_SESSION["nama"])) {
                 <i class="fas fa-expand-arrows-alt"></i>
             </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                 <i class="fas fa-th-large"></i>
             </a>
-        </li>
+        </li> -->
     </ul>
 </nav>
 <!-- /.navbar -->
