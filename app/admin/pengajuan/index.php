@@ -174,9 +174,9 @@ if (isset($_POST["up_SK"])) {
 
                                                     <td>
                                                         <?php
-                                                        if (empty($row_user['status'])) {
-                                                            echo "";
-                                                        }
+                                                        // if ($row_user['status'] == 4) {
+                                                        //     echo "";
+                                                        // }
                                                         // $level dari sidebar
                                                         if ($row_user['jns_pengajuan'] == "Cuti") {
                                                             if ($row_user['status'] == "2") { ?>
@@ -194,7 +194,7 @@ if (isset($_POST["up_SK"])) {
                                                                     Tolak</a>
                                                         <?php }
                                                         } else {
-                                                            echo "Terverfikasi";
+                                                            echo "";
                                                         }
                                                         ?>
                                                     </td>
