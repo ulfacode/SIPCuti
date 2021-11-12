@@ -75,6 +75,9 @@ memperbaiki sidebar
 
 11/10/2021
 belajar lupa password
+Membuat isset harus login sebelum masuk ke suatu halaman
+Membuat file logout dan membuat link logout di sidebar.php
+Membuat link forgot password dan menambahkan logo PNC di halaman login
 
 12/10/2021
 coba buat lupa password
@@ -132,6 +135,52 @@ memperbaiki laporan berdasarkan yang sudah selesai di setujui
 
 27/10/2021
 - menambah rule harus login saat sudah login namun masuk ke halaman lain. NB: di halaman multilevel dibikin session lagi
+
+29/10/2021
+- membuat halaman multilevel
+- memperbaiki foto di sidebar dan profil user
+
+31/10/2021(belum commit)
+- membuat modal untuk upload sk yg sudah jadi dan cek berkas sk
+- membuat function untuk mengupload file sk
+- membuat function untuk memasukkan file sk ke database
+- Menambah option untuk nama prodi yang sudah dimasukin database di mahasiswa/pengajuan/index.php
+
+1/11/2021
+- Menambah kolom detail status, membuat tampilan detail status di admin/pengajuan/index.php
+
+2/11/2021
+-membuat detail status
+
+3/11/2021
+-membuat detail status
+- memperbaiki aturan pengajuan, dapat mengajukan: 
+    1. cuti (hanya saat pengajuan cuti kosong atau status pengajuan sebelumnya ditolak)
+    2. aktif (hanya saat pengajuan izin aktif kosong atau status pengajuan sebelumnya ditolak dan pengajuan cuti tidak kosong dan status pengajuan telah selesai)
+
+4/11/2021
+1. Memperbaiki level untuk user yang dipilih di halaman multi level
+2. Memperbaiki alert login
+3. Memperbaiki alur untuk menampilkan sidebar yang dimiliki oleh dosen wali dan ketua jurusan
+4. Menambah button untuk beralih akun
+5. Memperbaiki session di sidebar untuk doswal dan kajur
+
+8/11/2021
+- menambah kolom status tb_verifikasi dan memperbaiki ERD
+- Memperbaiki view v_data_doswal, v_data_kajur, v_pengajuan
+- memperbaiki warna status di detail status
+- membuat enable tombol form, upload sk, generate sk pengajuan hanya saat status=4 (admin)
+- menambah alert jika cek berkas SK kosong
+- update progres dengan pak Abda'u
+
+9/11/2021
+- Memperbaiki tampilan button di tabel aksi pengajuan mahasiswa
+- menambah alert jika berkas SK kosong di tabel pengajuan mahasiswa
+
+12/11/2021
+- Menambah link href home (header.php)
+- Membuat Dashboard doswal
+
 
 LOADINGNYA LAMA. Misalkan, 
 git restore --staged .
