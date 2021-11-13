@@ -92,9 +92,6 @@ $nip_npak = $_SESSION['nip_npak'];
                                             <?php
                                             $i = 1;
                                             foreach ($user as $row_user) {
-                                                $id_pengajuan = $row_user['id_pengajuan'];
-                                                $sql = mysqli_query($conn, "SELECT status FROM tb_pengajuan WHERE id_pengajuan = '$id_pengajuan'");
-                                                $result = mysqli_fetch_array($sql);
                                             ?>
                                                 <tr>
                                                     <td><?php echo $i; ?></td>
@@ -105,23 +102,23 @@ $nip_npak = $_SESSION['nip_npak'];
                                                     <td><?php echo $row_user['semester_cuti'] ?></td>
                                                     <td><?php echo $row_user['thn_akademik'] ?></td>
                                                     <?php
-                                                    if (empty($result['status'])) {
+                                                    if (empty($row_user['status'])) {
                                                         $stt = "Menunggu verifikasi dosen wali";
                                                         $warna = 'red';
                                                     } else {
-                                                        if ($result['status'] == "1") {
+                                                        if ($row_user['status'] == "1") {
                                                             $stt = "Telah diverikasi dosen wali";
                                                             $warna = 'cornflowerblue';
-                                                        } elseif ($result['status'] == "2") {
+                                                        } elseif ($row_user['status'] == "2") {
                                                             $stt = "Silahkan verifikasi";
                                                             $warna = 'red';
-                                                        } elseif ($result['status'] == "3") {
+                                                        } elseif ($row_user['status'] == "3") {
                                                             $stt = "Anda telah memverikasi";
                                                             $warna = 'darkorchid';
-                                                        } elseif ($result['status'] == "4") {
+                                                        } elseif ($row_user['status'] == "4") {
                                                             $stt = "Selesai diverifikasi";
                                                             $warna = 'green';
-                                                        } elseif ($result['status'] == "5") {
+                                                        } elseif ($row_user['status'] == "5") {
                                                             $stt = "Ditolak";
                                                             $warna = 'yellow';
                                                         } else {
@@ -136,9 +133,9 @@ $nip_npak = $_SESSION['nip_npak'];
                                                     </td>
                                                     <td>
                                                         <?php
-                                                        if (empty($result['status'])) {
+                                                        if (empty($row_user['status'])) {
                                                             echo "";
-                                                        } elseif ($result['status'] == "2") { ?>
+                                                        } elseif ($row_user['status'] == "2") { ?>
                                                             <!-- $level dari sidebar -->
                                                             <a href="terima_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>&jabatan=<?= $level; ?>" onclick="return confirm('Anda yakin menerima pengajuan ini?')" class="btn btn-outline-none"><i class="fas fa-check" style="color: green;"></i>
                                                                 ACC &nbsp;&nbsp;</a>
