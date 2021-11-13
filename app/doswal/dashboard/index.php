@@ -81,7 +81,7 @@ $nip_npak = $_SESSION['nip_npak'];
                                     ?>
                                     <h3><?php echo $hasil['jml_belum']; ?></h3>
 
-                                    <p>Pengajuan Baru</p>
+                                    <p>Pengajuan Belum Diverifikasi</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
