@@ -70,7 +70,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['nama'] = $data['nama'];
 
                 // login sukses, alihkan ke halaman utama (dashboard)
-                header("location: app/kajur/profil/index.php");
+                header("location: app/kajur/dashboard/");
             } elseif ($data['jabatan'] == "Dosen Wali") {
                 // buat session
                 session_start();
