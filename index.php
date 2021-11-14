@@ -60,7 +60,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['nama'] = $data['nama'];
 
                 // login sukses, alihkan ke halaman utama (dashboard)
-                header("location: app/wadir1/profil/index.php");
+                header("location: app/wadir1/dashboard/");
             } elseif ($data['jabatan'] == "Ketua Jurusan") {
                 // buat session
                 session_start();
