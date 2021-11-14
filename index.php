@@ -90,7 +90,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['nama'] = $data['nama'];
 
                 // login sukses, alihkan ke halaman utama (dashboard)
-                header("location: app/KetuaAkademik/profil/index.php");
+                header("location: app/KetuaAkademik/dashboard/");
             } elseif ($data['jabatan'] == "Bagian Keuangan") {
                 // buat session
                 session_start();
