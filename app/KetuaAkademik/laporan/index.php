@@ -1,5 +1,6 @@
 <?php
-include "../../config/koneksi.php";
+// ambil koneksi dan function tanggal()
+include "../../config/f_pengajuan.php";
 
 session_start();
 
@@ -93,11 +94,11 @@ session_start();
                                                     <td><?php echo $i; ?></td>
                                                     <td><?php echo $row_user['nim'] ?></td>
                                                     <td><?php echo $row_user['nama'] ?></td>
-                                                    <td><?php echo $row_user['nm_jurusan'] ?></td>
+                                                    <td><?php echo $row_user['nm_prodi'] ?></td>
                                                     <td><?php echo $row_user['jk'] ?></td>
                                                     <td><?php echo $row_user['thn_angkatan'] ?></td>
                                                     <td><?php echo $row_user['no_sk'] ?></td>
-                                                    <td><?php echo $row_user['tgl_sk'] ?></td>
+                                                    <td><?php echo tgl($row_user['tgl_sk']) ?></td>
                                                     <td><?php echo $row_user['thn_akademik'] ?></td>
                                                     <td><?php echo $row_user['jns_pengajuan'] ?></td>
                                                 </tr>
