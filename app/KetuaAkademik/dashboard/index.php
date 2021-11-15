@@ -55,11 +55,11 @@ session_start();
                             <!-- small box -->
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    <p></p>
-                                    <h6>Profil Anda</h6>
+                                    <h3>&nbsp;</h3>
+                                    <p>Profil Anda</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-bag"></i>
+                                    <i class="fas fa-user-tie"></i>
                                 </div>
                                 <a href="../profil/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
@@ -69,8 +69,8 @@ session_start();
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <p></p>
-                                    <h6>Laporan Pengajuan Cuti dan Izin Aktif</h6>
+                                    <h3>&nbsp;</h3>
+                                    <p>Laporan Pengajuan Cuti dan Izin Aktif</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
