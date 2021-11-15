@@ -23,7 +23,7 @@
 
                     <div class="form-group">
                         <label for="">UKT Semester</label>
-                        <input type="number" class="form-control" name="ukt_smt" placeholder="Isikan UKT untuk semester berapa!" required>
+                        <input type="number" class="form-control" name="ukt_smt" placeholder="Isikan UKT untuk semester berapa!" min="1" max="6" required>
                     </div>
 
                     <div class="form-group">
