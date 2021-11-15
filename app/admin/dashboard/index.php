@@ -64,7 +64,7 @@ session_start();
                                     <p>Data Pegawai</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-bag"></i>
+                                    <i class="fas fa-user-tie"></i>
                                 </div>
                                 <a href="../pegawai/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
@@ -83,7 +83,7 @@ session_start();
                                     <p>Data Mahasiswa</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-stats-bars"></i>
+                                    <i class="fas fa-user"></i>
                                 </div>
                                 <a href="../mahasiswa/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
@@ -101,7 +101,7 @@ session_start();
                                     <p>Data Pengajuan</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-person-add"></i>
+                                    <i class="ion ion-stats-bars"></i>
                                 </div>
                                 <a href="../pengajuan/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
