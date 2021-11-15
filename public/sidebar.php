@@ -15,6 +15,8 @@
                 <?php
                 $level = $_SESSION['level'];
                 if ($level == "Mahasiswa") {
+                    // $id dapet dari index.php
+
                     $user = mysqli_query($conn, "SELECT * FROM tb_mahasiswa WHERE nim = '$id'");
                     $row_user = $user->fetch_assoc();
                     foreach ($user as $row_user) {
@@ -89,7 +91,7 @@
             if ($level == "Mahasiswa") {
             ?>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="../dashboard/" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
