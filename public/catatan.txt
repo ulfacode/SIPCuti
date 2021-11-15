@@ -198,6 +198,9 @@ memperbaiki laporan berdasarkan yang sudah selesai di setujui
 - membuat dashboard mahasiswa
 - membuat dashboard perpus
 - membuat dashboard keuangan
+- Menambah min max di tambah bukti ukt
+- Memperbaiki tampilan dashboard ketuaakademik dan admin
+- Memperbaiki include koneksi.php di admin, doswal, kajur, wadir1
 
 
 LOADINGNYA LAMA. Misalkan, 
