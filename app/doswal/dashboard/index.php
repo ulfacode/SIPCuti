@@ -1,5 +1,5 @@
 <?php
-include '../../config/f_pengajuan.php';
+include '../../config/koneksi.php';
 
 session_start();
 $nip_npak = $_SESSION['nip_npak'];
