@@ -177,9 +177,25 @@ memperbaiki laporan berdasarkan yang sudah selesai di setujui
 - Memperbaiki tampilan button di tabel aksi pengajuan mahasiswa
 - menambah alert jika berkas SK kosong di tabel pengajuan mahasiswa
 
+10/11/2021
+1. Membuat tampilan dashboard admin
+2. Membuat isi dashboard admin
+
 12/11/2021
 - Menambah link href home (header.php)
 - Membuat Dashboard doswal
+
+13/11/2021
+- membuat dashboard kajur
+- membuat dashboard wadir1
+
+14/11/2021
+- Memperbaiki link login wadir1 pertama kali (langsung ke dashboard)
+- Memperbaiki cara menampilkan data: tgl_sk dan mengubah nm_jurusan menjadi nm_prodi di halaman laporan ketua akademik
+- membuat dashboard ketua akademik
+
+15/11/2021
+- membuat dashboard mahasiswa
 
 
 LOADINGNYA LAMA. Misalkan, 
