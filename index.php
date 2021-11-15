@@ -110,7 +110,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['nama'] = $data['nama'];
 
                 // login sukses, alihkan ke halaman utama (dashboard)
-                header("location: app/perpus/profil/index.php");
+                header("location: app/perpus/dashboard/");
             } elseif ($data['jabatan'] == "Dosen Wali dan Ketua Jurusan") {
                 // buat session
                 session_start();
