@@ -331,7 +331,7 @@
                 </li>
             <?php } elseif ($level == "Bagian Keuangan") { ?>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="../dashboard/" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard

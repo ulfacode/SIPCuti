@@ -100,7 +100,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['nama'] = $data['nama'];
 
                 // login sukses, alihkan ke halaman utama (dashboard)
-                header("location: app/keuangan/profil/index.php");
+                header("location: app/keuangan/dashboard/");
             } elseif ($data['jabatan'] == "Bagian Perpustakaan") {
                 // buat session
                 session_start();

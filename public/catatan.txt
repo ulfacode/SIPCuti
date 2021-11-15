@@ -196,6 +196,8 @@ memperbaiki laporan berdasarkan yang sudah selesai di setujui
 
 15/11/2021
 - membuat dashboard mahasiswa
+- membuat dashboard perpus
+- membuat dashboard keuangan
 
 
 LOADINGNYA LAMA. Misalkan, 
