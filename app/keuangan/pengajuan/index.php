@@ -99,19 +99,34 @@ session_start();
                                                     <td><?php echo $row_user['thn_akademik'] ?></td>
                                                     <td>
 
-                                                        <?php
-                                                        if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
-                                                            <a href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>" class="btn btn-success">
-                                                                <i class="fa fa-download"></i> SK Cuti
+                                                        <?php if (empty($row_user['upload_sk'])) { ?>
+                                                            <a class="btn btn-success" onclick="alert('Oopss... SK belum terbit')">
+                                                                <i class="fa fa-download"></i>
+                                                                <?php if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
+                                                                    SK Cuti
+                                                                    <!-- </a> -->
+                                                                    <!-- <a class="btn btn-success" onclick="alert('Oopss... SK belum terbit. Harap bersabar ya!')">
+                                                                <i class="fa fa-download"></i> -->
+                                                                <?php
+                                                                } else { ?>
+                                                                    SK Aktif
                                                             </a>
                                                         <?php
-                                                        } else { ?>
-                                                            <a href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>" class="btn btn-success">
-                                                                <i class="fa fa-download"></i> SK Aktif
-                                                            </a>
-                                                        <?php
-                                                        }
-                                                        ?>
+                                                                }
+                                                            } else { ?>
+                                                        <a class="btn btn-success" href="../../admin/pengajuan/surat_keputusan/<?php echo $row_user['upload_sk'] ?>">
+                                                            <i class="fa fa-download"></i>
+                                                            <?php if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
+                                                                SK Cuti
+                                                                <!-- </a> -->
+                                                            <?php
+                                                                } else { ?>
+                                                                <!-- <a class="btn btn-primary" href="../../admin/pengajuan/surat_keputusan/<?php echo $row_user['upload_sk'] ?>">
+                                                                <i class="fa fa-download"></i> -->
+                                                                SK Aktif
+                                                        </a>
+                                                <?php }
+                                                            } ?>
                                                     </td>
                                                 </tr>
                                             <?php
