@@ -140,29 +140,9 @@ session_start();
         <?php include "../../../public/script.php"; ?>
 
         <!-- Page specific script -->
-        <script>
-            $(function() {
-                $("#example1").DataTable({
-                    "responsive": true,
-                    "lengthChange": false,
-                    "autoWidth": false,
-                    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-                }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-                $('#example2').DataTable({
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": true,
-                    "info": true,
-                    "autoWidth": false,
-                    "responsive": true,
-                });
-            });
-        </script>
 
         <!-- Select2 -->
         <script src="../../../public/plugins/select2/js/select2.full.min.js"></script>
-
 
         <!-- datatable -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
