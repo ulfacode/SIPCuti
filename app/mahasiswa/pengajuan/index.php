@@ -180,6 +180,7 @@ $id = $_SESSION['nim'];
                                                 <tr>
                                                     <td><?php echo $i; ?></td>
                                                     <td><?php echo $row_user['jns_pengajuan'] ?></td>
+                                                    <!-- <td><a href="../../admin/pengajuan/surat_keputusan/<?php echo $row_user['upload_sk'] ?>" alt="">Klik</td> -->
                                                     <td><?= tgl($row_user['tgl_pengajuan']); ?></td>
                                                     <td><?php echo $row_user['semester_cuti'] ?></td>
                                                     <td><?php echo $row_user['thn_akademik'] ?></td>
@@ -216,52 +217,10 @@ $id = $_SESSION['nim'];
                                                         ?>
                                                     </td>
                                                     <td>
-
-                                                        <?php if (empty($result['upload_sk'])) {
-                                                            if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
-                                                                <a class="btn btn-primary" onclick="alert('Oopss... SK belum terbit. Harap bersabar ya!')">
-                                                                    <i class="fa fa-download"></i>
-                                                                    SK Cuti
-                                                                </a>
-                                                            <?php
-                                                            } else { ?>
-                                                                <a class="btn btn-primary" onclick="alert('Oopss... SK belum terbit. Harap bersabar ya!')">
-                                                                    <i class="fa fa-download"></i>
-                                                                    SK Aktif
-                                                                </a>
-                                                            <?php
-                                                            }
-                                                        } else {
-
-                                                            if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
-                                                                <a class="btn btn-primary" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>">
-                                                                    <i class="fa fa-download"></i>
-                                                                    SK Cuti
-                                                                </a>
-                                                            <?php
-                                                            } else { ?>
-                                                                <a class="btn btn-primary" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>">
-                                                                    <i class="fa fa-download"></i>
-                                                                    SK Aktif
-                                                                </a>
-                                                        <?php
-                                                            }
-                                                        }
-                                                        ?>
-
-                                                        <!-- references: https://www.rajaputramedia.com/artikel/membuat-script-download-file-dengan-php-mysql.php -->
-                                                        <!-- <a class="btn" href="download_berkas.php?filename=<?= $row_user['lampiran'] ?>">
-                                                            <i class="fa fa-download"></i> SK
-                                                        </a> -->
-
-
-                                                        <?php include "modal_edit.php" ?>
-
+                                                        <!-- button dropdown aksi -->
                                                         <div class="btn-group">
                                                             <button type="button" class="btn btn-success">
-                                                                <!-- <i class="fa fa-file-alt"></i>  -->
                                                                 <i class="fa fa-tools"></i>
-                                                                <!-- Aksi -->
                                                             </button>
                                                             <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
                                                                 <span class="sr-only">Toggle Dropdown</span>
@@ -279,12 +238,27 @@ $id = $_SESSION['nim'];
                                                                     <i class="fa fa-edit"></i>
                                                                     Edit
                                                                 </a>
+
+                                                                <?php if (empty($row_user['upload_sk'])) { //cek data
+                                                                ?>
+                                                                    <!-- warna akan hitam jika tidak ada data -->
+                                                                    <a class="dropdown-item" onclick="alert('Oopss... SK belum terbit. Harap bersabar ya!')"><i class="fa fa-download"></i> SK</a>
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <!-- warna akan ungu jika ada data -->
+                                                                    <a style="color: blueviolet;" class="dropdown-item" href="../../admin/pengajuan/surat_keputusan/<?php echo $row_user['upload_sk'] ?>">
+                                                                        <i class="fa fa-download"></i>
+                                                                        SK
+                                                                    </a>
+                                                                <?php } ?>
                                                             </div>
                                                         </div>
                                                     </td>
                                                 </tr>
                                             <?php
                                                 $i++;
+                                                include "modal_edit.php";
                                             }
                                             ?>
                                         </tbody>
