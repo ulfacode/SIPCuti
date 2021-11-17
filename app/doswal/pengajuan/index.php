@@ -149,40 +149,31 @@ $nip_npak = $_SESSION['nip_npak'];
                                                     </td>
                                                     <td>
 
-                                                        <!-- references: https://www.rajaputramedia.com/artikel/membuat-script-download-file-dengan-php-mysql.php -->
-                                                        <!-- <a class="btn" href="download_sk.php?filename=<?= $row_user['lampiran'] ?>">
-                                                            <i class="fa fa-download"></i> SK
-                                                        </a> -->
-
-                                                        <div class="btn-group">
-                                                            <button type="button" class="btn btn-success">
-                                                                <!-- <i class="fa fa-file-alt"></i>  -->
-                                                                <i class="fa fa-tools"></i>
-                                                                <!-- Aksi -->
-                                                            </button>
-                                                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-                                                                <span class="sr-only">Toggle Dropdown</span>
-                                                            </button>
-                                                            <div class="dropdown-menu" role="menu">
-                                                                <!-- <a class="btn btn-primary dropdown-item" data-toggle="modal" data-target="#modalEdit<?php echo $row_user['id_pengajuan']; ?>">
-                                                                        <i class="fa fa-edit"></i>
-                                                                        Edit
-                                                                    </a> -->
-                                                                <?php
-                                                                if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
-                                                                    <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>">
-                                                                        <i class="fa fa-download"></i> SK Cuti
-                                                                    </a>
+                                                        <?php if (empty($row_user['upload_sk'])) { //cek data
+                                                        ?>
+                                                            <!-- warna akan hitam jika tidak ada data -->
+                                                            <a class="btn btn-success btn-app" onclick="alert('Oopss... SK belum terbit. Harap bersabar ya!')"><i class="fa fa-download"></i>
+                                                                <?php if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
+                                                                    SK Cuti
                                                                 <?php
                                                                 } else { ?>
-                                                                    <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['upload_sk']; ?>">
-                                                                        <i class="fa fa-download"></i> SK Aktif
-                                                                    </a>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </div>
+                                                                    SK Aktif
+                                                            </a>
+                                                        <?php }
+                                                            } else {
+                                                        ?>
+                                                        <!-- warna akan ungu jika ada data -->
+                                                        <a class="btn btn-success btn-app" href="../../admin/pengajuan/surat_keputusan/<?php echo $row_user['upload_sk'] ?>">
+                                                            <i class="fa fa-download"></i>
+                                                            <?php if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
+                                                                SK Cuti
+                                                            <?php
+                                                                } else { ?>
+                                                                SK Aktif
+                                                        </a>
+                                                <?php }
+                                                            } ?>
+
                                                     </td>
                                                 </tr>
                                             <?php
