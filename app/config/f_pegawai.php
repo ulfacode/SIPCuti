@@ -15,19 +15,19 @@ function tambah($data)
     $status = $data["status"];
 
 
-    $foto = upload_foto();
-    if (!$foto) {
-        return false;
-    }
+    // $foto = upload_foto();
+    // if (!$foto) {
+    //     return false;
+    // }
 
 
-    $ttd = upload_ttd();
-    if (!$ttd) {
-        return false;
-    }
+    // $ttd = upload_ttd();
+    // if (!$ttd) {
+    //     return false;
+    // }
 
 
-    $query = "INSERT INTO tb_pegawai VALUES ('$nip_npak', '$username', '$password','$nama','$jabatan', '$thn_jabatan', '$status','$no_telp','$foto','$ttd')";
+    $query = "INSERT INTO tb_pegawai (nip_npak, username, password, nama, jabatan, thn_jabatan, status, no_telp) VALUES ('$nip_npak', '$username', '$password','$nama','$jabatan', '$thn_jabatan', '$status','$no_telp')";
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }

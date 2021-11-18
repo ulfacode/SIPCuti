@@ -20,20 +20,20 @@ function tambah($data)
     $no_telp = $data["no_telp"];
 
 
-    $foto = upload_foto();
-    if (!$foto) {
-        return false;
-    }
+    // $foto = upload_foto();
+    // if (!$foto) {
+    //     return false;
+    // }
 
 
-    $ttd = upload_ttd();
-    if (!$ttd) {
-        return false;
-    }
+    // $ttd = upload_ttd();
+    // if (!$ttd) {
+    //     return false;
+    // }
 
 
-    $query = "INSERT INTO tb_mahasiswa VALUES ('$nim', '$doswal', '$kajur', '$username', '$password','$nama',
-    '$thn_angkatan', '$kelas', '$tempat_lhr', '$tgl_lhr', '$jk', '$alamat','$no_telp','$foto','$ttd')";
+    $query = "INSERT INTO tb_mahasiswa (nim, id_doswal, id_kajur, username, password, nama, thn_angkatan, kelas, tempat_lhr, tgl_lhr, jk, alamat, no_telp) VALUES ('$nim', '$doswal', '$kajur', '$username', '$password','$nama',
+    '$thn_angkatan', '$kelas', '$tempat_lhr', '$tgl_lhr', '$jk', '$alamat','$no_telp')";
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }
