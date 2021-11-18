@@ -31,7 +31,7 @@
                         <label>Jabatan</label>
                         <select class="form-control" name="jabatan" required>
                             <option></option>
-                            <!-- <option value="Administrator">Administrator</option> -->
+                            <option value="Administrator">Administrator</option>
                             <option value="Wakil Direktur 1">Wakil Direktur 1</option>
                             <option value="Ketua Jurusan">Ketua Jurusan</option>
                             <option value="Dosen Wali">Dosen Wali</option>
@@ -53,11 +53,12 @@
                             <option value="Tidak Aktif">Tidak Aktif</option>
                         </select>
                     </div>
+                    <!-- tidak harus diisi karena data pribadi -->
                     <div class="form-group">
                         <label for="no_telp">Nomor Telepon</label>
-                        <input id="no_telp" class="form-control" type="number" name="no_telp" required="required">
+                        <input id="no_telp" class="form-control" type="number" name="no_telp">
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="foto">Foto</label>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="foto" name="foto">
@@ -72,7 +73,7 @@
                                 <label class="custom-file-label" for="ttd"></label>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
             </div>
             <div class="modal-footer justify-content-between">
