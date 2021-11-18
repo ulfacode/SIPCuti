@@ -23,7 +23,7 @@
 
                     <div class="form-group">
                         <label for="doswal">Dosen Wali</label>
-                        <select name="doswal" class="form-control select2bs4" style="width: 100%;">
+                        <select name="doswal" class="form-control select2bs4" style="width: 100%;" required>
                             <option value=""></option>
                             <?php
                             foreach ($tb_doswal as $row_user) {
@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group">
                         <label for="kajur">Ketua Jurusan</label>
-                        <select class="form-control select2bs4" style="width: 100%;" id="kajur" name="kajur">
+                        <select class="form-control select2bs4" style="width: 100%;" id="kajur" name="kajur" required> 
                             <option value=""></option>
                             <?php foreach ($tb_kajur as $row) {
                             ?>
@@ -90,15 +90,16 @@
                             <label for="Perempuan" class="custom-control-label">Perempuan</label>
                         </div>
                     </div>
+                    <!-- tidak harus diisi karena data pribadi -->
                     <div class="form-group">
                         <label>Alamat</label>
                         <textarea class="form-control" rows="4" name="alamat" placeholder="Enter ..."></textarea>
                     </div>
                     <div class="form-group">
                         <label for="no_telp">Nomor Telepon</label>
-                        <input id="no_telp" class="form-control" type="number" name="no_telp" required="required">
+                        <input id="no_telp" class="form-control" type="number" name="no_telp">
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="foto">Foto</label>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="foto" name="foto">
@@ -113,7 +114,7 @@
                                 <label class="custom-file-label" for="ttd"></label>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
             </div>
             <div class="modal-footer justify-content-between">
