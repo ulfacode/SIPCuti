@@ -19,7 +19,7 @@
 
                     <div class="form-group">
                         <label for="nip">NIP/NPAK</label>
-                        <select name="nip" class="form-control select2bs4" data-placeholder="Pilih Dosen Wali" style="width: 100%;">
+                        <select name="nip" class="form-control select2bs4" data-placeholder="Pilih Dosen Wali" style="width: 100%;" required>
                             <option value=""></option>
                             <?php
                             foreach ($pgw as $row_user) {
