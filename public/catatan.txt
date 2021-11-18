@@ -1,3 +1,5 @@
+kalo gada required tetap bisa dimasukkan
+
 permasalahan:
 
 agar fitur search jadi, modal edit jangan di dalam td
@@ -203,14 +205,40 @@ memperbaiki laporan berdasarkan yang sudah selesai di setujui
 - Memperbaiki include koneksi.php di admin, doswal, kajur, wadir1
 
 
+17/11/2021
+- Memperbaiki link download sk dan tampilan aksi di halaman pengajuan mahasiswa
+- memperbaiki tombol download sk di halaman pengajuan doswal, kajur, perpus, keuangan
+- Memperbaiki cara menampilkan tanggal sk di halaman laporan ketua akademik
+
+
+18/11/2021
+- Menghapus inputan foto dan ttd di tambah data mahasiswa dan pegawai
+- Memperbaiki function tambah data mhs dan pgw
+- memperbaiki required sesuai kebutuhan di edit data mhs dan pgw
+
+
+
+
 LOADINGNYA LAMA. Misalkan, 
+
+
+
+
 git restore --staged .
+
+
+
 
 note:
 tambah pengajuan: 
 - cuti hanya satu kali, izin aktif hanya satu kali dan hanya jika ada pengajuan cuti.
 - PIKIRKAN LAGI KALO udah ajuin terus ditolak: insert hanya satu kali kecuali udah sampai proses ditolak maka bisa mengajukan lagi
 - sidebar: kalo foto pengguna tidak ada akan default; pake perulangan agar saat edit/tambah foto tidak perlu logout terlebih dahulu untuk menampilkan foto di sidebar
+
+
+
+
+
 
 
 YANG HARUS DILAKUKAN:
@@ -256,3 +284,34 @@ elseif ($level == "Dosen Wali dan Ketua Jurusan") { ?>
                     </a>
                 </li>
             <?php } ?>
+
+
+
+            <?php if (empty($result['upload_sk'])) { ?>
+                                                            <a class="btn btn-primary" onclick="alert('Oopss... SK belum terbit. Harap bersabar ya!')">
+                                                                <i class="fa fa-download"></i>
+                                                                <?php if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
+                                                                    SK Cuti
+                                                                    <!-- </a> -->
+                                                                    <!-- <a class="btn btn-primary" onclick="alert('Oopss... SK belum terbit. Harap bersabar ya!')">
+                                                                <i class="fa fa-download"></i> -->
+                                                                <?php
+                                                                } else { ?>
+                                                                    SK Aktif
+                                                            </a>
+                                                        <?php
+                                                                }
+                                                            } else { ?>
+                                                        <a class="btn btn-primary" href="../../admin/pengajuan/surat_keputusan/<?php echo $row_user['upload_sk'] ?>">
+                                                            <i class="fa fa-download"></i>
+                                                            <?php if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
+                                                                SK Cuti
+                                                                <!-- </a> -->
+                                                            <?php
+                                                                } else { ?>
+                                                                <!-- <a class="btn btn-primary" href="../../admin/pengajuan/surat_keputusan/<?php echo $row_user['upload_sk'] ?>">
+                                                                <i class="fa fa-download"></i> -->
+                                                                SK Aktif
+                                                        </a>
+                                                <?php }
+                                                            } ?>
