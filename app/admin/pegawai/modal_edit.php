@@ -35,13 +35,13 @@
                             <label>Jabatan</label>
                             <select class="form-control" name="jabatan" required>
                                 <option hidden selected><?= $pgw["jabatan"]; ?></option>
+                                <option value="Administrator">Administrator</option>
                                 <option value="Wakil Direktur 1">Wakil Direktur 1</option>
                                 <option value="Ketua Jurusan">Ketua Jurusan</option>
                                 <option value="Dosen Wali">Dosen Wali</option>
                                 <option value="Ketua Akademik">Ketua Akademik</option>
                                 <option value="Bagian Keuangan">Bagian Keuangan</option>
                                 <option value="Bagian Perpustakaan">Bagian Perpustakaan</option>
-                                <!-- <option value="Admin">Admin</option> -->
                             </select>
                         </div>
                         <div class="form-group">
@@ -56,9 +56,10 @@
                                 <option value="Tidak Aktif">Tidak Aktif</option>
                             </select>
                         </div>
+                        <!-- tidak harus diisi karena data pribadi -->
                         <div class="form-group">
                             <label for="no_telp">Nomor Telepon</label>
-                            <input id="no_telp" class="form-control" type="number" name="no_telp" value="<?= $pgw["no_telp"]; ?>" required="required">
+                            <input id="no_telp" class="form-control" type="number" name="no_telp" value="<?= $pgw["no_telp"]; ?>">
                         </div>
 
                     <?php

@@ -102,13 +102,14 @@
                             <label for="kelas">Kelas</label>
                             <input id="kelas" class="form-control" type="text" name="kelas" required="required" value="<?= $mhs["kelas"]; ?>">
                         </div>
+                        <!-- tidak harus diisi karena data pribadi -->
                         <div class="form-group">
                             <label for="tempat_lhr">Tempat Lahir</label>
-                            <input id="tempat_lhr" class="form-control" type="text" name="tempat_lhr" required="required" value="<?= $mhs["tempat_lhr"]; ?>">
+                            <input id="tempat_lhr" class="form-control" type="text" name="tempat_lhr" value="<?= $mhs["tempat_lhr"]; ?>">
                         </div>
                         <div class="form-group">
                             <label for="tgl_lhr">Tanggal Lahir</label>
-                            <input id="tgl_lhr" class="form-control" type="text" name="tgl_lhr" required="required" value="<?= $mhs["tgl_lhr"]; ?>">
+                            <input id="tgl_lhr" class="form-control" type="text" name="tgl_lhr" value="<?= $mhs["tgl_lhr"]; ?>">
                         </div>
                         <div class="form-group">
                             <label for="jk">Jenis Kelamin</label>
@@ -122,9 +123,10 @@
                             <label for="alamat">Alamat</label>
                             <textarea class="form-control" rows="4" name="alamat"><?= $mhs["alamat"]; ?></textarea>
                         </div>
+                        <!-- tidak harus diisi karena data pribadi -->
                         <div class="form-group">
                             <label for="no_telp">Nomor Telepon</label>
-                            <input id="no_telp" class="form-control" type="number" name="no_telp" value="<?= $mhs["no_telp"]; ?>" required="required">
+                            <input id="no_telp" class="form-control" type="number" name="no_telp" value="<?= $mhs["no_telp"]; ?>">
                         </div>
                     <?php
                     }
