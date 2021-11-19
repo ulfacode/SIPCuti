@@ -87,6 +87,7 @@
             $level = $_SESSION['level'];
             if ($level == "Dosen Wali dan Ketua Jurusan") {
                 $level = $_GET["lvl"];
+                $_SESSION['dua'] = "Dosen Wali dan Ketua Jurusan";
             }
             if ($level == "Mahasiswa") {
             ?>
@@ -239,7 +240,7 @@
                     </a>
                 </li>
                 <?php
-                if ($_SESSION["level"] == "Dosen Wali dan Ketua Jurusan") { ?>
+                if ($_SESSION['dua'] == "Dosen Wali dan Ketua Jurusan") { ?>
                     <li class="nav-item">
                         <a href="../../../multi_level.php" class="nav-link">
                             <i class="nav-icon fas fa-people-arrows"></i>
@@ -286,7 +287,7 @@
                     </a>
                 </li>
                 <?php
-                if ($_SESSION["level"] == "Dosen Wali dan Ketua Jurusan") { ?>
+                if ($_SESSION['dua'] == "Dosen Wali dan Ketua Jurusan") { ?>
                     <li class="nav-item">
                         <a href="../../../multi_level.php" class="nav-link">
                             <i class="nav-icon fas fa-people-arrows"></i>
