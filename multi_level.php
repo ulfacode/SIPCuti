@@ -196,31 +196,33 @@ if (!isset($_SESSION["nama"])) {
 
                     <!-- Small boxes (Stat box) -->
                     <div class="row">
-                        <div class="col-lg-3 col-6">
+                        <div class="col-lg-6 col-6">
                             <!-- small box -->
                             <div class="small-box bg-info">
                                 <div class="inner">
+                                    <h3>&nbsp;</h3>
                                     <h4>Dosen Wali</h4>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-person"></i>
                                 </div>
                                 <!-- masukin ke dashboard dulu -->
-                                <a href="app/doswal/profil/index.php?lvl=Dosen Wali" class="small-box-footer">Pilih <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="app/doswal/dashboard/index.php?lvl=Dosen Wali" class="small-box-footer">Pilih <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
-                        <div class="col-lg-3 col-6">
+                        <div class="col-lg-6 col-6">
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <div class="inner">
+                                    <h3>&nbsp;</h3>
                                     <h4>Ketua Jurusan</h4>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-person"></i>
                                 </div>
                                 <!-- masukin ke dashboard dulu -->
-                                <a href="app/kajur/profil/index.php?lvl=Ketua Jurusan" class="small-box-footer">Pilih <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="app/kajur/dashboard/index.php?lvl=Ketua Jurusan" class="small-box-footer">Pilih <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
