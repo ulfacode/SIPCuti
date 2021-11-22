@@ -145,18 +145,15 @@ session_start();
                                                             <i class="fa fa-info-circle"></i> Detail
                                                         </a>
 
-                                                        <?php
-                                                        include "modal_detail.php";
-                                                        ?>
-
-
                                                         <a style="color: white;" class="btn btn-warning" href="hapus.php?nim=<?php echo $row_user['nim']; ?>" onclick="return confirm('Anda yakin mau menghapus data ini ?')">
                                                             <i class="fa fa-trash"></i> Hapus
                                                         </a>
-                                                        <?php include "modal_edit.php" ?>
                                                     </td>
                                                 </tr>
+
                                             <?php
+                                                include "modal_edit.php";
+                                                include "modal_detail.php";
                                             }
                                             ?>
                                         </tbody>
