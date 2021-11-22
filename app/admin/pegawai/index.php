@@ -141,11 +141,11 @@ session_start();
                                                         <a style="color: white;" class="btn btn-warning" href="hapus.php?id=<?php echo $row_user['nip_npak']; ?>" onclick="return confirm('Anda yakin mau menghapus data ini ?')">
                                                             <i class="fa fa-trash"></i> Hapus
                                                         </a>
-                                                        <?php include "modal_detail.php" ?>
                                                     </td>
                                                 </tr>
 
                                             <?php
+                                                include "modal_detail.php";
                                                 include "modal_edit.php";
                                             }
                                             ?>
