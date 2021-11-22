@@ -218,7 +218,7 @@ error_reporting(0);
                 ?>
                 <td></td>
                 <?php
-                if (empty($result['ttd_ortu'])) {
+                if (empty($result['ttd'])) {
                     $ttd = "";
                 } else { ?>
                     <td align="center"><img src="../mahasiswa/img/<?= $ttd ?>" width="60" height="60" alt="tanda tangan mahasiswa"></td>

@@ -220,13 +220,15 @@ error_reporting(0);
                     $result['ttd_ortu'] = "";
                 } else { ?>
 
-                    <td align="center"><img src="../../mahasiswa/pengajuan/img/<?= $result['ttd_ortu']; ?>" width="60" height="60" alt="tanda tangan orang tua mahasiswa"></td>
+                    <td align="center">
+                        <img src="../../mahasiswa/pengajuan/img/<?= $result['ttd_ortu']; ?>" width="60" height="60" alt="tanda tangan orang tua mahasiswa">
+                    </td>
                 <?php
                 }
                 ?>
                 <td></td>
                 <?php
-                if (empty($result['ttd_ortu'])) {
+                if (empty($ttd)) {
                     $ttd = "";
                 } else { ?>
                     <td align="center"><img src="../mahasiswa/img/<?= $ttd ?>" width="60" height="60" alt="tanda tangan mahasiswa"></td>
