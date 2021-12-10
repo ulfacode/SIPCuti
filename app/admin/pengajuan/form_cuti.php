@@ -57,6 +57,25 @@ error_reporting(0);
             text-align: justify;
             font-size: 16px;
         }
+
+        .parent {
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        .image1 {
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        .image2 {
+            position: absolute;
+            top: 0px;
+            left: 85px;
+
+        }
     </style>
 </head>
 
@@ -221,7 +240,10 @@ error_reporting(0);
                 } else { ?>
 
                     <td align="center">
-                        <img src="../../mahasiswa/pengajuan/img/<?= $result['ttd_ortu']; ?>" width="60" height="60" alt="tanda tangan orang tua mahasiswa">
+                        <div class="parent">
+                            <img src="../../../public/dist/img/materai.jpg" class="image1" width="60" height="60" alt="tanda tangan orang tua mahasiswa">
+                            <img src="../../mahasiswa/pengajuan/img/<?= $result['ttd_ortu']; ?>" class="image2" width="100" height="100">
+                        </div>
                     </td>
                 <?php
                 }
