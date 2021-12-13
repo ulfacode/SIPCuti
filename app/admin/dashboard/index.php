@@ -9,7 +9,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pengajuan Cuti dan Izin Aktif</title>
+    <title>Dashboard</title>
 
     <?php
     include "../../../public/rel.php";
