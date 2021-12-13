@@ -4,8 +4,12 @@ permasalahan:
 
 agar fitur search jadi, modal edit jangan di dalam td
 
+header-> ada include file dari folder config tulisan notif jadi tertutup (tapi bukan)
+sidebar-> multilevel (untuk beralih akun. Kalo udah beralih akun sekali maka tombol sudah tidak ada)
 
 EDIT FOTO DAN TTD suka gagal kalo extensionnya sama
+
+kalo ada
 
 MAHASISWA
 pengajuan
@@ -215,9 +219,30 @@ memperbaiki laporan berdasarkan yang sudah selesai di setujui
 - Menghapus inputan foto dan ttd di tambah data mahasiswa dan pegawai
 - Memperbaiki function tambah data mhs dan pgw
 - memperbaiki required sesuai kebutuhan di edit data mhs dan pgw
+- memperbaiki tampilan dashboard multilevel, memperbaiki link multilevel
+- memperbaiki sidebar untuk beralih akun
+
+19/11/2021
+- Membuat notifikasi di header
+
+22/11/2021
+- Memindah include modal edit dan detail di halaman admin/mahasiswa sehingga di luar kolom
+- Memindah include modal detail di halaman admin/pegawai
+- Memperbaiki cek kosong tidaknya ttd mahasiswa di halaman form cuti dan izin aktif
+
+23-26/11/2021
+-
 
 
+-------------------------
+6/12/2021
+- Memperbaiki cara menampilkan data: tgl_sk dan mengubah nm_jurusan menjadi nm_prodi di halaman laporan admin dan wadir1
 
+11/12/2021
+- memperbaiki alert saat ganti password
+
+13/12/2021
+- Memperbaiki title dashboard admin, doswal, kajur, ketuaakademik, perpus, wadir1
 
 LOADINGNYA LAMA. Misalkan, 
 
@@ -235,6 +260,8 @@ tambah pengajuan:
 - PIKIRKAN LAGI KALO udah ajuin terus ditolak: insert hanya satu kali kecuali udah sampai proses ditolak maka bisa mengajukan lagi
 - sidebar: kalo foto pengguna tidak ada akan default; pake perulangan agar saat edit/tambah foto tidak perlu logout terlebih dahulu untuk menampilkan foto di sidebar
 
+lupa password:
+link - tampilan input lupa password - pengecekan inputan - function - isset - 
 
 
 
