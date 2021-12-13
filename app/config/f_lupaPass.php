@@ -7,6 +7,7 @@ include 'public/PHPMailer/Exception.php';
 include 'public/PHPMailer/PHPMailer.php';
 include 'public/PHPMailer/SMTP.php';
 
+// kirim email dan update token
 function lupa_password($data)
 {
     global $conn;
@@ -30,8 +31,8 @@ function lupa_password($data)
             $mail->isSMTP(); //Send using SMTP
             $mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
             $mail->SMTPAuth = true; //Enable SMTP authentication
-            $mail->Username = 'ulfatunnasikhah49@gmail.com'; //SMTP username
-            $mail->Password = 'Ulfatun2961*'; //SMTP password
+            $mail->Username = 'ulfatunnasikhah29@gmail.com'; //SMTP username
+            $mail->Password = 'ulfamail'; //SMTP password
             $mail->SMTPSecure = 'tls'; //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
             $mail->Port = 587; //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
@@ -63,6 +64,7 @@ function lupa_password($data)
                 return true;
             } else {
                 //Jika PHP Mailer Gagal
+                // echo "<script>console.log('jika PHP Mailer Gagal')</script>";
                 return false;
             }
         }
@@ -80,8 +82,8 @@ function lupa_password($data)
             $mail->isSMTP(); //Send using SMTP
             $mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
             $mail->SMTPAuth = true; //Enable SMTP authentication
-            $mail->Username = 'ulfatunnasikhah49@gmail.com'; //SMTP username
-            $mail->Password = 'Ulfatun2961*'; //SMTP password
+            $mail->Username = 'ulfatunnasikhah29@gmail.com'; //SMTP username
+            $mail->Password = 'ulfamail'; //SMTP password
             $mail->SMTPSecure = 'tls'; //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
             $mail->Port = 587; //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
@@ -116,8 +118,8 @@ function lupa_password($data)
                 return false;
             }
         }
-        // jika berhasil kirim email
-        return true;
+        // jika berhasil update token
+        // return true;
     }
     //jika email tidak ada di database   
     else {
@@ -125,6 +127,7 @@ function lupa_password($data)
     }
 }
 
+// update password
 function ganti_password($data)
 {
     global $conn;
@@ -145,19 +148,39 @@ function ganti_password($data)
 
     // cek password == konfirmasi password tidak
     if ($password != $Repassword) {
-        return false;
+        echo "
+            <script>
+                alert('Konfirmasi Password Berbeda');
+                document.location.href = 'ganti_pass.php?email=$email&token=$token';
+            </script>
+        ";
     } else {
         // jika email ada di tabel mahasiswa dan token ada di tabel mahasiswa sesuai email
         if ((mysqli_num_rows($m) > 0) and ($token == $data_m['token'])) {
             $query = mysqli_query($conn, "UPDATE tb_mahasiswa SET password='$password', token='' WHERE email = '$email'");
-            return mysqli_fetch_array($query);
+            echo "
+            <script>
+                alert('Password berhasil diganti');
+                document.location.href = 'index.php';
+            </script>
+        ";
         }
         // jika email ada di tabel pegawai dan token ada di tabel pegawai sesuai email
         elseif ((mysqli_num_rows($p) > 0) and ($token == $data_p['token'])) {
             $query = mysqli_query($conn, "UPDATE tb_pegawai SET password='$password', token='' WHERE email = '$email'");
-            return mysqli_affected_rows($conn);
+            echo "
+            <script>
+                alert('Password berhasil diganti');
+                document.location.href = 'index.php';
+            </script>
+        ";
         } else {
-            return false;
+            echo "
+            <script>
+                alert('Token tidak bisa digunakan atau email tidak tersedia');
+                document.location.href = 'index.php';
+            </script>
+        ";
         }
     }
 }

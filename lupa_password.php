@@ -12,7 +12,7 @@ if (isset($_POST["lupaPass"])) {
     } else {
         echo "
             <script> 
-                alert('Permintaan gagal!');
+                alert('Permintaan gagal');
                 document.location.href = 'index.php';
             </script>
         ";
@@ -56,22 +56,6 @@ if (isset($_POST["lupaPass"])) {
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password Baru">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Konfirmasi Password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="row">
                         <div class="col-8">
 
@@ -85,12 +69,7 @@ if (isset($_POST["lupaPass"])) {
                 </form>
 
                 <div class="social-auth-links text-center mt-2 mb-3">
-                    <!-- <a href="#" class="btn btn-block btn-primary">
-                        <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-                    </a>
-                    <a href="#" class="btn btn-block btn-danger">
-                        <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-             b       </a> -->
+                    
                 </div>
                 <!-- /.social-auth-links -->
 

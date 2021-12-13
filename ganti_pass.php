@@ -1,15 +1,52 @@
 <?php
 include "app/config/f_lupaPass.php";
 
+
+// function query($query)
+// {
+//     global $conn;
+//     $result = mysqli_query($conn, $query);
+//     $rows = [];
+//     while ($row = mysqli_fetch_assoc($result)) {
+//         $rows[] = $row;
+//     }
+//     return $rows;
+// }
+
+
 $token = $_GET['token'];
 $get_email = $_GET['email'];
 
-// $sql1 = mysqli_query($conn, "SELECT token FROM tb_pegawai WHERE email = '$get_email'");
-// $sql2 = mysqli_query($conn, "SELECT token FROM tb_mahasiswa WHERE email = '$get_email'");
+// $sql1 = query("SELECT token FROM tb_pegawai WHERE email = '$get_email'")[0] ?? NULL;
+
+// if (isset($sql1['token']) == NULL) {
+
+
+//     $sql2 = query("SELECT token FROM tb_mahasiswa WHERE email = '$get_email'")[0] ?? NULL;
+
+//     if (isset($sql2['token']) == NULL) {
+//         echo "
+//          <script>
+//              alert('Token tidak ada!');
+//              document.location.href = 'index.php';
+//          </script>
+//      ";
+//     }
+// }
+
 // $data1 = mysqli_fetch_assoc($sql1);
 // $data2 = mysqli_fetch_assoc($sql2);
 
-// if (($token != $data1['token']) or ($token != $data2['token'])) {
+// if ((mysqli_num_rows($sql1) < 0) or (mysqli_num_rows($sql2) < 0)) {
+//     echo "
+//     <script>
+//         alert('Token tidak bisa digunakan!');
+//         document.location.href = 'index.php';
+//     </script>
+// ";
+// }
+
+// if (($token != $data1['token']) OR ($token != $data2['token'])) {
 //     echo "
 //     <script>
 //         alert('Token tidak bisa digunakan!');
@@ -19,22 +56,8 @@ $get_email = $_GET['email'];
 // }
 
 if (isset($_POST["gantiPass"])) {
-    if (ganti_password($_POST) > 0) {
-        echo "
-            <script>
-                alert('Password berhasil diganti');
-                document.location.href = 'index.php';
-            </script>
-        ";
-    } else {
-        echo "
-            <script> 
-                alert('Password gagal diganti');
-                document.location.href = 'index.php';
-            </script>
-            </script>
-        ";
-    }
+    // manggil function 
+    ganti_password($_POST);
 }
 ?>
 <!DOCTYPE html>
@@ -76,7 +99,7 @@ if (isset($_POST["gantiPass"])) {
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password Baru">
+                        <input type="password" name="password" id="inputPassword3" class="form-control" placeholder="Password Baru">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -84,7 +107,7 @@ if (isset($_POST["gantiPass"])) {
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" name="Repassword" class="form-control" placeholder="Konfirmasi Password">
+                        <input type="password" name="Repassword" id="inputPassword3" class="form-control" placeholder="Konfirmasi Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
