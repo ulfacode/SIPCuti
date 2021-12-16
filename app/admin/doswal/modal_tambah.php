@@ -19,6 +19,7 @@
 
                     <div class="form-group">
                         <label for="nip">NIP/NPAK</label>
+                        <!-- select2 tidak jadi, form control udah bisa buat search -->
                         <select name="nip" class="form-control select2" data-placeholder="Pilih Dosen Wali" style="width: 100%;" required>
                             <option value=""></option>
                             <?php
