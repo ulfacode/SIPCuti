@@ -13,7 +13,7 @@ if (hapus($id) > 0) {
 } else {
     echo "
             <script>
-                alert('Data Gagal Dihapus (periksa tabel child)!');
+                alert('Data Gagal Dihapus!');
                 document.location.href = 'index.php';
             </script>
         ";
