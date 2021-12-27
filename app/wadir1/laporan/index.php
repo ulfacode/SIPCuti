@@ -91,11 +91,19 @@ session_start();
                                                     <td><?php echo $i; ?></td>
                                                     <td><?php echo $row_user['nim'] ?></td>
                                                     <td><?php echo $row_user['nama'] ?></td>
-                                                    <td><?php echo $row_user['nm_jurusan'] ?></td>
+                                                    <td><?php echo $row_user['nm_prodi'] ?></td>
                                                     <td><?php echo $row_user['jk'] ?></td>
                                                     <td><?php echo $row_user['thn_angkatan'] ?></td>
                                                     <td><?php echo $row_user['no_sk'] ?></td>
-                                                    <td><?php echo $row_user['tgl_sk'] ?></td>
+                                                    <td>
+                                                        <?php
+                                                        if ($row_user['tgl_sk'] > 0) {
+                                                            echo $row_user['tgl_sk'];
+                                                        } else {
+                                                            echo "";
+                                                        }
+                                                        ?>
+                                                    </td>
                                                     <td><?php echo $row_user['thn_akademik'] ?></td>
                                                     <td><?php echo $row_user['jns_pengajuan'] ?></td>
                                                 </tr>
