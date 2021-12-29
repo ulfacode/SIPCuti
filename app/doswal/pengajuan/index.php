@@ -205,11 +205,10 @@ $nip_npak = $_SESSION['nip_npak'];
                                                                         } else { ?>
                                                                         SK Aktif
                                                                 </a>
-                                                        <?php }
+                                                                    <?php }
                                                                     } ?>
                                                             </div>
                                                         </div>
-
 
 
                                                     </td>
