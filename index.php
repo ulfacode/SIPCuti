@@ -214,7 +214,7 @@ if (isset($_POST['login'])) {
                 <!-- /.social-auth-links -->
 
                 <p class="mb-1">
-                    <a href="lupa_password.php">I forgot my password</a>
+                    <a href="lupa_password.php">Lupa password</a>
                 </p>
                 <!-- <p class="mb-0">
                     <a href="register.html" class="text-center">Register a new membership</a>
