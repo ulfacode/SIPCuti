@@ -65,7 +65,7 @@ $nip_npak = $_SESSION['nip_npak'];
 
                                 <?php
 
-                                $user = mysqli_query($conn, "SELECT m.nim, m.nama, p.id_pengajuan, p.jns_pengajuan, p.tgl_pengajuan, p.semester_cuti, p.thn_akademik, p.alasan, p.status, p.upload_sk  FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_kajur AS k WHERE m.nim = p.nim AND m.id_kajur=k.id_kajur AND k.nip_npak='$nip_npak' ORDER BY tgl_pengajuan ASC");
+                                $user = mysqli_query($conn, "SELECT m.nim, m.nama, p.id_pengajuan, p.jns_pengajuan, p.tgl_pengajuan, p.semester_cuti, p.thn_akademik, p.alasan, p.status, p.lampiran, p.upload_sk FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_kajur AS k WHERE m.nim = p.nim AND m.id_kajur=k.id_kajur AND k.nip_npak='$nip_npak' ORDER BY tgl_pengajuan ASC");
                                 $row_user = $user->fetch_assoc();
 
 
@@ -156,30 +156,67 @@ $nip_npak = $_SESSION['nip_npak'];
                                                             <i class="fa fa-download"></i> SK
                                                         </a> -->
 
-                                                        <?php if (empty($row_user['upload_sk'])) { //cek data
-                                                        ?>
-                                                            <!-- warna akan hitam jika tidak ada data -->
-                                                            <a class="btn btn-success btn-app" onclick="alert('Oopss... SK belum terbit. Harap bersabar ya!')"><i class="fa fa-download"></i>
-                                                                <?php if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
-                                                                    SK Cuti
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-success">
+                                                                <!-- <i class="fa fa-file-alt"></i>  -->
+                                                                <i class="fa fa-tools"></i>
+                                                                <!-- Aksi -->
+                                                            </button>
+                                                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                                                                <span class="sr-only">Toggle Dropdown</span>
+                                                            </button>
+                                                            <div class="dropdown-menu" role="menu">
+                                                                <!-- <a class="btn btn-primary dropdown-item" data-toggle="modal" data-target="#modalEdit<?php echo $row_user['id_pengajuan']; ?>">
+                                                                        <i class="fa fa-edit"></i>
+                                                                        Edit
+                                                                    </a> -->
+                                                                <?php
+                                                                if ($row_user['jns_pengajuan'] == 'Cuti') {
+
+                                                                ?>
+                                                                    <a class="dropdown-item <?php echo $tombol; ?>" href="#">
+                                                                        <i class="fa fa-download"></i> Form Cuti
+                                                                    </a>
+                                                                    <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">
+                                                                        <i class="fa fa-download"></i> Lampiran
+                                                                    </a>
                                                                 <?php
                                                                 } else { ?>
-                                                                    SK Aktif
-                                                            </a>
-                                                        <?php }
-                                                            } else {
-                                                        ?>
-                                                        <!-- warna akan ungu jika ada data -->
-                                                        <a class="btn btn-success btn-app" href="../../admin/pengajuan/surat_keputusan/<?php echo $row_user['upload_sk'] ?>">
-                                                            <i class="fa fa-download"></i>
-                                                            <?php if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
-                                                                SK Cuti
-                                                            <?php
-                                                                } else { ?>
-                                                                SK Aktif
-                                                        </a>
-                                                <?php }
-                                                            } ?>
+                                                                    <a class="dropdown-item <?php echo $tombol; ?>" href="#">
+                                                                        <i class="fa fa-download"></i> Form Aktif
+                                                                    </a>
+                                                                    <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">
+                                                                        <i class="fa fa-download"></i> Lampiran
+                                                                    </a>
+                                                                <?php
+                                                                }
+                                                                ?>
+
+                                                                <?php if (empty($row_user['upload_sk'])) { //cek data
+                                                                ?>
+                                                                    <a class="dropdown-item" onclick="alert('Oopss... SK belum terbit. Harap bersabar ya!')"><i class="fa fa-download"></i>
+                                                                        <?php if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
+                                                                            SK Cuti
+                                                                        <?php
+                                                                        } else { ?>
+                                                                            SK Aktif
+                                                                    </a>
+                                                                <?php }
+                                                                    } else {
+                                                                ?>
+                                                                <a class="dropdown-item" href="../../admin/pengajuan/surat_keputusan/<?php echo $row_user['upload_sk'] ?>">
+                                                                    <i class="fa fa-download"></i>
+                                                                    <?php if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
+                                                                        SK Cuti
+                                                                    <?php
+                                                                        } else { ?>
+                                                                        SK Aktif
+                                                                </a>
+                                                                    <?php }
+                                                                    } ?>
+                                                            </div>
+                                                        </div>
+
                                                     </td>
                                                 </tr>
                                             <?php
