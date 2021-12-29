@@ -38,7 +38,7 @@ function lupa_password($data)
 
             //Recipients
             //Kalau ini pilihan, silahkan sesuai keinginan anda....
-            $mail->setFrom('ulfatunnasikhah49@gmail.com', 'Localhost');
+            $mail->setFrom('ulfatunnasikhah29@gmail.com', 'Localhost');
             $mail->addAddress($email, ''); //Add a recipient
             /*
             $mail->addAddress('ellen@example.com'); //Name is optional
@@ -89,7 +89,7 @@ function lupa_password($data)
 
             //Recipients
             //Kalau ini pilihan, silahkan sesuai keinginan anda....
-            $mail->setFrom('ulfatunnasikhah49@gmail.com', 'SistemPengajuanCuti');
+            $mail->setFrom('ulfatunnasikhah29@gmail.com', 'SistemPengajuanCuti');
             $mail->addAddress($email, ''); //Add a recipient
             /*
             $mail->addAddress('ellen@example.com'); //Name is optional
@@ -115,7 +115,13 @@ function lupa_password($data)
                 return true;
             } else {
                 //Jika PHP Mailer Gagal
-                return false;
+                // return false;
+                echo "
+            <script>
+                alert('PHP Mailer gagal mengirim email!');
+                document.location.href = 'index.php';
+            </script>
+            ";
             }
         }
         // jika berhasil update token
@@ -123,7 +129,13 @@ function lupa_password($data)
     }
     //jika email tidak ada di database   
     else {
-        return false;
+        // return false;
+        echo "
+            <script>
+                alert('Email tidak ada!');
+                document.location.href = 'index.php';
+            </script>
+            ";
     }
 }
 
