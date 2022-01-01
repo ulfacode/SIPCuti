@@ -167,7 +167,7 @@ $nip_npak = $_SESSION['nip_npak'];
                                                                 if ($row_user['jns_pengajuan'] == 'Cuti') {
 
                                                                 ?>
-                                                                    <a class="dropdown-item <?php echo $tombol; ?>" href="#">
+                                                                    <a class="dropdown-item <?php echo $tombol; ?>" href="../../admin/pengajuan/form_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>">
                                                                         <i class="fa fa-download"></i> Form Cuti
                                                                     </a>
                                                                     <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">
@@ -175,7 +175,7 @@ $nip_npak = $_SESSION['nip_npak'];
                                                                     </a>
                                                                 <?php
                                                                 } else { ?>
-                                                                    <a class="dropdown-item <?php echo $tombol; ?>" href="#">
+                                                                    <a class="dropdown-item <?php echo $tombol; ?>" href="../../admin/pengajuan/form_aktif.php?id=<?php echo $row_user['id_pengajuan']; ?>">
                                                                         <i class="fa fa-download"></i> Form Aktif
                                                                     </a>
                                                                     <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">
@@ -205,7 +205,7 @@ $nip_npak = $_SESSION['nip_npak'];
                                                                         } else { ?>
                                                                         SK Aktif
                                                                 </a>
-                                                                    <?php }
+                                                        <?php }
                                                                     } ?>
                                                             </div>
                                                         </div>

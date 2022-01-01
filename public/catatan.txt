@@ -7,7 +7,7 @@ agar fitur search jadi, modal edit jangan di dalam td
 header-> ada include file dari folder config tulisan notif jadi tertutup (tapi bukan)
 sidebar-> multilevel (untuk beralih akun. Kalo udah beralih akun sekali maka tombol sudah tidak ada)
 
-EDIT FOTO DAN TTD suka gagal kalo extensionnya sama
+EDIT FOTO DAN TTD suka gagal kalo extensionnya sama : done
 
 kalo ada
 
@@ -243,6 +243,36 @@ memperbaiki laporan berdasarkan yang sudah selesai di setujui
 
 13/12/2021
 - Memperbaiki title dashboard admin, doswal, kajur, ketuaakademik, perpus, wadir1
+- belajar hosting
+
+14/12/2021
+- memperbaiki alert saat kirim email
+
+24/12/2021
+- menambah materai di form aktif
+- menambah on delete cascade
+- memperbaiki alert gagal hapus
+
+25/12/2021
+- memperbaiki pengecekan saat tambah data pengajuan cuti dan izin aktif: jika ttd belum ada maka gagal
+
+27/12/2021
+- memperbaiki pengecekan saat verifikasi terim dan tolak data pengajuan cuti dan izin aktif: jika ttd belum ada maka gagal
+
+29/12/2021
+catatan pak faiz:
+- ganti tulisan i forgot my password ---------------- done
+- ganti login nya: pakai nim/nidn/nip
+- pembuatan akun mahasiswa memberatkan admin tidak; (pass dan username a.k.a data mahasiswa di import username dan pass pakai nim saja)
+- yang multilevel dibedakan saat login misal doswal pakai nidn, kajur pakai nip
+- bot telegram: notif ke mhs perjalanan pengajuan (kalau ada yg acc/tolak masuk ke pesan telegram)
+- dokumen pendukung ditampilkan di yg verifikasi ------------------- doswal, kajur, wadir1
+
+
+- memperbaiki select di halaman pengajuan doswal, kajur, wadir1
+
+1/1/2022
+- memperbaiki form aktif dan cuti
 
 LOADINGNYA LAMA. Misalkan, 
 
