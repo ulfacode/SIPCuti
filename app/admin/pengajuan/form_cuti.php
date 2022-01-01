@@ -235,14 +235,14 @@ error_reporting(0);
 
             <tr>
                 <?php
-                if (empty($result['ttd_ortu'])) {
-                    $result['ttd_ortu'] = "";
-                } else { ?>
+                if (empty($result['ttd_ortu'])) { ?>
+                    <td align="center" width="60" height="60"></td>
+                <?php } else { ?>
 
                     <td align="center">
                         <div class="parent">
                             <img src="../../../public/dist/img/materai.jpg" class="image1" width="60" height="60" alt="tanda tangan orang tua mahasiswa">
-                            <img src="../../mahasiswa/pengajuan/img/<?= $result['ttd_ortu']; ?>" class="image2" width="100" height="100">
+                            <img src="../../mahasiswa/pengajuan/img/<?= $result['ttd_ortu']; ?>" class="image2" width="100" height="70">
                         </div>
                     </td>
                 <?php
@@ -250,9 +250,9 @@ error_reporting(0);
                 ?>
                 <td></td>
                 <?php
-                if (empty($ttd)) {
-                    $ttd = "";
-                } else { ?>
+                if (empty($ttd)) { ?>
+                    <td align="center" width="60" height="60"></td>
+                <?php } else { ?>
                     <td align="center"><img src="../mahasiswa/img/<?= $ttd ?>" width="60" height="60" alt="tanda tangan mahasiswa"></td>
                 <?php
                 }
@@ -284,9 +284,27 @@ error_reporting(0);
                 <td></td>
             </tr>
             <tr>
-                <td align="center"><img src="../pegawai/img/<?= $ttd_kajur; ?>" width="60" height="60" alt="tanda tangan kajur"></td>
+                <?php
+                if (($result['status']) > '1') {
+                ?>
+                    <td align="center"><img src="../pegawai/img/<?= $ttd_kajur; ?>" width="60" height="60" alt="tanda tangan kajur"></td>
+                <?php
+                } else { ?>
+                    <td align="center" width="60" height="60"></td>
+                <?php
+                }
+                ?>
                 <td></td>
-                <td align="center"><img src="../pegawai/img/<?= $ttd_doswal; ?>" width="60" height="60" alt="tanda tangan doswal"></td>
+                <?php
+                if (!(is_null(($result['status'])))) {
+                ?>
+                    <td align="center"><img src="../pegawai/img/<?= $ttd_doswal; ?>" width="60" height="60" alt="tanda tangan doswal"></td>
+                <?php
+                } else { ?>
+                    <td align="center" width="60" height="60"></td>
+                <?php
+                }
+                ?>
             </tr>
             <tr>
                 <td align="center"><?= $nama_kajur; ?></td>
