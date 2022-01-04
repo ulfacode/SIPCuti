@@ -1,0 +1,229 @@
+[33mcommit 223a497e22dd68c8ae828404eddb4f6e5a7ad3b2[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31mcuti/main[m[33m)[m
+Merge: f4155be 93cea7c
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Tue Nov 9 10:08:40 2021 +0700
+
+    Merge branch 'main' of https://github.com/ulfacode/SIPCuti
+
+[33mcommit f4155bef34e62c678ed6e1745ac78bf7c84bcfdd[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Tue Nov 9 09:37:26 2021 +0700
+
+    Membuat enable/disabled tombol form, upload sk, generate sk pengajuan hanya saat status=4 (admin)
+
+[33mcommit 28cdd538135a686c9cf0ca68fc617e13622566ab[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Tue Nov 9 09:35:29 2021 +0700
+
+    Menambah alert jika cek berkas SK kosong
+
+[33mcommit 3496163454b8964236f15380eb8e1a3f33433c13[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Tue Nov 9 09:23:08 2021 +0700
+
+    Memperbaiki tampilan button kolom aksi di tabel  pengajuan mahasiswa
+
+[33mcommit 93cea7c25e5ca029855f14c49bef8ee1ca847c90[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Tue Nov 9 09:23:08 2021 +0700
+
+    Memperbaiki tampilan button di tabel aksi pengajuan mahasiswa
+
+[33mcommit 14c004c9f21e0fc95cfa3f33a214ad3e2f363b19[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Mon Nov 8 08:27:14 2021 +0700
+
+    modif apa ya
+
+[33mcommit 37d49a9dfa625c227b01ea53e77055599f6de4d4[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Sat Nov 6 18:07:22 2021 +0700
+
+    Menambah status ke tabel verifikasi
+
+[33mcommit 0b65c7446e64075568be7a3d0578ae9e45238baa[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Fri Nov 5 08:17:23 2021 +0700
+
+    Memperbaiki session di sidebar untuk doswal dan kajur
+
+[33mcommit 4c17948b0be22338af7747f5a36ce9190f5a18bb[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Thu Nov 4 10:52:38 2021 +0700
+
+    cuma hapus line kosong
+
+[33mcommit 1f3804ae9b6606d9d3d2b21b4687ce8dd2391a35[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Thu Nov 4 10:34:07 2021 +0700
+
+    Memperbaiki alert
+
+[33mcommit d879741e7e89384285bfc33caced9b9d4ad96c07[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Thu Nov 4 10:31:27 2021 +0700
+
+    1. Memperbaiki alur untuk menampilkan sidebar yang dimiliki oleh dosen wali dan ketua jurusan
+    2. Menambah button untuk beralih akun
+
+[33mcommit 1b32897132b4df819db386e876c48e83de961eb3[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Thu Nov 4 10:26:56 2021 +0700
+
+    Memperbaiki level untuk user yang dipilih
+
+[33mcommit f2966700e762a2f1b85e66614ff11a9f0bfbc60e[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Thu Nov 4 10:01:01 2021 +0700
+
+    Menghapus komentar yang digunakan
+
+[33mcommit 3933079ebc1a677bdb7c07049c6217be2a96adb9[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Wed Nov 3 18:07:20 2021 +0700
+
+    Menghapus komentar yang tidak digunakan
+
+[33mcommit 99601d4ae20f77bea378c1bf9745f3fa3c4c70d7[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Wed Nov 3 17:30:54 2021 +0700
+
+    Menambah tambah prodi di add data pengajuan aktif
+
+[33mcommit 874a1faf1a75ab5136e0c99f1b9ca6e1868cee62[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Wed Nov 3 16:57:20 2021 +0700
+
+    Menambah aturan pengajuan
+
+[33mcommit ccfd698a5ebedd2376cdd34dbddaf19132411690[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Mon Nov 1 22:21:58 2021 +0700
+
+    Menambah kolom detail status, membuat tampilan detail status
+
+[33mcommit 210ac5a1afc6f3bdb97811107e2c987159b1c3fa[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Mon Nov 1 21:12:54 2021 +0700
+
+    Menambah option untuk nama prodi yang sudah dimasukin database
+
+[33mcommit 96f121bfc6e6a516ac1aecdd48641bcbfaf75e52[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Mon Nov 1 21:09:24 2021 +0700
+
+    membuat function untuk mengupload file SK dan membuat function untuk memasukkan file sk ke database
+
+[33mcommit 13db7af94d00dce3d8141d128584f28f73963dd8[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Mon Nov 1 21:07:44 2021 +0700
+
+    Membuat file modal_up_sk dan membuat modal untuk upload/update/cek berkas SK
+
+[33mcommit c4903f35514e1a4ef91bcb6772e4b0dd14479ad7[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Mon Nov 1 21:05:42 2021 +0700
+
+    Membuat link untuk upload/update file sk
+
+[33mcommit 7afbe93e535f9e8492227c0187aa80ebf65f5514[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Mon Nov 1 21:04:26 2021 +0700
+
+    Membuat folder untuk menyimpan file sk
+
+[33mcommit 35d42b998744c7e70c2eda50bfed1cded735ce45[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Fri Oct 29 18:00:53 2021 +0700
+
+    Tambah data
+
+[33mcommit ee20f2d9b59e99daa45c597373815b89817306ad[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Fri Oct 29 17:57:39 2021 +0700
+
+    Memperbaiki tampilan foto di halaman profil
+
+[33mcommit f39d1ab38c25bf871bb4feb6dfea7034851077e3[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Fri Oct 29 17:56:09 2021 +0700
+
+    Memperbaiki tampilan foto di halaman profil
+
+[33mcommit d2b38da3c5a57ffe7469f1a8154e5faa79d96706[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Fri Oct 29 17:54:51 2021 +0700
+
+    Memperbaiki tampilan foto di sidebar dan halaman profil
+
+[33mcommit c6de5e544fe5cb895745d3a672922399083b2170[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Fri Oct 29 17:52:19 2021 +0700
+
+    Membuat halaman multilevel
+
+[33mcommit b3b3e9d82e1b94227b5907b116d6e81717244155[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Fri Oct 29 17:50:45 2021 +0700
+
+    Menghapus tulisan yg tidak digunakan
+
+[33mcommit 97738c8de29ad651ba19ab980ec113839d467b72[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Wed Oct 27 13:55:25 2021 +0700
+
+    Memperbaiki link cek berkas lampiran dan ttd
+
+[33mcommit f34c2ddfd7d311fe225e6f591e6d89e093686588[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Wed Oct 27 13:53:12 2021 +0700
+
+    Memperbaiki link download
+
+[33mcommit 11812ab32bc1e7bbfab57b2a71c2e8498388a18a[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Wed Oct 27 13:48:58 2021 +0700
+
+    Menambah insert tgl di function terima dan tolak pengajuan; menambah uniqid() di upload foto dan ttd
+
+[33mcommit 8aedd402164240d4dfa28f3808f74cc7699304ca[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Wed Oct 27 13:35:07 2021 +0700
+
+    Menambah tombol download sk yang sudah jadi
+
+[33mcommit a8e38ee62b540714fa5045f11d70ac12e341ecfd[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Wed Oct 27 13:34:15 2021 +0700
+
+    Memperbaiki sk dan formulir
+
+[33mcommit 03f26629496f649a5b3bedd5c85d1bad30db98c9[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Mon Oct 25 11:04:38 2021 +0700
+
+    Membuat tombol verifikasi
+
+[33mcommit bff22d3892d59ebe910626b7c68dbdc7376e59ff[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Mon Oct 25 11:03:21 2021 +0700
+
+    Menambah function terima dan tolak pengajuan
+
+[33mcommit f004621959ded9560f1702e0e7238c71d86882b3[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Mon Oct 25 10:47:55 2021 +0700
+
+    membuat file terima_p.php untuk menerima pengajuan dan tolak_p.php untuk menolak pengajuan (verifikasi)
+
+[33mcommit ce5dc5b135a3fb433995a08a9f6b0969213fc4eb[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Mon Oct 25 10:40:48 2021 +0700
+
+    memperbaiki rule download sk di perpus dan keuangan
+
+[33mcommit 21d7d8fd0adbefb771435a15d9050dfaf660b631[m
+Author: Ulfatun Nasikhah <ulfatunnasikhah49@gmail.com>
+Date:   Sun Oct 24 08:39:48 2021 +0700
+
+    First commit

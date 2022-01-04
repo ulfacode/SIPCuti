@@ -84,6 +84,7 @@ $nip_npak = $_SESSION['nip_npak'];
                                                 <th>Tahun Akademik</th>
                                                 <th>Status</th>
                                                 <th>Verifikasi</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
 
@@ -145,6 +146,39 @@ $nip_npak = $_SESSION['nip_npak'];
                                                             echo "Terverifikasi";
                                                         }
                                                         ?>
+                                                    </td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-success">
+                                                                <i class="fa fa-tools"></i>
+                                                            </button>
+                                                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                                                                <span class="sr-only">Toggle Dropdown</span>
+                                                            </button>
+                                                            <div class="dropdown-menu" role="menu">
+                                                                <?php
+                                                                if ($row_user['jns_pengajuan'] == 'Cuti') {
+
+                                                                ?>
+                                                                    <a class="dropdown-item <?php echo $tombol; ?>" href="#">
+                                                                        <i class="fa fa-download"></i> Form Cuti
+                                                                    </a>
+                                                                    <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">
+                                                                        <i class="fa fa-download"></i> Lampiran
+                                                                    </a>
+                                                                <?php
+                                                                } else { ?>
+                                                                    <a class="dropdown-item <?php echo $tombol; ?>" href="#">
+                                                                        <i class="fa fa-download"></i> Form Aktif
+                                                                    </a>
+                                                                    <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">
+                                                                        <i class="fa fa-download"></i> Lampiran
+                                                                    </a>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             <?php
