@@ -85,6 +85,7 @@
             <!-- pemilihan sidebar berdasarkan level -->
             <?php
             $level = $_SESSION['level'];
+            $_SESSION['dua'] = "";
             if ($level == "Dosen Wali dan Ketua Jurusan") {
                 $level = $_GET["lvl"];
                 $_SESSION['dua'] = "Dosen Wali dan Ketua Jurusan";
