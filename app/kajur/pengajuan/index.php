@@ -166,10 +166,6 @@ $nip_npak = $_SESSION['nip_npak'];
                                                                 <span class="sr-only">Toggle Dropdown</span>
                                                             </button>
                                                             <div class="dropdown-menu" role="menu">
-                                                                <!-- <a class="btn btn-primary dropdown-item" data-toggle="modal" data-target="#modalEdit<?php echo $row_user['id_pengajuan']; ?>">
-                                                                        <i class="fa fa-edit"></i>
-                                                                        Edit
-                                                                    </a> -->
                                                                 <?php
                                                                 if ($row_user['jns_pengajuan'] == 'Cuti') {
 
