@@ -1,15 +1,17 @@
 <?php
 include "../../config/koneksi.php";
-// include "../halaman.php";
+include "../halaman.php";
 
+// fungsi isset () digunakan untuk memeriksa apakah suatu variabel sudah diatur atau belum
 if (!isset($_SESSION["nama"])) {
     header("Location: ../../../index.php");
 }
 
-// if ($level_halaman != $_SESSION['level']) {
-//     session_destroy();
-//     header("Location: ../../../index.php");
-// }
+// kalau pake ini yang memiliki dua jabatan tidak bisa masuk
+if ($level_halaman != $_SESSION['level']) {
+    session_destroy();
+    header("Location: ../../../index.php");
+}
 
 // if ($_SESSION['level'] == 'Dosen Wali dan Ketua Jurusan' or $_SESSION['level'] == 'Ketua Jurusan' or $_SESSION['level'] == 'Dosen Wali') {
 
