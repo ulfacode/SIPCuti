@@ -301,7 +301,7 @@ if (isset($_POST["up_SK"])) {
                                                                     //     $tombol = "disabled";
                                                                     // }
                                                                 ?>
-                                                                    <a class="dropdown-item <?php echo $tombol; ?>" href="form_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>">
+                                                                    <a class="dropdown-item" href="form_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>">
                                                                         <i class="fa fa-download"></i> Form Cuti
 
                                                                     </a>
@@ -316,7 +316,7 @@ if (isset($_POST["up_SK"])) {
                                                                     </a>
                                                                 <?php
                                                                 } else { ?>
-                                                                    <a class="dropdown-item <?php echo $tombol; ?>" href="form_aktif.php?id=<?php echo $row_user['id_pengajuan']; ?>">
+                                                                    <a class="dropdown-item" href="form_aktif.php?id=<?php echo $row_user['id_pengajuan']; ?>">
                                                                         <i class="fa fa-download"></i> Form Aktif
                                                                     </a>
                                                                     <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">
