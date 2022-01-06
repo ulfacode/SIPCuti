@@ -159,6 +159,7 @@ if (isset($_POST["up_SK"])) {
                                                         } elseif ($row_user['status'] == "5") {
                                                             $stt = "Ditolak";
                                                             $warna = 'orange';
+                                                            $tombol = 'disabled';
                                                         } else {
                                                             $stt = "Status not found";
                                                             $warna = '';
@@ -297,10 +298,8 @@ if (isset($_POST["up_SK"])) {
                                                                     </a> -->
                                                                 <?php
                                                                 if ($row_user['jns_pengajuan'] == 'Cuti') {
-                                                                    // if ($row_user['status'] != "4") {
-                                                                    //     $tombol = "disabled";
-                                                                    // }
                                                                 ?>
+                                                                    <!-- karena form cuti dan aktif bisa dilihat dari awal maka tidak di disabled -->
                                                                     <a class="dropdown-item" href="form_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>">
                                                                         <i class="fa fa-download"></i> Form Cuti
 
