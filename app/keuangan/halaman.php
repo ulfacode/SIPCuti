@@ -1,3 +1,3 @@
 <?php
 
-$level_halaman = "Keuangan";
+$level_halaman = "Bagian Keuangan";
