@@ -302,7 +302,6 @@ if (isset($_POST["up_SK"])) {
                                                                     <!-- karena form cuti dan aktif bisa dilihat dari awal maka tidak di disabled -->
                                                                     <a class="dropdown-item" href="form_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>">
                                                                         <i class="fa fa-download"></i> Form Cuti
-
                                                                     </a>
                                                                     <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">
                                                                         <i class="fa fa-download"></i> Lampiran
@@ -310,6 +309,7 @@ if (isset($_POST["up_SK"])) {
                                                                     <a class="dropdown-item <?php echo $tombol; ?>" href="sk_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>">
                                                                         <i class="fa fa-download"></i> Generate SK
                                                                     </a>
+                                                                    <!-- jika pengajuan belum selesai diverifikasi maka tombol tidak aktif -->
                                                                     <a class="dropdown-item <?php echo $tombol; ?>" data-toggle="modal" data-target="#uploadSKcuti">
                                                                         <i class="fa fa-upload"></i> Upload SK
                                                                     </a>
@@ -324,6 +324,7 @@ if (isset($_POST["up_SK"])) {
                                                                     <a class="dropdown-item <?php echo $tombol; ?>" href="sk_aktif.php?id=<?php echo $row_user['id_pengajuan']; ?>">
                                                                         <i class="fa fa-download"></i> Generate SK
                                                                     </a>
+                                                                    <!-- jika pengajuan belum selesai diverifikasi maka tombol tidak aktif -->
                                                                     <a class="dropdown-item <?php echo $tombol; ?>" data-toggle="modal" data-target="#uploadSKaktif">
                                                                         <i class="fa fa-upload"></i> Upload SK
                                                                     </a>
