@@ -68,6 +68,7 @@ if ($level_halaman != $_SESSION['level']) {
 
         <!-- Notifications Dropdown Menu -->
         <?php
+        // notifikasi admin
         if ($_SESSION['level'] == 'Administrator') {
 
             $jumlah_c = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan WHERE status = '2' AND jns_pengajuan = 'Cuti'");
@@ -95,8 +96,9 @@ if ($level_halaman != $_SESSION['level']) {
                 </div>
             </li>
         <?php
+            // notifikasi doswal
         } elseif ($_SESSION['level'] == 'Dosen Wali') {
-            $jumlah = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan AS p, tb_mahasiswa AS m, tb_doswal AS d, tb_pegawai AS pgw WHERE p.nim = m.nim AND m.id_doswal=d.id_doswal AND d.nip_npak=pgw.nip_npak AND pgw.nip_npak='$_SESSION[nip_npak]' AND p.status = ''");
+            $jumlah = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan AS p, tb_mahasiswa AS m, tb_doswal AS d, tb_pegawai AS pgw WHERE p.nim = m.nim AND m.id_doswal=d.id_doswal AND d.nip_npak=pgw.nip_npak AND pgw.nip_npak='$_SESSION[nip_npak]' AND p.status IS NULL");
             $hasil = mysqli_fetch_array($jumlah);
 
             $total = $hasil['jml'];
@@ -118,6 +120,7 @@ if ($level_halaman != $_SESSION['level']) {
                 </div>
             </li>
         <?php
+            // notifikasi kajur
         } elseif ($_SESSION['level'] == 'Ketua Jurusan') {
             $jumlah = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan AS p, tb_mahasiswa AS m, tb_kajur AS k, tb_pegawai AS pgw WHERE p.nim = m.nim AND m.id_kajur=k.id_kajur AND k.nip_npak=pgw.nip_npak AND pgw.nip_npak='$_SESSION[nip_npak]' AND p.status = '1'");
             $hasil = mysqli_fetch_array($jumlah);
@@ -141,6 +144,7 @@ if ($level_halaman != $_SESSION['level']) {
                 </div>
             </li>
         <?php
+            // notifikasi wadir1
         } elseif ($_SESSION['level'] == 'Wakil Direktur 1') {
             $jumlah = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan WHERE status = '2' AND jns_pengajuan = 'Izin Aktif'");
             $hasil = mysqli_fetch_array($jumlah);
