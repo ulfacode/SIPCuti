@@ -5,7 +5,7 @@ $query     = mysqli_query($conn, "SELECT * FROM tb_pengajuan WHERE id_pengajuan=
 $result    = mysqli_fetch_array($query);
 if ($result['nim']) {
 
-    $sql = "select * from tb_mahasiswa";
+    $sql = "select * from tb_mahasiswa  where nim = '$result[nim]'";
     $hasil = mysqli_query($conn, $sql);
     while ($data = mysqli_fetch_array($hasil)) {
         $nim = $data['nim'];
