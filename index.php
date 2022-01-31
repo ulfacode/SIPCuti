@@ -3,20 +3,20 @@
 include 'app/config/koneksi.php';
 
 if (isset($_POST['login'])) {
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
 
     // $login = mysqli_query($conn, "SELECT * FROM tb_mahasiswa AS m, tb_pegawai AS p  WHERE (m.username = '$username' AND m.password= '$password') OR (p.username = '$username' AND p.password= '$password')");
     $loginM = mysqli_query($conn, "SELECT *
                                     FROM tb_mahasiswa 
-                                    WHERE username = '$username'");
+                                    WHERE email = '$email'");
     $cekM = mysqli_num_rows($loginM);
 
 
     $loginP = mysqli_query($conn, "SELECT *
                                     FROM tb_pegawai 
-                                    WHERE username = '$username'");
+                                    WHERE email = '$email'");
     $cekP = mysqli_num_rows($loginP);
 
 
@@ -172,10 +172,10 @@ if (isset($_POST['login'])) {
                 <!-- <p class="login-box-msg">Login untuk memulai</p> -->
                 <form action="" method="post">
                     <div class="input-group mb-3">
-                        <input type="text" name="username" class="form-control" placeholder="Username">
+                        <input type="text" name="email" class="form-control" placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-user"></span>
+                                <span class="fas fa-envelope"></span>
                             </div>
                         </div>
                     </div>
