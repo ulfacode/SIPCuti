@@ -7,24 +7,20 @@ if (!isset($_SESSION["nama"])) {
     header("Location: ../../../index.php");
 }
 
-// kalau pake ini yang memiliki dua jabatan tidak bisa masuk
+// saat masuk ke halaman dosen wali di cek session level masuknya siapa
+// apabila dosen wali dan ketua jurusan maka session level nya diganti ke variabel lvl yang didapatkan dari multi_level.php
+if ($_SESSION['level'] == "Dosen Wali dan Ketua Jurusan") {
+    $_SESSION['level'] = $_GET["lvl"];
+    $_SESSION['dua'] = "Dosen Wali dan Ketua Jurusan"; //untuk sidebar beralih akun
+}
+
+// pengecekan session level apakah sesuai dengan level yang ada di folder tersebut atau bukan
 if ($level_halaman != $_SESSION['level']) {
     session_destroy();
     header("Location: ../../../index.php");
 }
 
-// if ($_SESSION['level'] == 'Dosen Wali dan Ketua Jurusan' or $_SESSION['level'] == 'Ketua Jurusan' or $_SESSION['level'] == 'Dosen Wali') {
 
-//     if ($level_halaman != 'Ketua Jurusan' or $level_halaman != 'Dosen Wali') {
-//         session_destroy();
-//         header("Location: ../../../index.php");
-//     }
-// } else {
-//     if ($level_halaman != $_SESSION['level']) {
-//         session_destroy();
-//         header("Location: ../../../index.php");
-//     }
-// }
 
 ?>
 <!-- Navbar -->
