@@ -262,17 +262,23 @@ memperbaiki laporan berdasarkan yang sudah selesai di setujui
 29/12/2021
 catatan pak faiz:
 - ganti tulisan i forgot my password ---------------- done
-- ganti login nya: pakai nim/nidn/nip
+- ganti login nya: pakai nim/nidn/nip --------------- done
 - pembuatan akun mahasiswa memberatkan admin tidak; (pass dan username a.k.a data mahasiswa di import username dan pass pakai nim saja)
 - yang multilevel dibedakan saat login misal doswal pakai nidn, kajur pakai nip
 - bot telegram: notif ke mhs perjalanan pengajuan (kalau ada yg acc/tolak masuk ke pesan telegram)
-- dokumen pendukung ditampilkan di yg verifikasi ------------------- doswal, kajur, wadir1
+- dokumen pendukung ditampilkan di yg verifikasi ------------------- doswal, kajur, wadir1 done
 
+
+############ barcode? alasan tolak verifikasi? ################
 
 - memperbaiki select di halaman pengajuan doswal, kajur, wadir1
 
 1/1/2022
 - memperbaiki form aktif dan cuti
+
+6/1/2022
+- Memperbaiki tombol form cuti menjadi enable
+- membuat tombol menjadi disabled saat pengajuan ditolak
 
 LOADINGNYA LAMA. Misalkan, 
 
