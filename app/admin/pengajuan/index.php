@@ -21,6 +21,24 @@ if (isset($_POST["up_SK"])) {
         ";
     }
 }
+
+if (isset($_POST["data_SK"])) {
+    if (dataSK($_POST) > 0) {
+        echo "
+            <script>
+                alert('Data Berhasil Diperbarui!');
+                document.location.href = 'index.php';
+            </script>
+        ";
+    } else {
+        echo "
+            <script>
+                alert('Data Gagal Diperbarui!');
+                document.location.href = 'index.php';
+            </script>
+        ";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -310,7 +328,7 @@ if (isset($_POST["up_SK"])) {
                                                                         <i class="fa fa-download"></i> Generate SK
                                                                     </a>
                                                                     <!-- jika pengajuan belum selesai diverifikasi maka tombol tidak aktif -->
-                                                                    <a class="dropdown-item <?php echo $tombol; ?>" data-toggle="modal" data-target="#uploadSKcuti">
+                                                                    <a class="dropdown-item <?php echo $tombol; ?>" data-toggle="modal" data-target="#uploadSK<?php echo $row_user['id_pengajuan']; ?>">
                                                                         <i class="fa fa-upload"></i> Upload SK
                                                                     </a>
                                                                 <?php
@@ -325,12 +343,16 @@ if (isset($_POST["up_SK"])) {
                                                                         <i class="fa fa-download"></i> Generate SK
                                                                     </a>
                                                                     <!-- jika pengajuan belum selesai diverifikasi maka tombol tidak aktif -->
-                                                                    <a class="dropdown-item <?php echo $tombol; ?>" data-toggle="modal" data-target="#uploadSKaktif">
+                                                                    <a class="dropdown-item <?php echo $tombol; ?>" data-toggle="modal" data-target="#uploadSK<?php echo $row_user['id_pengajuan']; ?>">
                                                                         <i class="fa fa-upload"></i> Upload SK
                                                                     </a>
                                                                 <?php
                                                                 }
                                                                 ?>
+                                                                <!-- untuk insert dan update no_sk dan tgl_sk -->
+                                                                <a class="dropdown-item <?php echo $tombol; ?>" data-toggle="modal" data-target="#dataSK<?php echo $row_user['id_pengajuan']; ?>">
+                                                                    <i class="fa fa-upload"></i> Data SK
+                                                                </a>
                                                             </div>
                                                         </div>
 
@@ -339,6 +361,7 @@ if (isset($_POST["up_SK"])) {
                                                 </tr>
                                             <?php
                                                 include "modal_up_sk.php";
+                                                include "modal_data_sk.php";
                                                 $i++;
                                             }
                                             ?>
