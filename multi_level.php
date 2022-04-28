@@ -1,5 +1,20 @@
 <?php
 session_start();
+$level_halaman = "Dosen Wali dan Ketua Jurusan";
+
+// untuk membuat pengecekan level yang memiliki jabatan dosen wali dan kajur (dua jabatan)
+// dev (default) diambil dari sidebar
+// saat masuk ke salah satu akun kemudian kembali ke halaman ini, 
+// dibuat isset dev agar session yg memiliki dua jabatan memiliki identitas saat kembali ke halaman multi_level.php
+if (isset($_GET['dev'])) {
+    $_SESSION['level'] = $_SESSION['dua'];
+}
+
+// agar selain session dosen wali dan ketua jurusan tidak bisa masuk
+if ($level_halaman != $_SESSION['level']) {
+    session_destroy();
+    header("Location: index.php");
+}
 
 if (!isset($_SESSION["nama"])) {
     header("Location: index.php");
@@ -207,6 +222,7 @@ if (!isset($_SESSION["nama"])) {
                                     <i class="ion ion-person"></i>
                                 </div>
                                 <!-- masukin ke dashboard dulu -->
+                                <!-- membuat session level menjadi Dosen Wali -->
                                 <a href="app/doswal/dashboard/index.php?lvl=Dosen Wali" class="small-box-footer">Pilih <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
@@ -222,6 +238,7 @@ if (!isset($_SESSION["nama"])) {
                                     <i class="ion ion-person"></i>
                                 </div>
                                 <!-- masukin ke dashboard dulu -->
+                                <!-- membuat session level menjadi Dosen Wali -->
                                 <a href="app/kajur/dashboard/index.php?lvl=Ketua Jurusan" class="small-box-footer">Pilih <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
