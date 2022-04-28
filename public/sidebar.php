@@ -84,7 +84,7 @@
 
             <!-- pemilihan sidebar berdasarkan level -->
             <?php
-            
+
             // $_SESSION['level'] ambil dari index.php (login)
             if ($_SESSION['level'] == "Mahasiswa") {
             ?>
@@ -239,7 +239,9 @@
                 <?php
                 if ($_SESSION['dua'] == "Dosen Wali dan Ketua Jurusan") { ?>
                     <li class="nav-item">
-                        <!-- dikasih dev agar session level aslinya tidak hilang saat kembali ke halaman multi level -->
+                        <!-- dikasih dev agar tau user tersebut memiliki rangkap jabatan tidak hilang saat kembali ke halaman multi level -->
+                        <!-- dev dikirim ke multi_level.php -->
+                        <!-- dev berisi level yang dipilih -->
                         <a href="../../../multi_level.php?dev=<?= $_SESSION['level'] ?>" class="nav-link">
                             <i class="nav-icon fas fa-people-arrows"></i>
                             <p>Beralih Akun</p>
