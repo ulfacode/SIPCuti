@@ -1,9 +1,9 @@
-<!-- Modal Upload SK-->
-<div class="modal fade" id="uploadSKcuti" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- Modal Upload SK Cuti dan Aktif-->
+<div class="modal fade" id="uploadSK<?php echo $row_user['id_pengajuan']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Upload Surat Keputusan Cuti</h4>
+                <h4 class="modal-title">Upload Surat Keputusan</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick='window.location.reload();'>
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -52,4 +52,4 @@
         </div>
     </div>
 </div>
-<!-- /modal upload sk cuti -->
+<!-- /modal upload sk cuti dan aktif-->
