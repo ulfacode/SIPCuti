@@ -8,7 +8,7 @@ if (!isset($_SESSION["nama"])) {
 }
 
 // saat masuk ke halaman dosen wali di cek session level masuknya siapa
-// apabila dosen wali dan ketua jurusan maka session level nya diganti ke variabel lvl yang didapatkan dari multi_level.php
+// apabila dosen wali dan ketua jurusan maka session level nya diganti ke variabel lvl yang didapatkan dari multi_level.php (merubah level sesuai yang dipilih)
 if ($_SESSION['level'] == "Dosen Wali dan Ketua Jurusan") {
     $_SESSION['level'] = $_GET["lvl"];
     $_SESSION['dua'] = "Dosen Wali dan Ketua Jurusan"; //untuk sidebar beralih akun
