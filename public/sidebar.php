@@ -84,13 +84,9 @@
 
             <!-- pemilihan sidebar berdasarkan level -->
             <?php
-            $level = $_SESSION['level'];
-            $_SESSION['dua'] = "";
-            if ($level == "Dosen Wali dan Ketua Jurusan") {
-                $level = $_GET["lvl"];
-                $_SESSION['dua'] = "Dosen Wali dan Ketua Jurusan";
-            }
-            if ($level == "Mahasiswa") {
+            
+            // $_SESSION['level'] ambil dari index.php (login)
+            if ($_SESSION['level'] == "Mahasiswa") {
             ?>
                 <li class="nav-item">
                     <a href="../dashboard/" class="nav-link">
@@ -131,7 +127,7 @@
                     </a>
                 </li>
 
-            <?php } elseif ($level == "Administrator") { ?>
+            <?php } elseif ($_SESSION['level'] == "Administrator") { ?>
 
                 <li class="nav-item">
                     <a href="../dashboard/" class="nav-link">
@@ -197,12 +193,12 @@
                         <p>Laporan</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-paper-plane"></i>
                         <p>Bot Telegram</p>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a href="../../../logout.php" class="nav-link">
                         <i class="nav-icon fas fa-power-off"></i>
@@ -210,8 +206,8 @@
                     </a>
                 </li>
 
-            <?php } elseif ($level == "Dosen Wali") {
-                $_SESSION['level'] = $level;
+            <?php } elseif ($_SESSION['level'] == "Dosen Wali") {
+                // $_SESSION['level'] = $level;
             ?>
 
                 <li class="nav-item">
@@ -234,16 +230,17 @@
                         <p>Pengajuan</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-paper-plane"></i>
                         <p>Bot Telegram</p>
                     </a>
-                </li>
+                </li> -->
                 <?php
                 if ($_SESSION['dua'] == "Dosen Wali dan Ketua Jurusan") { ?>
                     <li class="nav-item">
-                        <a href="../../../multi_level.php" class="nav-link">
+                        <!-- dikasih dev agar session level aslinya tidak hilang saat kembali ke halaman multi level -->
+                        <a href="../../../multi_level.php?dev=<?= $_SESSION['level'] ?>" class="nav-link">
                             <i class="nav-icon fas fa-people-arrows"></i>
                             <p>Beralih Akun</p>
                         </a>
@@ -258,8 +255,8 @@
                     </a>
                 </li>
 
-            <?php } elseif ($level == "Ketua Jurusan") {
-                $_SESSION['level'] = $level;
+            <?php } elseif ($_SESSION['level'] == "Ketua Jurusan") {
+                // $_SESSION['level'] = $level;
             ?>
                 <li class="nav-item">
                     <a href="../dashboard/" class="nav-link">
@@ -281,16 +278,17 @@
                         <p>Pengajuan</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-paper-plane"></i>
                         <p>Bot Telegram</p>
                     </a>
-                </li>
+                </li> -->
                 <?php
                 if ($_SESSION['dua'] == "Dosen Wali dan Ketua Jurusan") { ?>
                     <li class="nav-item">
-                        <a href="../../../multi_level.php" class="nav-link">
+                        <!-- dikasih dev agar session level aslinya tidak hilang saat kembali ke halaman multi level -->
+                        <a href="../../../multi_level.php?dev=<?= $_SESSION['level'] ?>" class="nav-link">
                             <i class="nav-icon fas fa-people-arrows"></i>
                             <p>Beralih Akun</p>
                         </a>
@@ -304,7 +302,7 @@
                         <p>Logout</p>
                     </a>
                 </li>
-            <?php } elseif ($level == "Ketua Akademik") { ?>
+            <?php } elseif ($_SESSION['level'] == "Ketua Akademik") { ?>
                 <li class="nav-item">
                     <a href="../dashboard/" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -331,7 +329,7 @@
                         <p>Logout</p>
                     </a>
                 </li>
-            <?php } elseif ($level == "Bagian Keuangan") { ?>
+            <?php } elseif ($_SESSION['level'] == "Bagian Keuangan") { ?>
                 <li class="nav-item">
                     <a href="../dashboard/" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -358,19 +356,19 @@
                         <p>Uang Kuliah Tunggal</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-paper-plane"></i>
                         <p>Bot Telegram</p>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a href="../../../logout.php" class="nav-link">
                         <i class="nav-icon fas fa-power-off"></i>
                         <p>Logout</p>
                     </a>
                 </li>
-            <?php } elseif ($level == "Bagian Perpustakaan") { ?>
+            <?php } elseif ($_SESSION['level'] == "Bagian Perpustakaan") { ?>
                 <li class="nav-item">
                     <a href="../dashboard/" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -391,19 +389,19 @@
                         <p>Surat Keputusan</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-paper-plane"></i>
                         <p>Bot Telegram</p>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a href="../../../logout.php" class="nav-link">
                         <i class="nav-icon fas fa-power-off"></i>
                         <p>Logout</p>
                     </a>
                 </li>
-            <?php } elseif ($level == "Wakil Direktur 1") { ?>
+            <?php } elseif ($_SESSION['level'] == "Wakil Direktur 1") { ?>
                 <li class="nav-item">
                     <a href="../dashboard/" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -430,12 +428,12 @@
                         <p>Laporan</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-paper-plane"></i>
                         <p>Bot Telegram</p>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a href="../../../logout.php" class="nav-link">
                         <i class="nav-icon fas fa-power-off"></i>
