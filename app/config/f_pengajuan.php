@@ -617,6 +617,7 @@ function up_sk()
 
 
 // untuk upload SK yang sudah di ttd direktur dan cap pnc
+// insert atau update ke tabel
 function upload_sk($data)
 {
     global $conn;
@@ -629,10 +630,32 @@ function upload_sk($data)
 
     mysqli_query($conn, "SELECT upload_sk FROM tb_pengajuan WHERE id_pengajuan = '$id_pengajuan'");
     if (mysqli_affected_rows($conn) > 0) {
+        // jika sudah ada data
         mysqli_query($conn, "UPDATE tb_pengajuan SET upload_sk = '$sk' WHERE id_pengajuan = '$id_pengajuan'");
         return mysqli_affected_rows($conn);
     } else {
+        // jika belum ada data
         mysqli_query($conn, "INSERT INTO tb_pengajuan (upload_sk) VALUES ($sk)");
+        return mysqli_affected_rows($conn);
+    }
+}
+
+function dataSK($isi)
+{
+    global $conn;
+    $id_pengajuan = $isi['id_pengajuan'];
+    $no_sk = $isi['no_sk'];
+    $tgl_sk = $isi['tgl_sk'];
+
+
+    mysqli_query($conn, "SELECT no_sk, tgl_sk FROM tb_pengajuan WHERE id_pengajuan = '$id_pengajuan'");
+    if (mysqli_affected_rows($conn) > 0) {
+        // jika sudah ada data
+        mysqli_query($conn, "UPDATE tb_pengajuan SET no_sk = '$no_sk', tgl_sk = '$tgl_sk' WHERE id_pengajuan = '$id_pengajuan'");
+        return mysqli_affected_rows($conn);
+    } else {
+        // jika belum ada data
+        mysqli_query($conn, "INSERT INTO tb_pengajuan (no_sk, tgl_sk) VALUES ($no_sk, $tgl_sk)");
         return mysqli_affected_rows($conn);
     }
 }
