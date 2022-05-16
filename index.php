@@ -36,6 +36,10 @@ if (isset($_POST['login'])) {
 
             // login sukses, alihkan ke halaman utama (dashboard)
             header("location: app/mahasiswa/dashboard/");
+        }else {
+            echo "<script>
+                alert('Password salah!')
+                </script>";
         }
     } elseif ($cekP > 0) { //jika user terdaftar sbg pegawai
         $data = mysqli_fetch_assoc($loginP);
