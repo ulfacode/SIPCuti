@@ -85,6 +85,7 @@ $nip_npak = $_SESSION['nip_npak'];
                                                 <th>Alasan</th>
                                                 <th>Status</th>
                                                 <th>Verifikasi</th>
+                                                <th>Detail Status</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -105,23 +106,37 @@ $nip_npak = $_SESSION['nip_npak'];
                                                     <td><?php echo $row_user['thn_akademik'] ?></td>
                                                     <td><?php echo $row_user['alasan'] ?></td>
                                                     <?php
+                                                    // keu - doswal - kajur - wadir1 - admin - tolak
                                                     if (empty($row_user['status'])) {
-                                                        $stt = "Menunggu verifikasi dosen wali";
-                                                        $warna = 'red';
+                                                        if ($row_user['jns_pengajuan'] == 'Cuti') {
+                                                            $stt = "Menunggu verifikasi Bagian Keuangan";
+                                                            $warna = 'red';
+                                                        } else {
+                                                            $stt = "Menunggu verifikasi Dosen Wali";
+                                                            $warna = 'red';
+                                                        }
                                                     } else {
                                                         if ($row_user['status'] == "1") {
-                                                            $stt = "Silahkan verifikasi";
-                                                            $warna = 'red';
+                                                            $stt = "Menunggu verifikasi Dosen Wali";
+                                                            $warna = 'cornflowerblue';
                                                         } elseif ($row_user['status'] == "2") {
-                                                            $stt = "Anda telah memverifikasi";
-                                                            $warna = 'brown';
+                                                            $stt = "Silahkan verifikasi!";
+                                                            $warna = 'red';
                                                         } elseif ($row_user['status'] == "3") {
-                                                            $stt = "Telah diverifikasi wadir1";
-                                                            $warna = 'darkorchid';
+                                                            if ($row_user['jns_pengajuan'] == 'Cuti') {
+                                                                $stt = "Menunggu verifikasi Admin";
+                                                                $warna = 'blue';
+                                                            } else {
+                                                                $stt = "Menunggu verifikasi Wakil Direktur I";
+                                                                $warna = 'blue';
+                                                            }
                                                         } elseif ($row_user['status'] == "4") {
+                                                            $stt = "Menunggu verifikasi Admin";
+                                                            $warna = 'darkorchid';
+                                                        } elseif ($row_user['status'] == "5") {
                                                             $stt = "Selesai diverifikasi";
                                                             $warna = 'green';
-                                                        } elseif ($row_user['status'] == "5") {
+                                                        } elseif ($row_user['status'] == "6") {
                                                             $stt = "Ditolak";
                                                             $warna = 'orange';
                                                         } else {
@@ -138,7 +153,7 @@ $nip_npak = $_SESSION['nip_npak'];
                                                         <?php
                                                         if (empty($row_user['status'])) {
                                                             echo "";
-                                                        } elseif ($row_user['status'] == "1") { ?>
+                                                        } elseif ($row_user['status'] == "2") { ?>
                                                             <!-- $level dari sidebar -->
                                                             <a href="terima_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>&jabatan=<?= $level; ?>" onclick="return confirm('Anda yakin menerima pengajuan ini?')" class="btn btn-outline-none"><i class="fas fa-check" style="color: green;"></i>
                                                                 ACC &nbsp;&nbsp;</a>
@@ -148,6 +163,86 @@ $nip_npak = $_SESSION['nip_npak'];
                                                             echo "Terverifikasi";
                                                         }
                                                         ?>
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#cekStatus<?php echo $row_user['id_pengajuan'] ?>">
+                                                            Cek Status
+                                                        </a>
+                                                        <!-- modal cek status -->
+                                                        <div class="modal fade" id="cekStatus<?php echo $row_user['id_pengajuan'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title">Detail Pengajuan</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick='window.location.reload();'>
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+
+                                                                        <form action="" enctype="multipart/form-data" method="POST">
+                                                                            <div class="card-body">
+                                                                                <?php
+                                                                                $query     = mysqli_query($conn, "SELECT p.nama, p.jabatan, v.tgl_verif, v.status FROM tb_verifikasi AS v, tb_pegawai AS p WHERE v.nip_npak=p.nip_npak AND v.id_pengajuan='$row_user[id_pengajuan]'");
+                                                                                $result = $query->fetch_assoc();
+                                                                                ?>
+
+                                                                                <table class="table table-bordered">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th style="width: 10px">#</th>
+                                                                                            <th>Nama</th>
+                                                                                            <th>Jabatan</th>
+                                                                                            <th>Tanggal</th>
+                                                                                            <th style="width: 40px">Status</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <?php
+                                                                                        $a = 1;
+                                                                                        foreach ($query as $result) {
+                                                                                            if ($result['status'] == "Diterima") {
+                                                                                                $color = "success";
+                                                                                            } else {
+                                                                                                $color = "danger";
+                                                                                            }
+                                                                                        ?>
+                                                                                            <tr>
+                                                                                                <td><?= $a; ?></td>
+                                                                                                <td><?= $result['nama']; ?></td>
+                                                                                                <td><?= $result['jabatan']; ?></td>
+                                                                                                <td><?= tgl($result['tgl_verif']); ?></td>
+                                                                                                <td><span class="badge bg-<?php echo $color; ?>"><?= $result['status']; ?></span></td>
+
+                                                                                                <!-- <td><?= $result['id_pengajuan']; ?></td>
+                                                                                                <td><?= $hasil_pegawai['jabatan']; ?></td>
+                                                                                                <td><?= tgl($result['tgl_verif']); ?></td>
+                                                                                                <td><span class="badge bg-danger">55%</span></td> -->
+
+                                                                                            </tr>
+                                                                                        <?php
+
+                                                                                            $a++;
+                                                                                        }
+                                                                                        ?>
+
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                            <!-- /.card-body -->
+
+                                                                    </div>
+                                                                    <div class="modal-footer">
+
+                                                                        <!-- untuk submit name nya harus sama dengan isset -->
+                                                                        <button onclick="window.location.reload();" class="btn btn-primary">Tutup</button>
+
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- ./modal cek status -->
                                                     </td>
                                                     <td>
 
@@ -208,7 +303,7 @@ $nip_npak = $_SESSION['nip_npak'];
                                                                         } else { ?>
                                                                         SK Aktif
                                                                 </a>
-                                                                    <?php }
+                                                        <?php }
                                                                     } ?>
                                                             </div>
                                                         </div>
