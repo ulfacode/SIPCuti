@@ -53,11 +53,11 @@ $id = $_SESSION['nim'];
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-4 col-6">
+                        <div class="col-lg-6 col-6">
                             <!-- small box -->
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    <p></p>
+                                    <h3>&nbsp;</h3>
                                     <h6>Profil Anda</h6>
                                 </div>
                                 <div class="icon">
@@ -67,11 +67,11 @@ $id = $_SESSION['nim'];
                             </div>
                         </div>
                         <!-- ./col -->
-                        <div class="col-lg-4 col-6">
+                        <div class="col-lg-6 col-6">
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <p></p>
+                                    <h3>&nbsp;</h3>
                                     <h6>Pengajuan Cuti dan Izin Aktif</h6>
                                 </div>
                                 <div class="icon">
@@ -81,11 +81,11 @@ $id = $_SESSION['nim'];
                             </div>
                         </div>
                         <!-- ./col -->
-                        <div class="col-lg-4 col-6">
+                        <!-- <div class="col-lg-4 col-6"> -->
                             <!-- small box -->
-                            <div class="small-box bg-warning">
+                            <!-- <div class="small-box bg-warning">
                                 <div class="inner">
-                                    <p></p>
+                                    <h3>&nbsp;</h3>
                                     <h6>Pembayaran Uang Kuliah Tunggal</h6>
                                 </div>
                                 <div class="icon">
@@ -93,7 +93,7 @@ $id = $_SESSION['nim'];
                                 </div>
                                 <a href="../bayar_ukt/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- ./col -->
                     </div>
                     <!-- /.row -->
