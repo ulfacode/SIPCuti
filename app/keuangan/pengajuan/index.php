@@ -1,6 +1,8 @@
 <?php
 include '../../config/f_pengajuan.php';
 session_start();
+$nip_npak = $_SESSION['nip_npak'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,9 +64,9 @@ session_start();
 
                                 <?php
 
-                                $user = mysqli_query($conn, "SELECT * FROM v_pengajuan_KP");
-                                $row_user = $user->fetch_assoc();
-
+                                $user = mysqli_query($conn, "SELECT m.nim, m.nama, p.id_pengajuan, p.jns_pengajuan, p.tgl_pengajuan, p.semester_cuti, p.thn_akademik, p.alasan, p.lampiran, p.status, p.upload_sk FROM tb_mahasiswa AS m, tb_pengajuan AS p WHERE m.nim = p.nim ORDER BY tgl_pengajuan ASC");
+                                // $row_user = $user->fetch_assoc();
+                                // $result = mysqli_fetch_array($user);
 
                                 ?>
 
@@ -79,6 +81,10 @@ session_start();
                                                 <th>Tanggal Pengajuan</th>
                                                 <th>Semester Cuti/Aktif</th>
                                                 <th>Tahun Akademik</th>
+                                                <th>Alasan</th>
+                                                <th>Status</th>
+                                                <th>Verifikasi</th>
+                                                <th>Detail Status</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -97,36 +103,213 @@ session_start();
                                                     <td><?= tgl($row_user['tgl_pengajuan']); ?></td>
                                                     <td><?php echo $row_user['semester_cuti'] ?></td>
                                                     <td><?php echo $row_user['thn_akademik'] ?></td>
+                                                    <td><?php echo $row_user['alasan'] ?></td>
+
+                                                    <!-- keu - doswal - kajur - wadir1 - admin - tolak -->
+                                                    <?php
+                                                    if (empty($row_user['status'])) {
+                                                        $stt = "Silahkan cek pembayaran UKT kemudian verifikasi pengajuan ini!";
+                                                        $warna = 'red';
+                                                    } else {
+                                                        if ($row_user['status'] == "1") {
+                                                            $stt = "Menunggu verifikasi Dosen Wali";
+                                                            $warna = 'cornflowerblue';
+                                                        } elseif ($row_user['status'] == "2") {
+                                                            $stt = "Menunggu verifikasi Ketua Jurusan/Kaprodi";
+                                                            $warna = 'brown';
+                                                        } elseif ($row_user['status'] == "3") {
+                                                            if ($row_user['jns_pengajuan'] == 'Cuti') {
+                                                                $stt = "Menunggu verifikasi Admin";
+                                                                $warna = 'blue';
+                                                            } else {
+                                                                $stt = "Menunggu verifikasi Wakil Direktur I";
+                                                                $warna = 'blue';
+                                                            }
+                                                        } elseif ($row_user['status'] == "4") {
+                                                            $stt = "Menunggu verifikasi Admin";
+                                                            $warna = 'darkorchid';
+                                                        } elseif ($row_user['status'] == "5") {
+                                                            $stt = "Selesai diverifikasi";
+                                                            $warna = 'green';
+                                                        } elseif ($row_user['status'] == "6") {
+                                                            $stt = "Ditolak";
+                                                            $warna = 'orange';
+                                                        } else {
+                                                            $stt = "Status not found";
+                                                            $warna = '';
+                                                        }
+                                                    }
+
+                                                    // bagian keuangan tidak memverifikasi pengajuan aktif
+                                                    if ($row_user['jns_pengajuan'] == 'Cuti') {
+                                                    ?>
+                                                        <td style="color: <?php echo $warna; ?>;">
+                                                            <?php
+                                                            echo "$stt";
+                                                            ?>
+                                                        </td>
+
+                                                        <td>
+                                                            <!-- tombol verifikasi -->
+                                                            <?php
+                                                            if (empty($row_user['status'])) { ?>
+                                                                <!-- $level dari sidebar -->
+                                                                <a href="terima_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>&jabatan=<?= $level; ?>" onclick="return confirm('Anda yakin menerima pengajuan ini?')" class="btn btn-outline-none"><i class="fas fa-check" style="color: green;"></i>
+                                                                    ACC &nbsp;&nbsp;</a>
+                                                                <a href="tolak_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>" class="btn btn-outline-none" onclick="return confirm('Anda yakin menolak pengajuan ini?')"><i class="fas fa-times" style="color: red;"></i>
+                                                                    Tolak</a>
+                                                            <?php } else {
+                                                                echo "Terverfikasi";
+                                                            }
+                                                            ?>
+                                                        </td>
+                                                    <?php
+                                                    } else {
+                                                    ?>
+                                                        <td></td>
+                                                        <td></td>
+                                                    <?php
+                                                    }
+                                                    ?>
+
+                                                    <td>
+                                                        <a class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#cekStatus<?php echo $row_user['id_pengajuan'] ?>">
+                                                            Cek Status
+                                                        </a>
+                                                        <!-- modal cek status -->
+                                                        <div class="modal fade" id="cekStatus<?php echo $row_user['id_pengajuan'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title">Detail Pengajuan</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick='window.location.reload();'>
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+
+                                                                        <form action="" enctype="multipart/form-data" method="POST">
+                                                                            <div class="card-body">
+                                                                                <?php
+                                                                                $query     = mysqli_query($conn, "SELECT p.nama, p.jabatan, v.tgl_verif, v.status FROM tb_verifikasi AS v, tb_pegawai AS p WHERE v.nip_npak=p.nip_npak AND v.id_pengajuan='$row_user[id_pengajuan]'");
+                                                                                $result = $query->fetch_assoc();
+                                                                                ?>
+
+                                                                                <table class="table table-bordered">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th style="width: 10px">#</th>
+                                                                                            <th>Nama</th>
+                                                                                            <th>Jabatan</th>
+                                                                                            <th>Tanggal</th>
+                                                                                            <th style="width: 40px">Status</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <?php
+                                                                                        $a = 1;
+                                                                                        foreach ($query as $result) {
+                                                                                            if ($result['status'] == "Diterima") {
+                                                                                                $color = "success";
+                                                                                            } else {
+                                                                                                $color = "danger";
+                                                                                            }
+                                                                                        ?>
+                                                                                            <tr>
+                                                                                                <td><?= $a; ?></td>
+                                                                                                <td><?= $result['nama']; ?></td>
+                                                                                                <td><?= $result['jabatan']; ?></td>
+                                                                                                <td><?= tgl($result['tgl_verif']); ?></td>
+                                                                                                <td><span class="badge bg-<?php echo $color; ?>"><?= $result['status']; ?></span></td>
+
+                                                                                                <!-- <td><?= $result['id_pengajuan']; ?></td>
+                                                                                                <td><?= $hasil_pegawai['jabatan']; ?></td>
+                                                                                                <td><?= tgl($result['tgl_verif']); ?></td>
+                                                                                                <td><span class="badge bg-danger">55%</span></td> -->
+
+                                                                                            </tr>
+                                                                                        <?php
+
+                                                                                            $a++;
+                                                                                        }
+                                                                                        ?>
+
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                            <!-- /.card-body -->
+
+                                                                    </div>
+                                                                    <div class="modal-footer">
+
+                                                                        <!-- untuk submit name nya harus sama dengan isset -->
+                                                                        <button onclick="window.location.reload();" class="btn btn-primary">Tutup</button>
+
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- ./modal cek status -->
+                                                    </td>
+
+
                                                     <td>
 
-                                                        <?php if (empty($row_user['upload_sk'])) { ?>
-                                                            <a class="btn btn-success" onclick="alert('Oopss... SK belum terbit')">
-                                                                <i class="fa fa-download"></i>
-                                                                <?php if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
-                                                                    SK Cuti
-                                                                    <!-- </a> -->
-                                                                    <!-- <a class="btn btn-success" onclick="alert('Oopss... SK belum terbit. Harap bersabar ya!')">
-                                                                <i class="fa fa-download"></i> -->
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-success">
+                                                                <!-- <i class="fa fa-file-alt"></i>  -->
+                                                                <i class="fa fa-tools"></i>
+                                                                <!-- Aksi -->
+                                                            </button>
+                                                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                                                                <span class="sr-only">Toggle Dropdown</span>
+                                                            </button>
+                                                            <div class="dropdown-menu" role="menu">
+                                                                <!-- <a class="btn btn-primary dropdown-item" data-toggle="modal" data-target="#modalEdit<?php echo $row_user['id_pengajuan']; ?>">
+                                                                        <i class="fa fa-edit"></i>
+                                                                        Edit
+                                                                    </a> -->
                                                                 <?php
-                                                                } else { ?>
-                                                                    SK Aktif
-                                                            </a>
-                                                        <?php
+                                                                if ($row_user['jns_pengajuan'] == 'Cuti') {
+
+                                                                ?>
+                                                                    <a class="dropdown-item <?php echo $tombol; ?>" href="../../admin/pengajuan/form_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>">
+                                                                        <i class="fa fa-download"></i> Form Cuti
+                                                                    </a>
+                                                                    <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">
+                                                                        <i class="fa fa-download"></i> Lampiran
+                                                                    </a>
+                                                                <?php
                                                                 }
-                                                            } else { ?>
-                                                        <a class="btn btn-success" href="../../admin/pengajuan/surat_keputusan/<?php echo $row_user['upload_sk'] ?>">
-                                                            <i class="fa fa-download"></i>
-                                                            <?php if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
-                                                                SK Cuti
-                                                                <!-- </a> -->
-                                                            <?php
-                                                                } else { ?>
-                                                                <!-- <a class="btn btn-primary" href="../../admin/pengajuan/surat_keputusan/<?php echo $row_user['upload_sk'] ?>">
-                                                                <i class="fa fa-download"></i> -->
-                                                                SK Aktif
-                                                        </a>
-                                                <?php }
-                                                            } ?>
+                                                                ?>
+
+                                                                <?php if (empty($row_user['upload_sk'])) { //cek data
+                                                                ?>
+                                                                    <a class="dropdown-item" onclick="alert('Oopss... SK belum terbit. Harap bersabar ya!')"><i class="fa fa-download"></i>
+                                                                        <?php if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
+                                                                            SK Cuti
+                                                                        <?php
+                                                                        } else { ?>
+                                                                            SK Aktif
+                                                                    </a>
+                                                                <?php }
+                                                                    } else {
+                                                                ?>
+                                                                <a class="dropdown-item" href="../../admin/pengajuan/surat_keputusan/<?php echo $row_user['upload_sk'] ?>">
+                                                                    <i class="fa fa-download"></i>
+                                                                    <?php if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
+                                                                        SK Cuti
+                                                                    <?php
+                                                                        } else { ?>
+                                                                        SK Aktif
+                                                                </a>
+                                                        <?php }
+                                                                    } ?>
+                                                            </div>
+                                                        </div>
+
+
                                                     </td>
                                                 </tr>
                                             <?php
