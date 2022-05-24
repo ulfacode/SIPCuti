@@ -76,7 +76,7 @@ $nip_npak = $_SESSION['nip_npak'];
                             <div class="small-box bg-success">
                                 <div class="inner">
                                     <?php
-                                    $sql = mysqli_query($conn, "SELECT count(*) AS jml_belum FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_kajur AS k WHERE m.nim = p.nim AND m.id_kajur=k.id_kajur AND k.nip_npak='$nip_npak' AND p.status < '2'");
+                                    $sql = mysqli_query($conn, "SELECT count(*) AS jml_belum FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_kajur AS k WHERE m.nim = p.nim AND m.id_kajur=k.id_kajur AND k.nip_npak='$nip_npak' AND (p.status < '3' OR p.status IS NULL)");
                                     $hasil = mysqli_fetch_array($sql);
                                     ?>
                                     <h3><?php echo $hasil['jml_belum']; ?></h3>
