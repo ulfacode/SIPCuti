@@ -76,10 +76,15 @@ $nip_npak = $_SESSION['nip_npak'];
                             <div class="small-box bg-success">
                                 <div class="inner">
                                     <?php
-                                    $sql = mysqli_query($conn, "SELECT count(*) AS jml_belum FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_doswal AS d WHERE m.nim = p.nim AND m.id_doswal=d.id_doswal AND d.nip_npak='$nip_npak' AND p.status IS NULL");
-                                    $hasil = mysqli_fetch_array($sql);
+                                    $sqlc = mysqli_query($conn, "SELECT count(*) AS jml_belum FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_doswal AS d WHERE m.nim = p.nim AND m.id_doswal=d.id_doswal AND d.nip_npak='$nip_npak' AND (p.status = '1' OR p.status IS NULL) AND jns_pengajuan = 'Cuti'");
+                                    $hasilc = mysqli_fetch_array($sqlc);
+
+                                    $sqla = mysqli_query($conn, "SELECT count(*) AS jml_belum FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_doswal AS d WHERE m.nim = p.nim AND m.id_doswal=d.id_doswal AND d.nip_npak='$nip_npak' AND p.status IS NULL AND jns_pengajuan = 'Izin Aktif'");
+                                    $hasila = mysqli_fetch_array($sqla);
+
+                                    $tot = $hasilc['jml_belum'] + $hasila['jml_belum'];
                                     ?>
-                                    <h3><?php echo $hasil['jml_belum']; ?></h3>
+                                    <h3><?php echo $tot; ?></h3>
 
                                     <p>Pengajuan Belum Diverifikasi</p>
                                 </div>
