@@ -37,7 +37,7 @@ function tambahCuti($data)
     $h_ttd = mysqli_fetch_array($ttd);
 
     // if ((mysqli_num_rows($Cuti) == NULL) OR $status['status']=="5") {
-    if (mysqli_num_rows($Cuti) == NULL or ($status['status'] == "5")) {
+    if (mysqli_num_rows($Cuti) == NULL or ($status['status'] == "6")) {
         if ($h_ttd['ttd']) {
             $query = "INSERT INTO tb_pengajuan 
                         (nim, jns_pengajuan, tgl_pengajuan, semester_cuti, tingkat, thn_akademik, nm_prodi, alasan, lampiran, ttd_ortu, nama_ortu) 
@@ -97,7 +97,7 @@ function tambahAktif($data)
     $ttd = mysqli_query($conn, "SELECT ttd FROM tb_mahasiswa WHERE nim = '$nim'");
     $h_ttd = mysqli_fetch_array($ttd);
 
-    if ((empty(mysqli_num_rows($Aktif)) or $status['status'] == '5') and ((!empty(mysqli_num_rows($Cuti))) and $status_cuti['status'] == '4')) {
+    if ((empty(mysqli_num_rows($Aktif)) or $status['status'] == '5') and ((!empty(mysqli_num_rows($Cuti))) and $status_cuti['status'] == '5')) {
         if ($h_ttd['ttd']) {
             $query = "INSERT INTO tb_pengajuan 
                 (nim, jns_pengajuan, tgl_pengajuan, semester_cuti, tingkat, thn_akademik, nm_prodi, lampiran, ttd_ortu, nama_ortu) 
@@ -456,9 +456,24 @@ function terima($id, $nip_npak, $jabatan)
     $h_ttd = mysqli_fetch_array($ttd);
 
     if ($h_ttd['ttd']) {
+        // verifikasi Bagian Keuangan
+        if ($jabatan == "Bagian Keuangan") {
+            mysqli_query($conn, "UPDATE tb_pengajuan SET status = '1' WHERE id_pengajuan = '$id'");
+
+            if (mysqli_affected_rows($conn) > 0) {
+                mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak, tgl_verif, status) VALUES ('$id','$nip_npak','$tgl', 'Diterima')");
+                if (mysqli_affected_rows($conn) > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
         // verifikasi dosen wali
         if ($jabatan == "Dosen Wali") {
-            mysqli_query($conn, "UPDATE tb_pengajuan SET status = '1' WHERE id_pengajuan = '$id'");
+            mysqli_query($conn, "UPDATE tb_pengajuan SET status = '2' WHERE id_pengajuan = '$id'");
 
             if (mysqli_affected_rows($conn) > 0) {
                 mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak, tgl_verif, status) VALUES ('$id','$nip_npak','$tgl', 'Diterima')");
@@ -473,7 +488,7 @@ function terima($id, $nip_npak, $jabatan)
         }
         // verifikasi ketua jurusan
         elseif ($jabatan == "Ketua Jurusan") {
-            mysqli_query($conn, "UPDATE tb_pengajuan SET status = '2' WHERE id_pengajuan = '$id'");
+            mysqli_query($conn, "UPDATE tb_pengajuan SET status = '3' WHERE id_pengajuan = '$id'");
 
             if (mysqli_affected_rows($conn) > 0) {
                 mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak, tgl_verif, status) VALUES ('$id','$nip_npak','$tgl', 'Diterima')");
@@ -486,9 +501,9 @@ function terima($id, $nip_npak, $jabatan)
                 return false;
             }
         }
-        // verifikasi wadir1
+        // verifikasi Wakil Direktur 1
         elseif ($jabatan == "Wakil Direktur 1") {
-            mysqli_query($conn, "UPDATE tb_pengajuan SET status = '3' WHERE id_pengajuan = '$id'");
+            mysqli_query($conn, "UPDATE tb_pengajuan SET status = '4' WHERE id_pengajuan = '$id'");
 
             if (mysqli_affected_rows($conn) > 0) {
                 mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak, tgl_verif, status) VALUES ('$id','$nip_npak','$tgl', 'Diterima')");
@@ -503,7 +518,7 @@ function terima($id, $nip_npak, $jabatan)
         }
         // verifikasi BAAK
         elseif ($jabatan == "Administrator") {
-            mysqli_query($conn, "UPDATE tb_pengajuan SET status = '4' WHERE id_pengajuan = '$id'");
+            mysqli_query($conn, "UPDATE tb_pengajuan SET status = '5' WHERE id_pengajuan = '$id'");
 
             if (mysqli_affected_rows($conn) > 0) {
                 mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak, tgl_verif, status) VALUES ('$id','$nip_npak','$tgl', 'Diterima')");
