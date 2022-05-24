@@ -51,7 +51,22 @@ session_start();
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-6 col-6">
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>&nbsp;</h3>
+                                    <p>Profil Anda</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <a href="../profil/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+
+                        <div class="col-lg-3 col-6">
                             <!-- small box -->
                             <div class="small-box bg-info">
                                 <div class="inner">
@@ -70,12 +85,13 @@ session_start();
                             </div>
                         </div>
                         <!-- ./col -->
-                        <div class="col-lg-6 col-6">
+
+                        <div class="col-lg-3 col-6">
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <div class="inner">
                                     <?php
-                                    $sql = mysqli_query($conn, "SELECT count(*) AS jml_belum FROM tb_pengajuan WHERE jns_pengajuan = 'Izin Aktif' AND status < '3'");
+                                    $sql = mysqli_query($conn, "SELECT count(*) AS jml_belum FROM tb_pengajuan WHERE jns_pengajuan = 'Izin Aktif' AND status < '4'");
                                     $hasil = mysqli_fetch_array($sql);
                                     ?>
                                     <h3><?php echo $hasil['jml_belum']; ?></h3>
@@ -86,6 +102,21 @@ session_start();
                                     <i class="ion ion-stats-bars"></i>
                                 </div>
                                 <a href="../pengajuan/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3>&nbsp;</h3>
+                                    <p>Laporan Pengajuan Cuti dan Izin Aktif</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="nav-icon fas fa-table"></i>
+                                </div>
+                                <a href="../laporan/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
