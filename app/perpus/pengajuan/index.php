@@ -62,7 +62,7 @@ session_start();
 
                                 <?php
 
-                                $user = mysqli_query($conn, "SELECT * FROM v_pengajuan_KP");
+                                $user = mysqli_query($conn, "SELECT * FROM v_pengajuan_perpus");
                                 $row_user = $user->fetch_assoc();
 
 
