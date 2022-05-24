@@ -12,6 +12,8 @@ if (!isset($_SESSION["nama"])) {
 if ($_SESSION['level'] == "Dosen Wali dan Ketua Jurusan") {
     $_SESSION['level'] = $_GET["lvl"];
     $_SESSION['dua'] = "Dosen Wali dan Ketua Jurusan"; //untuk sidebar beralih akun
+} else {
+    $_SESSION['dua'] = ""; //yang tidak memiliki rangkap jabatan, tidak ada sidebar beralih akun
 }
 
 // pengecekan session level apakah sesuai dengan level yang ada di folder tersebut atau bukan
@@ -67,116 +69,75 @@ if ($level_halaman != $_SESSION['level']) {
         // notifikasi admin
         if ($_SESSION['level'] == 'Administrator') {
 
-            $jumlah_c = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan WHERE status = '2' AND jns_pengajuan = 'Cuti'");
+            $jumlah_c = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan WHERE status = '3' AND jns_pengajuan = 'Cuti'");
             $hasil_c = mysqli_fetch_array($jumlah_c);
 
-            $jumlah_a = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan WHERE status= '3' AND jns_pengajuan = 'Izin Aktif'");
+            $jumlah_a = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan WHERE status= '4' AND jns_pengajuan = 'Izin Aktif'");
             $hasil_a = mysqli_fetch_array($jumlah_a);
 
             $total = $hasil_c['jml'] + $hasil_a['jml'];
-        ?>
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge"><?= $total; ?></span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-item dropdown-header"><?= $total; ?> Notifications</span>
-                    <div class="dropdown-divider"></div>
-                    <a href="../pengajuan/" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> Verifikasi
-                        <span class="float-right text-muted text-sm"><?= $total; ?> </span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                </div>
-            </li>
-        <?php
+
+            // notifikasi bag. keuangan
+        } elseif ($_SESSION['level'] == 'Bagian Keuangan') {
+            $jumlah = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan WHERE jns_pengajuan = 'Cuti' AND status IS NULL");
+            $hasil = mysqli_fetch_array($jumlah);
+
+            $total = $hasil['jml'];
+
             // notifikasi doswal
         } elseif ($_SESSION['level'] == 'Dosen Wali') {
-            $jumlah = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan AS p, tb_mahasiswa AS m, tb_doswal AS d, tb_pegawai AS pgw WHERE p.nim = m.nim AND m.id_doswal=d.id_doswal AND d.nip_npak=pgw.nip_npak AND pgw.nip_npak='$_SESSION[nip_npak]' AND p.status IS NULL");
-            $hasil = mysqli_fetch_array($jumlah);
+            $jumlah_c = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan AS p, tb_mahasiswa AS m, tb_doswal AS d, tb_pegawai AS pgw WHERE p.nim = m.nim AND m.id_doswal=d.id_doswal AND d.nip_npak=pgw.nip_npak AND pgw.nip_npak='$_SESSION[nip_npak]' AND p.jns_pengajuan = 'Cuti' AND p.status = '1'");
+            $hasil_c = mysqli_fetch_array($jumlah_c);
 
-            $total = $hasil['jml'];
-        ?>
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge"><?= $total; ?></span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-item dropdown-header"><?= $total; ?> Notifications</span>
-                    <div class="dropdown-divider"></div>
-                    <a href="../pengajuan/" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> Verifikasi
-                        <span class="float-right text-muted text-sm"><?= $total; ?> </span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                </div>
-            </li>
-        <?php
+            $jumlah_a = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan AS p, tb_mahasiswa AS m, tb_doswal AS d, tb_pegawai AS pgw WHERE p.nim = m.nim AND m.id_doswal=d.id_doswal AND d.nip_npak=pgw.nip_npak AND pgw.nip_npak='$_SESSION[nip_npak]' AND p.jns_pengajuan = 'Izin Aktif' AND p.status IS NULL");
+            $hasil_a = mysqli_fetch_array($jumlah_a);
+
+            $total = $hasil_c['jml'] + $hasil_a['jml'];
+
             // notifikasi kajur
         } elseif ($_SESSION['level'] == 'Ketua Jurusan') {
-            $jumlah = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan AS p, tb_mahasiswa AS m, tb_kajur AS k, tb_pegawai AS pgw WHERE p.nim = m.nim AND m.id_kajur=k.id_kajur AND k.nip_npak=pgw.nip_npak AND pgw.nip_npak='$_SESSION[nip_npak]' AND p.status = '1'");
+            $jumlah = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan AS p, tb_mahasiswa AS m, tb_kajur AS k, tb_pegawai AS pgw WHERE p.nim = m.nim AND m.id_kajur=k.id_kajur AND k.nip_npak=pgw.nip_npak AND pgw.nip_npak='$_SESSION[nip_npak]' AND p.status = '2'");
             $hasil = mysqli_fetch_array($jumlah);
 
             $total = $hasil['jml'];
-        ?>
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge"><?= $total; ?></span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-item dropdown-header"><?= $total; ?> Notifications</span>
-                    <div class="dropdown-divider"></div>
-                    <a href="../pengajuan/" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> Verifikasi
-                        <span class="float-right text-muted text-sm"><?= $total; ?> </span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                </div>
-            </li>
-        <?php
+
             // notifikasi wadir1
         } elseif ($_SESSION['level'] == 'Wakil Direktur 1') {
-            $jumlah = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan WHERE status = '2' AND jns_pengajuan = 'Izin Aktif'");
+            $jumlah = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan WHERE status = '3' AND jns_pengajuan = 'Izin Aktif'");
             $hasil = mysqli_fetch_array($jumlah);
 
             $total = $hasil['jml'];
         ?>
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge"><?= $total; ?></span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-item dropdown-header"><?= $total; ?> Notifications</span>
-                    <div class="dropdown-divider"></div>
-                    <a href="../pengajuan/" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> Verifikasi
-                        <span class="float-right text-muted text-sm"><?= $total; ?> </span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                </div>
-            </li>
         <?php
+        }else{
+            $total = "";
         }
         ?>
+
+        <!-- tampilan notif -->
+        <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+                <i class="far fa-bell"></i>
+                <span class="badge badge-warning navbar-badge"><?= $total; ?></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                <span class="dropdown-item dropdown-header"><?= $total; ?> Notifications</span>
+                <div class="dropdown-divider"></div>
+                <a href="../pengajuan/" class="dropdown-item">
+                    <i class="fas fa-envelope mr-2"></i> Verifikasi
+                    <span class="float-right text-muted text-sm"><?= $total; ?> </span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+            </div>
+        </li>
 
         <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                 <i class="fas fa-expand-arrows-alt"></i>
             </a>
         </li>
-        <!-- <li class="nav-item">
-            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                <i class="fas fa-th-large"></i>
-            </a>
-        </li> -->
+
     </ul>
 </nav>
 <!-- /.navbar -->
