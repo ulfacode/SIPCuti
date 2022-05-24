@@ -1,9 +1,9 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../index3.html" class="brand-link">
+    <a class="brand-link">
         <img src="../../../public/dist/img/PNC.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">SIPCUT</span>
+        <span class="brand-text font-weight-light">SIPCUTI</span>
     </a>
 
     <!-- Sidebar -->
@@ -33,7 +33,7 @@
 
             </div>
             <div class="info">
-                <a href="#" class="d-block"><?= $row_user['nama']; ?></a>
+                <a class="d-block"><?= $row_user['nama']; ?></a>
             </div>
 
             <?php
@@ -108,12 +108,12 @@
                         <p>Pengajuan</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="../bayar_ukt/index.php" class="nav-link">
                         <i class="nav-icon fas fa-calculator"></i>
                         <p>Pembayaran UKT</p>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-paper-plane"></i>
@@ -349,13 +349,7 @@
                 <li class="nav-item">
                     <a href="../pengajuan/index.php" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
-                        <p>Surat Keputusan</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../ukt/index.php" class="nav-link">
-                        <i class="nav-icon fas fa-calculator"></i>
-                        <p>Uang Kuliah Tunggal</p>
+                        <p>Pengajuan</p>
                     </a>
                 </li>
                 <!-- <li class="nav-item">
