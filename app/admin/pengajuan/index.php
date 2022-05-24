@@ -141,43 +141,47 @@ if (isset($_POST["data_SK"])) {
 
                                                     <!-- untuk menampilkan status sesuai user yang sudah verifikasi -->
                                                     <?php
+                                                    // keu - doswal - kajur - wadir1 - admin - tolak
                                                     if (empty($row_user['status'])) {
-                                                        $stt = "Menunggu verifikasi dosen wali";
-                                                        $warna = 'red';
-                                                        $tombol = 'disabled';
+                                                        if ($row_user['jns_pengajuan'] == 'Cuti') {
+                                                            $stt = "Menunggu verifikasi Bagian Keuangan";
+                                                            $warna = 'red';
+                                                            $tombol = 'disabled';
+                                                        } else {
+                                                            $stt = "Menunggu verifikasi Dosen Wali";
+                                                            $warna = 'red';
+                                                            $tombol = 'disabled';
+                                                        }
                                                     } else {
                                                         if ($row_user['status'] == "1") {
-                                                            $stt = "Telah diverifikasi dosen wali";
+                                                            $stt = "Menunggu verifikasi Dosen Wali";
                                                             $warna = 'cornflowerblue';
                                                             $tombol = 'disabled';
                                                         } elseif ($row_user['status'] == "2") {
-                                                            if ($row_user['jns_pengajuan'] == "Cuti") {
-                                                                $stt = "Silahkan verifikasi";
-                                                                $warna = 'red';
-                                                                $tombol = 'disabled';
-                                                            } else {
-                                                                $stt = "Telah diverifikasi ketua jurusan";
-                                                                $warna = 'brown';
-                                                                $tombol = 'disabled';
-                                                            }
+                                                            $stt = "Menunggu verifikasi Ketua Jurusan/Kaprodi";
+                                                            $warna = 'brown';
+                                                            $tombol = 'disabled';
                                                         } elseif ($row_user['status'] == "3") {
-                                                            if ($row_user['jns_pengajuan'] == "Izin Aktif") {
-                                                                $stt = "Silahkan verifikasi";
+                                                            if ($row_user['jns_pengajuan'] == 'Cuti') {
+                                                                $stt = "Silahkan verifikasi!";
                                                                 $warna = 'red';
                                                                 $tombol = 'disabled';
                                                             } else {
-                                                                $stt = "";
-                                                                $warna = 'brown';
+                                                                $stt = "Menunggu verifikasi Wakil Direktur I";
+                                                                $warna = 'blue';
                                                                 $tombol = 'disabled';
                                                             }
                                                         } elseif ($row_user['status'] == "4") {
+                                                            $stt = "Silahkan verifikasi!";
+                                                            $warna = 'red';
+                                                            $tombol = 'disabled';
+                                                        } elseif ($row_user['status'] == "5") {
                                                             $stt = "Selesai diverifikasi";
                                                             $warna = 'green';
                                                             $tombol = 'enable';
-                                                        } elseif ($row_user['status'] == "5") {
+                                                        } elseif ($row_user['status'] == "6") {
                                                             $stt = "Ditolak";
                                                             $warna = 'orange';
-                                                            $tombol = 'disabled';
                                                         } else {
                                                             $stt = "Status not found";
                                                             $warna = '';
@@ -193,27 +197,17 @@ if (isset($_POST["data_SK"])) {
 
                                                     <td>
                                                         <?php
-                                                        // if ($row_user['status'] == 4) {
-                                                        //     echo "";
-                                                        // }
-                                                        // $level dari sidebar
-                                                        if ($row_user['jns_pengajuan'] == "Cuti") {
-                                                            if ($row_user['status'] == "2") { ?>
-
-                                                                <a href="terima_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>&jabatan=<?= $level; ?>" onclick="return confirm('Anda yakin menerima pengajuan ini?')" class="btn btn-outline-none"><i class="fas fa-check" style="color: green;"></i>
-                                                                    ACC &nbsp;&nbsp;</a>
-                                                                <a href="tolak_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>" class="btn btn-outline-none" onclick="return confirm('Anda yakin menolak pengajuan ini?')"><i class="fas fa-times" style="color: red;"></i>
-                                                                    Tolak</a>
-                                                            <?php }
-                                                        } elseif ($row_user['jns_pengajuan'] == "Izin Aktif") {
-                                                            if ($row_user['status'] == "3") { ?>
-                                                                <a href="terima_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>&jabatan=<?= $level; ?>" onclick="return confirm('Anda yakin menerima pengajuan ini?')" class="btn btn-outline-none"><i class="fas fa-check" style="color: green;"></i>
-                                                                    ACC &nbsp;&nbsp;</a>
-                                                                <a href="tolak_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>" class="btn btn-outline-none" onclick="return confirm('Anda yakin menolak pengajuan ini?')"><i class="fas fa-times" style="color: red;"></i>
-                                                                    Tolak</a>
-                                                        <?php }
-                                                        } else {
+                                                        if (empty($row_user['status'])) {
                                                             echo "";
+                                                        } elseif ($row_user['status'] == '3') {
+                                                        ?>
+                                                            <!-- $level dari sidebar -->
+                                                            <a href="terima_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>&jabatan=<?= $level; ?>" onclick="return confirm('Anda yakin menerima pengajuan ini?')" class="btn btn-outline-none"><i class="fas fa-check" style="color: green;"></i>
+                                                                ACC &nbsp;&nbsp;</a>
+                                                            <a href="tolak_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>" class="btn btn-outline-none" onclick="return confirm('Anda yakin menolak pengajuan ini?')"><i class="fas fa-times" style="color: red;"></i>
+                                                                Tolak</a>
+                                                        <?php } else {
+                                                            echo "Terverfikasi";
                                                         }
                                                         ?>
                                                     </td>
@@ -267,12 +261,6 @@ if (isset($_POST["data_SK"])) {
                                                                                                 <td><?= $result['jabatan']; ?></td>
                                                                                                 <td><?= tgl($result['tgl_verif']); ?></td>
                                                                                                 <td><span class="badge bg-<?php echo $color; ?>"><?= $result['status']; ?></span></td>
-
-                                                                                                <!-- <td><?= $result['id_pengajuan']; ?></td>
-                                                                                                <td><?= $hasil_pegawai['jabatan']; ?></td>
-                                                                                                <td><?= tgl($result['tgl_verif']); ?></td>
-                                                                                                <td><span class="badge bg-danger">55%</span></td> -->
-
                                                                                             </tr>
                                                                                         <?php
 
