@@ -73,7 +73,7 @@ session_start();
                                     <p>Laporan Pengajuan Cuti dan Izin Aktif</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-stats-bars"></i>
+                                    <i class="nav-icon fas fa-table"></i>
                                 </div>
                                 <a href="../laporan/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
