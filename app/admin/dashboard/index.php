@@ -112,7 +112,7 @@ session_start();
                             <div class="small-box bg-danger">
                                 <div class="inner">
                                     <?php
-                                    $sql = mysqli_query($conn, "SELECT count(*) AS jml_pengajuan FROM tb_pengajuan WHERE status < '4'");
+                                    $sql = mysqli_query($conn, "SELECT count(*) AS jml_pengajuan FROM tb_pengajuan WHERE status < '5'");
                                     $hasil = mysqli_fetch_array($sql);
                                     ?>
                                     <h3><?php echo $hasil['jml_pengajuan']; ?></h3>
