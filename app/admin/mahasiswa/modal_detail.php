@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalDetail<?php echo $row_user['nim']; ?>">
+<div class="modal fade" id="modal-detail<?php echo $row_user['nim']; ?>">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -51,7 +51,7 @@
                                 }
                         ?>
                         <li class="list-group-item">
-                            <b>Username</b> <a class="float-right"><?= $mhs['username']; ?></a>
+                            <b>Email</b> <a class="float-right"><?= $mhs['email']; ?></a>
                         </li>
                         <li class="list-group-item">
                             <b>Tahun Angkatan</b> <a class="float-right"><?= $mhs['thn_angkatan']; ?></a>

@@ -141,7 +141,7 @@ session_start();
                                                             <i class="fa fa-edit"></i> Edit
                                                         </a>
 
-                                                        <a class="btn btn-secondary" data-toggle="modal" data-target="#modalDetail<?php echo $row_user['nim']; ?>">
+                                                        <a class="btn btn-secondary" data-toggle="modal" data-target="#modal-detail<?php echo $row_user['nim']; ?>">
                                                             <i class="fa fa-info-circle"></i> Detail
                                                         </a>
 
@@ -152,8 +152,8 @@ session_start();
                                                 </tr>
 
                                             <?php
-                                                include "modal_edit.php";
                                                 include "modal_detail.php";
+                                                include "modal_edit.php";
                                             }
                                             ?>
                                         </tbody>
