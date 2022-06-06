@@ -319,7 +319,7 @@ error_reporting(0);
                     ?>
                     <td></td>
                     <?php
-                    if (empty($result['ttd_mhs'])) { ?>
+                    if (empty($ttd_mhs)) { ?>
                         <td align="center" width="60" height="60"></td>
                     <?php } else { ?>
                         <td align="center"><img src="../mahasiswa/img/<?= $ttd_mhs ?>" width="60" height="60" alt="tanda tangan mahasiswa"></td>
@@ -385,9 +385,9 @@ error_reporting(0);
                     <td align="center"><?= $nama_doswal; ?></td>
                 </tr>
                 <tr>
-                    <td align="center">NPAK. <?= $nip_kajur; ?></td>
+                    <td align="center">NIP/NPAK. <?= $nip_kajur; ?></td>
                     <td></td>
-                    <td align="center">NPAK. <?= $nip_doswal; ?></td>
+                    <td align="center">NIP/NPAK. <?= $nip_doswal; ?></td>
                 </tr>
                 <tr>
                     <td width="200"></td>
@@ -420,7 +420,7 @@ error_reporting(0);
                 </tr>
                 <tr>
                     <td></td>
-                    <td align="center">NPAK. <?= $nip_wadir1; ?></td>
+                    <td align="center">NIP/NPAK. <?= $nip_wadir1; ?></td>
                     <td></td>
                 </tr>
             </table>

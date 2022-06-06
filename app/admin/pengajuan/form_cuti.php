@@ -396,9 +396,9 @@ error_reporting(0);
                     <td align="center"><?= $nama_keu; ?></td>
                 </tr>
                 <tr>
-                    <td align="center">NPAK. <?= $nip_doswal; ?></td>
+                    <td align="center">NIP/NPAK. <?= $nip_doswal; ?></td>
                     <td></td>
-                    <td align="center">NPAK. <?= $nip_keu; ?></td>
+                    <td align="center">NIP.NPAK. <?= $nip_keu; ?></td>
                 </tr>
 
                 <tr>
@@ -438,7 +438,7 @@ error_reporting(0);
                 </tr>
                 <tr>
                     <td></td>
-                    <td align="center">NPAK. <?= $nip_kajur; ?></td>
+                    <td align="center">NIP/NPAK. <?= $nip_kajur; ?></td>
                 </tr>
             </table>
         </div>
