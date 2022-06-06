@@ -200,10 +200,10 @@ $id = $_SESSION['nim'];
                                                             $stt = "Menunggu verifikasi Ketua Jurusan/Kaprodi";
                                                             $warna = 'brown';
                                                         } elseif ($row_user['status'] == "3") {
-                                                            if($row_user['jns_pengajuan'] == 'Cuti'){
+                                                            if ($row_user['jns_pengajuan'] == 'Cuti') {
                                                                 $stt = "Menunggu verifikasi Admin";
                                                                 $warna = 'blue';
-                                                            }else{
+                                                            } else {
                                                                 $stt = "Menunggu verifikasi Wakil Direktur I";
                                                                 $warna = 'blue';
                                                             }
@@ -226,13 +226,14 @@ $id = $_SESSION['nim'];
                                                         echo "$stt";
                                                         ?>
                                                     </td>
+
                                                     <td>
                                                         <a class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#cekStatus<?php echo $row_user['id_pengajuan'] ?>">
                                                             Cek Status
                                                         </a>
                                                         <!-- modal cek status -->
                                                         <div class="modal fade" id="cekStatus<?php echo $row_user['id_pengajuan'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                                            <div class="modal-dialog" role="document">
+                                                            <div class="modal-dialog modal-lg" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h4 class="modal-title">Detail Pengajuan</h4>
@@ -242,10 +243,10 @@ $id = $_SESSION['nim'];
                                                                     </div>
                                                                     <div class="modal-body">
 
-                                                                        <form action="" enctype="multipart/form-data" method="POST">
+                                                                        <form action="" enctype="" method="">
                                                                             <div class="card-body">
                                                                                 <?php
-                                                                                $query     = mysqli_query($conn, "SELECT p.nama, p.jabatan, v.tgl_verif, v.status FROM tb_verifikasi AS v, tb_pegawai AS p WHERE v.nip_npak=p.nip_npak AND v.id_pengajuan='$row_user[id_pengajuan]'");
+                                                                                $query     = mysqli_query($conn, "SELECT p.nama, p.jabatan, v.tgl_verif, v.status, v.keterangan FROM tb_verifikasi AS v, tb_pegawai AS p WHERE v.nip_npak=p.nip_npak AND v.id_pengajuan='$row_user[id_pengajuan]'");
                                                                                 $result = $query->fetch_assoc();
                                                                                 ?>
 
@@ -256,6 +257,7 @@ $id = $_SESSION['nim'];
                                                                                             <th>Nama</th>
                                                                                             <th>Jabatan</th>
                                                                                             <th>Tanggal</th>
+                                                                                            <th>Keterangan</th>
                                                                                             <th style="width: 40px">Status</th>
                                                                                         </tr>
                                                                                     </thead>
@@ -274,6 +276,7 @@ $id = $_SESSION['nim'];
                                                                                                 <td><?= $result['nama']; ?></td>
                                                                                                 <td><?= $result['jabatan']; ?></td>
                                                                                                 <td><?= tgl($result['tgl_verif']); ?></td>
+                                                                                                <td><?= $result['keterangan']; ?></td>
                                                                                                 <td><span class="badge bg-<?php echo $color; ?>"><?= $result['status']; ?></span></td>
                                                                                             </tr>
                                                                                         <?php
@@ -300,6 +303,7 @@ $id = $_SESSION['nim'];
                                                         </div>
                                                         <!-- ./modal cek status -->
                                                     </td>
+
                                                     <td>
                                                         <!-- button dropdown aksi -->
                                                         <div class="btn-group">
