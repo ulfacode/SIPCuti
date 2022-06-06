@@ -166,7 +166,7 @@ if (isset($_POST["edit"])) {
                                         <ul class="list-group list-group-unbordered mb-3">
 
                                             <li class="list-group-item">
-                                                <b>Username</b> <a class="float-right"><?= $pgw['username']; ?></a>
+                                                <b>email</b> <a class="float-right"><?= $pgw['email']; ?></a>
                                             </li>
                                             <li class="list-group-item">
                                                 <b>Tahun Jabatan</b> <a class="float-right"><?= $pgw['thn_jabatan']; ?></a>
@@ -244,8 +244,8 @@ if (isset($_POST["edit"])) {
                                                                             <input type="text" class="form-control" name="nama" maxlength="50" value="<?= $pegawai["nama"]; ?>" required>
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="">Username</label>
-                                                                            <input type="text" class="form-control" name="username" maxlength="15" value="<?= $pegawai["username"]; ?>" required>
+                                                                            <label for="">Email</label>
+                                                                            <input type="text" class="form-control" name="email" maxlength="15" value="<?= $pegawai["email"]; ?>" required>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label for="">Password</label>
