@@ -20,8 +20,8 @@
                             <input type="number" class="form-control" id="nip" name="nip_npak" value="<?= $pgw["nip_npak"]; ?>" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" value="<?= $pgw["username"]; ?>" required>
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email" name="email" value="<?= $pgw["email"]; ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>

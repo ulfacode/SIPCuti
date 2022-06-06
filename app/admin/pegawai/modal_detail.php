@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <?php
                 $id = $row_user["nip_npak"];
-                $data = mysqli_query($conn, "SELECT * FROM v_data_pegawai WHERE nip_npak = '$id'");
+                $data = mysqli_query($conn, "SELECT * FROM tb_pegawai WHERE nip_npak = '$id' ORDER BY nama ASC");
                 while ($pgw = mysqli_fetch_array($data)) {
                 ?>
                     <div class="card card-outline">
@@ -26,7 +26,7 @@
 
                             <ul class="list-group list-group-unbordered mb-3">
                                 <li class="list-group-item">
-                                    <b>Username</b> <a class="float-right"><?= $pgw['username']; ?></a>
+                                    <b>Email</b> <a class="float-right"><?= $pgw['email']; ?></a>
                                 </li>
                                 <li class="list-group-item">
                                     <b>Tahun Jabatan</b> <a class="float-right"><?= $pgw['thn_jabatan']; ?></a>

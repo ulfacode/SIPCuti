@@ -16,8 +16,8 @@
                         <input type="number" class="form-control" id="nip" name="nip" required>
                     </div>
                     <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" required>
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
