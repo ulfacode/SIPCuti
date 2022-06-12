@@ -200,18 +200,16 @@ function upload_ttd()
 }
 
 
-
-
 function edit($data)
 {
     global $conn;
     $nip = $data["nip"];
-    $username = $data["username"];
+    $email = $data["email"];
     $password = $data["password"];
     $nama = $data["nama"];
     $no_telp = $data["no_telp"];
 
-    $query = "UPDATE tb_pegawai SET username='$username', password='$password', nama='$nama', no_telp='$no_telp' WHERE nip_npak='$nip'";
+    $query = "UPDATE tb_pegawai SET email='$email', password='$password', nama='$nama', no_telp='$no_telp' WHERE nip_npak='$nip'";
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }

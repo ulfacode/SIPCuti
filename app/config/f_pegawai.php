@@ -6,7 +6,7 @@ function tambah($data)
 {
     global $conn;
     $nip_npak = $data["nip"];
-    $username = $data["username"];
+    $email = $data["email"];
     $password = $data["password"];
     $nama = $data["nama"];
     $jabatan = $data["jabatan"];
@@ -15,19 +15,7 @@ function tambah($data)
     $status = $data["status"];
 
 
-    // $foto = upload_foto();
-    // if (!$foto) {
-    //     return false;
-    // }
-
-
-    // $ttd = upload_ttd();
-    // if (!$ttd) {
-    //     return false;
-    // }
-
-
-    $query = "INSERT INTO tb_pegawai (nip_npak, username, password, nama, jabatan, thn_jabatan, status, no_telp) VALUES ('$nip_npak', '$username', '$password','$nama','$jabatan', '$thn_jabatan', '$status','$no_telp')";
+    $query = "INSERT INTO tb_pegawai (nip_npak, email, password, nama, jabatan, thn_jabatan, status, no_telp) VALUES ('$nip_npak', '$email', '$password','$nama','$jabatan', '$thn_jabatan', '$status','$no_telp')";
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }
@@ -137,7 +125,7 @@ function edit($data)
 {
     global $conn;
     $nip_npak = $data["nip_npak"];
-    $username = $data["username"];
+    $email = $data["email"];
     $password = $data["password"];
     $nama = $data["nama"];
     $jabatan = $data["jabatan"];
@@ -146,7 +134,7 @@ function edit($data)
     $status = $data["status"];
 
 
-    $query = "UPDATE tb_pegawai SET username='$username', password='$password', nama='$nama', jabatan='$jabatan', thn_jabatan='$thn_jabatan', status='$status', no_telp='$no_telp' WHERE nip_npak='$nip_npak'";
+    $query = "UPDATE tb_pegawai SET email='$email', password='$password', nama='$nama', jabatan='$jabatan', thn_jabatan='$thn_jabatan', status='$status', no_telp='$no_telp' WHERE nip_npak='$nip_npak'";
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }

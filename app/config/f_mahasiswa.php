@@ -145,7 +145,7 @@ function edit($data)
     $nim = $data["nim"];
     $id_doswal = $data["id_doswal"];
     $id_kajur = $data["id_kajur"];
-    $username = $data["username"];
+    $email = $data["email"];
     $password = $data["password"];
     $nama = $data["nama"];
     $thn_angkatan = $data["thn_angkatan"];
@@ -156,7 +156,7 @@ function edit($data)
     $alamat = $data["alamat"];
     $no_telp = $data["no_telp"];
 
-    $query = "UPDATE tb_mahasiswa SET id_doswal='$id_doswal', id_kajur='$id_kajur', username='$username', password='$password', nama='$nama', thn_angkatan='$thn_angkatan', kelas='$kelas', tempat_lhr='$tempat_lhr', tgl_lhr='$tgl_lhr', jk='$jk', alamat='$alamat', no_telp='$no_telp' WHERE nim='$nim'";
+    $query = "UPDATE tb_mahasiswa SET id_doswal='$id_doswal', id_kajur='$id_kajur', email='$email', password='$password', nama='$nama', thn_angkatan='$thn_angkatan', kelas='$kelas', tempat_lhr='$tempat_lhr', tgl_lhr='$tgl_lhr', jk='$jk', alamat='$alamat', no_telp='$no_telp' WHERE nim='$nim'";
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }

@@ -170,7 +170,7 @@ function edit($data)
 {
     global $conn;
     $nim = $data["nim"];
-    $username = $data["username"];
+    $email = $data["email"];
     $password = $data["password"];
     $nama = $data["nama"];
     $tempat_lhr = $data["tempat_lhr"];
@@ -179,7 +179,7 @@ function edit($data)
     $alamat = $data["alamat"];
     $no_telp = $data["no_telp"];
 
-    $query = "UPDATE tb_mahasiswa SET username='$username', password='$password', nama='$nama', tempat_lhr='$tempat_lhr', tgl_lhr='$tgl_lhr', jk='$jk', alamat='$alamat', no_telp='$no_telp' WHERE nim='$nim'";
+    $query = "UPDATE tb_mahasiswa SET email='$email', password='$password', nama='$nama', tempat_lhr='$tempat_lhr', tgl_lhr='$tgl_lhr', jk='$jk', alamat='$alamat', no_telp='$no_telp' WHERE nim='$nim'";
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }
