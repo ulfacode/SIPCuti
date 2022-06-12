@@ -44,6 +44,10 @@ function tambahCuti($data)
                         VALUES 
                         ('$nim', '$jns_pengajuan', '$tgl_pengajuan', '$semester_cuti', '$tingkat', '$thn_akademik', '$nm_prodi', '$alasan', '$lampiran', '$ttd_ortu', '$nama_ortu')";
             mysqli_query($conn, $query);
+
+            $text = "Halo!!! Pengajuan cuti bertambah. Nantikan pemberitahuan selanjutnya saat Anda harus verifikasi pengajuan!";
+            file_get_contents("https://api.telegram.org/bot5201020696:AAFeiuATGYO_-GRSUupQWeZPz8EBPCez7eE/sendMessage?chat_id=1304610886&text=" . $text);
+
             return mysqli_affected_rows($conn);
         } else {
             echo "
@@ -545,10 +549,13 @@ function terima($id, $nip_npak, $jabatan)
 
 
 // untuk tolak pengajuan 
-function tolak($id, $nip_npak)
+function tolak($data)
 {
     global $conn;
     $tgl = date("Y-m-d");
+    $id = $data['id'];
+    $keterangan = $data['keterangan'];
+    $nip_npak = $data['nip_npak'];
 
     // cek ttd pegawai yg verifikasi, kalo ga ada gagal verifikasi
     $ttd = mysqli_query($conn, "SELECT ttd FROM tb_pegawai WHERE nip_npak = '$nip_npak'");
@@ -556,11 +563,11 @@ function tolak($id, $nip_npak)
 
     if ($h_ttd['ttd']) {
         // update status tabel pengajuan
-        mysqli_query($conn, "UPDATE tb_pengajuan SET status = '5' WHERE id_pengajuan = '$id'");
+        mysqli_query($conn, "UPDATE tb_pengajuan SET status = '6' WHERE id_pengajuan = '$id'");
 
         if (mysqli_affected_rows($conn) > 0) {
             // insert data ke tabel verifikasi
-            mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak, tgl_verif, status) VALUES ('$id','$nip_npak','$tgl', 'Ditolak')");
+            mysqli_query($conn, "INSERT INTO tb_verifikasi (id_pengajuan, nip_npak, tgl_verif, status, keterangan) VALUES ('$id','$nip_npak','$tgl', 'Ditolak', '$keterangan')");
             if (mysqli_affected_rows($conn) > 0) {
                 return true;
             } else {
