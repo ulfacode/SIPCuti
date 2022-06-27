@@ -1,20 +1,20 @@
 <?php
 session_start();
-$level_halaman = "Dosen Wali dan Ketua Jurusan";
+// $level_halaman = "Dosen Wali dan Ketua Jurusan";
 
 // untuk membuat pengecekan level yang memiliki jabatan dosen wali dan kajur (dua jabatan)
 // dev (default) diambil dari sidebar
 // saat masuk ke salah satu akun kemudian kembali ke halaman ini, 
 // dibuat isset dev agar session yg memiliki dua jabatan memiliki identitas saat kembali ke halaman multi_level.php
-if (isset($_GET['dev'])) {
-    $_SESSION['level'] = $_SESSION['dua'];
-}
+// if (isset($_GET['dev'])) {
+//     $_SESSION['level'] = $_SESSION['dua'];
+// }
 
 // agar selain session dosen wali dan ketua jurusan tidak bisa masuk
-if ($level_halaman != $_SESSION['level']) {
-    session_destroy();
-    header("Location: index.php");
-}
+// if ($level_halaman != $_SESSION['level']) {
+//     session_destroy();
+//     header("Location: index.php");
+// }
 
 if (!isset($_SESSION["nama"])) {
     header("Location: index.php");
@@ -209,42 +209,37 @@ if (!isset($_SESSION["nama"])) {
             <section class="content">
                 <div class="container-fluid">
 
-                    <!-- Small boxes (Stat box) -->
-                    <div class="row">
-                        <div class="col-lg-6 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3>&nbsp;</h3>
-                                    <h4>Dosen Wali</h4>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-person"></i>
-                                </div>
-                                <!-- masukin ke dashboard dulu -->
-                                <!-- membuat session level menjadi Dosen Wali -->
-                                <a href="app/doswal/dashboard/index.php?lvl=Dosen Wali" class="small-box-footer">Pilih <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-6 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-success">
-                                <div class="inner">
-                                    <h3>&nbsp;</h3>
-                                    <h4>Ketua Jurusan</h4>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-person"></i>
-                                </div>
-                                <!-- masukin ke dashboard dulu -->
-                                <!-- membuat session level menjadi Dosen Wali -->
-                                <a href="app/kajur/dashboard/index.php?lvl=Ketua Jurusan" class="small-box-footer">Pilih <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row -->
+                    <?php
+                    $get_akses = mysqli_query($conn, "SELECT * FROM tb_hak_akses join tb_jabatan on tb_jabatan.id_jabatan=tb_hak_akses.id_jabatan where tb_hak_akses.nip_npak = '$_SESSION[nip_npak]'");
+                    while ($datas = mysqli_fetch_array($get_akses)) {
+                        $_SESSION['level'] = "";
+                    ?>
 
+                        <!-- Small boxes (Stat box) -->
+                        <div class="row">
+                            <div class="col-lg-12 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-info">
+                                    <div class="inner">
+                                        <h3>&nbsp;</h3>
+                                        <h4><?php echo $datas['nama_jabatan'] ?></h4>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person"></i>
+                                    </div>
+                                    <!-- masukin ke dashboard dulu -->
+                                    <!-- membuat session level menjadi Dosen Wali -->
+                                    <a href="app/<?php echo $datas['nama_folder'] ?>/dashboard/index.php?lvl=<?= $datas['nama_jabatan']; ?>" class="small-box-footer">Pilih <i class="fas fa-arrow-circle-right"></i></a>
+
+                                </div>
+                            </div>
+                            <!-- ./col -->
+                        </div>
+                        <!-- /.row -->
+
+                    <?php
+                    }
+                    ?>
                 </div>
                 <!-- /.container-fluid -->
             </section>

@@ -86,6 +86,8 @@
             <?php
 
             // $_SESSION['level'] ambil dari index.php (login)
+            // $_SESSION['level'] ambil dari multi_level.php (pilih akses)
+            
             if ($_SESSION['level'] == "Mahasiswa") {
             ?>
                 <li class="nav-item">
@@ -109,17 +111,11 @@
                     </a>
                 </li>
                 <!-- <li class="nav-item">
-                    <a href="../bayar_ukt/index.php" class="nav-link">
-                        <i class="nav-icon fas fa-calculator"></i>
-                        <p>Pembayaran UKT</p>
-                    </a>
-                </li> -->
-                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-paper-plane"></i>
                         <p>Bot Telegram</p>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a href="../../../logout.php" class="nav-link">
                         <i class="nav-icon fas fa-power-off"></i>
@@ -230,6 +226,7 @@
                         <p>Pengajuan</p>
                     </a>
                 </li>
+
                 <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-paper-plane"></i>
@@ -237,19 +234,21 @@
                     </a>
                 </li> -->
                 <?php
-                if ($_SESSION['dua'] == "Dosen Wali dan Ketua Jurusan") { ?>
-                    <li class="nav-item">
-                        <!-- dikasih dev agar tau user tersebut memiliki rangkap jabatan tidak hilang saat kembali ke halaman multi level -->
-                        <!-- dev dikirim ke multi_level.php -->
-                        <!-- dev berisi level yang dipilih -->
-                        <a href="../../../multi_level.php?dev=<?= $_SESSION['level'] ?>" class="nav-link">
+                // if ($_SESSION['dua'] == "Dosen Wali dan Ketua Jurusan") { 
+                ?>
+                <!-- <li class="nav-item"> -->
+                <!-- dikasih dev agar tau user tersebut memiliki rangkap jabatan tidak hilang saat kembali ke halaman multi level -->
+                <!-- dev dikirim ke multi_level.php -->
+                <!-- dev berisi level yang dipilih -->
+                <!-- <a href="../../../multi_level.php?dev=<?= $_SESSION['level'] ?>" class="nav-link">
                             <i class="nav-icon fas fa-people-arrows"></i>
                             <p>Beralih Akun</p>
                         </a>
-                    </li>
+                    </li> -->
                 <?php
-                }
+                // }
                 ?>
+
                 <li class="nav-item">
                     <a href="../../../logout.php" class="nav-link">
                         <i class="nav-icon fas fa-power-off"></i>
@@ -287,16 +286,17 @@
                     </a>
                 </li> -->
                 <?php
-                if ($_SESSION['dua'] == "Dosen Wali dan Ketua Jurusan") { ?>
-                    <li class="nav-item">
-                        <!-- dikasih dev agar session level aslinya tidak hilang saat kembali ke halaman multi level -->
-                        <a href="../../../multi_level.php?dev=<?= $_SESSION['level'] ?>" class="nav-link">
+                // if ($_SESSION['dua'] == "Dosen Wali dan Ketua Jurusan") { 
+                ?>
+                <!-- <li class="nav-item"> -->
+                <!-- dikasih dev agar session level aslinya tidak hilang saat kembali ke halaman multi level -->
+                <!-- <a href="../../../multi_level.php?dev=<?= $_SESSION['level'] ?>" class="nav-link">
                             <i class="nav-icon fas fa-people-arrows"></i>
                             <p>Beralih Akun</p>
                         </a>
-                    </li>
+                    </li> -->
                 <?php
-                }
+                // }
                 ?>
                 <li class="nav-item">
                     <a href="../../../logout.php" class="nav-link">

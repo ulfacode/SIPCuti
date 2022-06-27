@@ -7,7 +7,6 @@ if (isset($_POST['login'])) {
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
 
-    // $login = mysqli_query($conn, "SELECT * FROM tb_mahasiswa AS m, tb_pegawai AS p  WHERE (m.username = '$username' AND m.password= '$password') OR (p.username = '$username' AND p.password= '$password')");
     $loginM = mysqli_query($conn, "SELECT *
                                     FROM tb_mahasiswa 
                                     WHERE email = '$email'");
@@ -38,7 +37,7 @@ if (isset($_POST['login'])) {
             header("location: app/mahasiswa/dashboard/");
         } else {
             echo "<script>
-                alert('Password salah!')
+                alert('Masukkan password dengan benar!')
                 </script>";
         }
     } elseif ($cekP > 0) { //jika user terdaftar sbg pegawai
@@ -46,93 +45,14 @@ if (isset($_POST['login'])) {
 
         if ($data['password'] == $password) {
             if ($data['status'] == "Aktif") {
-                if ($data['jabatan'] == "Administrator") {
-                    // buat session
-                    session_start();
+                session_start();
 
-                    $_SESSION['level'] = $data['jabatan'];
-                    $_SESSION['nip_npak'] = $data['nip_npak'];
-                    $_SESSION['nama'] = $data['nama'];
+                $_SESSION['nip_npak'] = $data['nip_npak'];
+                $_SESSION['nama'] = $data['nama'];
+                $_SESSION['level'] = "";
 
-                    // login sukses, alihkan ke halaman utama (dashboard)
-                    header("location: app/admin/dashboard");
-                } elseif ($data['jabatan'] == "Wakil Direktur 1") {
-                    // buat session
-                    session_start();
-
-                    $_SESSION['level'] = $data['jabatan'];
-                    $_SESSION['nip_npak'] = $data['nip_npak'];
-                    $_SESSION['nama'] = $data['nama'];
-
-                    // login sukses, alihkan ke halaman utama (dashboard)
-                    header("location: app/wadir1/dashboard/");
-                } elseif ($data['jabatan'] == "Ketua Jurusan") {
-                    // buat session
-                    session_start();
-
-                    $_SESSION['level'] = $data['jabatan'];
-                    $_SESSION['nip_npak'] = $data['nip_npak'];
-                    $_SESSION['nama'] = $data['nama'];
-
-                    // login sukses, alihkan ke halaman utama (dashboard)
-                    header("location: app/kajur/dashboard/");
-                } elseif ($data['jabatan'] == "Dosen Wali") {
-                    // buat session
-                    session_start();
-
-                    $_SESSION['level'] = $data['jabatan'];
-                    $_SESSION['nip_npak'] = $data['nip_npak'];
-                    $_SESSION['nama'] = $data['nama'];
-
-                    // login sukses, alihkan ke halaman utama (dashboard)
-                    header("location: app/doswal/dashboard/");
-                } elseif ($data['jabatan'] == "Ketua Akademik") {
-                    // buat session
-                    session_start();
-
-                    $_SESSION['level'] = $data['jabatan'];
-                    $_SESSION['nip_npak'] = $data['nip_npak'];
-                    $_SESSION['nama'] = $data['nama'];
-
-                    // login sukses, alihkan ke halaman utama (dashboard)
-                    header("location: app/KetuaAkademik/dashboard/");
-                } elseif ($data['jabatan'] == "Bagian Keuangan") {
-                    // buat session
-                    session_start();
-
-                    $_SESSION['level'] = $data['jabatan'];
-                    $_SESSION['nip_npak'] = $data['nip_npak'];
-                    $_SESSION['nama'] = $data['nama'];
-
-                    // login sukses, alihkan ke halaman utama (dashboard)
-                    header("location: app/keuangan/dashboard/");
-                } elseif ($data['jabatan'] == "Bagian Perpustakaan") {
-                    // buat session
-                    session_start();
-
-                    $_SESSION['level'] = $data['jabatan'];
-                    $_SESSION['nip_npak'] = $data['nip_npak'];
-                    $_SESSION['nama'] = $data['nama'];
-
-                    // login sukses, alihkan ke halaman utama (dashboard)
-                    header("location: app/perpus/dashboard/");
-                } elseif ($data['jabatan'] == "Dosen Wali dan Ketua Jurusan") {
-                    // buat session
-                    session_start();
-
-
-                    $_SESSION['level'] = $data['jabatan'];
-                    $_SESSION['nip_npak'] = $data['nip_npak'];
-                    $_SESSION['nama'] = $data['nama'];
-
-                    // login sukses, alihkan ke halaman utama (dashboard)
-                    header("location: multi_level.php");
-                } else {
-                    echo "<script>
-                    alert('Tidak ada level yang sesuai')
-                    </script>";
-                }
-            }else{
+                header("location: multi_level.php");
+            } else {
                 echo "<script>
                 alert('Akun Anda tidak aktif. Silahkan menghubungi BAAK!')
                 </script>";
@@ -224,7 +144,7 @@ if (isset($_POST['login'])) {
                 <!-- /.social-auth-links -->
 
                 <p class="mb-1">
-                    <a href="lupa_password.php">Lupa password</a>
+                    <a href="https://wa.me/6281390181520?text=Halo! Saya lupa password akun sistem pengajuan cuti. Tolong bantu saya mereset password.">Lupa password</a>
                 </p>
                 <!-- <p class="mb-0">
                     <a href="register.html" class="text-center">Register a new membership</a>

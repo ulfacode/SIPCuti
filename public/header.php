@@ -9,11 +9,16 @@ if (!isset($_SESSION["nama"])) {
 
 // saat masuk ke halaman dosen wali di cek session level masuknya siapa
 // apabila dosen wali dan ketua jurusan maka session level nya diganti ke variabel lvl yang didapatkan dari multi_level.php (merubah level sesuai yang dipilih)
-if ($_SESSION['level'] == "Dosen Wali dan Ketua Jurusan") {
+// if ($_SESSION['level'] == "Dosen Wali dan Ketua Jurusan") {
+// $_SESSION['level'] = $_GET["lvl"];
+//     $_SESSION['dua'] = "Dosen Wali dan Ketua Jurusan"; //untuk sidebar beralih akun
+// } else {
+//     $_SESSION['dua'] = ""; //yang tidak memiliki rangkap jabatan, tidak ada sidebar beralih akun
+// }
+
+// didapatkan dari halaman pemilihan akses
+if ($_SESSION['level'] == "") {
     $_SESSION['level'] = $_GET["lvl"];
-    $_SESSION['dua'] = "Dosen Wali dan Ketua Jurusan"; //untuk sidebar beralih akun
-} else {
-    $_SESSION['dua'] = ""; //yang tidak memiliki rangkap jabatan, tidak ada sidebar beralih akun
 }
 
 // pengecekan session level apakah sesuai dengan level yang ada di folder tersebut atau bukan
@@ -109,7 +114,7 @@ if ($level_halaman != $_SESSION['level']) {
             $total = $hasil['jml'];
         ?>
         <?php
-        }else{
+        } else {
             $total = "";
         }
         ?>
