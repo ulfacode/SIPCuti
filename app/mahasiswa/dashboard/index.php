@@ -63,7 +63,7 @@ $id = $_SESSION['nim'];
                                 <div class="icon">
                                     <i class="ion ion-person"></i>
                                 </div>
-                                <a href="../profil/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="../profil/" class="small-box-footer">Informasi lebih lanjut <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -77,7 +77,7 @@ $id = $_SESSION['nim'];
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
                                 </div>
-                                <a href="../pengajuan/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="../pengajuan/" class="small-box-footer">Informasi lebih lanjut <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -91,7 +91,7 @@ $id = $_SESSION['nim'];
                                 <div class="icon">
                                     <i class="ion ion-calculator"></i>
                                 </div>
-                                <a href="../bayar_ukt/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="../bayar_ukt/" class="small-box-footer">Informasi lebih lanjut <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div> -->
                         <!-- ./col -->

@@ -62,7 +62,7 @@ session_start();
                                 <div class="icon">
                                     <i class="fas fa-user-tie"></i>
                                 </div>
-                                <a href="../profil/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="../profil/" class="small-box-footer">Informasi lebih lanjut <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -82,7 +82,7 @@ session_start();
                                 <div class="icon">
                                     <i class="ion ion-bag"></i>
                                 </div>
-                                <a href="../pengajuan/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="../pengajuan/" class="small-box-footer">Informasi lebih lanjut <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -101,7 +101,7 @@ session_start();
                                 <div class="icon">
                                     <i class="nav-icon fas fa-edit"></i>
                                 </div>
-                                <a href="../pengajuan/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="../pengajuan/" class="small-box-footer">Informasi lebih lanjut <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->

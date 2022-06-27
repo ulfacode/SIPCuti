@@ -66,7 +66,7 @@ session_start();
                                 <div class="icon">
                                     <i class="fas fa-user-tie"></i>
                                 </div>
-                                <a href="../pegawai/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="../pegawai/" class="small-box-footer">Informasi lebih lanjut <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -85,7 +85,7 @@ session_start();
                                 <div class="icon">
                                     <i class="fas fa-user"></i>
                                 </div>
-                                <a href="../mahasiswa/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="../mahasiswa/" class="small-box-footer">Informasi lebih lanjut <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -103,7 +103,7 @@ session_start();
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
                                 </div>
-                                <a href="../pengajuan/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="../pengajuan/" class="small-box-footer">Informasi lebih lanjut <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -121,7 +121,7 @@ session_start();
                                 <div class="icon">
                                     <i class="ion ion-pie-graph"></i>
                                 </div>
-                                <a href="../pengajuan/" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="../pengajuan/" class="small-box-footer">Informasi lebih lanjut <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
