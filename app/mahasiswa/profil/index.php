@@ -189,7 +189,7 @@ if (isset($_POST["edit"])) {
                                             }
                                     ?>
                                     <li class="list-group-item">
-                                        <b>Username</b> <a class="float-right"><?= $mhs['username']; ?></a>
+                                        <b>Email</b> <a class="float-right"><?= $mhs['email']; ?></a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Tahun Angkatan</b> <a class="float-right"><?= $mhs['thn_angkatan']; ?></a>
