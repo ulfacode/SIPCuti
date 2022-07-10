@@ -45,9 +45,6 @@ function tambahCuti($data)
                         ('$nim', '$jns_pengajuan', '$tgl_pengajuan', '$semester_cuti', '$tingkat', '$thn_akademik', '$nm_prodi', '$alasan', '$lampiran', '$ttd_ortu', '$nama_ortu')";
             mysqli_query($conn, $query);
 
-            $text = "Halo!!! Pengajuan cuti bertambah. Nantikan pemberitahuan selanjutnya saat Anda harus verifikasi pengajuan!";
-            file_get_contents("https://api.telegram.org/bot5201020696:AAFeiuATGYO_-GRSUupQWeZPz8EBPCez7eE/sendMessage?chat_id=1304610886&text=" . $text);
-
             return mysqli_affected_rows($conn);
         } else {
             echo "
