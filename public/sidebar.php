@@ -155,6 +155,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="../hak_akses/index.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Hak Akses</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="../doswal/index.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Dosen Wali</p>
