@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body">
                 <!-- form start -->
-                <form action="" enctype="multipart/form-data" method="POST">
+                <form action="" method="POST">
                     <?php
                     $id = $row_user["nip_npak"];
                     $data = mysqli_query($conn, "SELECT * FROM tb_pegawai WHERE nip_npak = '$id'");
@@ -31,19 +31,29 @@
                             <label for="nama">Nama</label>
                             <input type="text" class="form-control" id="nama" name="nama" value="<?= $pgw["nama"]; ?>" required>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label>Jabatan</label>
-                            <select class="form-control" name="jabatan" required>
-                                <option hidden selected><?= $pgw["jabatan"]; ?></option>
-                                <option value="Administrator">Administrator</option>
-                                <option value="Wakil Direktur 1">Wakil Direktur 1</option>
-                                <option value="Ketua Jurusan">Ketua Jurusan</option>
-                                <option value="Dosen Wali">Dosen Wali</option>
-                                <option value="Ketua Akademik">Ketua Akademik</option>
-                                <option value="Bagian Keuangan">Bagian Keuangan</option>
-                                <option value="Bagian Perpustakaan">Bagian Perpustakaan</option>
-                            </select>
-                        </div>
+                            <div class="select2-purple">
+                                <select class="select2" name="id_jabatan[]" multiple="multiple" data-placeholder="Pilih Jabatan/Hak Akses (bisa satu atau lebih)" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                                    <?php
+                                    // $jabatan = mysqli_query($conn, "SELECT jb.nama_jabatan, hak .id_jabatan FROM tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE p.nip_npak=hak.nip_npak AND hak.id_jabatan=jb.id_jabatan AND p.nip_npak='$pgw[nip_npak]'");
+                                    // while ($jabatans = mysqli_fetch_array($jabatan)) {
+                                    ?>
+                                        <option value="<?= $jabatans['id_jabatan'] ?>" selected>
+                                            <?= $jabatans['nama_jabatan']; ?>
+                                        </option>
+                                    <?php
+                                    // }
+
+                                    // $data_jabatan = mysqli_query($conn, "SELECT * FROM tb_jabatan");
+                                    // while ($datas = mysqli_fetch_array($data_jabatan)) { ?>
+                                        <option value="<?= $datas['id_jabatan'] ?>"><?= $datas['nama_jabatan'] ?></option>
+                                    <?php
+                                    // }
+                                    ?>
+                                </select>
+                            </div>
+                        </div> -->
                         <div class="form-group">
                             <label for="thn_jabatan">Tahun Jabatan</label>
                             <input id="thn_jabatan" class="form-control" type="text" name="thn_jabatan" required="required" value="<?= $pgw["thn_jabatan"]; ?>">
