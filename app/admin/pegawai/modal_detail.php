@@ -22,9 +22,22 @@
 
                             <h3 class="profile-username text-center"><?= $pgw['nama']; ?></h3>
 
-                            <p class="text-muted text-center"><?= $pgw['jabatan']; ?> (<?= $pgw['nip_npak']; ?>)</p>
+                            <p class="text-muted text-center"> <?= $pgw['nip_npak']; ?></p>
 
                             <ul class="list-group list-group-unbordered mb-3">
+
+
+                                <li class="list-group-item">
+                                    <b>Jabatan</b>
+                                    <a class="float-right">
+                                        <?php
+                                        $jabatan = mysqli_query($conn, "SELECT jb.nama_jabatan FROM tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE p.nip_npak=hak.nip_npak AND hak.id_jabatan=jb.id_jabatan AND p.nip_npak='$pgw[nip_npak]'");
+
+                                        while ($jabatans = mysqli_fetch_array($jabatan)) {
+                                            echo $jabatans['nama_jabatan']  . "<br>";
+                                        } ?>
+                                    </a>
+                                </li>
                                 <li class="list-group-item">
                                     <b>Email</b> <a class="float-right"><?= $pgw['email']; ?></a>
                                 </li>
