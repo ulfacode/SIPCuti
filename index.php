@@ -51,7 +51,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['nama'] = $data['nama'];
                 $_SESSION['level'] = "";
 
-                header("location: multi_level.php");
+                header("location: pilih_level.php");
             } else {
                 echo "<script>
                 alert('Akun Anda tidak aktif. Silahkan menghubungi BAAK!')
