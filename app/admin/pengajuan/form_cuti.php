@@ -56,7 +56,7 @@ if ($result['status'] > '2') {
         $nip_kajur = $data_kajur['nip_npak'];
         $ttd_kajur = $data_kajur['ttd'];
     }
-}   
+}
 
 // ambil data koordinator bagian keuangan
 if (is_null($result['status'])) {
@@ -400,8 +400,12 @@ error_reporting(0);
                     <td></td>
                     <td align="center">NIP.NPAK. <?= $nip_keu; ?></td>
                 </tr>
-
-                <tr>
+            </table>
+            <br><br><br><br><br>
+            <br><br><br><br><br>
+            <br><br><br><br><br>
+            <table width="600">
+            <tr>
                     <td></td>
                     <td align="center">
                         <?php if ($nm_jurusan == 'Teknik Pengendalian Pencemaran Lingkungan') {
@@ -439,6 +443,7 @@ error_reporting(0);
                 <tr>
                     <td></td>
                     <td align="center">NIP/NPAK. <?= $nip_kajur; ?></td>
+                    <td></td>
                 </tr>
             </table>
         </div>
