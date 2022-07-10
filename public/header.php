@@ -35,14 +35,14 @@ if ($level_halaman != $_SESSION['level']) {
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            <a class="nav-link" data-widget="pushmenu" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="../dashboard/" class="nav-link">Home</a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
-        </li>
+        <!-- <li class="nav-item d-none d-sm-inline-block">
+            <a href="../../../contact.php" class="nav-link">Contact</a>
+        </li> -->
     </ul>
 
     <!-- Right navbar links -->
@@ -120,23 +120,30 @@ if ($level_halaman != $_SESSION['level']) {
         ?>
 
         <!-- tampilan notif -->
-        <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="far fa-bell"></i>
-                <span class="badge badge-warning navbar-badge"><?= $total; ?></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <span class="dropdown-item dropdown-header"><?= $total; ?> Notifications</span>
-                <div class="dropdown-divider"></div>
-                <a href="../pengajuan/" class="dropdown-item">
-                    <i class="fas fa-envelope mr-2"></i> Verifikasi
-                    <span class="float-right text-muted text-sm"><?= $total; ?> </span>
+        <?php
+        if ($_SESSION['level'] == "Mahasiswa" or $_SESSION['level'] == "Ketua Akademik" or $_SESSION['level'] == "Bagian Perpustakaan" or $_SESSION['level'] == "Bagian Keuangan") {
+            echo "&nbsp";
+        } else {
+        ?>
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-bell"></i>
+                    <span class="badge badge-warning navbar-badge"><?= $total; ?></span>
                 </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-            </div>
-        </li>
-
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <span class="dropdown-item dropdown-header"><?= $total; ?> Notifications</span>
+                    <div class="dropdown-divider"></div>
+                    <a href="../pengajuan/" class="dropdown-item">
+                        <i class="fas fa-envelope mr-2"></i> Verifikasi
+                        <span class="float-right text-muted text-sm"><?= $total; ?> </span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                </div>
+            </li>
+        <?php
+        }
+        ?>
         <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                 <i class="fas fa-expand-arrows-alt"></i>
