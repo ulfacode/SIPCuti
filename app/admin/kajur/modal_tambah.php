@@ -11,7 +11,7 @@
                 <!-- form start -->
                 <form action="" method="POST">
                     <?php
-                    $pgw = sql("SELECT * FROM v_tampil_kajur");
+                    $pgw = sql("SELECT p.nama, p.nip_npak FROM tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE p.nip_npak=hak.nip_npak AND hak.id_jabatan=jb.id_jabatan AND p.status = 'Aktif' AND jb.nama_jabatan='Ketua Jurusan'");
                     ?>
                     <!-- <div class="form-group">
                         <input type="hidden" class="form-control" name="id">
@@ -20,7 +20,7 @@
                     <div class="form-group">
                         <label for="nip">NIP/NPAK</label>
                         <!-- select2 tidak jadi, form control udah bisa buat search -->
-                        <select name="nip" class="form-control select2" data-placeholder="Pilih Ketua Jurusan" style="width: 100%;" required>
+                        <select name="nip" class="form-control select2bs4" data-placeholder="Pilih Ketua Jurusan" style="width: 100%;" required>
                             <option value=""></option>
                             <?php
                             foreach ($pgw as $row_user) {
