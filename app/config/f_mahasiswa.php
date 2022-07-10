@@ -8,7 +8,7 @@ function tambah($data)
     $nim = $data["nim"];
     $doswal = $data["doswal"];
     $kajur = $data["kajur"];
-    $username = $data["username"];
+    $email = $data["email"];
     $password = $data["password"];
     $nama = $data["nama"];
     $thn_angkatan = $data["thn_angkatan"];
@@ -32,7 +32,7 @@ function tambah($data)
     // }
 
 
-    $query = "INSERT INTO tb_mahasiswa (nim, id_doswal, id_kajur, username, password, nama, thn_angkatan, kelas, tempat_lhr, tgl_lhr, jk, alamat, no_telp) VALUES ('$nim', '$doswal', '$kajur', '$username', '$password','$nama',
+    $query = "INSERT INTO tb_mahasiswa (nim, id_doswal, id_kajur, email, password, nama, thn_angkatan, kelas, tempat_lhr, tgl_lhr, jk, alamat, no_telp) VALUES ('$nim', '$doswal', '$kajur', '$email', '$password','$nama',
     '$thn_angkatan', '$kelas', '$tempat_lhr', '$tgl_lhr', '$jk', '$alamat','$no_telp')";
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
