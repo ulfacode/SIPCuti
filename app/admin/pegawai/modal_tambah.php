@@ -27,9 +27,9 @@
                         <label for="nama">Nama</label>
                         <input type="text" class="form-control" id="nama" name="nama" required>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>Jabatan</label>
-                        <select class="form-control" name="jabatan" required>
+                        <select class="form-control" name="jabatan">
                             <option></option>
                             <option value="Administrator">Administrator</option>
                             <option value="Wakil Direktur 1">Wakil Direktur 1</option>
@@ -40,7 +40,25 @@
                             <option value="Bagian Keuangan">Bagian Keuangan</option>
                             <option value="Bagian Perpustakaan">Bagian Perpustakaan</option>
                         </select>
+                    </div> -->
+
+                    <div class="form-group">
+                        <label>Jabatan</label>
+                        <div class="select2-purple">
+                            <select class="select2" name="id_jabatan[]" multiple="multiple" data-placeholder="Pilih Jabatan/Hak Akses (bisa satu atau lebih)" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                                <?php
+                                $data_jabatan = mysqli_query($conn, "SELECT * FROM tb_jabatan");
+                                while ($datas = mysqli_fetch_array($data_jabatan)) { ?>
+                                    <option value="<?= $datas['id_jabatan'] ?>"><?= $datas['nama_jabatan'] ?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
                     </div>
+                    <!-- /.form-group -->
+
+
                     <div class="form-group">
                         <label for="thn_jabatan">Tahun Jabatan</label>
                         <input id="thn_jabatan" class="form-control" type="text" name="thn_jabatan" required="required" placeholder="ex: 2019-2022">
