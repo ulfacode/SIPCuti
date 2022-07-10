@@ -358,7 +358,7 @@ error_reporting(0);
                 </tr>
                 <tr>
                     <?php
-                    if (($result['status']) > '1' and $status_kajur == 'Diterima') {
+                    if (($result['status']) >= '3' and $status_kajur == 'Diterima') {
                     ?>
                         <td align="center"><img src="../pegawai/img/<?= $ttd_kajur; ?>" width="60" height="60" alt="tanda tangan kajur"></td>
                     <?php
@@ -435,6 +435,6 @@ error_reporting(0);
 </body>
 
 </html>
-<!-- <script>
+<script>
     window.print();
-</script> -->
+</script>
