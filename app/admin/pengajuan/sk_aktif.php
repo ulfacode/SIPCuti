@@ -303,6 +303,6 @@ error_reporting(0);
 </body>
 
 </html>
-<!-- <script>
+<script>
     window.print();
-</script> -->
+</script>
