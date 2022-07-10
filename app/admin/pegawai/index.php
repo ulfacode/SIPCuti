@@ -120,15 +120,24 @@ session_start();
                                         <tbody>
                                             <?php
 
-                                            $user = mysqli_query($conn, "SELECT * FROM v_data_pegawai");
+                                            $user = mysqli_query($conn, "SELECT * FROM tb_pegawai ORDER BY nama ASC");
                                             $row_user = $user->fetch_assoc();
 
                                             foreach ($user as $row_user) {
+                                                $jabatan = mysqli_query($conn, "SELECT jb.nama_jabatan FROM tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE p.nip_npak=hak.nip_npak AND hak.id_jabatan=jb.id_jabatan AND p.nip_npak='$row_user[nip_npak]'");
                                             ?>
                                                 <tr>
                                                     <td><?php echo $row_user['nip_npak'] ?></td>
                                                     <td><?php echo $row_user['nama'] ?></td>
-                                                    <td><?php echo $row_user['jabatan'] ?></td>
+                                                    <td>
+
+                                                        <?php
+                                                        while ($jabatans = mysqli_fetch_array($jabatan)) {
+                                                            echo $jabatans['nama_jabatan'] . "<br>";
+                                                        }
+                                                        ?>
+                                                    </td>
+
                                                     <td><?php echo $row_user['no_telp'] ?></td>
                                                     <!-- <td><?php echo "<img src='img/$row_user[foto]' width='70' height='90' />"; ?></td> -->
                                                     <td>
