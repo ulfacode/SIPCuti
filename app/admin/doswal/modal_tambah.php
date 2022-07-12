@@ -16,7 +16,6 @@
                     <!-- <div class="form-group">
                         <input type="hidden" class="form-control" name="id">
                     </div> -->
-
                     <div class="form-group">
                         <label for="nip">NIP/NPAK</label>
                         <!-- select2 tidak jadi, form control udah bisa buat search -->
