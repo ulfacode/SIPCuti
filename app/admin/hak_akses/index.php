@@ -125,7 +125,16 @@ session_start();
                                                 <tr>
                                                     <td><?php echo $row_user['nip_npak'] ?></td>
                                                     <td><?php echo $row_user['nama'] ?></td>
-                                                    <td><?php echo $row_user['nama_jabatan'] ?></td>
+                                                    <td>
+                                                        <?php
+                                                        if (!($row_user['nama_jabatan'] == 'Ketua Jurusan')) {
+                                                            echo $row_user['nama_jabatan'];
+                                                        } else {
+                                                            echo "Ketua Jurusan/Koordinator Prodi";
+                                                        }
+                                                        // echo $row_user['nama_jabatan']
+                                                        ?>
+                                                    </td>
                                                     <td>
                                                         <a class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo $row_user['id_hak_akses']; ?>">
                                                             <i class="fa fa-edit"></i> Edit

@@ -10,12 +10,18 @@ function tambah($data)
     $thn_jabatan = $data["thn_jabatan"];
     $status = $data["status"];
 
-    $query = "INSERT INTO tb_kajur 
-                (nip_npak, nm_jurusan, thn_jabatan, status) 
+    $query = mysqli_query($conn, "SELECT nip_pak FROM tb_kajur WHERE nip_npak = '$nip'");
+
+    if ($query->num_rows > 0) {
+        echo "<script>alert('Data tersebut sudah terdaftar!');</script>";
+    } else {
+        $query = "INSERT INTO tb_kajur 
+                (id_pegawai, nm_jurusan, thn_jabatan, status) 
                 VALUES 
                 ('$nip', '$nm_jurusan', '$thn_jabatan', '$status')";
-    mysqli_query($conn, $query);
-    return mysqli_affected_rows($conn);
+        mysqli_query($conn, $query);
+        return mysqli_affected_rows($conn);
+    }
 }
 
 function edit($data)

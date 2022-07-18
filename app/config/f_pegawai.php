@@ -15,24 +15,27 @@ function tambah($data)
     $id_jabatan = $data["id_jabatan"];
     $jml_jabatan = count($id_jabatan);
 
-    // var_dump($id_jabatan);
-    // var_dump($jml_jabatan);
+    $query = mysqli_query($conn, "SELECT nip_npak FROM tb_pegawai WHERE nip_npak = '$nip_npak'");
+    if ($query->num_rows > 0) {
+        echo "<script>alert('Data Pegawai dengan NIP/NPAK tersebut sudah terdaftar!');</script>";
+    } else {
+        $query = "INSERT INTO tb_pegawai (nip_npak, email, password, nama, thn_jabatan, status, no_telp) VALUES ('$nip_npak', '$email', '$password','$nama', '$thn_jabatan', '$status','$no_telp')";
+        mysqli_query($conn, $query);
 
-    $query = "INSERT INTO tb_pegawai (nip_npak, email, password, nama, thn_jabatan, status, no_telp) VALUES ('$nip_npak', '$email', '$password','$nama', '$thn_jabatan', '$status','$no_telp')";
-    mysqli_query($conn, $query);
-    // return mysqli_affected_rows($conn);
+        // return mysqli_affected_rows($conn);
 
-    if (mysqli_affected_rows($conn) > 0) {
-        for ($i = 0; $i < $jml_jabatan; $i++) {
-            mysqli_query($conn, "INSERT INTO tb_hak_akses (nip_npak, id_jabatan) VALUES ('$nip_npak', '$id_jabatan[$i]')");
-        }
         if (mysqli_affected_rows($conn) > 0) {
-            return true;
+            for ($i = 0; $i < $jml_jabatan; $i++) {
+                mysqli_query($conn, "INSERT INTO tb_hak_akses (nip_npak, id_jabatan) VALUES ('$nip_npak', '$id_jabatan[$i]')");
+            }
+            if (mysqli_affected_rows($conn) > 0) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
-    } else {
-        return false;
     }
 }
 

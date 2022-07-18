@@ -32,8 +32,8 @@ function tambahCuti($data)
     $status = mysqli_fetch_array($Cuti);
 
 
-    // cek ttd mahasiswa, jika tidak ada akan gagal
-    $ttd = mysqli_query($conn, "SELECT ttd FROM tb_mahasiswa WHERE nim = '$nim'");
+    // cek data mahasiswa, jika tidak ada akan gagal
+    $ttd = mysqli_query($conn, "SELECT nama, thn_angkatan, kelas, tempat_lhr, tgl_lhr, jk, alamat, no_telp, ttd FROM tb_mahasiswa WHERE nim = '$nim'");
     $h_ttd = mysqli_fetch_array($ttd);
 
     // if ((mysqli_num_rows($Cuti) == NULL) OR $status['status']=="5") {
@@ -49,7 +49,7 @@ function tambahCuti($data)
         } else {
             echo "
             <script> 
-                alert('Upload tanda tangan terlebih dahulu!');
+                alert('Lengkapi data terlebih dahulu!');
                 document.location.href = 'index.php';
             </script>
         ";
@@ -94,11 +94,11 @@ function tambahAktif($data)
     $Aktif = mysqli_query($conn, "SELECT * FROM tb_pengajuan WHERE nim = '$nim' AND jns_pengajuan = 'Izin Aktif'");
     $status = mysqli_fetch_array($Aktif);
 
-    // cek ttd mahasiswa, jika tidak ada akan gagal
-    $ttd = mysqli_query($conn, "SELECT ttd FROM tb_mahasiswa WHERE nim = '$nim'");
+    // cek data mahasiswa, jika tidak ada akan gagal
+    $ttd = mysqli_query($conn, "SELECT nama, thn_angkatan, kelas, tempat_lhr, tgl_lhr, jk, alamat, no_telp, ttd FROM tb_mahasiswa WHERE nim = '$nim'");
     $h_ttd = mysqli_fetch_array($ttd);
 
-    if ((empty(mysqli_num_rows($Aktif)) or $status['status'] == '5') and ((!empty(mysqli_num_rows($Cuti))) and $status_cuti['status'] == '5')) {
+    if ((empty(mysqli_num_rows($Aktif)) or $status['status'] == '6') and ((!empty(mysqli_num_rows($Cuti))) and $status_cuti['status'] == '5')) {
         if ($h_ttd['ttd']) {
             $query = "INSERT INTO tb_pengajuan 
                 (nim, jns_pengajuan, tgl_pengajuan, semester_cuti, tingkat, thn_akademik, nm_prodi, lampiran, ttd_ortu, nama_ortu) 
@@ -109,7 +109,7 @@ function tambahAktif($data)
         } else {
             echo "
             <script> 
-                alert('Upload tanda tangan terlebih dahulu!');
+                alert('Lengkapi data terlebih dahulu!');
                 document.location.href = 'index.php';
             </script>
         ";

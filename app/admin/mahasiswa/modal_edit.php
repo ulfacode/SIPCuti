@@ -29,7 +29,7 @@
 
                         <div class="form-group">
                             <label for="doswal">Dosen Wali</label>
-                            <select name="id_doswal" class="form-control select2bs4" style="width: 100%;">
+                            <select name="id_doswal" class="form-control select2bs4" style="width: 100%;" required>
 
                                 <?php
                                 foreach ($nama_doswal as $nm) {
@@ -53,7 +53,7 @@
 
                         <div class="form-group">
                             <label for="kajur">Ketua Jurusan</label>
-                            <select name="id_kajur" class="form-control select2bs4" style="width: 100%;">
+                            <select name="id_kajur" class="form-control select2bs4" style="width: 100%;" required>
 
                                 <?php
                                 foreach ($nama_kajur as $nm) {
@@ -89,7 +89,7 @@
                         </div>
                         <div class="form-group">
                             <label for="thn_angkatan">Tahun Angkatan</label>
-                            <select class="form-control" id="thn_angkatan" name="thn_angkatan">
+                            <select class="form-control" id="thn_angkatan" name="thn_angkatan" required>
                                 <option hidden selected><?= $mhs["thn_angkatan"]; ?></option>
                                 <?php
                                 for ($i = date('Y'); $i >= date('Y') - 45; $i -= 1) {
@@ -105,15 +105,15 @@
                         <!-- tidak harus diisi karena data pribadi -->
                         <div class="form-group">
                             <label for="tempat_lhr">Tempat Lahir</label>
-                            <input id="tempat_lhr" class="form-control" type="text" name="tempat_lhr" value="<?= $mhs["tempat_lhr"]; ?>">
+                            <input id="tempat_lhr" class="form-control" type="text" name="tempat_lhr" value="<?= $mhs["tempat_lhr"]; ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="tgl_lhr">Tanggal Lahir</label>
-                            <input id="tgl_lhr" class="form-control" type="text" name="tgl_lhr" value="<?= $mhs["tgl_lhr"]; ?>">
+                            <input id="tgl_lhr" class="form-control" type="text" name="tgl_lhr" value="<?= $mhs["tgl_lhr"]; ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="jk">Jenis Kelamin</label>
-                            <select class="form-control" name="jk">
+                            <select class="form-control" name="jk" required>
                                 <option hidden selected><?= $mhs["jk"]; ?></option>
                                 <option value="Laki-laki">Laki-Laki</option>
                                 <option value="Perempuan">Perempuan</option>
@@ -121,12 +121,12 @@
                         </div>
                         <div class="form-group">
                             <label for="alamat">Alamat</label>
-                            <textarea class="form-control" rows="4" name="alamat"><?= $mhs["alamat"]; ?></textarea>
+                            <textarea class="form-control" rows="4" name="alamat" required><?= $mhs["alamat"]; ?></textarea>
                         </div>
                         <!-- tidak harus diisi karena data pribadi -->
                         <div class="form-group">
                             <label for="no_telp">Nomor Telepon</label>
-                            <input id="no_telp" class="form-control" type="number" name="no_telp" value="<?= $mhs["no_telp"]; ?>">
+                            <input id="no_telp" class="form-control" type="number" name="no_telp" value="<?= $mhs["no_telp"]; ?>" required>
                         </div>
                     <?php
                     }

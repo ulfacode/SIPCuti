@@ -121,7 +121,7 @@ session_start();
                                             <?php
 
                                             $user = mysqli_query($conn, "SELECT * FROM tb_pegawai ORDER BY nama ASC");
-                                            $row_user = $user->fetch_assoc();
+                                            // $row_user = $user->fetch_assoc();
 
                                             foreach ($user as $row_user) {
                                                 $jabatan = mysqli_query($conn, "SELECT jb.nama_jabatan FROM tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE p.nip_npak=hak.nip_npak AND hak.id_jabatan=jb.id_jabatan AND p.nip_npak='$row_user[nip_npak]'");
@@ -133,7 +133,11 @@ session_start();
 
                                                         <?php
                                                         while ($jabatans = mysqli_fetch_array($jabatan)) {
-                                                            echo $jabatans['nama_jabatan'] . "<br>";
+                                                            if (!($jabatans['nama_jabatan'] == 'Ketua Jurusan')) {
+                                                                echo $jabatans['nama_jabatan'] . "<br>";
+                                                            } else {
+                                                                echo "Ketua Jurusan/Koordinator Prodi" . "<br>";
+                                                            }
                                                         }
                                                         ?>
                                                     </td>

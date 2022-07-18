@@ -60,14 +60,14 @@ if ($result['status'] > '2') {
 
 // ambil data koordinator bagian keuangan
 if (is_null($result['status'])) {
-    $sql3 = mysqli_query($conn, "select p.nama, p.ttd, p.nip_npak from tb_pegawai as p WHERE p.jabatan = 'Bagian Keuangan' AND p.status = 'Aktif'");
+    $sql3 = mysqli_query($conn, "select p.nama, p.ttd, p.nip_npak from tb_pegawai as p, tb_hak_akses as hak, tb_jabatan as jb WHERE p.nip_npak = hak.nip_npak AND hak.id_jabatan = jb.id_jabatan AND jb.nama_jabatan = 'Bagian Keuangan' AND p.status = 'Aktif'");
     while ($bag_keu = mysqli_fetch_array($sql3)) {
         $nama_keu = $bag_keu['nama'];
         $nip_keu = $bag_keu['nip_npak'];
         $ttd_keu = $bag_keu['ttd'];
     }
 } else {
-    $sql3 = mysqli_query($conn, "select p.nama, p.ttd, p.nip_npak, v.status from tb_pegawai as p, tb_pengajuan as pj, tb_verifikasi as v WHERE pj.id_pengajuan = v.id_pengajuan AND p.nip_npak=v.nip_npak AND p.jabatan = 'Bagian Keuangan' AND v.id_pengajuan='$id_pengajuan'");
+    $sql3 = mysqli_query($conn, "select p.nama, p.ttd, p.nip_npak, v.status from tb_pegawai as p, tb_pengajuan as pj, tb_verifikasi as v, tb_hak_akses as hak, tb_jabatan as jb WHERE pj.id_pengajuan = v.id_pengajuan AND p.nip_npak=v.nip_npak AND p.nip_npak=hak.nip_npak AND hak.id_jabatan=jb.id_jabatan AND jb.nama_jabatan = 'Bagian Keuangan' AND v.id_pengajuan='$id_pengajuan'");
     while ($bag_keu = mysqli_fetch_array($sql3)) {
         $nama_keu = $bag_keu['nama'];
         $nip_keu = $bag_keu['nip_npak'];
@@ -300,9 +300,9 @@ error_reporting(0);
             <table width="600">
                 <!-- row 1 -->
                 <tr>
-                    <td width="200"></td>
-                    <td width="200"></td>
-                    <td width="200">Cilacap, <?= tgl($result['tgl_pengajuan']); ?></td>
+                    <td width=""></td>
+                    <td width="80"></td>
+                    <td width="">Cilacap, <?= tgl($result['tgl_pengajuan']); ?></td>
                 </tr>
                 <!-- row 2 -->
                 <tr>
@@ -398,7 +398,7 @@ error_reporting(0);
                 <tr>
                     <td align="center">NIP/NPAK. <?= $nip_doswal; ?></td>
                     <td></td>
-                    <td align="center">NIP.NPAK. <?= $nip_keu; ?></td>
+                    <td align="center">NIP/NPAK. <?= $nip_keu; ?></td>
                 </tr>
             </table>
             <br><br><br><br><br>
@@ -442,7 +442,7 @@ error_reporting(0);
                 </tr>
                 <tr>
                     <td></td>
-                    <td align="center">NIP/NPAK. <?= $nip_kajur; ?></td>
+                    <td align="center" width="400">NIP/NPAK. <?= $nip_kajur; ?></td>
                     <td></td>
                 </tr>
             </table>

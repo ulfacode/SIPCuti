@@ -34,7 +34,11 @@
                                         $jabatan = mysqli_query($conn, "SELECT jb.nama_jabatan FROM tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE p.nip_npak=hak.nip_npak AND hak.id_jabatan=jb.id_jabatan AND p.nip_npak='$pgw[nip_npak]'");
 
                                         while ($jabatans = mysqli_fetch_array($jabatan)) {
-                                            echo $jabatans['nama_jabatan']  . "<br>";
+                                            if (!($jabatans['nama_jabatan'] == 'Ketua Jurusan')) {
+                                                echo $jabatans['nama_jabatan'] . "<br>";
+                                            } else {
+                                                echo "Ketua Jurusan/Koordinator Prodi" . "<br>";
+                                            }
                                         } ?>
                                     </a>
                                 </li>

@@ -219,7 +219,8 @@ if (isset($_POST["simpan"])) {
                                                                             <form action="" enctype="" method="">
                                                                                 <div class="card-body">
                                                                                     <?php
-                                                                                    $query     = mysqli_query($conn, "SELECT p.nama, p.jabatan, v.tgl_verif, v.status, v.keterangan FROM tb_verifikasi AS v, tb_pegawai AS p WHERE v.nip_npak=p.nip_npak AND v.id_pengajuan='$row_user[id_pengajuan]'");
+                                                                                    // $query     = mysqli_query($conn, "SELECT p.nama, p.jabatan, v.tgl_verif, v.status, v.keterangan FROM tb_verifikasi AS v, tb_pegawai AS p WHERE v.nip_npak=p.nip_npak AND v.id_pengajuan='$row_user[id_pengajuan]'");
+                                                                                    $query     = mysqli_query($conn, "SELECT p.nama, v.tgl_verif, v.status, v.keterangan FROM tb_verifikasi AS v, tb_pegawai AS p WHERE v.nip_npak=p.nip_npak AND v.id_pengajuan='$row_user[id_pengajuan]'");
                                                                                     $result = $query->fetch_assoc();
                                                                                     ?>
 
@@ -228,7 +229,7 @@ if (isset($_POST["simpan"])) {
                                                                                             <tr>
                                                                                                 <th style="width: 10px">#</th>
                                                                                                 <th>Nama</th>
-                                                                                                <th>Jabatan</th>
+                                                                                                <!-- <th>Jabatan</th> -->
                                                                                                 <th>Tanggal</th>
                                                                                                 <th>Keterangan</th>
                                                                                                 <th style="width: 40px">Status</th>
@@ -247,7 +248,7 @@ if (isset($_POST["simpan"])) {
                                                                                                 <tr>
                                                                                                     <td><?= $a; ?></td>
                                                                                                     <td><?= $result['nama']; ?></td>
-                                                                                                    <td><?= $result['jabatan']; ?></td>
+                                                                                                    <!-- <td><?= $result['jabatan']; ?></td> -->
                                                                                                     <td><?= tgl($result['tgl_verif']); ?></td>
                                                                                                     <td><?= $result['keterangan']; ?></td>
                                                                                                     <td><span class="badge bg-<?php echo $color; ?>"><?= $result['status']; ?></span></td>

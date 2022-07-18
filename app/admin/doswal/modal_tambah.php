@@ -18,7 +18,7 @@
                     </div> -->
 
                     <div class="form-group">
-                        <label for="nip">NIP/NPAK</label>
+                        <label for="nip">Nama (NIP/NPAK)</label>
                         <!-- select2 tidak jadi, form control udah bisa buat search -->
                         <select name="nip" class="form-control select2bs4" data-placeholder="Pilih Dosen Wali" style="width: 100%;" required>
                             <option value=""></option>
