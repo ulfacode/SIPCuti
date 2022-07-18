@@ -3,9 +3,9 @@ include '../../config/f_pengajuan.php';
 $id_pengajuan = $_GET['id'];
 $query     = mysqli_query($conn, "SELECT * FROM tb_pengajuan WHERE id_pengajuan='$id_pengajuan'");
 $result    = mysqli_fetch_array($query);
-if ($result['nim']) {
+if ($result['id_mahasiswa']) {
 
-    $sql = "select * from tb_mahasiswa  where nim = '$result[nim]'";
+    $sql = "select * from tb_mahasiswa  where id_mahasiswa = '$result[id_mahasiswa]'";
     $hasil = mysqli_query($conn, $sql);
     while ($data = mysqli_fetch_array($hasil)) {
         $nim = $data['nim'];

@@ -12,8 +12,8 @@
                 <form action="" enctype="multipart/form-data" method="POST">
                     <?php
 
-                    $tb_doswal = sql("SELECT * FROM tb_doswal, tb_pegawai WHERE tb_doswal.nip_npak = tb_pegawai.nip_npak ORDER BY tb_pegawai.nama ASC");
-                    $tb_kajur = sql("SELECT * FROM tb_kajur, tb_pegawai WHERE tb_kajur.nip_npak = tb_pegawai.nip_npak ORDER BY tb_pegawai.nama ASC");
+                    $tb_doswal = sql("SELECT * FROM tb_doswal, tb_pegawai WHERE tb_doswal.id_pegawai = tb_pegawai.id_pegawai ORDER BY tb_pegawai.nama ASC");
+                    $tb_kajur = sql("SELECT * FROM tb_kajur, tb_pegawai WHERE tb_kajur.id_pegawai = tb_pegawai.id_pegawai ORDER BY tb_pegawai.nama ASC");
 
                     ?>
                     <div class="form-group">
@@ -58,7 +58,7 @@
                     </div>
                     <div class="form-group">
                         <label for="thn_angkatan">Tahun Angkatan</label>
-                        <select class="form-control" id="thn_angkatan" name="thn_angkatan">
+                        <select class="form-control" id="thn_angkatan" name="thn_angkatan" required>
                             <option value=""></option>
                             <?php
                             for ($i = date('Y'); $i >= date('Y') - 45; $i -= 1) {
@@ -93,11 +93,11 @@
                     <!-- tidak harus diisi karena data pribadi -->
                     <div class="form-group">
                         <label>Alamat</label>
-                        <textarea class="form-control" rows="4" name="alamat" placeholder="Enter ..."></textarea>
+                        <textarea class="form-control" rows="4" name="alamat" placeholder="Enter ..." required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="no_telp">Nomor Telepon</label>
-                        <input id="no_telp" class="form-control" type="number" name="no_telp">
+                        <input id="no_telp" class="form-control" type="number" name="no_telp" required>
                     </div>
                     <!-- <div class="form-group">
                         <label for="foto">Foto</label>

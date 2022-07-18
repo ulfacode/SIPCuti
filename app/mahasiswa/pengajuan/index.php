@@ -64,7 +64,7 @@ $id = $_SESSION['nim'];
                                     <?php
                                     include "modal_tambah.php";
 
-                                    $user = mysqli_query($conn, "SELECT * FROM tb_pengajuan WHERE nim = '$id' ORDER BY tgl_pengajuan ASC");
+                                    $user = mysqli_query($conn, "SELECT * FROM tb_pengajuan WHERE id_mahasiswa = '$_SESSION[id_mahasiswa]' ORDER BY tgl_pengajuan ASC");
                                     $row_user = $user->fetch_assoc();
 
                                     if (isset($_POST["editP"])) {
@@ -246,7 +246,7 @@ $id = $_SESSION['nim'];
                                                                         <form action="" enctype="" method="">
                                                                             <div class="card-body">
                                                                                 <?php
-                                                                                $query     = mysqli_query($conn, "SELECT p.nama, p.jabatan, v.tgl_verif, v.status, v.keterangan FROM tb_verifikasi AS v, tb_pegawai AS p WHERE v.nip_npak=p.nip_npak AND v.id_pengajuan='$row_user[id_pengajuan]'");
+                                                                                $query     = mysqli_query($conn, "SELECT p.nama, p.jabatan, v.tgl_verif, v.status, v.keterangan, jb.nama_jabatan FROM tb_verifikasi AS v, tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE v.id_pegawai=p.id_pegawai AND p.id_pegawai=hak.id_pegawai AND hak.id_jabatan=jb.id_jabatan AND v.id_pengajuan='$row_user[id_pengajuan]'");
                                                                                 $result = $query->fetch_assoc();
                                                                                 ?>
 
@@ -274,7 +274,7 @@ $id = $_SESSION['nim'];
                                                                                             <tr>
                                                                                                 <td><?= $a; ?></td>
                                                                                                 <td><?= $result['nama']; ?></td>
-                                                                                                <td><?= $result['jabatan']; ?></td>
+                                                                                                <td><?= $result['nama_jabatan']; ?></td>
                                                                                                 <td><?= tgl($result['tgl_verif']); ?></td>
                                                                                                 <td><?= $result['keterangan']; ?></td>
                                                                                                 <td><span class="badge bg-<?php echo $color; ?>"><?= $result['status']; ?></span></td>

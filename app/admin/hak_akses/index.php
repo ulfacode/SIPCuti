@@ -63,7 +63,7 @@ session_start();
                                 <?php
                                 include "modal_tambah.php";
 
-                                $user = mysqli_query($conn, "SELECT p.nama, p.nip_npak, hak.id_hak_akses, jb.* FROM tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE p.nip_npak=hak.nip_npak AND hak.id_jabatan=jb.id_jabatan");
+                                $user = mysqli_query($conn, "SELECT p.nama, p.nip_npak, hak.id_hak_akses, jb.* FROM tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE p.id_pegawai=hak.id_pegawai AND hak.id_jabatan=jb.id_jabatan");
                                 // $row_user = $user->fetch_assoc();
 
                                 if (isset($_POST["edit"])) {
@@ -125,7 +125,16 @@ session_start();
                                                 <tr>
                                                     <td><?php echo $row_user['nip_npak'] ?></td>
                                                     <td><?php echo $row_user['nama'] ?></td>
-                                                    <td><?php echo $row_user['nama_jabatan'] ?></td>
+                                                    <td>
+                                                        <?php
+                                                        if (!($row_user['nama_jabatan'] == 'Ketua Jurusan')) {
+                                                            echo $row_user['nama_jabatan'];
+                                                        } else {
+                                                            echo "Ketua Jurusan/Koordinator Prodi";
+                                                        }
+                                                        // echo $row_user['nama_jabatan']
+                                                        ?>
+                                                    </td>
                                                     <td>
                                                         <a class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo $row_user['id_hak_akses']; ?>">
                                                             <i class="fa fa-edit"></i> Edit

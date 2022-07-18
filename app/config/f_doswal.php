@@ -1,15 +1,15 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "sistem_cuti");
+$conn = mysqli_connect("localhost", "root", "", "si_cuti");
 
 
 function tambah($data)
 {
     global $conn;
-    $nip = $data["nip"];
+    $id_pegawai = $data["id_pegawai"];
     $thn_jabatan = $data["thn_jabatan"];
     $status = $data["status"];
 
-    $query = "INSERT INTO tb_doswal (nip_npak, thn_jabatan, status) VALUES ('$nip', '$thn_jabatan', '$status')";
+    $query = "INSERT INTO tb_doswal (id_pegawai, thn_jabatan, status) VALUES ('$id_pegawai', '$thn_jabatan', '$status')";
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }
@@ -18,11 +18,11 @@ function edit($data)
 {
     global $conn;
     $id_doswal = $data["id"];
-    $nip_npak = $data["nip"];
+    $id_pegawai = $data["id_pegawai"];
     $thn_jabatan = $data["thn_jabatan"];
     $status = $data["status"];
 
-    $query = "UPDATE tb_doswal SET nip_npak='$nip_npak', thn_jabatan='$thn_jabatan', status='$status' WHERE id_doswal='$id_doswal'";
+    $query = "UPDATE tb_doswal SET id_pegawai='$id_pegawai', thn_jabatan='$thn_jabatan', status='$status' WHERE id_doswal='$id_doswal'";
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }

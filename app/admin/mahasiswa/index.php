@@ -65,7 +65,7 @@ session_start();
                                 include "modal_tambah.php";
 
                                 $user = mysqli_query($conn, "SELECT * FROM tb_mahasiswa ORDER BY nama ASC");
-                                $row_user = $user->fetch_assoc();
+                                // $row_user = $user->fetch_assoc();
 
                                 if (isset($_POST["edit"])) {
                                     if (edit($_POST) > 0) {
@@ -114,10 +114,7 @@ session_start();
                                                 <th>Nama</th>
                                                 <th>Angkatan</th>
                                                 <th>Kelas</th>
-                                                <!-- <th>TTL</th> -->
-                                                <!-- <th>Alamat</th> -->
                                                 <th>Nomor Telepon</th>
-                                                <!-- <th>Foto</th> -->
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -132,20 +129,17 @@ session_start();
                                                     <td><?php echo $row_user['nama'] ?></td>
                                                     <td><?php echo $row_user['thn_angkatan'] ?></td>
                                                     <td><?php echo $row_user['kelas'] ?></td>
-                                                    <!-- <td><?php echo $row_user['tempat_lhr'] ?>, <?= $row_user['tgl_lhr'] ?></td> -->
-                                                    <!-- <td><?php echo $row_user['alamat'] ?></td> -->
                                                     <td><?php echo $row_user['no_telp'] ?></td>
-                                                    <!-- <td><?php echo "<img src='img/$row_user[foto]' width='70' height='90' />"; ?></td> -->
                                                     <td>
-                                                        <a class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo $row_user['nim']; ?>">
+                                                        <a class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo $row_user['id_mahasiswa']; ?>">
                                                             <i class="fa fa-edit"></i> Edit
                                                         </a>
 
-                                                        <a class="btn btn-secondary" data-toggle="modal" data-target="#modal-detail<?php echo $row_user['nim']; ?>">
+                                                        <a class="btn btn-secondary" data-toggle="modal" data-target="#modal-detail<?php echo $row_user['id_mahasiswa']; ?>">
                                                             <i class="fa fa-info-circle"></i> Detail
                                                         </a>
 
-                                                        <a style="color: white;" class="btn btn-warning" href="hapus.php?nim=<?php echo $row_user['nim']; ?>" onclick="return confirm('Anda yakin mau menghapus data ini ?')">
+                                                        <a style="color: white;" class="btn btn-warning" href="hapus.php?id_mahasiswa=<?php echo $row_user['id_mahasiswa']; ?>" onclick="return confirm('Anda yakin mau menghapus data ini ?')">
                                                             <i class="fa fa-trash"></i> Hapus
                                                         </a>
                                                     </td>

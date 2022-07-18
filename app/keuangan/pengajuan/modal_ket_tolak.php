@@ -13,7 +13,7 @@
                 <form action="" method="POST">
                     <div class="card-body">
                         <input type="hidden" name="id" value="<?php echo $row_user['id_pengajuan'] ?>">
-                        <input type="hidden" name="nip_npak" value="<?php echo $nip_npak?>">
+                        <input type="hidden" name="id_pegawai" value="<?= $_SESSION['id_pegawai']?>">
                         <div class="form-group">
                             <label for="">Keterangan Menolak Pengajuan</label>
                             <textarea class="form-control" name="keterangan" id="" cols="50" rows="10"></textarea>

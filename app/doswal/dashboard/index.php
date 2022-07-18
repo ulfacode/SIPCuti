@@ -57,7 +57,7 @@ $nip_npak = $_SESSION['nip_npak'];
                             <div class="small-box bg-info">
                                 <div class="inner">
                                     <?php
-                                    $sql = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_doswal AS d WHERE m.nim = p.nim AND m.id_doswal=d.id_doswal AND d.nip_npak='$nip_npak'");
+                                    $sql = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_doswal AS d WHERE m.id_mahasiswa = p.id_mahasiswa AND m.id_doswal=d.id_doswal AND d.id_pegawai='$_SESSION[id_pegawai]'");
                                     $hasil = mysqli_fetch_array($sql);
                                     ?>
                                     <h3><?php echo $hasil['jml']; ?></h3>
@@ -76,10 +76,10 @@ $nip_npak = $_SESSION['nip_npak'];
                             <div class="small-box bg-success">
                                 <div class="inner">
                                     <?php
-                                    $sqlc = mysqli_query($conn, "SELECT count(*) AS jml_belum FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_doswal AS d WHERE m.nim = p.nim AND m.id_doswal=d.id_doswal AND d.nip_npak='$nip_npak' AND (p.status = '1' OR p.status IS NULL) AND jns_pengajuan = 'Cuti'");
+                                    $sqlc = mysqli_query($conn, "SELECT count(*) AS jml_belum FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_doswal AS d WHERE m.id_mahasiswa = p.id_mahasiswa AND m.id_doswal=d.id_doswal AND d.id_pegawai='$_SESSION[id_pegawai]' AND (p.status = '1' OR p.status IS NULL) AND jns_pengajuan = 'Cuti'");
                                     $hasilc = mysqli_fetch_array($sqlc);
 
-                                    $sqla = mysqli_query($conn, "SELECT count(*) AS jml_belum FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_doswal AS d WHERE m.nim = p.nim AND m.id_doswal=d.id_doswal AND d.nip_npak='$nip_npak' AND p.status IS NULL AND jns_pengajuan = 'Izin Aktif'");
+                                    $sqla = mysqli_query($conn, "SELECT count(*) AS jml_belum FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_doswal AS d WHERE m.id_mahasiswa = p.id_mahasiswa AND m.id_doswal=d.id_doswal AND d.id_pegawai='$_SESSION[id_pegawai]' AND p.status IS NULL AND jns_pengajuan = 'Izin Aktif'");
                                     $hasila = mysqli_fetch_array($sqla);
 
                                     $tot = $hasilc['jml_belum'] + $hasila['jml_belum'];

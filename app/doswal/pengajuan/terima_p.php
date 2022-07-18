@@ -2,11 +2,11 @@
 include "../../config/f_pengajuan.php";
 
 $id = $_GET['id'];
-$nip_npak = $_GET['nip_npak'];
+$id_pegawai = $_GET['id_pegawai'];
 $jabatan = $_GET['jabatan'];
 
 // untuk ACC pengajuan
-if (terima($id, $nip_npak, $jabatan)) {
+if (terima($id, $id_pegawai, $jabatan)) {
     echo "
             <script>
                 alert('Data Berhasil Diverifikasi!');

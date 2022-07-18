@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "sistem_cuti");
+$conn = mysqli_connect("localhost", "root", "", "si_cuti");
 
 
 function tambah($data)
@@ -177,7 +177,7 @@ function sql($query)
 function hapus($id)
 {
     global $conn;
-    mysqli_query($conn, "DELETE FROM tb_mahasiswa WHERE nim = '$id'");
+    mysqli_query($conn, "DELETE FROM tb_mahasiswa WHERE id_mahasiswa = '$id'");
 
     return mysqli_affected_rows($conn);
 }

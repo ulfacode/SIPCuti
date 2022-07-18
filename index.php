@@ -29,6 +29,7 @@ if (isset($_POST['login'])) {
             session_start();
 
             $_SESSION['level'] = "Mahasiswa";
+            $_SESSION['id_mahasiswa'] = $data['id_mahasiswa'];
             $_SESSION['nim'] = $data['nim'];
             $_SESSION['nama'] = $data['nama'];
 
@@ -48,6 +49,7 @@ if (isset($_POST['login'])) {
                 session_start();
 
                 $_SESSION['nip_npak'] = $data['nip_npak'];
+                $_SESSION['id_pegawai'] = $data['id_pegawai'];
                 $_SESSION['nama'] = $data['nama'];
                 $_SESSION['level'] = "";
 

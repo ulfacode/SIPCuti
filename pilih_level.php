@@ -112,7 +112,7 @@ if (!isset($_SESSION["nama"])) {
 
 
                         $user = mysqli_query($conn, "SELECT * FROM tb_pegawai WHERE nip_npak = '$_SESSION[nip_npak]'");
-                        $row = $user->fetch_assoc();
+                        // $row = $user->fetch_assoc();
                         foreach ($user as $row) {
                             if (!empty($row["foto"])) { ?>
 
@@ -193,7 +193,7 @@ if (!isset($_SESSION["nama"])) {
                 <div class="container-fluid">
 
                     <?php
-                    $get_akses = mysqli_query($conn, "SELECT * FROM tb_hak_akses join tb_jabatan on tb_jabatan.id_jabatan=tb_hak_akses.id_jabatan where tb_hak_akses.nip_npak = '$_SESSION[nip_npak]'");
+                    $get_akses = mysqli_query($conn, "SELECT * FROM tb_hak_akses join tb_jabatan on tb_jabatan.id_jabatan=tb_hak_akses.id_jabatan where tb_hak_akses.id_pegawai = '$_SESSION[id_pegawai]'");
                     while ($datas = mysqli_fetch_array($get_akses)) {
                         $_SESSION['level'] = "";
                     ?>

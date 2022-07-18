@@ -84,7 +84,7 @@ if (isset($_POST["simpan"])) {
 
                                 <?php
 
-                                $user = mysqli_query($conn, "SELECT m.nim, m.nama, p.id_pengajuan, p.jns_pengajuan, p.tgl_pengajuan, p.semester_cuti, p.thn_akademik, p.alasan, p.lampiran, p.status, p.upload_sk FROM tb_mahasiswa AS m, tb_pengajuan AS p WHERE m.nim = p.nim ORDER BY tgl_pengajuan ASC");
+                                $user = mysqli_query($conn, "SELECT m.nim, m.nama, p.id_pengajuan, p.jns_pengajuan, p.tgl_pengajuan, p.semester_cuti, p.thn_akademik, p.alasan, p.lampiran, p.status, p.upload_sk FROM tb_mahasiswa AS m, tb_pengajuan AS p WHERE m.id_mahasiswa = p.id_mahasiswa ORDER BY tgl_pengajuan ASC");
                                 // $row_user = $user->fetch_assoc();
                                 // $result = mysqli_fetch_array($user);
 
@@ -174,12 +174,10 @@ if (isset($_POST["simpan"])) {
                                                             <?php
                                                             if (empty($row_user['status'])) { ?>
                                                                 <!-- $level dari sidebar -->
-                                                                <a href="terima_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>&jabatan=<?= $level; ?>" onclick="return confirm('Anda yakin menerima pengajuan ini?')" class="btn btn-outline-none"><i class="fas fa-check" style="color: green;"></i>
+                                                                <a href="terima_p.php?id=<?= $row_user['id_pengajuan']; ?>&id_pegawai=<?= $_SESSION['id_pegawai']; ?>&jabatan=<?= $level; ?>" onclick="return confirm('Anda yakin menerima pengajuan ini?')" class="btn btn-outline-none"><i class="fas fa-check" style="color: green;"></i>
                                                                     ACC &nbsp;&nbsp;</a>
                                                                 <a data-toggle="modal" data-target="#modal-keterangan<?php echo $row_user['id_pengajuan']; ?>"><i class="fas fa-times" style="color: red;"></i>
                                                                     Tolak</a>
-                                                                <!-- <a href="tolak_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>" class="btn btn-outline-none" onclick="return confirm('Anda yakin menolak pengajuan ini?')"><i class="fas fa-times" style="color: red;"></i>
-                                                                    Tolak</a> -->
                                                             <?php
                                                                 include "modal_ket_tolak.php";
                                                             } else {
@@ -218,7 +216,7 @@ if (isset($_POST["simpan"])) {
                                                                             <form action="" enctype="" method="">
                                                                                 <div class="card-body">
                                                                                     <?php
-                                                                                    $query     = mysqli_query($conn, "SELECT p.nama, p.jabatan, v.tgl_verif, v.status, v.keterangan FROM tb_verifikasi AS v, tb_pegawai AS p WHERE v.nip_npak=p.nip_npak AND v.id_pengajuan='$row_user[id_pengajuan]'");
+                                                                                    $query     = mysqli_query($conn, "SELECT p.nama, p.jabatan, v.tgl_verif, v.status, v.keterangan, jb.nama_jabatan FROM tb_verifikasi AS v, tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE v.id_pegawai=p.id_pegawai AND p.id_pegawai=hak.id_pegawai AND hak.id_jabatan=jb.id_jabatan AND v.id_pengajuan='$row_user[id_pengajuan]'");
                                                                                     $result = $query->fetch_assoc();
                                                                                     ?>
 
@@ -246,7 +244,7 @@ if (isset($_POST["simpan"])) {
                                                                                                 <tr>
                                                                                                     <td><?= $a; ?></td>
                                                                                                     <td><?= $result['nama']; ?></td>
-                                                                                                    <td><?= $result['jabatan']; ?></td>
+                                                                                                    <td><?= $result['nama_jabatan']; ?></td>
                                                                                                     <td><?= tgl($result['tgl_verif']); ?></td>
                                                                                                     <td><?= $result['keterangan']; ?></td>
                                                                                                     <td><span class="badge bg-<?php echo $color; ?>"><?= $result['status']; ?></span></td>

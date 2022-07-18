@@ -2,11 +2,11 @@
 include "../../config/f_pengajuan.php";
 
 $id = $_GET['id'];
-$nip_npak = $_GET['nip_npak'];
+$id_pegawai = $_GET['id_pegawai'];
 
 
 // untuk tolak pengajuan
-if (tolak($id, $nip_npak)) {
+if (tolak($id, $id_pegawai)) {
     echo "
             <script>
                 alert('Data Berhasil Diverifikasi!');
