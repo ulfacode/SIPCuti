@@ -13,7 +13,7 @@
 
                     <div class="form-group">
                         <label for="nip">NIP/NPAK</label>
-                        <input type="number" class="form-control" id="nip" name="nip" required>
+                        <input type="text" class="form-control" id="nip" name="nip" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
@@ -49,7 +49,17 @@
                                 <?php
                                 $data_jabatan = mysqli_query($conn, "SELECT * FROM tb_jabatan");
                                 while ($datas = mysqli_fetch_array($data_jabatan)) { ?>
-                                    <option value="<?= $datas['id_jabatan'] ?>"><?= $datas['nama_jabatan'] ?></option>
+                                    <option value="<?= $datas['id_jabatan'] ?>">
+                                    
+                                        <?php
+                                        if(!($datas['nama_jabatan'] == 'Ketua Jurusan')){
+                                            echo $datas['nama_jabatan']; 
+                                        }else{
+                                            echo "Ketua Jurusan/Koordinator Prodi"; 
+
+                                        }
+                                        ?>
+                                    </option>
                                 <?php
                                 }
                                 ?>

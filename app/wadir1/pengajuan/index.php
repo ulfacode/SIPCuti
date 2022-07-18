@@ -85,8 +85,8 @@ if (isset($_POST["simpan"])) {
 
                                 <?php
                                 // where `m`.`nim` = `p`.`nim` and `p`.`jns_pengajuan` = 'Izin Aktif'
-                                $user = mysqli_query($conn, "SELECT * FROM v_wdpengajuan");
-                                $row_user = $user->fetch_assoc();
+                                $user = mysqli_query($conn, "SELECT * FROM tb_mahasiswa AS m, tb_pengajuan AS p where `m`.`id_mahasiswa` = `p`.`id_mahasiswa` and `p`.`jns_pengajuan` = 'Izin Aktif'");
+                                // $row_user = $user->fetch_assoc();
 
                                 ?>
 
@@ -168,7 +168,7 @@ if (isset($_POST["simpan"])) {
                                                             echo "";
                                                         } elseif ($row_user['status'] == "3") { ?>
                                                             <!-- $level dari sidebar -->
-                                                            <a href="terima_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>&jabatan=<?= $level; ?>" onclick="return confirm('Anda yakin menerima pengajuan ini?')" class="btn btn-outline-none"><i class="fas fa-check" style="color: green;"></i>
+                                                            <a href="terima_p.php?id=<?= $row_user['id_pengajuan']; ?>&id_pegawai=<?= $_SESSION['id_pegawai']; ?>&jabatan=<?= $level; ?>" onclick="return confirm('Anda yakin menerima pengajuan ini?')" class="btn btn-outline-none"><i class="fas fa-check" style="color: green;"></i>
                                                                 ACC </a>
                                                             <br>
                                                             <a data-toggle="modal" data-target="#modal-keterangan<?php echo $row_user['id_pengajuan']; ?>"><i class="fas fa-times" style="color: red;"></i>
@@ -198,7 +198,7 @@ if (isset($_POST["simpan"])) {
                                                                         <form action="" enctype="" method="">
                                                                             <div class="card-body">
                                                                                 <?php
-                                                                                $query     = mysqli_query($conn, "SELECT p.nama, p.jabatan, v.tgl_verif, v.status, v.keterangan FROM tb_verifikasi AS v, tb_pegawai AS p WHERE v.nip_npak=p.nip_npak AND v.id_pengajuan='$row_user[id_pengajuan]'");
+                                                                                $query     = mysqli_query($conn, "SELECT p.nama, p.jabatan, v.tgl_verif, v.status, v.keterangan, jb.nama_jabatan FROM tb_verifikasi AS v, tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE v.id_pegawai=p.id_pegawai AND p.id_pegawai=hak.id_pegawai AND hak.id_jabatan=jb.id_jabatan AND v.id_pengajuan='$row_user[id_pengajuan]'");
                                                                                 $result = $query->fetch_assoc();
                                                                                 ?>
 
@@ -226,7 +226,7 @@ if (isset($_POST["simpan"])) {
                                                                                             <tr>
                                                                                                 <td><?= $a; ?></td>
                                                                                                 <td><?= $result['nama']; ?></td>
-                                                                                                <td><?= $result['jabatan']; ?></td>
+                                                                                                <td><?= $result['nama_jabatan']; ?></td>
                                                                                                 <td><?= tgl($result['tgl_verif']); ?></td>
                                                                                                 <td><?= $result['keterangan']; ?></td>
                                                                                                 <td><span class="badge bg-<?php echo $color; ?>"><?= $result['status']; ?></span></td>

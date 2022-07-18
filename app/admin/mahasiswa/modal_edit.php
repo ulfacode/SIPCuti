@@ -1,4 +1,4 @@
-<div class="modal fade" id="myModal<?php echo $row_user['nim']; ?>">
+<div class="modal fade" id="myModal<?php echo $row_user['id_mahasiswa']; ?>">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -11,25 +11,26 @@
                 <!-- form start -->
                 <form action="" enctype="multipart/form-data" method="POST">
                     <?php
-                    $tb_doswal = sql("SELECT * FROM tb_doswal, tb_pegawai WHERE tb_doswal.nip_npak = tb_pegawai.nip_npak ORDER BY tb_pegawai.nama ASC");
-                    $tb_kajur = sql("SELECT * FROM tb_kajur, tb_pegawai WHERE tb_kajur.nip_npak = tb_pegawai.nip_npak ORDER BY tb_pegawai.nama ASC");
+                    $tb_doswal = sql("SELECT * FROM tb_doswal, tb_pegawai WHERE tb_doswal.id_pegawai = tb_pegawai.id_pegawai ORDER BY tb_pegawai.nama ASC");
+                    $tb_kajur = sql("SELECT * FROM tb_kajur, tb_pegawai WHERE tb_kajur.id_pegawai = tb_pegawai.id_pegawai ORDER BY tb_pegawai.nama ASC");
 
-                    $id = $row_user["nim"];
+                    $id = $row_user["id_mahasiswa"];
 
-                    $nama_doswal = sql("SELECT tb_pegawai.nama, tb_doswal.id_doswal FROM tb_pegawai, tb_doswal, tb_mahasiswa WHERE tb_mahasiswa.nim = '$id' AND tb_pegawai.nip_npak = tb_doswal.nip_npak AND tb_doswal.id_doswal=tb_mahasiswa.id_doswal;");
-                    $nama_kajur = sql("SELECT tb_pegawai.nama, tb_kajur.id_kajur FROM tb_pegawai, tb_kajur, tb_mahasiswa WHERE tb_mahasiswa.nim = '$id' AND tb_pegawai.nip_npak = tb_kajur.nip_npak AND tb_kajur.id_kajur=tb_mahasiswa.id_kajur;");
+                    $nama_doswal = sql("SELECT tb_pegawai.nama, tb_doswal.id_doswal FROM tb_pegawai, tb_doswal, tb_mahasiswa WHERE tb_mahasiswa.id_mahasiswa = '$id' AND tb_pegawai.id_pegawai = tb_doswal.id_pegawai AND tb_doswal.id_doswal=tb_mahasiswa.id_doswal;");
+                    $nama_kajur = sql("SELECT tb_pegawai.nama, tb_kajur.id_kajur FROM tb_pegawai, tb_kajur, tb_mahasiswa WHERE tb_mahasiswa.id_mahasiswa = '$id' AND tb_pegawai.id_pegawai = tb_kajur.id_pegawai AND tb_kajur.id_kajur=tb_mahasiswa.id_kajur;");
 
-                    $data = mysqli_query($conn, "SELECT * FROM tb_mahasiswa WHERE nim = '$id'");
+                    $data = mysqli_query($conn, "SELECT * FROM tb_mahasiswa WHERE id_mahasiswa = '$id'");
                     while ($mhs = mysqli_fetch_array($data)) {
                     ?>
+                        <input type="hidden" name="id" value="<?= $id; ?>">
                         <div class="form-group">
                             <label for="nim">NIM</label>
-                            <input type="number" class="form-control" id="nim" name="nim" value="<?= $mhs["nim"]; ?>" readonly>
+                            <input type="number" class="form-control" id="nim" name="nim" value="<?= $mhs["nim"]; ?>" required>
                         </div>
 
                         <div class="form-group">
                             <label for="doswal">Dosen Wali</label>
-                            <select name="id_doswal" class="form-control select2bs4" style="width: 100%;">
+                            <select name="id_doswal" class="form-control select2bs4" style="width: 100%;" required>
 
                                 <?php
                                 foreach ($nama_doswal as $nm) {
@@ -53,7 +54,7 @@
 
                         <div class="form-group">
                             <label for="kajur">Ketua Jurusan</label>
-                            <select name="id_kajur" class="form-control select2bs4" style="width: 100%;">
+                            <select name="id_kajur" class="form-control select2bs4" style="width: 100%;" required>
 
                                 <?php
                                 foreach ($nama_kajur as $nm) {
@@ -89,7 +90,7 @@
                         </div>
                         <div class="form-group">
                             <label for="thn_angkatan">Tahun Angkatan</label>
-                            <select class="form-control" id="thn_angkatan" name="thn_angkatan">
+                            <select class="form-control" id="thn_angkatan" name="thn_angkatan" required>
                                 <option hidden selected><?= $mhs["thn_angkatan"]; ?></option>
                                 <?php
                                 for ($i = date('Y'); $i >= date('Y') - 45; $i -= 1) {
@@ -100,16 +101,16 @@
                         </div>
                         <div class="form-group">
                             <label for="kelas">Kelas</label>
-                            <input id="kelas" class="form-control" type="text" name="kelas" required="required" value="<?= $mhs["kelas"]; ?>">
+                            <input id="kelas" class="form-control" type="text" name="kelas" required="required" value="<?= $mhs["kelas"]; ?>" required>
                         </div>
                         <!-- tidak harus diisi karena data pribadi -->
                         <div class="form-group">
                             <label for="tempat_lhr">Tempat Lahir</label>
-                            <input id="tempat_lhr" class="form-control" type="text" name="tempat_lhr" value="<?= $mhs["tempat_lhr"]; ?>">
+                            <input id="tempat_lhr" class="form-control" type="text" name="tempat_lhr" value="<?= $mhs["tempat_lhr"]; ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="tgl_lhr">Tanggal Lahir</label>
-                            <input id="tgl_lhr" class="form-control" type="text" name="tgl_lhr" value="<?= $mhs["tgl_lhr"]; ?>">
+                            <input id="tgl_lhr" class="form-control" type="text" name="tgl_lhr" value="<?= $mhs["tgl_lhr"]; ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="jk">Jenis Kelamin</label>
@@ -121,12 +122,12 @@
                         </div>
                         <div class="form-group">
                             <label for="alamat">Alamat</label>
-                            <textarea class="form-control" rows="4" name="alamat"><?= $mhs["alamat"]; ?></textarea>
+                            <textarea class="form-control" rows="4" name="alamat" required><?= $mhs["alamat"]; ?></textarea>
                         </div>
                         <!-- tidak harus diisi karena data pribadi -->
                         <div class="form-group">
                             <label for="no_telp">Nomor Telepon</label>
-                            <input id="no_telp" class="form-control" type="number" name="no_telp" value="<?= $mhs["no_telp"]; ?>">
+                            <input id="no_telp" class="form-control" type="number" name="no_telp" value="<?= $mhs["no_telp"]; ?>" required>
                         </div>
                     <?php
                     }

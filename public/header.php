@@ -91,17 +91,17 @@ if ($level_halaman != $_SESSION['level']) {
 
             // notifikasi doswal
         } elseif ($_SESSION['level'] == 'Dosen Wali') {
-            $jumlah_c = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan AS p, tb_mahasiswa AS m, tb_doswal AS d, tb_pegawai AS pgw WHERE p.nim = m.nim AND m.id_doswal=d.id_doswal AND d.nip_npak=pgw.nip_npak AND pgw.nip_npak='$_SESSION[nip_npak]' AND p.jns_pengajuan = 'Cuti' AND p.status = '1'");
+            $jumlah_c = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan AS p, tb_mahasiswa AS m, tb_doswal AS d, tb_pegawai AS pgw WHERE p.id_mahasiswa = m.id_mahasiswa AND m.id_doswal=d.id_doswal AND d.id_pegawai=pgw.id_pegawai AND pgw.id_pegawai='$_SESSION[id_pegawai]' AND p.jns_pengajuan = 'Cuti' AND p.status = '1'");
             $hasil_c = mysqli_fetch_array($jumlah_c);
 
-            $jumlah_a = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan AS p, tb_mahasiswa AS m, tb_doswal AS d, tb_pegawai AS pgw WHERE p.nim = m.nim AND m.id_doswal=d.id_doswal AND d.nip_npak=pgw.nip_npak AND pgw.nip_npak='$_SESSION[nip_npak]' AND p.jns_pengajuan = 'Izin Aktif' AND p.status IS NULL");
+            $jumlah_a = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan AS p, tb_mahasiswa AS m, tb_doswal AS d, tb_pegawai AS pgw WHERE p.id_mahasiswa = m.id_mahasiswa AND m.id_doswal=d.id_doswal AND d.id_pegawai=pgw.id_pegawai AND pgw.id_pegawai='$_SESSION[id_pegawai]' AND p.jns_pengajuan = 'Izin Aktif' AND p.status IS NULL");
             $hasil_a = mysqli_fetch_array($jumlah_a);
 
             $total = $hasil_c['jml'] + $hasil_a['jml'];
 
             // notifikasi kajur
         } elseif ($_SESSION['level'] == 'Ketua Jurusan') {
-            $jumlah = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan AS p, tb_mahasiswa AS m, tb_kajur AS k, tb_pegawai AS pgw WHERE p.nim = m.nim AND m.id_kajur=k.id_kajur AND k.nip_npak=pgw.nip_npak AND pgw.nip_npak='$_SESSION[nip_npak]' AND p.status = '2'");
+            $jumlah = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan AS p, tb_mahasiswa AS m, tb_kajur AS k, tb_pegawai AS pgw WHERE p.id_mahasiswa = m.id_mahasiswa AND m.id_kajur=k.id_kajur AND k.id_pegawai=pgw.id_pegawai AND pgw.id_pegawai='$_SESSION[id_pegawai]' AND p.status = '2'");
             $hasil = mysqli_fetch_array($jumlah);
 
             $total = $hasil['jml'];

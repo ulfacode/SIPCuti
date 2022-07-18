@@ -12,9 +12,10 @@
                 <form action="" enctype="multipart/form-data" method="POST">
                     <?php
 
-                    $tb_mhs = sql("SELECT * FROM tb_mahasiswa ORDER BY nama ASC");
+                    // $tb_mhs = sql("SELECT * FROM tb_mahasiswa ORDER BY nama ASC");
 
                     ?>
+                    <input type="hidden" name="id" value="<?php echo $_SESSION['id_mahasiswa']; ?>">
                     <div class="form-group">
                         <!-- nim berdasarkan yang login -->
                         <label for="nim">NIM</label>
@@ -117,9 +118,11 @@
                 <form action="" enctype="multipart/form-data" method="POST">
                     <?php
 
-                    $tb_mhs = sql("SELECT * FROM tb_mahasiswa ORDER BY nama ASC");
+                    // $tb_mhs = sql("SELECT * FROM tb_mahasiswa ORDER BY nama ASC");
 
                     ?>
+                    <input type="hidden" name="id" value="<?php echo $_SESSION['id_mahasiswa']; ?>">
+
                     <div class="form-group">
                         <!-- nim berdasarkan yang login -->
                         <label for="nim">NIM</label>

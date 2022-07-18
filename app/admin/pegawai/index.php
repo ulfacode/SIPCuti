@@ -120,11 +120,11 @@ session_start();
                                         <tbody>
                                             <?php
 
-                                            $user = mysqli_query($conn, "SELECT * FROM tb_pegawai ORDER BY nama ASC");
-                                            $row_user = $user->fetch_assoc();
+                                            $user = mysqli_query($conn, "SELECT * FROM tb_pegawai");
+                                            // $row_user = $user->fetch_assoc();
 
                                             foreach ($user as $row_user) {
-                                                $jabatan = mysqli_query($conn, "SELECT jb.nama_jabatan FROM tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE p.nip_npak=hak.nip_npak AND hak.id_jabatan=jb.id_jabatan AND p.nip_npak='$row_user[nip_npak]'");
+                                                $jabatan = mysqli_query($conn, "SELECT jb.nama_jabatan FROM tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE p.id_pegawai=hak.id_pegawai AND hak.id_jabatan=jb.id_jabatan AND p.id_pegawai='$row_user[id_pegawai]'");
                                             ?>
                                                 <tr>
                                                     <td><?php echo $row_user['nip_npak'] ?></td>
@@ -133,7 +133,11 @@ session_start();
 
                                                         <?php
                                                         while ($jabatans = mysqli_fetch_array($jabatan)) {
-                                                            echo $jabatans['nama_jabatan'] . "<br>";
+                                                            if (!($jabatans['nama_jabatan'] == 'Ketua Jurusan')) {
+                                                                echo $jabatans['nama_jabatan'] . "<br>";
+                                                            } else {
+                                                                echo "Ketua Jurusan/Koordinator Prodi" . "<br>";
+                                                            }
                                                         }
                                                         ?>
                                                     </td>
@@ -141,13 +145,13 @@ session_start();
                                                     <td><?php echo $row_user['no_telp'] ?></td>
                                                     <!-- <td><?php echo "<img src='img/$row_user[foto]' width='70' height='90' />"; ?></td> -->
                                                     <td>
-                                                        <a class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo $row_user['nip_npak']; ?>">
+                                                        <a class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo $row_user['id_pegawai']; ?>">
                                                             <i class="fa fa-edit"></i> Edit
                                                         </a>
-                                                        <a class="btn btn-secondary" data-toggle="modal" data-target="#modal-detail<?php echo $row_user['nip_npak']; ?>">
+                                                        <a class="btn btn-secondary" data-toggle="modal" data-target="#modal-detail<?php echo $row_user['id_pegawai']; ?>">
                                                             <i class="fa fa-info-circle"></i> Detail
                                                         </a>
-                                                        <a style="color: white;" class="btn btn-warning" href="hapus.php?id=<?php echo $row_user['nip_npak']; ?>" onclick="return confirm('Anda yakin mau menghapus data ini ?')">
+                                                        <a style="color: white;" class="btn btn-warning" href="hapus.php?id=<?php echo $row_user['id_pegawai']; ?>" onclick="return confirm('Anda yakin mau menghapus data ini ?')">
                                                             <i class="fa fa-trash"></i> Hapus
                                                         </a>
                                                     </td>

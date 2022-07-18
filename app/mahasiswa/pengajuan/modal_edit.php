@@ -11,7 +11,7 @@
 
             <?php
             $id = $row_user["id_pengajuan"];
-            $data = mysqli_query($conn, "SELECT * FROM tb_pengajuan WHERE id_pengajuan = '$id'");
+            $data = mysqli_query($conn, "SELECT * FROM tb_pengajuan, tb_mahasiswa WHERE tb_pengajuan.id_mahasiswa = tb_mahasiswa.id_mahasiswa AND id_pengajuan = '$id'");
             while ($pj = mysqli_fetch_array($data)) {
             ?>
                 <!-- form start -->

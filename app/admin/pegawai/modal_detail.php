@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal-detail<?php echo $row_user['nip_npak']; ?>">
+<div class="modal fade" id="modal-detail<?php echo $row_user['id_pegawai']; ?>">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,8 +9,8 @@
             </div>
             <div class="modal-body">
                 <?php
-                $id = $row_user["nip_npak"];
-                $data = mysqli_query($conn, "SELECT * FROM tb_pegawai WHERE nip_npak = '$id' ORDER BY nama ASC");
+                $id = $row_user["id_pegawai"];
+                $data = mysqli_query($conn, "SELECT * FROM tb_pegawai WHERE id_pegawai = '$id'");
                 while ($pgw = mysqli_fetch_array($data)) {
                 ?>
                     <div class="card card-outline">
@@ -31,10 +31,15 @@
                                     <b>Jabatan</b>
                                     <a class="float-right">
                                         <?php
-                                        $jabatan = mysqli_query($conn, "SELECT jb.nama_jabatan FROM tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE p.nip_npak=hak.nip_npak AND hak.id_jabatan=jb.id_jabatan AND p.nip_npak='$pgw[nip_npak]'");
+                                        $jabatan = mysqli_query($conn, "SELECT jb.nama_jabatan FROM tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE p.id_pegawai=hak.id_pegawai AND hak.id_jabatan=jb.id_jabatan AND p.id_pegawai='$id'");
 
                                         while ($jabatans = mysqli_fetch_array($jabatan)) {
-                                            echo $jabatans['nama_jabatan']  . "<br>";
+                                            if (!($jabatans['nama_jabatan'] == 'Ketua Jurusan')) {
+                                                echo $jabatans['nama_jabatan'];
+                                            } else {
+                                                echo "Ketua Jurusan/Koordinator Prodi";
+                                            }
+                                            // echo $jabatans['nama_jabatan']  . "<br>";
                                         } ?>
                                     </a>
                                 </li>

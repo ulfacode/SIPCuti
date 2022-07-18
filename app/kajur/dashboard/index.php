@@ -2,7 +2,7 @@
 include '../../config/koneksi.php';
 
 session_start();
-$nip_npak = $_SESSION['nip_npak'];
+$id_pegawai = $_SESSION['id_pegawai'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +57,7 @@ $nip_npak = $_SESSION['nip_npak'];
                             <div class="small-box bg-info">
                                 <div class="inner">
                                     <?php
-                                    $sql = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_kajur AS k WHERE m.nim = p.nim AND m.id_kajur=k.id_kajur AND k.nip_npak='$nip_npak'");
+                                    $sql = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_kajur AS k WHERE m.id_mahasiswa = p.id_mahasiswa AND m.id_kajur=k.id_kajur AND k.id_pegawai='$id_pegawai'");
                                     $hasil = mysqli_fetch_array($sql);
                                     ?>
                                     <h3><?php echo $hasil['jml']; ?></h3>
@@ -76,7 +76,7 @@ $nip_npak = $_SESSION['nip_npak'];
                             <div class="small-box bg-success">
                                 <div class="inner">
                                     <?php
-                                    $sql = mysqli_query($conn, "SELECT count(*) AS jml_belum FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_kajur AS k WHERE m.nim = p.nim AND m.id_kajur=k.id_kajur AND k.nip_npak='$nip_npak' AND (p.status < '3' OR p.status IS NULL)");
+                                    $sql = mysqli_query($conn, "SELECT count(*) AS jml_belum FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_kajur AS k WHERE m.id_mahasiswa = p.id_mahasiswa AND m.id_kajur=k.id_kajur AND k.id_pegawai='$id_pegawai' AND (p.status < '3' OR p.status IS NULL)");
                                     $hasil = mysqli_fetch_array($sql);
                                     ?>
                                     <h3><?php echo $hasil['jml_belum']; ?></h3>

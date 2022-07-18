@@ -1,7 +1,7 @@
 <?php
 include "../../config/koneksi.php";
 include "../../config/f_mahasiswa.php";
-$id = $_GET["nim"];
+$id = $_GET["id_mahasiswa"];
 
 if (hapus($id) > 0) {
     echo "

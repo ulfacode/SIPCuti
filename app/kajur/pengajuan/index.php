@@ -84,7 +84,7 @@ if (isset($_POST["simpan"])) {
 
                                 <?php
 
-                                $user = mysqli_query($conn, "SELECT m.nim, m.nama, p.id_pengajuan, p.jns_pengajuan, p.tgl_pengajuan, p.semester_cuti, p.thn_akademik, p.alasan, p.status, p.lampiran, p.upload_sk FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_kajur AS k WHERE m.nim = p.nim AND m.id_kajur=k.id_kajur AND k.nip_npak='$nip_npak' ORDER BY tgl_pengajuan ASC");
+                                $user = mysqli_query($conn, "SELECT m.nim, m.nama, p.id_pengajuan, p.jns_pengajuan, p.tgl_pengajuan, p.semester_cuti, p.thn_akademik, p.alasan, p.status, p.lampiran, p.upload_sk FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_kajur AS k WHERE m.id_mahasiswa = p.id_mahasiswa AND m.id_kajur=k.id_kajur AND k.id_pegawai='$_SESSION[id_pegawai]' ORDER BY tgl_pengajuan ASC");
                                 $row_user = $user->fetch_assoc();
 
 
@@ -174,7 +174,7 @@ if (isset($_POST["simpan"])) {
                                                             echo "";
                                                         } elseif ($row_user['status'] == "2") { ?>
                                                             <!-- $level dari sidebar -->
-                                                            <a href="terima_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>&jabatan=<?= $level; ?>" onclick="return confirm('Anda yakin menerima pengajuan ini?')" class="btn btn-outline-none"><i class="fas fa-check" style="color: green;"></i>
+                                                            <a href="terima_p.php?id=<?= $row_user['id_pengajuan']; ?>&id_pegawai=<?= $_SESSION['id_pegawai']; ?>&jabatan=<?= $level; ?>" onclick="return confirm('Anda yakin menerima pengajuan ini?')" class="btn btn-outline-none"><i class="fas fa-check" style="color: green;"></i>
                                                                 ACC</a>
                                                             <br>
                                                             <a data-toggle="modal" data-target="#modal-keterangan<?php echo $row_user['id_pengajuan']; ?>">
@@ -193,74 +193,74 @@ if (isset($_POST["simpan"])) {
                                                             </a>
                                                             <!-- modal cek status -->
                                                             <div class="modal fade" id="cekStatus<?php echo $row_user['id_pengajuan'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                                                <div class="modal-dialog modal-lg" role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h4 class="modal-title">Detail Pengajuan</h4>
-                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick='window.location.reload();'>
-                                                                                <span aria-hidden="true">&times;</span>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="modal-body">
+                                                            <div class="modal-dialog modal-lg" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title">Detail Pengajuan</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick='window.location.reload();'>
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
 
-                                                                            <form action="" enctype="" method="">
-                                                                                <div class="card-body">
-                                                                                    <?php
-                                                                                    $query     = mysqli_query($conn, "SELECT p.nama, p.jabatan, v.tgl_verif, v.status, v.keterangan FROM tb_verifikasi AS v, tb_pegawai AS p WHERE v.nip_npak=p.nip_npak AND v.id_pengajuan='$row_user[id_pengajuan]'");
-                                                                                    $result = $query->fetch_assoc();
-                                                                                    ?>
+                                                                        <form action="" enctype="" method="">
+                                                                            <div class="card-body">
+                                                                                <?php
+                                                                                $query     = mysqli_query($conn, "SELECT p.nama, p.jabatan, v.tgl_verif, v.status, v.keterangan, jb.nama_jabatan FROM tb_verifikasi AS v, tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE v.id_pegawai=p.id_pegawai AND p.id_pegawai=hak.id_pegawai AND hak.id_jabatan=jb.id_jabatan AND v.id_pengajuan='$row_user[id_pengajuan]'");
+                                                                                $result = $query->fetch_assoc();
+                                                                                ?>
 
-                                                                                    <table class="table table-bordered">
-                                                                                        <thead>
-                                                                                            <tr>
-                                                                                                <th style="width: 10px">#</th>
-                                                                                                <th>Nama</th>
-                                                                                                <th>Jabatan</th>
-                                                                                                <th>Tanggal</th>
-                                                                                                <th>Keterangan</th>
-                                                                                                <th style="width: 40px">Status</th>
-                                                                                            </tr>
-                                                                                        </thead>
-                                                                                        <tbody>
-                                                                                            <?php
-                                                                                            $a = 1;
-                                                                                            foreach ($query as $result) {
-                                                                                                if ($result['status'] == "Diterima") {
-                                                                                                    $color = "success";
-                                                                                                } else {
-                                                                                                    $color = "danger";
-                                                                                                }
-                                                                                            ?>
-                                                                                                <tr>
-                                                                                                    <td><?= $a; ?></td>
-                                                                                                    <td><?= $result['nama']; ?></td>
-                                                                                                    <td><?= $result['jabatan']; ?></td>
-                                                                                                    <td><?= tgl($result['tgl_verif']); ?></td>
-                                                                                                    <td><?= $result['keterangan']; ?></td>
-                                                                                                    <td><span class="badge bg-<?php echo $color; ?>"><?= $result['status']; ?></span></td>
-                                                                                                </tr>
-                                                                                            <?php
-
-                                                                                                $a++;
+                                                                                <table class="table table-bordered">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th style="width: 10px">#</th>
+                                                                                            <th>Nama</th>
+                                                                                            <th>Jabatan</th>
+                                                                                            <th>Tanggal</th>
+                                                                                            <th>Keterangan</th>
+                                                                                            <th style="width: 40px">Status</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <?php
+                                                                                        $a = 1;
+                                                                                        foreach ($query as $result) {
+                                                                                            if ($result['status'] == "Diterima") {
+                                                                                                $color = "success";
+                                                                                            } else {
+                                                                                                $color = "danger";
                                                                                             }
-                                                                                            ?>
+                                                                                        ?>
+                                                                                            <tr>
+                                                                                                <td><?= $a; ?></td>
+                                                                                                <td><?= $result['nama']; ?></td>
+                                                                                                <td><?= $result['nama_jabatan']; ?></td>
+                                                                                                <td><?= tgl($result['tgl_verif']); ?></td>
+                                                                                                <td><?= $result['keterangan']; ?></td>
+                                                                                                <td><span class="badge bg-<?php echo $color; ?>"><?= $result['status']; ?></span></td>
+                                                                                            </tr>
+                                                                                        <?php
 
-                                                                                        </tbody>
-                                                                                    </table>
-                                                                                </div>
-                                                                                <!-- /.card-body -->
+                                                                                            $a++;
+                                                                                        }
+                                                                                        ?>
 
-                                                                        </div>
-                                                                        <div class="modal-footer">
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                            <!-- /.card-body -->
 
-                                                                            <!-- untuk submit name nya harus sama dengan isset -->
-                                                                            <button onclick="window.location.reload();" class="btn btn-primary">Tutup</button>
+                                                                    </div>
+                                                                    <div class="modal-footer">
 
-                                                                            </form>
-                                                                        </div>
+                                                                        <!-- untuk submit name nya harus sama dengan isset -->
+                                                                        <button onclick="window.location.reload();" class="btn btn-primary">Tutup</button>
+
+                                                                        </form>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                        </div>
                                                             <!-- ./modal cek status -->
                                                         </td>
 

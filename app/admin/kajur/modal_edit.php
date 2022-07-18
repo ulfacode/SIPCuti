@@ -12,15 +12,16 @@
                 <form action="" method="POST">
                     <?php
                     $id = $row_user["id_kajur"];
-                    $data = mysqli_query($conn, "SELECT * FROM tb_kajur WHERE id_kajur = '$id'");
+                    $data = mysqli_query($conn, "SELECT tb_kajur.*, tb_pegawai.nama,tb_pegawai.nip_npak FROM tb_kajur, tb_pegawai WHERE tb_kajur.id_pegawai = tb_pegawai.id_pegawai AND id_kajur = '$id'");
+
                     while ($kajur = mysqli_fetch_array($data)) {
                     ?>
                         <div class="form-group">
                             <input type="hidden" class="form-control" id="id" name="id" value="<?= $kajur["id_kajur"]; ?>">
                         </div>
                         <div class="form-group">
-                            <label for="nip">NIP/NPAK</label>
-                            <input type="number" class="form-control" id="nip" name="nip" value="<?= $kajur["nip_npak"]; ?>" readonly>
+                            <label for="">Nama (NIP/NPAK)</label>
+                            <input type="text" class="form-control" id="nip" name="nip" value="<?php echo $kajur['nama']; ?> (<?php echo $kajur['nip_npak']; ?>)" readonly>
                         </div>
                         <div class="form-group">
                             <label for="">Jurusan</label>

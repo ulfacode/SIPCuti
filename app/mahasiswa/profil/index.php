@@ -120,11 +120,11 @@ if (isset($_POST["edit"])) {
 
 
                             <?php
-                            $tb_doswal = sql("SELECT tb_pegawai.nama FROM tb_doswal, tb_pegawai, tb_mahasiswa WHERE tb_mahasiswa.id_doswal = tb_doswal.id_doswal AND tb_doswal.nip_npak = tb_pegawai.nip_npak AND tb_mahasiswa.nim = '$id'");
-                            $tb_kajur = sql("SELECT tb_pegawai.nama FROM tb_kajur, tb_pegawai, tb_mahasiswa WHERE tb_mahasiswa.id_kajur = tb_kajur.id_kajur AND tb_kajur.nip_npak = tb_pegawai.nip_npak AND tb_mahasiswa.nim = '$id'");
+                            $tb_doswal = sql("SELECT tb_pegawai.nama FROM tb_doswal, tb_pegawai, tb_mahasiswa WHERE tb_mahasiswa.id_doswal = tb_doswal.id_doswal AND tb_doswal.id_pegawai = tb_pegawai.id_pegawai AND tb_mahasiswa.id_mahasiswa = '$_SESSION[id_mahasiswa]'");
+                            $tb_kajur = sql("SELECT tb_pegawai.nama FROM tb_kajur, tb_pegawai, tb_mahasiswa WHERE tb_mahasiswa.id_kajur = tb_kajur.id_kajur AND tb_kajur.id_pegawai = tb_pegawai.id_pegawai AND tb_mahasiswa.id_mahasiswa = '$_SESSION[id_mahasiswa]'");
 
 
-                            $data = mysqli_query($conn, "SELECT * FROM tb_mahasiswa WHERE nim = '$id'");
+                            $data = mysqli_query($conn, "SELECT * FROM tb_mahasiswa WHERE id_mahasiswa = '$_SESSION[id_mahasiswa]'");
                             while ($mhs = mysqli_fetch_array($data)) {
                             ?>
 

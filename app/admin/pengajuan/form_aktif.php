@@ -3,9 +3,9 @@ include '../../config/f_pengajuan.php';
 $id_pengajuan = $_GET['id'];
 $query     = mysqli_query($conn, "SELECT * FROM tb_pengajuan WHERE id_pengajuan='$id_pengajuan'");
 $result    = mysqli_fetch_array($query);
-if ($result['nim']) {
+if ($result['id_mahasiswa']) {
 
-    $sql = "select * from tb_mahasiswa where nim = '$result[nim]'";
+    $sql = "select * from tb_mahasiswa where id_mahasiswa = '$result[id_mahasiswa]'";
     $hasil = mysqli_query($conn, $sql);
     while ($data = mysqli_fetch_array($hasil)) {
         $nim = $data['nim'];
@@ -21,14 +21,14 @@ if ($result['nim']) {
 
 // ambil data doswal
 if (is_null($result['status'])) {
-    $sql2 = mysqli_query($conn, "select p.nama, p.ttd, p.nip_npak from tb_doswal as d, tb_pegawai as p WHERE d.nip_npak=p.nip_npak AND id_doswal='$id_doswal'");
+    $sql2 = mysqli_query($conn, "select p.nama, p.ttd, p.nip_npak from tb_doswal as d, tb_pegawai as p WHERE d.id_pegawai=p.id_pegawai AND id_doswal='$id_doswal'");
     while ($data_doswal = mysqli_fetch_array($sql2)) {
         $nama_doswal = $data_doswal['nama'];
         $nip_doswal = $data_doswal['nip_npak'];
         $ttd_doswal = $data_doswal['ttd'];
     }
 } else {
-    $sql2 = mysqli_query($conn, "select p.nama, p.ttd, p.nip_npak, v.status from tb_pegawai as p, tb_doswal as d, tb_verifikasi as v WHERE p.nip_npak=d.nip_npak AND p.nip_npak=v.nip_npak AND id_doswal='$id_doswal'");
+    $sql2 = mysqli_query($conn, "select p.nama, p.ttd, p.nip_npak, v.status from tb_pegawai as p, tb_doswal as d, tb_verifikasi as v WHERE p.id_pegawai=d.id_pegawai AND p.id_pegawai=v.id_pegawai AND id_doswal='$id_doswal'");
     while ($data_doswal = mysqli_fetch_array($sql2)) {
         $nama_doswal = $data_doswal['nama'];
         $nip_doswal = $data_doswal['nip_npak'];
@@ -37,8 +37,8 @@ if (is_null($result['status'])) {
     }
 }
 // ambil data kajur
-if ($result['status'] > '1') {
-    $kajur = mysqli_query($conn, "select p.nama, p.ttd, p.nip_npak, k.nm_jurusan, v.status from tb_pegawai as p, tb_kajur as k, tb_verifikasi as v WHERE p.nip_npak=k.nip_npak AND p.nip_npak=v.nip_npak AND id_kajur='$id_kajur'");
+if ($result['status'] > '2') {
+    $kajur = mysqli_query($conn, "select p.nama, p.ttd, p.nip_npak, k.nm_jurusan, v.status from tb_pegawai as p, tb_kajur as k, tb_verifikasi as v WHERE p.id_pegawai=k.id_pegawai AND p.id_pegawai=v.id_pegawai AND id_kajur='$id_kajur'");
     while ($data_kajur = mysqli_fetch_array($kajur)) {
         $nama_kajur = $data_kajur['nama'];
         $nm_jurusan = $data_kajur['nm_jurusan'];
@@ -47,7 +47,7 @@ if ($result['status'] > '1') {
         $status_kajur = $data_kajur['status'];
     }
 } else {
-    $kajur = mysqli_query($conn, "select p.nama, p.ttd, p.nip_npak, k.nm_jurusan from tb_pegawai as p, tb_kajur as k WHERE p.nip_npak=k.nip_npak AND id_kajur='$id_kajur'");
+    $kajur = mysqli_query($conn, "select p.nama, p.ttd, p.nip_npak, k.nm_jurusan from tb_pegawai as p, tb_kajur as k WHERE p.id_pegawai=k.id_pegawai AND id_kajur='$id_kajur'");
     while ($data_kajur = mysqli_fetch_array($kajur)) {
         $nama_kajur = $data_kajur['nama'];
         $nm_jurusan = $data_kajur['nm_jurusan'];
@@ -56,15 +56,15 @@ if ($result['status'] > '1') {
     }
 }
 // ambil wadir 1
-if ($result['status'] < '3') {
-    $sql3 = mysqli_query($conn, "select p.nama, p.ttd, p.nip_npak from tb_pegawai as p WHERE p.jabatan = 'Wakil Direktur 1' AND p.status = 'Aktif'");
+if ($result['status'] < '4') {
+    $sql3 = mysqli_query($conn, "select p.nama, p.ttd, p.nip_npak from tb_pegawai as p, tb_hak_akses as hak, tb_jabatan as jb WHERE p.id_pegawai = hak.id_pegawai AND hak.id_jabatan = jb.id_jabatan AND jb.nama_jabatan = 'Wakil Direktur 1' AND p.status = 'Aktif'");
     while ($data_wadir = mysqli_fetch_array($sql3)) {
         $nama_wadir1 = $data_wadir['nama'];
         $nip_wadir1 = $data_wadir['nip_npak'];
         $ttd_wadir1 = $data_wadir['ttd'];
     }
 } else {
-    $sql3 = mysqli_query($conn, "select p.nama, p.ttd, p.nip_npak, v.status from tb_pegawai as p, tb_pengajuan as pj, tb_verifikasi as v WHERE pj.id_pengajuan = v.id_pengajuan AND p.nip_npak=v.nip_npak AND p.jabatan = 'Wakil Direktur 1' AND v.id_pengajuan='$id_pengajuan'");
+    $sql3 = mysqli_query($conn, "select p.nama, p.ttd, p.nip_npak, v.status from tb_pegawai as p, tb_pengajuan as pj, tb_verifikasi as v, tb_hak_akses as hak, tb_jabatan as jb WHERE pj.id_pengajuan = v.id_pengajuan AND p.id_pegawai=v.id_pegawai AND p.id_pegawai = hak.id_pegawai AND hak.id_jabatan = jb.id_jabatan AND jb.nama_jabatan = 'Wakil Direktur 1' AND v.id_pengajuan='$id_pengajuan'");
     while ($data_wadir = mysqli_fetch_array($sql3)) {
         $nama_wadir1 = $data_wadir['nama'];
         $nip_wadir1 = $data_wadir['nip_npak'];
@@ -283,9 +283,9 @@ error_reporting(0);
 
             <table width="600">
                 <tr>
-                    <td width="200"></td>
-                    <td width="200"></td>
-                    <td width="200">Cilacap, <?= tgl($result['tgl_pengajuan']); ?></td>
+                    <td width=""></td>
+                    <td width="80"></td>
+                    <td width="">Cilacap, <?= tgl($result['tgl_pengajuan']); ?></td>
                 </tr>
                 <tr>
                     <td colspan="3">
@@ -389,6 +389,9 @@ error_reporting(0);
                     <td></td>
                     <td align="center">NIP/NPAK. <?= $nip_doswal; ?></td>
                 </tr>
+            </table>
+
+            <table>
                 <tr>
                     <td width="200"></td>
                     <td align="center">Menyetujui</td>

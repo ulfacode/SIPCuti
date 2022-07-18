@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "sistem_cuti");
+$conn = mysqli_connect("localhost", "root", "", "si_cuti");
 
 
 function tambah($data)

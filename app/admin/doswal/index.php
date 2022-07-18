@@ -63,8 +63,8 @@ session_start();
                                 include "modal_tambah.php";
 
 
-                                $user = mysqli_query($conn, "SELECT * FROM v_data_doswal");
-                                $row_user = $user->fetch_assoc();
+                                $user = mysqli_query($conn, "SELECT `d`.`id_doswal` AS `id_doswal`, `p`.`nip_npak` AS `nip_npak`, `p`.`nama` AS `nama`, `d`.`thn_jabatan` AS `thn_jabatan`, `d`.`status` AS `status` FROM (`tb_doswal` `d` join `tb_pegawai` `p`) WHERE `d`.`id_pegawai` = `p`.`id_pegawai` ORDER BY `p`.`nama` ASC ");
+                                // $row_user = $user->fetch_assoc();
 
                                 if (isset($_POST["tambah"])) {
                                     if (tambah($_POST) > 0) {
