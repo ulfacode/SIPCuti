@@ -13,7 +13,7 @@
 
                     <div class="form-group">
                         <label for="nip">NIP/NPAK</label>
-                        <input type="number" class="form-control" id="nip" name="nip" required>
+                        <input type="number" class="form-control" id="nip" placeholder="Masukkan NIP/NPAK tanpa titik" name="nip" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>

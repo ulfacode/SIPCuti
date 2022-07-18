@@ -18,7 +18,7 @@
                     ?>
                     <div class="form-group">
                         <label for="nim">NIM</label>
-                        <input type="number" class="form-control" id="nim" name="nim" required>
+                        <input type="number" class="form-control" id="nim" name="nim" placeholder="Masukkan NIP/NPAK tanpa titik" required>
                     </div>
 
                     <div class="form-group">
@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group">
                         <label for="kajur">Ketua Jurusan</label>
-                        <select class="form-control select2bs4" style="width: 100%;" id="kajur" name="kajur" required> 
+                        <select class="form-control select2bs4" style="width: 100%;" id="kajur" name="kajur" required>
                             <option value=""></option>
                             <?php foreach ($tb_kajur as $row) {
                             ?>
