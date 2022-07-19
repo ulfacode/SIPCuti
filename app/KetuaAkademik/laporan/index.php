@@ -64,7 +64,11 @@ session_start();
                                 <?php
                                 // one quote hanya dapat menampilkan karakter aslinya, bukan isi dari variable
 
-                                $user = mysqli_query($conn, "SELECT * FROM v_laporan");
+                                $user = mysqli_query($conn, "SELECT m.nim, m.nama, m.jk, m.thn_angkatan, p.nm_prodi, p.no_sk, p.tgl_sk, p.thn_akademik, p.jns_pengajuan 
+                                                                FROM tb_mahasiswa as m,
+                                                                        tb_kajur as k, 
+                                                                        tb_pengajuan as p
+                                                                WHERE m.id_mahasiswa = p.id_mahasiswa AND m.id_kajur=k.id_kajur AND p.status = '5' ORDER BY m.nama ASC ");
                                 $row_user = $user->fetch_assoc();
                                 ?>
 

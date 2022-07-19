@@ -62,7 +62,9 @@ session_start();
 
                                 <?php
 
-                                $user = mysqli_query($conn, "SELECT * FROM v_pengajuan_perpus");
+                                $user = mysqli_query($conn, "SELECT m.nim, m.nama, p.jns_pengajuan, p.tgl_pengajuan, p.semester_cuti, p.thn_akademik, p.upload_sk 
+                                                            FROM tb_mahasiswa AS m, tb_pengajuan AS p 
+                                                            WHERE m.id_mahasiswa = p.id_mahasiswa AND p.status='5' ORDER BY tgl_pengajuan ASC ");
                                 $row_user = $user->fetch_assoc();
 
 
