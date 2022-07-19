@@ -188,11 +188,11 @@ if (isset($_POST["simpan"])) {
                                                     </td>
 
                                                     <td>
-                                                            <a class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#cekStatus<?php echo $row_user['id_pengajuan'] ?>">
-                                                                Cek Status
-                                                            </a>
-                                                            <!-- modal cek status -->
-                                                            <div class="modal fade" id="cekStatus<?php echo $row_user['id_pengajuan'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                        <a class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#cekStatus<?php echo $row_user['id_pengajuan'] ?>">
+                                                            Cek Status
+                                                        </a>
+                                                        <!-- modal cek status -->
+                                                        <div class="modal fade" id="cekStatus<?php echo $row_user['id_pengajuan'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                                             <div class="modal-dialog modal-lg" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
@@ -206,7 +206,7 @@ if (isset($_POST["simpan"])) {
                                                                         <form action="" enctype="" method="">
                                                                             <div class="card-body">
                                                                                 <?php
-                                                                                $query     = mysqli_query($conn, "SELECT p.nama, p.jabatan, v.tgl_verif, v.status, v.keterangan, jb.nama_jabatan FROM tb_verifikasi AS v, tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE v.id_pegawai=p.id_pegawai AND p.id_pegawai=hak.id_pegawai AND hak.id_jabatan=jb.id_jabatan AND v.id_pengajuan='$row_user[id_pengajuan]'");
+                                                                                $query     = mysqli_query($conn, "SELECT p.nama, p.jabatan, v.tgl_verif, v.status, v.keterangan FROM tb_verifikasi AS v, tb_pegawai AS p WHERE v.id_pegawai=p.id_pegawai AND v.id_pengajuan='$row_user[id_pengajuan]'");
                                                                                 $result = $query->fetch_assoc();
                                                                                 ?>
 
@@ -215,7 +215,7 @@ if (isset($_POST["simpan"])) {
                                                                                         <tr>
                                                                                             <th style="width: 10px">#</th>
                                                                                             <th>Nama</th>
-                                                                                            <th>Jabatan</th>
+                                                                                            <!-- <th>Jabatan</th> -->
                                                                                             <th>Tanggal</th>
                                                                                             <th>Keterangan</th>
                                                                                             <th style="width: 40px">Status</th>
@@ -234,7 +234,7 @@ if (isset($_POST["simpan"])) {
                                                                                             <tr>
                                                                                                 <td><?= $a; ?></td>
                                                                                                 <td><?= $result['nama']; ?></td>
-                                                                                                <td><?= $result['nama_jabatan']; ?></td>
+                                                                                                <!-- <td><?= $result['nama_jabatan']; ?></td> -->
                                                                                                 <td><?= tgl($result['tgl_verif']); ?></td>
                                                                                                 <td><?= $result['keterangan']; ?></td>
                                                                                                 <td><span class="badge bg-<?php echo $color; ?>"><?= $result['status']; ?></span></td>
@@ -261,8 +261,8 @@ if (isset($_POST["simpan"])) {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                            <!-- ./modal cek status -->
-                                                        </td>
+                                                        <!-- ./modal cek status -->
+                                                    </td>
 
                                                     <td>
 
