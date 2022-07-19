@@ -145,8 +145,17 @@ if (isset($_POST['login'])) {
                 </div>
                 <!-- /.social-auth-links -->
 
+                <!-- CARI NO TELP ADMIN -->
+                <?php
+                $telp_admin = mysqli_fetch_array(mysqli_query($conn, "SELECT no_telp 
+                                                        FROM tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb 
+                                                        WHERE p.id_pegawai=hak.id_pegawai 
+                                                            AND hak.id_jabatan=jb.id_jabatan 
+                                                            AND jb.nama_jabatan = 'Administrator' 
+                                                            AND p.status='Aktif'"));
+                ?>
                 <p class="mb-1">
-                    <a href="https://wa.me/6281390181520?text=Halo! Saya lupa password akun sistem pengajuan cuti. Tolong bantu saya mereset password.">Lupa password</a>
+                    <a href="https://wa.me/<?= (string) $telp_admin['no_telp']; ?>?text=Halo! Saya lupa password akun sistem pengajuan cuti. Tolong bantu saya mereset password.">Lupa password</a>
                 </p>
                 <!-- <p class="mb-0">
                     <a href="register.html" class="text-center">Register a new membership</a>
