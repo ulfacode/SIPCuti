@@ -114,7 +114,7 @@
                         </div>
                         <div class="form-group">
                             <label for="jk">Jenis Kelamin</label>
-                            <select class="form-control" name="jk">
+                            <select class="form-control" name="jk" required>
                                 <option hidden selected><?= $mhs["jk"]; ?></option>
                                 <option value="Laki-laki">Laki-Laki</option>
                                 <option value="Perempuan">Perempuan</option>
