@@ -12,7 +12,7 @@
                 <form action="" method="POST">
                     <?php
                     $id = $row_user["id_doswal"];
-                    $data = mysqli_query($conn, "SELECT tb_doswal.*, tb_pegawai.nama,tb_pegawai.nip_npak WHERE FROM tb_doswal, tb_pegawai WHERE tb_doswal.nip_npak = tb_pegawai.nip_npak AND id_doswal = '$id'");
+                    $data = mysqli_query($conn, "SELECT tb_doswal.*, tb_pegawai.nama,tb_pegawai.nip_npak FROM tb_doswal, tb_pegawai WHERE tb_doswal.nip_npak = tb_pegawai.nip_npak AND id_doswal = '$id'");
                     while ($doswal = mysqli_fetch_array($data)) {
                     ?>
                         <div class="form-group">
@@ -20,7 +20,7 @@
                         </div>
                         <div class="form-group">
                             <label for="nip">Nama (NIP/NPAK)</label>
-                            <input type="number" class="form-control" id="nip" name="nip" value="<?php echo $doswal['nama']; ?> (<?php echo $doswal['nip_npak']; ?>)" readonly>
+                            <input type="text" class="form-control" id="nip" name="nip" value="<?php echo $doswal['nama']; ?> (<?php echo $doswal['nip_npak']; ?>)" readonly>
                         </div>
 
                         <div class="form-group">
