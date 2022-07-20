@@ -245,11 +245,11 @@ if (isset($_POST["edit"])) {
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label for="">Email</label>
-                                                                            <input type="text" class="form-control" name="email" maxlength="15" value="<?= $pegawai["email"]; ?>" required>
+                                                                            <input type="text" class="form-control" name="email" maxlength="100" value="<?= $pegawai["email"]; ?>" required>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label for="">Password</label>
-                                                                            <input type="password" class="form-control" name="password" maxlength="15" value="<?= $pegawai["password"]; ?>" required>
+                                                                            <input type="password" class="form-control" name="password" minlength="4" maxlength="15" value="<?= $pegawai["password"]; ?>" required>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label for="no_telp">Nomor Telepon</label>

@@ -18,7 +18,7 @@
                     ?>
                     <div class="form-group">
                         <label for="nim">NIM</label>
-                        <input type="number" class="form-control" id="nim" name="nim" required>
+                        <input type="number" class="form-control" id="nim" name="nim" placeholder="Masukkan NIM tanpa titik" required>
                     </div>
 
                     <div class="form-group">
@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group">
                         <label for="kajur">Ketua Jurusan</label>
-                        <select class="form-control select2bs4" style="width: 100%;" id="kajur" name="kajur" required> 
+                        <select class="form-control select2bs4" style="width: 100%;" id="kajur" name="kajur" required>
                             <option value=""></option>
                             <?php foreach ($tb_kajur as $row) {
                             ?>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <input type="password" class="form-control" id="password" name="password" minlength="4" maxlength="15" required>
                     </div>
                     <div class="form-group">
                         <label for="nama">Nama</label>
@@ -82,11 +82,11 @@
                     <div class="form-group">
                         <label for="jk">Jenis Kelamin</label>
                         <div class="custom-control custom-radio">
-                            <input class="form-control custom-control-input" type="radio" id="Laki-Laki" name="jk" value="Laki-laki" required>
+                            <input class="form-control custom-control-input" type="radio" id="Laki-Laki" name="jk" value="Laki-laki">
                             <label for="Laki-Laki" class="custom-control-label">Laki-Laki</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input class="form-control custom-control-input" type="radio" id="Perempuan" name="jk" value="Perempuan" required>
+                            <input class="form-control custom-control-input" type="radio" id="Perempuan" name="jk" value="Perempuan">
                             <label for="Perempuan" class="custom-control-label">Perempuan</label>
                         </div>
                     </div>

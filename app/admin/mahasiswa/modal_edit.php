@@ -82,7 +82,7 @@
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" value="<?= $mhs["password"]; ?>" required>
+                            <input type="password" class="form-control" id="password" name="password" value="<?= $mhs["password"]; ?>" minlength="4" maxlength="15" required>
                         </div>
                         <div class="form-group">
                             <label for="nama">Nama</label>
