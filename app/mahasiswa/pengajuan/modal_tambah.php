@@ -33,7 +33,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Semester Cuti</label>
-                        <input type="number" class="form-control" name="semester_cuti" placeholder="Isikan semester saat mengambil cuti! Misalkan: 5" min="1" max="6" required>
+                        <input type="number" class="form-control" name="semester_cuti" placeholder="Isikan semester saat mengambil cuti! Misalkan: 5" min="1" max="5" required>
                     </div>
                     <div class="form-group">
                         <label for="">Tingkat</label>

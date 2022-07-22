@@ -20,22 +20,18 @@ function tambah($data)
     $no_telp = $data["no_telp"];
 
 
-    // $foto = upload_foto();
-    // if (!$foto) {
-    //     return false;
-    // }
+    if (!preg_match("/^[a-zA-Z.,]*$/", $nama)) {
+        echo "<script>
+        alert('Input nama hanya huruf yang diijinkan!');
+        </script>";
+    } else {
 
 
-    // $ttd = upload_ttd();
-    // if (!$ttd) {
-    //     return false;
-    // }
-
-
-    $query = "INSERT INTO tb_mahasiswa (nim, id_doswal, id_kajur, email, password, nama, thn_angkatan, kelas, tempat_lhr, tgl_lhr, jk, alamat, no_telp) VALUES ('$nim', '$doswal', '$kajur', '$email', '$password','$nama',
-    '$thn_angkatan', '$kelas', '$tempat_lhr', '$tgl_lhr', '$jk', '$alamat','$no_telp')";
-    mysqli_query($conn, $query);
-    return mysqli_affected_rows($conn);
+        $query = "INSERT INTO tb_mahasiswa (nim, id_doswal, id_kajur, email, password, nama, thn_angkatan, kelas, tempat_lhr, tgl_lhr, jk, alamat, no_telp) VALUES ('$nim', '$doswal', '$kajur', '$email', '$password','$nama',
+        '$thn_angkatan', '$kelas', '$tempat_lhr', '$tgl_lhr', '$jk', '$alamat','$no_telp')";
+        mysqli_query($conn, $query);
+        return mysqli_affected_rows($conn);
+    }
 }
 
 
@@ -156,9 +152,15 @@ function edit($data)
     $alamat = $data["alamat"];
     $no_telp = $data["no_telp"];
 
-    $query = "UPDATE tb_mahasiswa SET id_doswal='$id_doswal', id_kajur='$id_kajur', email='$email', password='$password', nama='$nama', thn_angkatan='$thn_angkatan', kelas='$kelas', tempat_lhr='$tempat_lhr', tgl_lhr='$tgl_lhr', jk='$jk', alamat='$alamat', no_telp='$no_telp' WHERE nim='$nim'";
-    mysqli_query($conn, $query);
-    return mysqli_affected_rows($conn);
+    if (!preg_match("/^[a-zA-Z.,]*$/", $nama)) {
+        echo "<script>
+        alert('Input nama hanya huruf yang diijinkan!');
+        </script>";
+    } else {
+        $query = "UPDATE tb_mahasiswa SET id_doswal='$id_doswal', id_kajur='$id_kajur', email='$email', password='$password', nama='$nama', thn_angkatan='$thn_angkatan', kelas='$kelas', tempat_lhr='$tempat_lhr', tgl_lhr='$tgl_lhr', jk='$jk', alamat='$alamat', no_telp='$no_telp' WHERE nim='$nim'";
+        mysqli_query($conn, $query);
+        return mysqli_affected_rows($conn);
+    }
 }
 
 // untuk menampilkan data nama doswal dan nama kajur dari database

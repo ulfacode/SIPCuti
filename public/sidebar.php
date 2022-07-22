@@ -310,7 +310,7 @@
                         <p>Logout</p>
                     </a>
                 </li>
-            <?php } elseif ($_SESSION['level'] == "Ketua Akademik") { ?>
+            <?php } elseif ($_SESSION['level'] == "Koordinator Subbagian Akademik dan Kemahasiswaan") { ?>
                 <li class="nav-item">
                     <a href="../dashboard/" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>

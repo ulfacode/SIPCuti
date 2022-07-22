@@ -78,7 +78,7 @@
 
                         <div class="form-group">
                             <label for="">Email</label>
-                            <input type="text" class="form-control" id="email" name="email" value="<?= $mhs["email"]; ?>" required>
+                            <input type="email" class="form-control" id="email" name="email" value="<?= $mhs["email"]; ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>

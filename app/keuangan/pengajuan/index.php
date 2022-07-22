@@ -302,10 +302,10 @@ if (isset($_POST["simpan"])) {
                                                                 if ($row_user['jns_pengajuan'] == 'Cuti') {
 
                                                                 ?>
-                                                                    <a class="dropdown-item <?php echo $tombol; ?>" href="../../admin/pengajuan/form_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>">
+                                                                    <a class="dropdown-item <?php echo $tombol; ?>" href="../../admin/pengajuan/form_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>" target="_blank">
                                                                         <i class="fa fa-download"></i> Form Cuti
                                                                     </a>
-                                                                    <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">
+                                                                    <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>" target="_blank">
                                                                         <i class="fa fa-download"></i> Lampiran
                                                                     </a>
                                                                 <?php
@@ -324,7 +324,7 @@ if (isset($_POST["simpan"])) {
                                                                 <?php }
                                                                     } else {
                                                                 ?>
-                                                                <a class="dropdown-item" href="../../admin/pengajuan/surat_keputusan/<?php echo $row_user['upload_sk'] ?>">
+                                                                <a class="dropdown-item" href="../../admin/pengajuan/surat_keputusan/<?php echo $row_user['upload_sk'] ?>" target="_blank">
                                                                     <i class="fa fa-download"></i>
                                                                     <?php if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
                                                                         SK Cuti

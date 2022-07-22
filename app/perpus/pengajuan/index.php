@@ -112,7 +112,7 @@ session_start();
                                                         <?php
                                                                 }
                                                             } else { ?>
-                                                        <a class="btn btn-success" href="../../admin/pengajuan/surat_keputusan/<?php echo $row_user['upload_sk'] ?>">
+                                                        <a class="btn btn-success" href="../../admin/pengajuan/surat_keputusan/<?php echo $row_user['upload_sk'] ?>" target="_blank">
                                                             <i class="fa fa-download"></i>
                                                             <?php if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
                                                                 SK Cuti

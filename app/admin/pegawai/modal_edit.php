@@ -22,7 +22,7 @@
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="text" class="form-control" id="email" name="email" value="<?= $pgw["email"]; ?>" required>
+                            <input type="email" class="form-control" id="email" name="email" value="<?= $pgw["email"]; ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>

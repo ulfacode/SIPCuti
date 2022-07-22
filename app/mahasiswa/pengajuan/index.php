@@ -346,7 +346,7 @@ $id = $_SESSION['nim'];
                                                                 } else {
                                                                 ?>
                                                                     <!-- warna akan ungu jika ada data -->
-                                                                    <a style="color: blueviolet;" class="dropdown-item" href="../../admin/pengajuan/surat_keputusan/<?php echo $row_user['upload_sk'] ?>">
+                                                                    <a style="color: blueviolet;" class="dropdown-item" href="../../admin/pengajuan/surat_keputusan/<?php echo $row_user['upload_sk'] ?>" target="_blank">
                                                                         <i class="fa fa-download"></i>
                                                                         SK
                                                                     </a>
