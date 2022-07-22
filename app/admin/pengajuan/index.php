@@ -343,7 +343,7 @@ if (isset($_POST["simpan"])) {
                                                                 if ($row_user['jns_pengajuan'] == 'Cuti') {
                                                                 ?>
                                                                     <!-- karena form cuti dan aktif bisa dilihat dari awal maka tidak di disabled -->
-                                                                    <a class="dropdown-item" href="form_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>">
+                                                                    <a class="dropdown-item" href="form_cuti.php?id=<?php echo $row_user['id_pengajuan']; ?>" target="_blank">
                                                                         <i class="fa fa-download"></i> Form Cuti
                                                                     </a>
                                                                     <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">

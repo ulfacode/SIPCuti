@@ -11,17 +11,17 @@
                 <!-- form start -->
                 <form action="" method="POST">
                     <?php
-                    $user = mysqli_query($conn, "SELECT p.nama, p.nip_npak FROM tb_pegawai AS p");
+                    $user = mysqli_query($conn, "SELECT p.nama, p.nip_npak, p.id_pegawai FROM tb_pegawai AS p");
                     ?>
 
                     <div class="form-group">
                         <label for="nip">Nama Pegawai</label>
-                        <select name="nip" class="form-control select2bs4" style="width: 100%;" required>
+                        <select name="id" class="form-control select2bs4" style="width: 100%;" required>
                             <option value=""></option>
                             <?php
                             foreach ($user as $datas) {
                             ?>
-                                <option value="<?php echo $datas['nip_npak'] ?>"><?php echo $datas['nama']; ?> (<?php echo $datas['nip_npak']; ?>)</option>
+                                <option value="<?php echo $datas['id_pegawai'] ?>"><?php echo $datas['nama']; ?> (<?php echo $datas['nip_npak']; ?>)</option>
                             <?php
                             }
                             ?>
