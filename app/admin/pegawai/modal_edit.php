@@ -47,7 +47,7 @@
                         <!-- tidak harus diisi karena data pribadi -->
                         <div class="form-group">
                             <label for="no_telp">Nomor Telepon</label>
-                            <input id="no_telp" class="form-control" type="number" name="no_telp" value="<?= $pgw["no_telp"]; ?>" required>
+                            <input id="no_telp" class="form-control" type="number" name="no_telp" maxlength="13" value="<?= $pgw["no_telp"]; ?>" required>
                         </div>
 
                     <?php

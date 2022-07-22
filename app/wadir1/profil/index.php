@@ -255,7 +255,7 @@ if (isset($_POST["edit"])) {
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label for="no_telp">Nomor Telepon</label>
-                                                                            <input id="no_telp" class="form-control" type="number" name="no_telp" value="<?= $pegawai["no_telp"]; ?>" required="required">
+                                                                            <input id="no_telp" class="form-control" type="number" name="no_telp" maxlength="13" value="<?= $pegawai["no_telp"]; ?>" required="required">
                                                                         </div>
                                                                     <?php
                                                                     }

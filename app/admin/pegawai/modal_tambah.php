@@ -83,7 +83,7 @@
                     <!-- tidak harus diisi karena data pribadi -->
                     <div class="form-group">
                         <label for="no_telp">Nomor Telepon</label>
-                        <input id="no_telp" class="form-control" type="number" name="no_telp">
+                        <input id="no_telp" class="form-control" type="number" maxlength="13" name="no_telp">
                     </div>
                     <!-- <div class="form-group">
                         <label for="foto">Foto</label>
