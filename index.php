@@ -35,7 +35,11 @@ if (isset($_POST['login'])) {
 
 
             // login sukses, alihkan ke halaman utama (dashboard)
-            header("location: app/mahasiswa/dashboard/");
+            echo "<script>
+                alert('Berhasil Login!');
+                window.location.href = 'app/mahasiswa/dashboard/';
+                </script>";
+            // header("location: app/mahasiswa/dashboard/");
         } else {
             echo "<script>
                 alert('Masukkan password dengan benar!')
@@ -53,7 +57,11 @@ if (isset($_POST['login'])) {
                 $_SESSION['nama'] = $data['nama'];
                 $_SESSION['level'] = "";
 
-                header("location: pilih_level.php");
+                echo "<script>
+                alert('Berhasil Login!');
+                window.location.href = 'pilih_level.php';
+                </script>";
+                // header("location: pilih_level.php");
             } else {
                 echo "<script>
                 alert('Akun Anda tidak aktif. Silahkan menghubungi BAAK!')
