@@ -5,15 +5,15 @@ $conn = mysqli_connect("localhost", "root", "", "si_cuti");
 function tambah($data)
 {
     global $conn;
-    $nip = $data["nip"];
+    $id = $data["id"];
     $id_jabatan = $data["id_jabatan"];
     $jml_jabatan = count($id_jabatan);
 
     for($i=0; $i<$jml_jabatan; $i++){
     mysqli_query($conn, "INSERT INTO tb_hak_akses 
-    (nip_npak, id_jabatan) 
+    (id_pegawai, id_jabatan) 
     VALUES 
-    ('$nip', '$id_jabatan[$i]')");
+    ('$id', '$id_jabatan[$i]')");
     }
     return mysqli_affected_rows($conn);
 }

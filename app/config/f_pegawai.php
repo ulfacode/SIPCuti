@@ -21,23 +21,29 @@ function tambah($data)
     if ($query->num_rows > 0) {
         echo "<script>alert('Data Pegawai dengan NIP/NPAK tersebut sudah terdaftar!');</script>";
     } else {
-        $query = "INSERT INTO tb_pegawai (nip_npak, email, password, nama, thn_jabatan, status, no_telp) VALUES ('$nip_npak', '$email', '$password','$nama', '$thn_jabatan', '$status','$no_telp')";
-        mysqli_query($conn, $query);
-        // return mysqli_affected_rows($conn);
+        if (!preg_match("/^[a-zA-Z.,]*$/", $nama)) {
+            echo "<script>
+            alert('Input nama hanya huruf yang diijinkan!');
+            </script>";
+        } else {
+            $query = "INSERT INTO tb_pegawai (nip_npak, email, password, nama, thn_jabatan, status, no_telp) VALUES ('$nip_npak', '$email', '$password','$nama', '$thn_jabatan', '$status','$no_telp')";
+            mysqli_query($conn, $query);
+            // return mysqli_affected_rows($conn);
 
-        if (mysqli_affected_rows($conn) > 0) {
-            for ($i = 0; $i < $jml_jabatan; $i++) {
-                $sql = mysqli_query($conn, "SELECT id_pegawai FROM tb_pegawai WHERE nip_npak = '$nip_npak'");
-                $hasil = mysqli_fetch_array($sql);
-                mysqli_query($conn, "INSERT INTO tb_hak_akses (id_pegawai, id_jabatan) VALUES ('$hasil[id_pegawai]', '$id_jabatan[$i]')");
-            }
             if (mysqli_affected_rows($conn) > 0) {
-                return true;
+                for ($i = 0; $i < $jml_jabatan; $i++) {
+                    $sql = mysqli_query($conn, "SELECT id_pegawai FROM tb_pegawai WHERE nip_npak = '$nip_npak'");
+                    $hasil = mysqli_fetch_array($sql);
+                    mysqli_query($conn, "INSERT INTO tb_hak_akses (id_pegawai, id_jabatan) VALUES ('$hasil[id_pegawai]', '$id_jabatan[$i]')");
+                }
+                if (mysqli_affected_rows($conn) > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
                 return false;
             }
-        } else {
-            return false;
         }
     }
 }
@@ -155,10 +161,15 @@ function edit($data)
     $thn_jabatan = $data["thn_jabatan"];
     $status = $data["status"];
 
-
-    $query = "UPDATE tb_pegawai SET nip_npak='$nip_npak', email='$email', password='$password', nama='$nama', thn_jabatan='$thn_jabatan', status='$status', no_telp='$no_telp' WHERE id_pegawai='$id_pegawai'";
-    mysqli_query($conn, $query);
-    return mysqli_affected_rows($conn);
+    if (!preg_match("/^[a-zA-Z.,]*$/", $nama)) {
+        echo "<script>
+        alert('Input nama hanya huruf yang diijinkan!');
+        </script>";
+    } else {
+        $query = "UPDATE tb_pegawai SET nip_npak='$nip_npak', email='$email', password='$password', nama='$nama', thn_jabatan='$thn_jabatan', status='$status', no_telp='$no_telp' WHERE id_pegawai='$id_pegawai'";
+        mysqli_query($conn, $query);
+        return mysqli_affected_rows($conn);
+    }
 }
 
 
@@ -169,7 +180,7 @@ function hapus($id)
     // mysqli_query($conn, "DELETE FROM tb_hak_akses WHERE nip_npak = '$id'");
     // if (mysqli_affected_rows($conn) > 0) {
 
-    mysqli_query($conn, "DELETE FROM tb_pegawai WHERE nip_npak = '$id'");
+    mysqli_query($conn, "DELETE FROM tb_pegawai WHERE id_pegawai = '$id'");
 
     // if (mysqli_affected_rows($conn) > 0) {
     return (mysqli_affected_rows($conn));

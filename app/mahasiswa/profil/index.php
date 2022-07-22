@@ -277,7 +277,7 @@ if (isset($_POST["edit"])) {
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="">Email</label>
-                                                                    <input type="text" class="form-control" name="email" maxlength="100" value="<?= $mahasiswa["email"]; ?>" required>
+                                                                    <input type="email" class="form-control" name="email" maxlength="100" value="<?= $mahasiswa["email"]; ?>" required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="">Password</label>

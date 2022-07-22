@@ -266,10 +266,10 @@ if (isset($_POST["simpan"])) {
                                                             </button>
                                                             <div class="dropdown-menu" role="menu">
 
-                                                                <a class="dropdown-item <?php echo $tombol; ?>" href="../../admin/pengajuan/form_aktif.php?id=<?= $row_user['id_pengajuan']; ?>">
+                                                                <a class="dropdown-item <?php echo $tombol; ?>" href="../../admin/pengajuan/form_aktif.php?id=<?= $row_user['id_pengajuan']; ?>" target="_blank">
                                                                     <i class="fa fa-download"></i> Form Aktif
                                                                 </a>
-                                                                <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>">
+                                                                <a class="dropdown-item" href="../../mahasiswa/pengajuan/img/<?php echo $row_user['lampiran']; ?>" target="_blank">
                                                                     <i class="fa fa-download"></i> Lampiran
                                                                 </a>
 
