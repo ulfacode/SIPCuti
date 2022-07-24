@@ -121,7 +121,7 @@ if ($level_halaman != $_SESSION['level']) {
 
         <!-- tampilan notif -->
         <?php
-        if ($_SESSION['level'] == "Mahasiswa" or $_SESSION['level'] == "Ketua Akademik" or $_SESSION['level'] == "Bagian Perpustakaan" or $_SESSION['level'] == "Bagian Keuangan") {
+        if ($_SESSION['level'] == "Mahasiswa" or $_SESSION['level'] == "Koordinator Subbagian Akademik dan Kemahasiswaan" or $_SESSION['level'] == "Bagian Perpustakaan") {
             echo "&nbsp";
         } else {
         ?>

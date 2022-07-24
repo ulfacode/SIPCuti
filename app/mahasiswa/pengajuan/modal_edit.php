@@ -29,7 +29,7 @@
 
                         <div class="form-group">
                             <label for="">Semester Cuti/Aktif</label>
-                            <input type="number" class="form-control" name="semester_cuti" min="1" max="6" value="<?= $pj["semester_cuti"]; ?>" required>
+                            <input type="number" class="form-control" name="semester_cuti" min="1" max="5" value="<?= $pj["semester_cuti"]; ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="">Tingkat</label>

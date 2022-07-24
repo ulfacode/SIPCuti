@@ -214,11 +214,11 @@ if (isset($_POST["edit"])) {
 
 
                                             <li class="list-group-item">
-                                                <a class="btn btn-primary float-right" data-toggle="modal" data-target="#modal-edit<?php echo $pgw['nip_npak']; ?>">
+                                                <a class="btn btn-primary float-right" data-toggle="modal" data-target="#modal-edit<?php echo $_SESSION['id_pegawai']; ?>">
                                                     <i class="fa fa-edit"></i> Edit Profil
                                                 </a>
                                                 <!-- modal edit profil -->
-                                                <div class="modal fade" id="modal-edit<?php echo $pgw['nip_npak']; ?>">
+                                                <div class="modal fade" id="modal-edit<?php echo $_SESSION['id_pegawai']; ?>">
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
                                                             <div class="modal-header">

@@ -120,7 +120,7 @@ if (isset($_POST['login'])) {
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" id="inputPassword3" name="password" class="form-control" placeholder="Password">
+                        <input type="password" id="inputPassword3" name="password" minlength="4" maxlength="15" class="form-control" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
