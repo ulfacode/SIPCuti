@@ -18,7 +18,7 @@
                     <div class="form-group">
                         <label for="">Tanda Tangan</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="ttd_ortu">
+                            <input type="file" class="custom-file-input" name="ttd_ortu" accept=".png, .jpg, .jpeg">
                             <label class="custom-file-label" for=""></label>
                             <p style="color: red;">* Upload file dalam bentuk (jpg/jpeg/png) dan transparan!</p>
                             <p style="color: red;">* Maksimal 10MB!</p>

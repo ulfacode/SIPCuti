@@ -49,7 +49,7 @@ function tambahCuti($data)
         } else {
             echo "
             <script> 
-                alert('Lengkapi data terlebih dahulu!');
+                alert('Lengkapi data diri terlebih dahulu!');
                 document.location.href = 'index.php';
             </script>
         ";
@@ -109,7 +109,7 @@ function tambahAktif($data)
         } else {
             echo "
             <script> 
-                alert('Lengkapi data terlebih dahulu!');
+                alert('Lengkapi data diri terlebih dahulu!');
                 document.location.href = 'index.php';
             </script>
         ";

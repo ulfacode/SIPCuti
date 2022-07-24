@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <label>Jabatan</label>
                         <div class="select2-purple">
-                            <select class="select2" name="id_jabatan[]" multiple="multiple" data-placeholder="Pilih Jabatan/Hak Akses (bisa satu atau lebih)" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                            <select class="select2" name="id_jabatan[]" multiple="multiple" data-placeholder="Pilih Jabatan/Hak Akses" data-dropdown-css-class="select2-purple" style="width: 100%;">
                                 <?php
                                 $data_jabatan = mysqli_query($conn, "SELECT * FROM tb_jabatan");
                                 while ($datas = mysqli_fetch_array($data_jabatan)) { ?>

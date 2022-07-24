@@ -19,7 +19,7 @@
                     <div class="form-group">
                         <label for="">Lampiran</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="lampiran" id="lampiran">
+                            <input type="file" class="custom-file-input" name="lampiran" id="lampiran" accept=".pdf">
                             <label class="custom-file-label" for=""></label>
                             <p style="color: red;">* Lampiran berisi: Bukti UKT, KTM, Kartu Perpus, Surat Keterangan Sakit (yang relevan) dalam bentuk PDF!</p>
                             <p style="color: red;">* Maksimal 10MB!</p>

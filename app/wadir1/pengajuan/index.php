@@ -95,7 +95,7 @@ if (isset($_POST["simpan"])) {
                                         <thead>
                                             <tr>
                                                 <th>Nomor</th>
-                                                <th>NIM</th>
+                                                <!-- <th>NIM</th> -->
                                                 <th>Nama </th>
                                                 <th>Jenis</th>
                                                 <th>Tanggal Pengajuan</th>
@@ -116,7 +116,7 @@ if (isset($_POST["simpan"])) {
                                             ?>
                                                 <tr>
                                                     <td><?php echo $i; ?></td>
-                                                    <td><?php echo $row_user['nim'] ?></td>
+                                                    <!-- <td><?php echo $row_user['nim'] ?></td> -->
                                                     <td><?php echo $row_user['nama'] ?></td>
                                                     <td><?php echo $row_user['jns_pengajuan'] ?></td>
                                                     <td><?= tgl($row_user['tgl_pengajuan']); ?></td>

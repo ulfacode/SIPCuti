@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-group">
                             <label for="thn_jabatan">Tahun Jabatan</label>
-                            <input id="thn_jabatan" class="form-control" type="text" name="thn_jabatan" required="required" value="<?= $pgw["thn_jabatan"]; ?>">
+                            <input id="thn_jabatan" class="form-control" type="text" name="thn_jabatan" required="required" maxlength="9" value="<?= $pgw["thn_jabatan"]; ?>">
                         </div>
                         <div class="form-group">
                             <label for="status">Status</label>

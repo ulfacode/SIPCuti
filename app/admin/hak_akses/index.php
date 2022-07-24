@@ -63,7 +63,7 @@ session_start();
                                 <?php
                                 include "modal_tambah.php";
 
-                                $user = mysqli_query($conn, "SELECT p.nama, p.nip_npak, hak.id_hak_akses, jb.* FROM tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE p.id_pegawai=hak.id_pegawai AND hak.id_jabatan=jb.id_jabatan");
+                                $user = mysqli_query($conn, "SELECT p.nama, p.id_pegawai, p.nip_npak, hak.id_hak_akses, jb.* FROM tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE p.id_pegawai=hak.id_pegawai AND hak.id_jabatan=jb.id_jabatan");
                                 // $row_user = $user->fetch_assoc();
 
                                 if (isset($_POST["edit"])) {

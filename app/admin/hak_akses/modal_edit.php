@@ -14,7 +14,9 @@
                     <?php
                     $id =  $row_user['id_hak_akses'];
                     ?>
+                    
                     <input type="hidden" value="<?= $id; ?>" name="id">
+                    <input type="hidden" value="<?= $row_user['id_pegawai']; ?>" name="id_pegawai">
                     <div class="form-group">
                         <label for="">Nama</label>
                         <input type="text" class="form-control" name="nama" value="<?= $row_user["nama"]; ?> (<?= $row_user["nip_npak"]; ?>)" readonly>

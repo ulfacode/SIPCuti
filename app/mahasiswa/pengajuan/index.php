@@ -164,7 +164,7 @@ $id = $_SESSION['nim'];
                                                 <th>Tanggal Pengajuan</th>
                                                 <th>Semester Cuti/Aktif</th>
                                                 <th>Tahun Akademik</th>
-                                                <th>Alasan</th>
+                                                <!-- <th>Alasan</th> -->
                                                 <th>Nama Orang Tua</th>
                                                 <th>Status</th>
                                                 <th>Detail Status</th>
@@ -185,7 +185,7 @@ $id = $_SESSION['nim'];
                                                     <td><?= tgl($row_user['tgl_pengajuan']); ?></td>
                                                     <td><?php echo $row_user['semester_cuti'] ?></td>
                                                     <td><?php echo $row_user['thn_akademik'] ?></td>
-                                                    <td><?php echo $row_user['alasan'] ?></td>
+                                                    <!-- <td><?php echo $row_user['alasan'] ?></td> -->
                                                     <td><?php echo $row_user['nama_ortu'] ?></td>
                                                     <?php
                                                     // keu - doswal - kajur - wadir1 - admin - tolak

@@ -42,7 +42,7 @@ if (isset($_POST['login'])) {
             // header("location: app/mahasiswa/dashboard/");
         } else {
             echo "<script>
-                alert('Masukkan password dengan benar!')
+                alert('Password salah!')
                 </script>";
         }
     } elseif ($cekP > 0) { //jika user terdaftar sbg pegawai
@@ -69,12 +69,12 @@ if (isset($_POST['login'])) {
             }
         } else {
             echo "<script>
-                alert('Masukkan password dengan benar!')
+                alert('Password salah!')
                 </script>";
         }
     } else {
         echo "<script>
-            alert('Masukkan email dengan benar!')
+            alert('Email salah!')
             </script>";
     }
 }

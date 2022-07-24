@@ -19,7 +19,7 @@
                         <label class="float-left">Foto</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="foto" id="foto">
+                                <input type="file" class="custom-file-input" name="foto" id="foto" accept=".png, .jpg, .jpeg">
                                 <label class="custom-file-label" for=""></label>
                             </div>
                         </div>

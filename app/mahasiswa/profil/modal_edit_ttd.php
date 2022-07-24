@@ -20,7 +20,7 @@
                         <label for="">Tanda Tangan</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="ttd">
+                                <input type="file" class="custom-file-input" name="ttd" accept=".png, .jpg, .jpeg">
                                 <label class="custom-file-label" for=""></label>
                             </div>
                         </div>

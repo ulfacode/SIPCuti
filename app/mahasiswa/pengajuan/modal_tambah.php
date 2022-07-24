@@ -63,9 +63,9 @@
                     <div class="form-group">
                         <label for="">Lampiran</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="lampiran">
+                            <input type="file" class="custom-file-input" name="lampiran" accept=".pdf">
                             <label class="custom-file-label" for="foto"></label>
-                            <p style="color: red;">* Lampiran berisi: Bukti UKT, KTM, Kartu Perpus, Surat Keterangan Sakit (yang relevan) dalam bentuk PDF!</p>
+                            <p style="color: red;">* Lampiran berisi: Bukti Pembayaran UKT terakhir, KTM, Kartu Perpus, Surat Keterangan Sakit (yang relevan) dalam bentuk PDF!</p>
                             <p style="color: red;">* Maksimal 10MB!</p>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                     <div class="form-group">
                         <label for="ttd">Tanda Tangan Orang Tua</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="ttd" name="ttd_ortu">
+                            <input type="file" class="custom-file-input" id="ttd" name="ttd_ortu" accept=".png, .jpg, .jpeg">
                             <label class="custom-file-label" for="ttd"></label>
                             <p style="color: red;">* Upload file dalam bentuk (jpg/jpeg/png) dan transparan!</p>
                             <p style="color: red;">* Maksimal 10MB!</p>
@@ -165,7 +165,7 @@
                     <div class="form-group">
                         <label for="">Lampiran</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="lampiran">
+                            <input type="file" class="custom-file-input" name="lampiran" accept=".pdf">
                             <label class="custom-file-label" for="foto"></label>
                             <p style="color: red;">* Lampiran berisi: Bukti UKT, KTM, Kartu Perpus, Surat Keterangan Sakit (yang relevan) dalam bentuk PDF!</p>
                             <p style="color: red;">* Maksimal 10MB!</p>
@@ -175,7 +175,7 @@
                     <div class="form-group">
                         <label for="ttd">Tanda Tangan Orang Tua</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="ttd" name="ttd_ortu">
+                            <input type="file" class="custom-file-input" id="ttd" name="ttd_ortu" accept=".png, .jpg, .jpeg">
                             <label class="custom-file-label" for="ttd"></label>
                             <p style="color: red;">* Upload file dalam bentuk (jpg/jpeg/png) dan transparan!</p>
                             <p style="color: red;">* Maksimal 10MB!</p>

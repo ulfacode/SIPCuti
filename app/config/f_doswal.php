@@ -9,9 +9,15 @@ function tambah($data)
     $thn_jabatan = $data["thn_jabatan"];
     $status = $data["status"];
 
-    $query = "INSERT INTO tb_doswal (id_pegawai, thn_jabatan, status) VALUES ('$id_pegawai', '$thn_jabatan', '$status')";
-    mysqli_query($conn, $query);
-    return mysqli_affected_rows($conn);
+    $query = mysqli_query($conn, "SELECT id_pegawai FROM tb_doswal WHERE id_pegawai = '$id_pegawai'");
+
+    if ($query->num_rows > 0) {
+        echo "<script>alert('Data dosen wali tersebut sudah terdaftar!');</script>";
+    } else {
+        $query = "INSERT INTO tb_doswal (id_pegawai, thn_jabatan, status) VALUES ('$id_pegawai', '$thn_jabatan', '$status')";
+        mysqli_query($conn, $query);
+        return mysqli_affected_rows($conn);
+    }
 }
 
 function edit($data)

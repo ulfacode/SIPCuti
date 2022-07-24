@@ -70,7 +70,7 @@
 
                     <div class="form-group">
                         <label for="thn_jabatan">Tahun Jabatan</label>
-                        <input id="thn_jabatan" class="form-control" type="text" name="thn_jabatan" required="required" placeholder="ex: 2019-2022">
+                        <input id="thn_jabatan" class="form-control" type="text" name="thn_jabatan" required="required" placeholder="ex: 2019-2022" maxlength="9">
                     </div>
                     <div class="form-group">
                         <label for="status">Status</label>

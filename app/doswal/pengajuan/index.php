@@ -97,10 +97,10 @@ if (isset($_POST["simpan"])) {
                                                 <th>NIM</th>
                                                 <th>Nama </th>
                                                 <th>Jenis</th>
-                                                <th>Tanggal Pengajuan</th>
+                                                <!-- <th>Tanggal Pengajuan</th> -->
                                                 <th>Semester Cuti/Aktif</th>
                                                 <th>Tahun Akademik</th>
-                                                <th>Alasan</th>
+                                                <!-- <th>Alasan</th> -->
                                                 <th>Status</th>
                                                 <th>Verifikasi</th>
                                                 <th>Detail Status</th>
@@ -119,10 +119,10 @@ if (isset($_POST["simpan"])) {
                                                     <td><?php echo $row_user['nim'] ?></td>
                                                     <td><?php echo $row_user['nama'] ?></td>
                                                     <td><?php echo $row_user['jns_pengajuan'] ?></td>
-                                                    <td><?= tgl($row_user['tgl_pengajuan']); ?></td>
+                                                    <!-- <td><?= tgl($row_user['tgl_pengajuan']); ?></td> -->
                                                     <td><?php echo $row_user['semester_cuti'] ?></td>
                                                     <td><?php echo $row_user['thn_akademik'] ?></td>
-                                                    <td><?php echo $row_user['alasan'] ?></td>
+                                                    <!-- <td><?php echo $row_user['alasan'] ?></td> -->
 
                                                     <?php
                                                     // keu - doswal - kajur - wadir1 - admin - tolak
