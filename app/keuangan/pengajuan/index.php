@@ -135,7 +135,7 @@ if (isset($_POST["simpan"])) {
                                                             $stt = "Menunggu verifikasi Dosen Wali";
                                                             $warna = 'cornflowerblue';
                                                         } elseif ($row_user['status'] == "2") {
-                                                            $stt = "Menunggu verifikasi Ketua Jurusan/Kaprodi";
+                                                            $stt = "Menunggu verifikasi Ketua Jurusan";
                                                             $warna = 'brown';
                                                         } elseif ($row_user['status'] == "3") {
                                                             if ($row_user['jns_pengajuan'] == 'Cuti') {
@@ -176,6 +176,7 @@ if (isset($_POST["simpan"])) {
                                                                 <!-- $level dari sidebar -->
                                                                 <a href="terima_p.php?id=<?= $row_user['id_pengajuan']; ?>&id_pegawai=<?= $_SESSION['id_pegawai']; ?>&jabatan=<?= $level; ?>" onclick="return confirm('Anda yakin menerima pengajuan ini?')" class="btn btn-outline-none"><i class="fas fa-check" style="color: green;"></i>
                                                                     ACC &nbsp;&nbsp;</a>
+                                                                    &nbsp;&nbsp;&nbsp;&nbsp;
                                                                 <a data-toggle="modal" data-target="#modal-keterangan<?php echo $row_user['id_pengajuan']; ?>"><i class="fas fa-times" style="color: red;"></i>
                                                                     Tolak</a>
                                                             <?php

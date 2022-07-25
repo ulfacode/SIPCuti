@@ -179,7 +179,7 @@ if (isset($_POST["simpan"])) {
                                                             $warna = 'cornflowerblue';
                                                             $tombol = 'disabled';
                                                         } elseif ($row_user['status'] == "2") {
-                                                            $stt = "Menunggu verifikasi Ketua Jurusan/Kaprodi";
+                                                            $stt = "Menunggu verifikasi Ketua Jurusan";
                                                             $warna = 'brown';
                                                             $tombol = 'disabled';
                                                         } elseif ($row_user['status'] == "3") {

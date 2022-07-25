@@ -82,11 +82,11 @@
                     <div class="form-group">
                         <label for="jk">Jenis Kelamin</label>
                         <div class="custom-control custom-radio">
-                            <input class="form-control custom-control-input" type="radio" id="Laki-Laki" name="jk" value="Laki-laki">
+                            <input class="form-control custom-control-input" type="radio" id="Laki-Laki" name="jk" value="Laki-laki" required>
                             <label for="Laki-Laki" class="custom-control-label">Laki-Laki</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input class="form-control custom-control-input" type="radio" id="Perempuan" name="jk" value="Perempuan">
+                            <input class="form-control custom-control-input" type="radio" id="Perempuan" name="jk" value="Perempuan" required>
                             <label for="Perempuan" class="custom-control-label">Perempuan</label>
                         </div>
                     </div>

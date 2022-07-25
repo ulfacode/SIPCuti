@@ -75,11 +75,17 @@ $id_pegawai = $_SESSION['id_pegawai'];
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <?php
-                                    $sql = mysqli_query($conn, "SELECT count(*) AS jml_belum FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_kajur AS k WHERE m.id_mahasiswa = p.id_mahasiswa AND m.id_kajur=k.id_kajur AND k.id_pegawai='$id_pegawai' AND (p.status < '3' OR p.status IS NULL)");
-                                    $hasil = mysqli_fetch_array($sql);
+                                <?php
+                                    $sqlc = mysqli_query($conn, "SELECT count(*) AS jml_belum FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_kajur AS k WHERE m.id_mahasiswa = p.id_mahasiswa AND m.id_kajur=k.id_kajur AND k.id_pegawai='$_SESSION[id_pegawai]' AND p.status = '2'");
+                                    $hasilc = mysqli_fetch_array($sqlc);
+
+                                    // $sqla = mysqli_query($conn, "SELECT count(*) AS jml_belum FROM tb_mahasiswa AS m, tb_pengajuan AS p, tb_kajur AS k WHERE m.id_mahasiswa = p.id_mahasiswa AND m.id_kajur=k.id_kajur AND k.id_pegawai='$_SESSION[id_pegawai]' AND p.status IS NULL AND jns_pengajuan = 'Izin Aktif'");
+                                    // $hasila = mysqli_fetch_array($sqla);
+
+                                    // $tot = $hasilc['jml_belum'] + $hasila['jml_belum'];
+                                    $tot = $hasilc['jml_belum'];
                                     ?>
-                                    <h3><?php echo $hasil['jml_belum']; ?></h3>
+                                    <h3><?php echo $tot; ?></h3>
 
                                     <p>Pengajuan Belum Selesai Diverifikasi</p>
                                 </div>

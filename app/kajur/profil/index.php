@@ -237,7 +237,7 @@ if (isset($_POST["edit"])) {
                                                                     ?>
                                                                         <div class="form-group">
                                                                             <label for="nip">NIP/NPAK</label>
-                                                                            <input type="number" class="form-control" id="nip" name="nip" value="<?= $pegawai["nip_npak"]; ?>" readonly>
+                                                                            <input type="text" class="form-control" id="nip" name="nip" value="<?= $pegawai["nip_npak"]; ?>" readonly>
                                                                         </div>
 
 

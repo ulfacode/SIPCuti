@@ -26,12 +26,17 @@ function tambah($data)
     //     </script>";
     // } else {
 
+    $query = mysqli_query($conn, "SELECT nim FROM tb_mahasiswa WHERE nim = '$nim'");
+
+    if ($query->num_rows > 0) {
+        echo "<script>alert('Data mahasiswa dengan nim tersebut sudah terdaftar!');</script>";
+    } else {
 
         $query = "INSERT INTO tb_mahasiswa (nim, id_doswal, id_kajur, email, password, nama, thn_angkatan, kelas, tempat_lhr, tgl_lhr, jk, alamat, no_telp) VALUES ('$nim', '$doswal', '$kajur', '$email', '$password','$nama',
         '$thn_angkatan', '$kelas', '$tempat_lhr', '$tgl_lhr', '$jk', '$alamat','$no_telp')";
         mysqli_query($conn, $query);
         return mysqli_affected_rows($conn);
-    // }
+    }
 }
 
 
@@ -157,9 +162,9 @@ function edit($data)
     //     alert('Input nama hanya huruf yang diijinkan!');
     //     </script>";
     // } else {
-        $query = "UPDATE tb_mahasiswa SET id_doswal='$id_doswal', id_kajur='$id_kajur', email='$email', password='$password', nama='$nama', thn_angkatan='$thn_angkatan', kelas='$kelas', tempat_lhr='$tempat_lhr', tgl_lhr='$tgl_lhr', jk='$jk', alamat='$alamat', no_telp='$no_telp' WHERE nim='$nim'";
-        mysqli_query($conn, $query);
-        return mysqli_affected_rows($conn);
+    $query = "UPDATE tb_mahasiswa SET id_doswal='$id_doswal', id_kajur='$id_kajur', email='$email', password='$password', nama='$nama', thn_angkatan='$thn_angkatan', kelas='$kelas', tempat_lhr='$tempat_lhr', tgl_lhr='$tgl_lhr', jk='$jk', alamat='$alamat', no_telp='$no_telp' WHERE nim='$nim'";
+    mysqli_query($conn, $query);
+    return mysqli_affected_rows($conn);
     // }
 }
 

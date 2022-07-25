@@ -133,11 +133,11 @@ session_start();
 
                                                         <?php
                                                         while ($jabatans = mysqli_fetch_array($jabatan)) {
-                                                            if (!($jabatans['nama_jabatan'] == 'Ketua Jurusan')) {
-                                                                echo $jabatans['nama_jabatan'] . "<br>";
-                                                            } else {
-                                                                echo "Ketua Jurusan/Koordinator Prodi" . "<br>";
-                                                            }
+                                                            // if (!($jabatans['nama_jabatan'] == 'Ketua Jurusan')) {
+                                                            echo $jabatans['nama_jabatan'];
+                                                            // } else {
+                                                            //     echo "Ketua Jurusan/Koordinator Prodi" . "<br>";
+                                                            // }
                                                         }
                                                         ?>
                                                     </td>

@@ -197,7 +197,7 @@ $id = $_SESSION['nim'];
                                                             $stt = "Menunggu verifikasi Dosen Wali";
                                                             $warna = 'cornflowerblue';
                                                         } elseif ($row_user['status'] == "2") {
-                                                            $stt = "Menunggu verifikasi Ketua Jurusan/Kaprodi";
+                                                            $stt = "Menunggu verifikasi Ketua Jurusan";
                                                             $warna = 'brown';
                                                         } elseif ($row_user['status'] == "3") {
                                                             if ($row_user['jns_pengajuan'] == 'Cuti') {

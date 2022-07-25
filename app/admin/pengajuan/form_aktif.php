@@ -393,19 +393,21 @@ error_reporting(0);
 
             <table>
                 <tr>
-                    <td width="200"></td>
-                    <td align="center">Menyetujui</td>
-                    <td width="200"></td>
+                    <td width=""></td>
+                    <td align="center" width="80">Menyetujui</td>
+                    <td width=""></td>
                 </tr>
+            </table>
+            <table>
                 <tr>
                     <td></td>
-                    <td align="center">Wakil Direktur 1</td>
+                    <td align="center" width="200">Wakil Direktur 1</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td></td>
                     <?php
-                    if ($result['status'] > '2' and $status_wadir1 == 'Diterima') {
+                    if ($result['status'] > '3' and $status_wadir1 == 'Diterima') {
                     ?>
                         <td align="center"><img src="../pegawai/img/<?= $ttd_wadir1; ?>" width="60" height="60" alt="tanda tangan wadir1"></td>
                     <?php

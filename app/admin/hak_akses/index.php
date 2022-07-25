@@ -127,12 +127,12 @@ session_start();
                                                     <td><?php echo $row_user['nama'] ?></td>
                                                     <td>
                                                         <?php
-                                                        if (!($row_user['nama_jabatan'] == 'Ketua Jurusan')) {
-                                                            echo $row_user['nama_jabatan'];
-                                                        } else {
-                                                            echo "Ketua Jurusan/Koordinator Prodi";
-                                                        }
-                                                        // echo $row_user['nama_jabatan']
+                                                        // if (!($row_user['nama_jabatan'] == 'Ketua Jurusan')) {
+                                                        //     echo $row_user['nama_jabatan'];
+                                                        // } else {
+                                                        //     echo "Ketua Jurusan/Koordinator Prodi";
+                                                        // }
+                                                        echo $row_user['nama_jabatan'];
                                                         ?>
                                                     </td>
                                                     <td>

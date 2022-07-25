@@ -112,10 +112,15 @@ session_start();
                             <div class="small-box bg-danger">
                                 <div class="inner">
                                     <?php
-                                    $sql = mysqli_query($conn, "SELECT count(*) AS jml_pengajuan FROM tb_pengajuan WHERE status < '5'");
-                                    $hasil = mysqli_fetch_array($sql);
+                                    $jumlah_c = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan WHERE status = '3' AND jns_pengajuan = 'Cuti'");
+                                    $hasil_c = mysqli_fetch_array($jumlah_c);
+                        
+                                    $jumlah_a = mysqli_query($conn, "SELECT count(*) AS jml FROM tb_pengajuan WHERE status= '4' AND jns_pengajuan = 'Izin Aktif'");
+                                    $hasil_a = mysqli_fetch_array($jumlah_a);
+                        
+                                    $total = $hasil_c['jml'] + $hasil_a['jml'];
                                     ?>
-                                    <h3><?php echo $hasil['jml_pengajuan']; ?></h3>
+                                    <h3><?php echo $total; ?></h3>
                                     <p>Pengajuan Belum Selesai Diverifikasi</p>
                                 </div>
                                 <div class="icon">

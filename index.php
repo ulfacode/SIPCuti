@@ -164,6 +164,7 @@ if (isset($_POST['login'])) {
                 ?>
                 <p class="mb-1">
                     <a href="https://wa.me/<?= (string) $telp_admin['no_telp']; ?>?text=Halo! Saya lupa password akun sistem pengajuan cuti. Tolong bantu saya mereset password.">Lupa password</a>
+                    <!-- <a href="#" onclick="return ">Lupa password</a> -->
                 </p>
                 <!-- <p class="mb-0">
                     <a href="register.html" class="text-center">Register a new membership</a>

@@ -139,7 +139,7 @@ if (isset($_POST["simpan"])) {
                                                             $stt = "Silahkan verifikasi!";
                                                             $warna = 'red';
                                                         } elseif ($row_user['status'] == "2") {
-                                                            $stt = "Menunggu verifikasi Ketua Jurusan/Kaprodi";
+                                                            $stt = "Menunggu verifikasi Ketua Jurusan";
                                                             $warna = 'brown';
                                                         } elseif ($row_user['status'] == "3") {
                                                             if ($row_user['jns_pengajuan'] == 'Cuti') {
@@ -179,6 +179,7 @@ if (isset($_POST["simpan"])) {
                                                                 <!-- <a href="tolak_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $_SESSION['id_pegawai']; ?>" class="btn btn-outline-none" onclick="return confirm('Anda yakin menolak pengajuan ini?')"><i class="fas fa-times" style="color: red;"></i>
                                                                     Tolak</a> -->
                                                                 <a data-toggle="modal" data-target="#modal-keterangan<?php echo $row_user['id_pengajuan']; ?>">
+                                                                &nbsp;&nbsp;&nbsp;
                                                                     <i class="fas fa-times" style="color: red;"></i>
                                                                     Tolak
                                                                 </a>
