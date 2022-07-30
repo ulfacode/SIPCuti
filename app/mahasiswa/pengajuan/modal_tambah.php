@@ -31,9 +31,44 @@
                     <div class="form-group">
                         <input type="hidden" class="form-control" name="tgl_pengajuan" value="<?php echo date("Y-m-d"); ?>">
                     </div>
+                    <?php
+                    $angkatan = mysqli_query($conn, "SELECT thn_angkatan FROM tb_mahasiswa WHERE id_mahasiswa = '$_SESSION[id_mahasiswa]'");
+                    $result = mysqli_fetch_array($angkatan);
+                    $yearNow = date('Y');
+                    $monthNow = date('m');
+                    if (($yearNow - $result['thn_angkatan']) == 0) {
+                        $semester = 1;
+                    } elseif (($yearNow - $result['thn_angkatan']) == 1) {
+                        if ($monthNow <= 2) {
+                            $semester = 1;
+                        } elseif ($monthNow <= 8) {
+                            $semester = 2;
+                        } else {
+                            $semester = 3;
+                        }
+                    }elseif (($yearNow - $result['thn_angkatan']) == 2) {
+                        if ($monthNow <= 2) {
+                            $semester = 3;
+                        } elseif ($monthNow <= 8) {
+                            $semester = 4;
+                        } else {
+                            $semester = 5;
+                        }
+                    }elseif (($yearNow - $result['thn_angkatan']) == 3) {
+                        if ($monthNow <= 2) {
+                            $semester = 5;
+                        } elseif ($monthNow <= 8) {
+                            $semester = 'Anda sudah tidak bisa mengajukan';
+                        } else {
+                            $semester = 'Anda sudah lulus';
+                        }
+                    }else{
+                        $semester = 'Anda sudah lulus';
+                    }
+                    ?>
                     <div class="form-group">
                         <label for="">Semester Cuti</label>
-                        <input type="number" class="form-control" name="semester_cuti" placeholder="Isikan semester saat mengambil cuti! Misalkan: 5" min="1" max="5" required>
+                        <input type="text" class="form-control" name="semester_cuti" value="<?= $semester; ?>" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Tingkat</label>
