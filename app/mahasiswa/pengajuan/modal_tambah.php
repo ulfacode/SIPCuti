@@ -1,3 +1,58 @@
+<?php
+$angkatan = mysqli_query($conn, "SELECT thn_angkatan FROM tb_mahasiswa WHERE id_mahasiswa = '$_SESSION[id_mahasiswa]'");
+$result = mysqli_fetch_array($angkatan);
+$yearNow = date('Y');
+$monthNow = date('m');
+if (($yearNow - $result['thn_angkatan']) == 0) {
+    $semester = 1;
+} elseif (($yearNow - $result['thn_angkatan']) == 1) {
+    if ($monthNow <= 2) {
+        $semester = 1;
+        $tingkat = 1;
+    } elseif ($monthNow <= 8) {
+        $semester = 2;
+        $tingkat = 1;
+    } else {
+        $semester = 3;
+        $tingkat = 2;
+    }
+} elseif (($yearNow - $result['thn_angkatan']) == 2) {
+    if ($monthNow <= 2) {
+        $semester = 3;
+        $tingkat = 2;
+    } elseif ($monthNow <= 8) {
+        $semester = 4;
+        $tingkat = 2;
+    } else {
+        $semester = 5;
+        $tingkat = 3;
+    }
+} elseif (($yearNow - $result['thn_angkatan']) == 3) {
+    if ($monthNow <= 2) {
+        $semester = 3;
+    } elseif ($monthNow <= 8) {
+        $semester = 'Anda sudah tidak bisa mengajukan';
+        $tingkat = 'Anda sudah tidak bisa mengajukan';
+    } else {
+        $semester = 'Anda sudah lulus';
+        $tingkat = 'Anda sudah lulus';
+    }
+} else {
+    $semester = 'Anda sudah lulus';
+    $tingkat = 'Anda sudah lulus';
+}
+
+if ($monthNow <= 8) {
+    $thn_akademik1 = $yearNow - 1;
+    $thn_akademik2 = $thn_akademik1 + 1;
+    $thn_akademik = $thn_akademik1 . "/" . $thn_akademik2;
+} else {
+    $thn_akademik1 = $yearNow;
+    $thn_akademik2 = $thn_akademik1 + 1;
+    $thn_akademik = $thn_akademik1 . "/" . $thn_akademik2;
+}
+?>
+
 <div class="modal fade" id="tambahCuti">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -31,52 +86,18 @@
                     <div class="form-group">
                         <input type="hidden" class="form-control" name="tgl_pengajuan" value="<?php echo date("Y-m-d"); ?>">
                     </div>
-                    <?php
-                    $angkatan = mysqli_query($conn, "SELECT thn_angkatan FROM tb_mahasiswa WHERE id_mahasiswa = '$_SESSION[id_mahasiswa]'");
-                    $result = mysqli_fetch_array($angkatan);
-                    $yearNow = date('Y');
-                    $monthNow = date('m');
-                    if (($yearNow - $result['thn_angkatan']) == 0) {
-                        $semester = 1;
-                    } elseif (($yearNow - $result['thn_angkatan']) == 1) {
-                        if ($monthNow <= 2) {
-                            $semester = 1;
-                        } elseif ($monthNow <= 8) {
-                            $semester = 2;
-                        } else {
-                            $semester = 3;
-                        }
-                    }elseif (($yearNow - $result['thn_angkatan']) == 2) {
-                        if ($monthNow <= 2) {
-                            $semester = 3;
-                        } elseif ($monthNow <= 8) {
-                            $semester = 4;
-                        } else {
-                            $semester = 5;
-                        }
-                    }elseif (($yearNow - $result['thn_angkatan']) == 3) {
-                        if ($monthNow <= 2) {
-                            $semester = 5;
-                        } elseif ($monthNow <= 8) {
-                            $semester = 'Anda sudah tidak bisa mengajukan';
-                        } else {
-                            $semester = 'Anda sudah lulus';
-                        }
-                    }else{
-                        $semester = 'Anda sudah lulus';
-                    }
-                    ?>
+
                     <div class="form-group">
                         <label for="">Semester Cuti</label>
                         <input type="text" class="form-control" name="semester_cuti" value="<?= $semester; ?>" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Tingkat</label>
-                        <input type="number" class="form-control" name="tingkat" placeholder="Isikan tingkat kuliah saat mengambil cuti! Misalkan: 3" min="1" max="3" required>
+                        <input type="text" class="form-control" name="tingkat" value="<?= $tingkat; ?>" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Tahun Akademik</label>
-                        <input type="text" class="form-control" name="thn_akademik" placeholder="Isikan Tahun Akademik saat mengambil cuti! Misalkan: 2020/2021" maxlength="9" required>
+                        <input type="text" class="form-control" name="thn_akademik" value="<?= $thn_akademik; ?>" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Nama Prodi</label>
@@ -175,15 +196,15 @@
                     </div>
                     <div class="form-group">
                         <label for="">Semester Aktif</label>
-                        <input type="number" class="form-control" name="semester_cuti" placeholder="Isikan semester kuliah Anda! Misalkan: 5" min="1" max="6" required>
+                        <input type="number" class="form-control" name="semester_cuti" value="<?= $semester; ?>" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Tingkat</label>
-                        <input type="number" class="form-control" name="tingkat" placeholder="Isikan tingkat kuliah Anda! Misalkan: 3" min="1" max="3" required>
+                        <input type="number" class="form-control" name="tingkat" value="<?= $tingkat; ?>" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Tahun Akademik</label>
-                        <input type="text" class="form-control" name="thn_akademik" placeholder="Isikan Tahun Akademik saat aktif! Misalkan: 2020/2021" maxlength="9" required>
+                        <input type="text" class="form-control" name="thn_akademik" value="<?= $thn_akademik; ?>" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Nama Prodi</label>
