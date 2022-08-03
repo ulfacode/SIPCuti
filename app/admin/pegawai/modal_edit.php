@@ -12,8 +12,8 @@
                 <form action="" method="POST">
                     <?php
                     $id = $row_user["id_pegawai"];
-                    $data = mysqli_query($conn, "SELECT * FROM tb_pegawai WHERE id_pegawai = '$id'");
-                    while ($pgw = mysqli_fetch_array($data)) {
+                    $pegawai = mysqli_query($conn, "SELECT * FROM tb_pegawai WHERE id_pegawai = '$id'");
+                    while ($pgw = mysqli_fetch_array($pegawai)) {
                     ?>
                         <input type="hidden" name="id_pegawai" value="<?= $id ?>">
                         <div class="form-group">

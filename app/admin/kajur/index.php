@@ -63,8 +63,7 @@ session_start();
                                 <?php
                                 include "modal_tambah.php";
 
-                                $user = mysqli_query($conn, "SELECT `k`.`id_kajur` AS `id_kajur`, `p`.`nip_npak` AS `nip_npak`, `p`.`nama` AS `nama`, `k`.`thn_jabatan` AS `thn_jabatan`, `k`.`status` AS `status`, `k`.`nm_jurusan` AS `nm_jurusan` FROM (`tb_kajur` `k` join `tb_pegawai` `p`) WHERE `k`.`id_pegawai` = `p`.`id_pegawai` ORDER BY `p`.`nama` ASC ");
-                                $row_user = $user->fetch_assoc();
+                                $kajur = mysqli_query($conn, "SELECT `k`.`id_kajur` AS `id_kajur`, `p`.`nip_npak` AS `nip_npak`, `p`.`nama` AS `nama`, `k`.`thn_jabatan` AS `thn_jabatan`, `k`.`status` AS `status`, `k`.`nm_jurusan` AS `nm_jurusan` FROM (`tb_kajur` `k` join `tb_pegawai` `p`) WHERE `k`.`id_pegawai` = `p`.`id_pegawai` ORDER BY `p`.`nama` ASC ");
 
                                 if (isset($_POST["tambah"])) {
                                     if (tambah($_POST) > 0) {
@@ -123,7 +122,7 @@ session_start();
                                         <tbody>
                                             <?php
                                             $i = 1;
-                                            foreach ($user as $row_user) {
+                                            foreach ($kajur as $row_user) {
                                             ?>
                                                 <tr>
                                                     <td><?php echo $i; ?></td>

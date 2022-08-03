@@ -63,8 +63,7 @@ session_start();
                                 include "modal_tambah.php";
 
 
-                                $user = mysqli_query($conn, "SELECT `d`.`id_doswal` AS `id_doswal`, `p`.`nip_npak` AS `nip_npak`, `p`.`nama` AS `nama`, `d`.`thn_jabatan` AS `thn_jabatan`, `d`.`status` AS `status` FROM (`tb_doswal` `d` join `tb_pegawai` `p`) WHERE `d`.`id_pegawai` = `p`.`id_pegawai` ORDER BY `p`.`nama` ASC ");
-                                // $row_user = $user->fetch_assoc();
+                                $doswal = mysqli_query($conn, "SELECT `d`.`id_doswal` AS `id_doswal`, `p`.`nip_npak` AS `nip_npak`, `p`.`nama` AS `nama`, `d`.`thn_jabatan` AS `thn_jabatan`, `d`.`status` AS `status` FROM (`tb_doswal` `d` join `tb_pegawai` `p`) WHERE `d`.`id_pegawai` = `p`.`id_pegawai` ORDER BY `p`.`nama` ASC ");
 
                                 if (isset($_POST["tambah"])) {
                                     if (tambah($_POST) > 0) {
@@ -102,7 +101,7 @@ session_start();
                                         <tbody>
                                             <?php
                                             $i = 1;
-                                            foreach ($user as $row_user) {
+                                            foreach ($doswal as $row_user) {
                                             ?>
                                                 <tr>
                                                     <td><?php echo $i; ?></td>

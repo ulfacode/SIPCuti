@@ -120,10 +120,9 @@ session_start();
                                         <tbody>
                                             <?php
 
-                                            $user = mysqli_query($conn, "SELECT * FROM tb_pegawai");
-                                            // $row_user = $user->fetch_assoc();
+                                            $pegawai = mysqli_query($conn, "SELECT * FROM tb_pegawai");
 
-                                            foreach ($user as $row_user) {
+                                            foreach ($pegawai as $row_user) {
                                                 $jabatan = mysqli_query($conn, "SELECT jb.nama_jabatan FROM tb_pegawai AS p, tb_hak_akses AS hak, tb_jabatan AS jb WHERE p.id_pegawai=hak.id_pegawai AND hak.id_jabatan=jb.id_jabatan AND p.id_pegawai='$row_user[id_pegawai]'");
                                             ?>
                                                 <tr>

@@ -5,6 +5,7 @@ $yearNow = date('Y');
 $monthNow = date('m');
 if (($yearNow - $result['thn_angkatan']) == 0) {
     $semester = 1;
+    $tingkat = 1;
 } elseif (($yearNow - $result['thn_angkatan']) == 1) {
     if ($monthNow <= 2) {
         $semester = 1;
