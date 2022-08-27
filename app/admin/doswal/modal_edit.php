@@ -17,6 +17,7 @@
                     ?>
                         <div class="form-group">
                             <input type="hidden" class="form-control" id="id" name="id" value="<?= $doswal["id_doswal"]; ?>">
+                            <input type="hidden" class="form-control" id="id" name="id_pegawai" value="<?= $doswal["id_pegawai"]; ?>">
                         </div>
                         <div class="form-group">
                             <label for="nip">Nama (NIP/NPAK)</label>
