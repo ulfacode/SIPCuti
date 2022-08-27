@@ -315,7 +315,7 @@ if (isset($_POST["simpan"])) {
 
                                                                 <?php if (empty($row_user['upload_sk'])) { //cek data
                                                                 ?>
-                                                                    <a class="dropdown-item" onclick="alert('Oopss... SK belum terbit. Harap bersabar ya!')"><i class="fa fa-download"></i>
+                                                                    <a class="dropdown-item" onclick="alert('Mohon maaf Surat Keputusan belum terbit')"><i class="fa fa-download"></i>
                                                                         <?php if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
                                                                             SK Cuti
                                                                         <?php

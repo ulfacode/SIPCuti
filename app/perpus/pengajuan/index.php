@@ -101,7 +101,7 @@ session_start();
                                                     <td><?php echo $row_user['thn_akademik'] ?></td>
                                                     <td>
                                                         <?php if (empty($row_user['upload_sk'])) { ?>
-                                                            <a class="btn btn-success" onclick="alert('Oopss... SK belum terbit')">
+                                                            <a class="btn btn-success" onclick="alert('Mohon maaf Surat Keputusan belum terbit')">
                                                                 <i class="fa fa-download"></i>
                                                                 <?php if ($row_user['jns_pengajuan'] == 'Cuti') { ?>
                                                                     SK Cuti

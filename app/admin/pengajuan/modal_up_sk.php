@@ -30,7 +30,7 @@
                             <div class="input-group-append">
                                 <?php if (empty($result['upload_sk'])) {
                                 ?>
-                                    <a class="input-group-text" onclick="alert('No Data')"><i class="fa fa-download"></i> Cek Berkas SK</a>
+                                    <a class="input-group-text" onclick="alert('Surat Keputusan belum diunggah')"><i class="fa fa-download"></i> Cek Berkas SK</a>
                                 <?php
                                 } else {
                                 ?>

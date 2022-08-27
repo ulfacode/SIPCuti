@@ -341,7 +341,7 @@ $id = $_SESSION['nim'];
                                                                 <?php if (empty($row_user['upload_sk'])) { //cek data
                                                                 ?>
                                                                     <!-- warna akan hitam jika tidak ada data -->
-                                                                    <a class="dropdown-item" onclick="alert('Oopss... SK belum terbit. Harap bersabar ya!')"><i class="fa fa-download"></i> SK</a>
+                                                                    <a class="dropdown-item" onclick="alert('Mohon maaf Surat Keputusan belum terbit')"><i class="fa fa-download"></i> SK</a>
                                                                 <?php
                                                                 } else {
                                                                 ?>
