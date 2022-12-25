@@ -1,12 +1,11 @@
 # SIPCuti
+    Sistem Pengajuan Cuti Mahasiswa PNC
 <html>
   <head>
-    <title>Sistem Pengajuan Cuti Mahasiswa PNC </title>
   </head>
   <body>
     <p>
-      
-Code yang digunakan branch ini
+      Code yang terakhir update (digunakan) branch tambah_id
     </p>
   </body>
 </html>
