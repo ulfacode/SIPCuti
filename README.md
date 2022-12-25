@@ -1,8 +1,7 @@
 # SIPCuti
 <html>
   <head>
-<title>Sistem Pengajuan Cuti Mahasiswa PNC 
-    </title>
+    <title>Sistem Pengajuan Cuti Mahasiswa PNC </title>
   </head>
   <body>
     <p>
